@@ -8,7 +8,6 @@ class DevProjectile extends Projectile{
     speed = maxSpeed;
     damage = 9999;
     pierce = 9999;
-    error = 0;
     this.angle = angle;
     sprite = loadImage("sprites/projectiles/devProjectile.png");
   }  
