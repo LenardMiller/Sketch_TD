@@ -8,7 +8,6 @@ class Pebble extends Projectile{
     speed = maxSpeed;
     damage = 10;
     pierce = 1;
-    error = 5;
     this.angle = angle;
     sprite = loadImage("sprites/projectiles/pebble.png");
   }  
