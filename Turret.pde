@@ -141,7 +141,7 @@ class Turret extends Tower{
       }  
     }
     else if (spriteType == 2){ //load
-      if (millis() - loadDelayTime >= loadDelay){ //SUPPOSSED to animate dialated to the remaining delay time, but it doesn't really. TODO: fix
+      if (millis() - loadDelayTime >= loadDelay){ //animates dialated to the remaining delay time
         frame++;
         loadDelayTime = millis() + loadDelay;
       }  
