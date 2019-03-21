@@ -1,3 +1,3 @@
 # Sketch_TD
-A small Tower Defence game made in Processing
+The working title for a small Tower Defence game made in Processing Java.
 
