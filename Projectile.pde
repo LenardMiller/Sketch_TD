@@ -11,8 +11,12 @@ class Projectile {
   PImage sprite;
   PVector velocity;
   float angle;
+  float angleTwo;
+  float angularVelocity;
   boolean dead;
-  float error;
+  String trail;
+  boolean isTrail;
+  String buff;
   
   Projectile(float x, float y, float angle) {
     position = new PVector(x, y);
@@ -23,27 +27,42 @@ class Projectile {
     damage = 1;
     pierce = 1;
     hitTime = 0;
-    error = 0;
+    angleTwo = angle;
+    angularVelocity = 0; //degrees mode
     sprite = loadImage("sprites/projectiles/null10x10.png");
-    velocity = PVector.fromAngle(angle-HALF_PI);;  
+    velocity = PVector.fromAngle(angle-HALF_PI);
+    isTrail = false;
+    trail = "null";
+    buff = "null";
   }  
   
   void pjMain(ArrayList<Projectile> projectiles, int i){
     display();
     move();
     collideEN();
-    if (position.y - size.y > height || position.x - size.x > width || position.y + size.y < 0 || position.x + size.x < 0){ //if crossed edge, delete
+    if (position.y - size.y > boardHeight || position.x - size.x > boardWidth || position.y + size.y < 0 || position.x + size.x < 0){ //if crossed edge, delete
       dead = true;
     }  
     if (dead){
       projectiles.remove(i);
     }  
+    trail();
   }  
   
+  void trail(){
+    if (isTrail){
+      int num = round(random(0,2));
+      if (num == 0){
+        particles.add(new BuffPt(position.x+2.5, position.y+size.y, random(0,360), trail)); 
+      }
+    }
+  }
+  
   void display(){ //move and rotate whole grid before displaying, than reset
+   angleTwo += radians(angularVelocity);
    pushMatrix();
    translate(position.x,position.y);
-   rotate(angle);
+   rotate(angleTwo);
    image(sprite,-size.x/2,-size.y/2);
    popMatrix();
   }  
@@ -58,9 +77,9 @@ class Projectile {
       for (int i = enemies.size()-1; i >= 0; i--){
         Enemy enemy = enemies.get(i);
         if (abs(enemy.position.x-position.x) <= (radius + enemy.radius) && abs(enemy.position.y-position.y) <= (radius + enemy.radius) && pierce > 0){
-          enemy.collidePJ(damage);
+          enemy.collidePJ(damage,buff);
           hitTime = millis() + 100; 
-          pierce -= 1;
+          pierce--;
         }            
         if (pierce == 0) {
           dead = true;
