@@ -1,15 +1,11 @@
 class Turret extends Tower{
   PVector target;
-  float angle;
   PImage sBase;
-  PImage sBaseHit;
   PImage sIdle;
   PVector ratio;
   int targetEn;
-  int delay;
   int delayTime;
   int pjSpeed;
-  float error;
   int numFireFrames;
   int numLoadFrames;
   PImage[] fireFrames;
@@ -21,27 +17,29 @@ class Turret extends Tower{
   int loadDelayTime;
   Turret(float x, float y) {
     super(x,y);
-    target = new PVector(x, -height);
+    name = "null";
+    target = new PVector(x, -boardHeight);
     position = new PVector(x,y);
     size = new PVector(50,50);
     maxHP = 20;
     twHP = maxHP;
     hit = false;
-    delay = 300;
+    delay = 4000;
     delayTime = delay;
     pjSpeed = 2;
     error = 0;
     numFireFrames = 1;
     numLoadFrames = 1;
     spriteLocation = "sprites/towers/turrets/null/";
-    //the following is always the same. TODO: move if possible
+    debrisType = "null";
+    //the following is usually unchanged.
     fireFrames = new PImage[numFireFrames];
     loadFrames = new PImage[numLoadFrames];
-    loadSprites();
     spriteType = 0;
     frame = 0;
     loadDelay = 0;
     loadDelayTime = 0;
+    loadSprites();
   }
   void checkTarget(){
     for (int i = enemies.size()-1; i >= 0; i--){ //chooses an enemy to attack
@@ -95,11 +93,10 @@ class Turret extends Tower{
     delayTime = millis() + delay; //waits this time before firing
     angle += radians(random(-error,error));
     projectiles.add(new Projectile(position.x-size.x/2,position.y-size.y/2, angle));
-    target = new PVector(position.x, -height);
+    target = new PVector(position.x, -boardHeight);
   }  
   void loadSprites(){
     sBase = loadImage(spriteLocation + "base.png");
-    sBaseHit = loadImage(spriteLocation + "baseHit.png");
     sIdle = loadImage(spriteLocation + "idle.png");
     for (int i = 0; i < numFireFrames; i++) {
       String imageName = spriteLocation + "fire/fire" + nf(i, 3) + ".png";
@@ -116,30 +113,36 @@ class Turret extends Tower{
        die();
        towers.remove(i);
     }  
-    display();
     if (alive){
       checkTarget();
     }
+    if (mousePressed && mouseX < position.x && mouseX > position.x-size.x && mouseY < position.y && mouseY > position.y-size.y && alive){
+      selection.swapSel(i);
+    }
+    display();
   }  
   void display(){
+    if (tintColor < 255){
+      tintColor += 20;  
+    }  
     if (spriteType == 0){ //idle
       sprite = sIdle;
     }  
     else if (spriteType == 1){ //fire
       if (frame < numFireFrames-1){ //if not done, keep going
-        frame += 1;
+        frame++;
         sprite = fireFrames[frame];
       }  
       else { //if done, switch to load
         frame = 0;
         spriteType = 2;
-        loadDelay = ((int) (((float) delayTime - millis())/ (float) numLoadFrames));
-        loadDelayTime = millis() + loadDelay; //<>//
+        loadDelay = (int) (((delayTime - millis())/numLoadFrames)/3);
+        loadDelayTime = millis() + loadDelay;
       }  
     }
     else if (spriteType == 2){ //load
       if (millis() - loadDelayTime >= loadDelay){ //SUPPOSSED to animate dialated to the remaining delay time, but it doesn't really. TODO: fix
-        frame += 1;
+        frame++;
         loadDelayTime = millis() + loadDelay;
       }  
       if (frame < numLoadFrames){
@@ -150,22 +153,21 @@ class Turret extends Tower{
         sprite = sIdle;
         spriteType = 0;
       }  
-    }  
-    if (hit){ //change to red if under attack
+   }  
+   if (hit){ //change to red if under attack
       tintColor = 0;
       hit = false;
-    }  
-   if (tintColor < 255){
-     tintColor += 20;  
-   } 
+   }  
+   if (twHP > 0){
+      HPBar();
+   }
    tint(255,tintColor,tintColor);
    image(sBase,position.x-size.x,position.y-size.y);
    pushMatrix();
    translate(position.x-size.x/2,position.y-size.y/2);
    rotate(angle);
    image(sprite,-size.x/2,-size.y/2);
-   popMatrix(); 
-   tint(255);
-   HPBar();
+   popMatrix();
+   tint(255,255,255);
   }
 }  
