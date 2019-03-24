@@ -24,6 +24,7 @@ class Slingshot extends Turret{
     loadDelayTime = 0;
     loadSprites();
     debrisType = "stone";
+    value = 40;
   }  
   @Override
   void fire(){ //needed to change projectile fired
