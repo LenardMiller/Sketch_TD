@@ -35,6 +35,7 @@ class RandomCannon extends Turret{
     miscChance = 5; //still decideing, default 5?
     loadSprites(fireFramesMisc,fireFramesWater,fireFramesAcid,fireFramesUrchin);
     debrisType = "metal";
+    value = 80;
   }  
   @Override
   void fire(){ //needed to change projectile fired
@@ -66,7 +67,7 @@ class RandomCannon extends Turret{
     sIdle = loadImage(spriteLocation + "idle.png");
     for (int i = 0; i < numFireFrames; i++) {
       String imageName = spriteLocation + "fire/misc/fire" + nf(i, 3) + ".png";
-      fireFramesMisc[i] = loadImage(imageName); //<>//
+      fireFramesMisc[i] = loadImage(imageName);
     }  
     for (int i = 0; i < numFireFrames; i++) {
       String imageName = spriteLocation + "fire/water/fire" + nf(i, 3) + ".png";

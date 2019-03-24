@@ -24,6 +24,7 @@ class Crossbow extends Turret{
     loadDelayTime = 0;
     loadSprites();
     debrisType = "wood";
+    value = 80;
   }  
   @Override
   void fire(){ //needed to change projectile fired

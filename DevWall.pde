@@ -8,7 +8,6 @@ class DevWall extends Tower{
     twHP = maxHP;
     hit = false;
     sprite = loadImage("sprites/towers/walls/devWall.png");
-    spriteHit = loadImage("sprites/towers/walls/devWallHit.png");
     debrisType = "devWood";
   }
   @Override

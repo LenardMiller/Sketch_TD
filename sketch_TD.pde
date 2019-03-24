@@ -8,13 +8,16 @@ Particle particle;
 ArrayList<Particle> particles;
 Icon icon;
 ArrayList<Icon> icons;
+Icon sellButton;
 Hand hand;
 Selection selection;
+TowerPortrait towerPortrait;
 int backRed = 25;
 int redSpeed = 8;
 float enSize;
 float enSpeed;
 int enHP;
+PFont FEFont;
 PFont TFFont;
 PFont ETFont;
 PFont TWFont;
@@ -35,6 +38,7 @@ void setup(){
   hand = new Hand();
   selection = new Selection();
   //loads font (default STHeitiSC-Light)
+  FEFont = createFont("STHeitiSC-Light", 48);
   TFFont = createFont("STHeitiSC-Light", 24);
   ETFont = createFont("STHeitiSC-Light", 18);
   TWFont = createFont("STHeitiSC-Light", 12);
@@ -64,6 +68,10 @@ void gui(){ //gui icons & buttons
   icons.add(new TowerBuy(boardWidth + 101.5, 167,"null"));
   icons.add(new TowerBuy(boardWidth + 140.5, 167,"null"));
   icons.add(new TowerBuy(boardWidth + 179.5, 167,"null"));
+  //tower portrait
+  towerPortrait = new TowerPortrait(722.5,263,"null");
+  //sell tower button
+  sellButton = new SellTower(800,877.5,"null");
 }  
 
 void draw(){
@@ -86,19 +94,31 @@ void draw(){
   noStroke();
   fill(200);
   rect(boardWidth, 0, boardWidth + 250, boardHeight);
+  drawGuiObjects(towers,icons);
+  //text
+  textAlign(LEFT);
+  drawType(10);
+}
+
+void drawGuiObjects(ArrayList<Tower> towers, ArrayList<Icon> icons){
+  //sell button, jump to icMain
+  if (towers.size() == 0){
+    sellButton.active = false;  
+    towerPortrait.active = false;
+  }  
+  sellButton.icMain(icons, 0);
   //currently selected, jumps to sMain
   if (towers.size() != 0){
     selection.sMain();
   }
+  //tower protrait
+  towerPortrait.icMain(icons, 0);
   //icons, jumps to icMain
   for (int i = icons.size()-1; i >= 0; i--){
     Icon icon = icons.get(i);
     icon.icMain(icons, i);
   }
-  //text
-  textAlign(LEFT);
-  drawType(10);
-}
+}  
 
 void drawObjects(ArrayList <Enemy> enemies, ArrayList<Projectile> projectiles, ArrayList<Tower> towers, ArrayList<Particle> particles){ 
   //towers, jumps to twMain
@@ -145,6 +165,12 @@ void drawType(float x) {
   fill(0);
   text(HP, width - x, 30);
   text(nfc(money), width - x, 60);
+  if (!alive){
+    textAlign(CENTER);
+    textFont(FEFont);
+    fill(75,0,0);
+    text("Game Over", width/2, height/2);
+  }  
   //textFont(TWFont); //replaced with healthbars
   //fill(255);
   //textAlign(CENTER);
@@ -185,7 +211,7 @@ void debugKeys(){
 void spawnKeys(){
   //create wood wall
   if (keyPressed == true && key == 'z' && alive){
-    if (money >= 15){
+    if (money >= 50){
       stroke(153,102,51);
       fill(153,102,51,100);
       rect((10*(round(mouseX/10)))-60, (10*(round(mouseY/10)))-37, 120, 37);
@@ -262,8 +288,8 @@ void spawnKeys(){
 
 void keyReleased() { 
   //tower form: spawn x, spawn y
-  if (key == 'z' && money >= 15 && alive){ //wood wall
-    money -= 15;
+  if (key == 'z' && money >= 50 && alive){ //wood wall
+    money -= 50;
     towers.add(new WoodWall(10*(round(mouseX/10))+60, 10*(round(mouseY/10))));
   }  
   if (key == 'x' && alive){ //cheaty wall

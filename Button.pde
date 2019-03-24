@@ -29,8 +29,10 @@ class Button extends Icon {
   }  
   @Override
   void icMain(ArrayList<Icon> icons, int i){
-    hover();
-    display();
+    if (active){
+      hover();
+      display();
+    }
   }  
   void display(){
     image(sprite,position.x-size.x/2,position.y-size.y/2);

@@ -99,12 +99,10 @@ class Turret extends Tower{
     sBase = loadImage(spriteLocation + "base.png");
     sIdle = loadImage(spriteLocation + "idle.png");
     for (int i = 0; i < numFireFrames; i++) {
-      String imageName = spriteLocation + "fire/fire" + nf(i, 3) + ".png";
-      fireFrames[i] = loadImage(imageName);
+      fireFrames[i] = loadImage(spriteLocation + "fire/fire" + nf(i, 3) + ".png");
     }  
     for (int i = 0; i < numLoadFrames; i++) {
-      String imageName = spriteLocation + "load/load" + nf(i, 3) + ".png";
-      loadFrames[i] = loadImage(imageName);
+      loadFrames[i] = loadImage(spriteLocation + "load/load" + nf(i, 3) + ".png");
     }  
   }  
   @Override
