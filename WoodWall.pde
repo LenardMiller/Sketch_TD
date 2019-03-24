@@ -8,7 +8,7 @@ class WoodWall extends Tower{
     twHP = maxHP;
     hit = false;
     sprite = loadImage("sprites/towers/walls/woodWall.png");
-    spriteHit = loadImage("sprites/towers/walls/woodWallHit.png");
     debrisType = "wood";
+    value = 40;
   }  
 }  
