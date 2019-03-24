@@ -9,10 +9,10 @@ class Tower {
   int twHP;
   boolean hit;
   PImage sprite;
-  PImage spriteHit;
   int barTrans;
   int tintColor;
   String debrisType;
+  int value;
   Tower(float x, float y) {
     name = "null";
     position = new PVector(x, y);
@@ -23,10 +23,10 @@ class Tower {
     twHP = maxHP;
     hit = false;
     sprite = loadImage("sprites/towers/walls/null120x37.png");
-    spriteHit = sprite;
     barTrans = 255;
     tintColor = 255;
     debrisType = "null";
+    value = 0;
   }  
   
   void twMain(ArrayList<Tower> towers, int i){
