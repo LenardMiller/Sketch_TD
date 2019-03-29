@@ -1,5 +1,6 @@
 Enemy enemy;
 ArrayList<Enemy> enemies;
+EnemyTracker enTrak;
 Tower tower;
 ArrayList<Tower> towers;
 Projectile projectile;
@@ -9,6 +10,7 @@ ArrayList<Particle> particles;
 Icon icon;
 ArrayList<Icon> icons;
 Icon sellButton;
+Icon targetButton;
 Hand hand;
 Selection selection;
 TowerPortrait towerPortrait;
@@ -31,6 +33,7 @@ void setup(){
   size(900, 900);
   //creates ArrayLists
   enemies = new ArrayList<Enemy>();
+  enTrak = new EnemyTracker();
   towers = new ArrayList<Tower>();
   projectiles = new ArrayList<Projectile>();
   particles = new ArrayList<Particle>();
@@ -72,6 +75,8 @@ void gui(){ //gui icons & buttons
   towerPortrait = new TowerPortrait(722.5,263,"null");
   //sell tower button
   sellButton = new SellTower(800,877.5,"null");
+  //target priority button
+  targetButton = new TargetPriority(800,832.5,"null");
 }  
 
 void draw(){
@@ -101,12 +106,15 @@ void draw(){
 }
 
 void drawGuiObjects(ArrayList<Tower> towers, ArrayList<Icon> icons){
-  //sell button, jump to icMain
-  if (towers.size() == 0){
+  if (towers.size() == 0){ //force deactivation if no towers
     sellButton.active = false;  
+    targetButton.active = false;
     towerPortrait.active = false;
   }  
+  //sell button, jump to icMain
   sellButton.icMain(icons, 0);
+  //target priority button, jump to icMain
+  targetButton.icMain(icons, 0);
   //currently selected, jumps to sMain
   if (towers.size() != 0){
     selection.sMain();
@@ -121,6 +129,8 @@ void drawGuiObjects(ArrayList<Tower> towers, ArrayList<Icon> icons){
 }  
 
 void drawObjects(ArrayList <Enemy> enemies, ArrayList<Projectile> projectiles, ArrayList<Tower> towers, ArrayList<Particle> particles){ 
+  //enemy tracker, jumps to entMain
+  enTrak.entMain(enemies);
   //towers, jumps to twMain
   for (int i = towers.size()-1; i >= 0; i--){
     Tower tower = towers.get(i);
@@ -154,7 +164,6 @@ void drawType(float x) {
   text("towers: " + towers.size(), x, 60);
   text("projectiles: " + projectiles.size(), x, 90);
   text("particles: " + particles.size(), x, 120);
-  text("icons: " + icons.size(), x, 150);
   text("X: " + int(mouseX) + " Y: " + int(mouseY), x, boardHeight-x);
   //gameplay related stuff
   //fill(255,0,0); //red
@@ -162,6 +171,7 @@ void drawType(float x) {
   //fill(255,225,0); //orangish-yellow
   //text("$", boardWidth + (x*2) + 25, 60); //replaced with $ icon
   textAlign(RIGHT); 
+  text(round(frameRate) + " fps", boardWidth - x, 30);
   fill(0);
   text(HP, width - x, 30);
   text(nfc(money), width - x, 60);
