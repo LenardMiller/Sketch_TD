@@ -2,7 +2,6 @@ class Crossbow extends Turret{
   Crossbow(float x, float y) {
     super(x,y);
     name = "crossbow";
-    target = new PVector(x, -boardHeight);
     position = new PVector(x,y);
     size = new PVector(54,54);
     maxHP = 20;
@@ -25,12 +24,12 @@ class Crossbow extends Turret{
     loadSprites();
     debrisType = "wood";
     value = 80;
+    priority = 1; //last
   }  
   @Override
   void fire(){ //needed to change projectile fired
     angle += radians(random(-error,error));
     delayTime = millis() + delay; //waits this time before firing
     projectiles.add(new Bolt(position.x-size.x/2,position.y-size.y/2, angle));
-    target = new PVector(position.x, -boardHeight);
   }  
 }  
