@@ -2,7 +2,6 @@ class Slingshot extends Turret{
   Slingshot(float x, float y) {
     super(x,y);
     name = "slingshot";
-    target = new PVector(x, -boardHeight);
     position = new PVector(x,y);
     size = new PVector(50,50);
     maxHP = 20;
@@ -12,7 +11,7 @@ class Slingshot extends Turret{
     delay += (round(random(-(delay/10),delay/10))); //injects 10% randomness so all don't fire at once
     delayTime = delay;
     pjSpeed = 12;
-    error = 5; //set to 360 for a fun time. default: 5 degrees
+    error = 0; //set to 360 for a fun time. default: 5 degrees
     numFireFrames = 34;
     numLoadFrames = 59;
     spriteLocation = "sprites/towers/turrets/slingshot/";
@@ -25,12 +24,12 @@ class Slingshot extends Turret{
     loadSprites();
     debrisType = "stone";
     value = 40;
+    priority = 0; //first
   }  
   @Override
   void fire(){ //needed to change projectile fired
     angle += radians(random(-error,error));
     delayTime = millis() + delay; //waits this time before firing
     projectiles.add(new Pebble(position.x-size.x/2,position.y-size.y/2, angle));
-    target = new PVector(position.x, -boardHeight);
   }  
 }

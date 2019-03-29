@@ -8,7 +8,6 @@ class RandomCannon extends Turret{
   RandomCannon(float x, float y) {
     super(x,y);
     name = "randomCannon";
-    target = new PVector(x, -boardHeight);
     position = new PVector(x,y);
     size = new PVector(50,50);
     maxHP = 20;
@@ -36,6 +35,7 @@ class RandomCannon extends Turret{
     loadSprites(fireFramesMisc,fireFramesWater,fireFramesAcid,fireFramesUrchin);
     debrisType = "metal";
     value = 80;
+    priority = 1; //last
   }  
   @Override
   void fire(){ //needed to change projectile fired
@@ -60,7 +60,6 @@ class RandomCannon extends Turret{
       error = specialError;
       projectiles.add(new Urchin(position.x-size.x/2,position.y-size.y/2, angle));
     }
-    target = new PVector(position.x, -boardHeight);
   }  
   void loadSprites(PImage[] fireFramesMisc, PImage[] fireFramesWater, PImage[] fireFramesAcid, PImage[] fireFramesUrchin){
     sBase = loadImage(spriteLocation + "base.png");

@@ -14,12 +14,16 @@ class Selection{
     Tower tower = towers.get(id);
     name = tower.name;
     sellButton.active = true;
+    if (tower.turret){
+      targetButton.active = true;
+    }
     towerPortrait.active = true;
   }  
   void clickoff(){
     if (towers.size() < id+1){
       name = "null";
       sellButton.active = false;
+      targetButton.active = false;
       towerPortrait.active = false;
     }  
     else{
@@ -27,32 +31,36 @@ class Selection{
       if (mousePressed && mouseX < 700 && (mouseX > tower.position.x || mouseX < tower.position.x-tower.size.x || mouseY > tower.position.y || mouseY < tower.position.y-tower.size.y) && alive){
         name = "null";
         sellButton.active = false;
+        targetButton.active = false;
         towerPortrait.active = false;
       }  
     }
   }  
-  void display(){ //<>//
+  void display(){
     Tower tower = towers.get(id);
-    boolean turret = false;
     int damage = 0;
     int speed = 0;
     int x = 0;
+    String priority = "first";
     fill(235);
     noStroke();
-    rect(700,211,200,644);
+    if (tower.turret){
+      rect(700,210,200,600);
+    }
+    else{
+      rect(700,210,200,645);
+    }  
     textAlign(CENTER); 
     fill(0);
     textFont(TFFont);
     if (tower.name == "slingshot"){
       text("Slingshot", 800, 241);
-      turret = true;
       damage = 10;
       speed = 12;
       towerPortrait.sprite = towerPortrait.portraits[0];
     }  
     else if (tower.name == "crossbow"){
       text("Crossbow", 800, 241);
-      turret = true;
       damage = 20;
       speed = 24;
       textFont(ETFont);
@@ -66,7 +74,6 @@ class Selection{
       text("Random", 800, 241);
       text("Cannon", 800, 266);
       x = 25;
-      turret = true;
       speed = 12;
       textFont(ETFont);
       textAlign(LEFT);
@@ -80,14 +87,12 @@ class Selection{
       text("Wooden", 800, 241);
       text("Wall", 800, 266);
       x = 25;
-      turret = false;
       towerPortrait.sprite = towerPortrait.portraits[15];
     }  
     else if (tower.name == "devWall"){
       text("Developer", 800, 241);
       text("Wall", 800, 266);
       x = 25;
-      turret = false;
       textFont(ETFont);
       textAlign(LEFT);
       fill(100,0,200);
@@ -104,15 +109,31 @@ class Selection{
     fill(255,25);
     stroke(255);
     rect(tower.position.x-tower.size.x,tower.position.y-tower.size.y,tower.size.x,tower.size.y);
-    fill(75,0,0);
     textFont(TFFont);
     textAlign(CENTER);
-    text("sell for: $" + tower.value, 800, 888);
+    if (tower.priority == 0){
+      priority = "first";
+    }  
+    else if (tower.priority == 1){
+      priority = "last";
+    }  
+    else if (tower.priority == 2){
+      priority = "strong";
+    }  
+    else if (tower.priority == 3){
+      priority = "close";
+    }  
+    if (tower.turret){
+      fill(75,45,0);
+      text("Priority: " + priority, 800, 843);
+    }
+    fill(75,0,0);
+    text("Sell for: $" + tower.value, 800, 888);
     fill(0);
     textFont(ETFont);
     textAlign(LEFT);
     text("Health: " + tower.twHP + "/" + tower.maxHP, 710, 426 + x);
-    if (turret){
+    if (tower.turret){
       if (name == "randomCannon"){
         text("Damage: 6/10/22", 710, 446 + x);
         text("Low/medium acc.", 710, 506 + x);
