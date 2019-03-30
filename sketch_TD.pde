@@ -9,6 +9,7 @@ Particle particle;
 ArrayList<Particle> particles;
 Icon icon;
 ArrayList<Icon> icons;
+Icon towerTabButton;
 Icon sellButton;
 Icon targetButton;
 Hand hand;
@@ -50,33 +51,51 @@ void setup(){
 
 void gui(){ //gui icons & buttons
   //add money & add lives buttons
-  icons.add(new AddHPButton(boardWidth + 22.5,17.5,"null"));
-  icons.add(new AddMoneyButton(boardWidth + 22.5,47.5,"null"));
+  icons.add(new AddHPButton(boardWidth + 22.5,17.5,"null",true));
+  icons.add(new AddMoneyButton(boardWidth + 22.5,47.5,"null",true));
   //money and lives icons
-  icons.add(new Icon(boardWidth + 57.5, 17.5,"lives"));
-  icons.add(new Icon(boardWidth + 57.5, 47.5,"money"));
-  //buy tower buttons
-  icons.add(new TowerBuy(boardWidth + 21.5, 87,"slingshot")); //row 1
-  icons.add(new TowerBuy(boardWidth + 60.5, 87,"crossbow"));
-  icons.add(new TowerBuy(boardWidth + 101.5, 87,"randomCannon"));
-  icons.add(new TowerBuy(boardWidth + 140.5, 87,"null")); //placeholders
-  icons.add(new TowerBuy(boardWidth + 179.5, 87,"null"));
-  icons.add(new TowerBuy(boardWidth + 21.5, 127,"null")); //row 2
-  icons.add(new TowerBuy(boardWidth + 60.5, 127,"null"));
-  icons.add(new TowerBuy(boardWidth + 101.5, 127,"null"));
-  icons.add(new TowerBuy(boardWidth + 140.5, 127,"null"));
-  icons.add(new TowerBuy(boardWidth + 179.5, 127,"null"));
-  icons.add(new TowerBuy(boardWidth + 21.5, 167,"null")); //row 3
-  icons.add(new TowerBuy(boardWidth + 60.5, 167,"null"));
-  icons.add(new TowerBuy(boardWidth + 101.5, 167,"null"));
-  icons.add(new TowerBuy(boardWidth + 140.5, 167,"null"));
-  icons.add(new TowerBuy(boardWidth + 179.5, 167,"null"));
+  icons.add(new Icon(boardWidth + 57.5, 17.5,"lives",true));
+  icons.add(new Icon(boardWidth + 57.5, 47.5,"money",true));
+  //buy tower buttons tab 1 (4-18)
+  icons.add(new TowerBuy(boardWidth + 21.5, 87,"slingshot",false)); //row 1
+  icons.add(new TowerBuy(boardWidth + 60.5, 87,"crossbow",false));
+  icons.add(new TowerBuy(boardWidth + 101.5, 87,"randomCannon",false));
+  icons.add(new TowerBuy(boardWidth + 140.5, 87,"null",false)); //placeholders
+  icons.add(new TowerBuy(boardWidth + 179.5, 87,"null",false));
+  icons.add(new TowerBuy(boardWidth + 21.5, 127,"null",false)); //row 2
+  icons.add(new TowerBuy(boardWidth + 60.5, 127,"null",false));
+  icons.add(new TowerBuy(boardWidth + 101.5, 127,"null",false));
+  icons.add(new TowerBuy(boardWidth + 140.5, 127,"null",false));
+  icons.add(new TowerBuy(boardWidth + 179.5, 127,"null",false));
+  icons.add(new TowerBuy(boardWidth + 21.5, 167,"null",false)); //row 3
+  icons.add(new TowerBuy(boardWidth + 60.5, 167,"null",false));
+  icons.add(new TowerBuy(boardWidth + 101.5, 167,"null",false));
+  icons.add(new TowerBuy(boardWidth + 140.5, 167,"null",false));
+  icons.add(new TowerBuy(boardWidth + 179.5, 167,"null",false));
+  //buy tower buttons tab 2 (19-33)
+  icons.add(new TowerBuy(boardWidth + 21.5, 87,"woodWall",true)); //row 1
+  icons.add(new TowerBuy(boardWidth + 60.5, 87,"null",true));
+  icons.add(new TowerBuy(boardWidth + 101.5, 87,"null",true));
+  icons.add(new TowerBuy(boardWidth + 140.5, 87,"null",true)); //placeholders
+  icons.add(new TowerBuy(boardWidth + 179.5, 87,"null",true));
+  icons.add(new TowerBuy(boardWidth + 21.5, 127,"null",true)); //row 2
+  icons.add(new TowerBuy(boardWidth + 60.5, 127,"null",true));
+  icons.add(new TowerBuy(boardWidth + 101.5, 127,"null",true));
+  icons.add(new TowerBuy(boardWidth + 140.5, 127,"null",true));
+  icons.add(new TowerBuy(boardWidth + 179.5, 127,"null",true));
+  icons.add(new TowerBuy(boardWidth + 21.5, 167,"null",true)); //row 3
+  icons.add(new TowerBuy(boardWidth + 60.5, 167,"null",true));
+  icons.add(new TowerBuy(boardWidth + 101.5, 167,"null",true));
+  icons.add(new TowerBuy(boardWidth + 140.5, 167,"null",true));
+  icons.add(new TowerBuy(boardWidth + 179.5, 167,"null",true));
+  //switch tower tab button
+  towerTabButton = new TowerTabButton(800,198,"null",true);
   //tower portrait
-  towerPortrait = new TowerPortrait(722.5,263,"null");
+  towerPortrait = new TowerPortrait(722.5,263,"null",false);
   //sell tower button
-  sellButton = new SellTower(800,877.5,"null");
+  sellButton = new SellTower(800,877.5,"null",false);
   //target priority button
-  targetButton = new TargetPriority(800,832.5,"null");
+  targetButton = new TargetPriority(800,832.5,"null",false);
 }  
 
 void draw(){
@@ -111,9 +130,11 @@ void drawGuiObjects(ArrayList<Tower> towers, ArrayList<Icon> icons){
     targetButton.active = false;
     towerPortrait.active = false;
   }  
-  //sell button, jump to icMain
+  //switch tower tab button, jumps to ucMain
+  towerTabButton.icMain(icons, 0);
+  //sell button, jumps to icMain
   sellButton.icMain(icons, 0);
-  //target priority button, jump to icMain
+  //target priority button, jumps to icMain
   targetButton.icMain(icons, 0);
   //currently selected, jumps to sMain
   if (towers.size() != 0){
@@ -219,21 +240,8 @@ void debugKeys(){
 }  
 
 void spawnKeys(){
-  //create wood wall
-  if (keyPressed == true && key == 'z' && alive){
-    if (money >= 50){
-      stroke(153,102,51);
-      fill(153,102,51,100);
-      rect((10*(round(mouseX/10)))-60, (10*(round(mouseY/10)))-37, 120, 37);
-    }
-    else{
-      stroke(255,0,0);
-      fill(255,0,0,100);
-      rect((10*(round(mouseX/10)))-60, (10*(round(mouseY/10)))-37, 120, 37);
-    }  
-  }
   //create cheaty wall
-  if (keyPressed == true && key == 'x' && alive){
+  if (keyPressed == true && key == 'l' && alive){
     if (money >= 0){
       stroke(102,153,204);
       fill(102, 153, 204, 100);
@@ -298,11 +306,7 @@ void spawnKeys(){
 
 void keyReleased() { 
   //tower form: spawn x, spawn y
-  if (key == 'z' && money >= 50 && alive){ //wood wall
-    money -= 50;
-    towers.add(new WoodWall(10*(round(mouseX/10))+60, 10*(round(mouseY/10))));
-  }  
-  if (key == 'x' && alive){ //cheaty wall
+  if (key == 'l' && alive){ //cheaty wall
     towers.add(new DevWall(10*(round(mouseX/10))+60, 10*(round(mouseY/10))));
   }
   //projectile form: spawn x, spawn y, angle

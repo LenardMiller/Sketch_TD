@@ -4,12 +4,12 @@ class Icon{
   String spriteLocation;
   PImage sprite;
   boolean active;
-  Icon(float x, float y, String type){
+  Icon(float x, float y, String type, boolean active_){
+    active = active_;
     position = new PVector(x, y);
     size = new PVector(25, 25);
     spriteLocation = "sprites/icons/" + type + "/";
     sprite = loadImage(spriteLocation + "000.png");
-    active = true;
   }
   void icMain(ArrayList<Icon> icons, int i){
     if (active){

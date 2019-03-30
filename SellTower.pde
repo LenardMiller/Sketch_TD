@@ -1,6 +1,6 @@
 class SellTower extends Button {
-  SellTower(float x, float y, String type){
-    super(x,y,type);
+  SellTower(float x, float y, String type, boolean active){
+    super(x,y,type,active);
     position = new PVector(x, y);
     size = new PVector(200, 45);
     spriteLocation = "sprites/icons/buttons/sellTower/";

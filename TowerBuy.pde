@@ -2,8 +2,8 @@ class TowerBuy extends Button {
   String twType;
   boolean depressed;
   int price;
-  TowerBuy(float x, float y, String type){
-    super(x,y,type);
+  TowerBuy(float x, float y, String type, boolean active){
+    super(x,y,type,active);
     price = 0;
     position = new PVector(x, y);
     size = new PVector(35, 35);
@@ -25,8 +25,14 @@ class TowerBuy extends Button {
     } 
   }
   @Override
+  void icMain(ArrayList<Icon> icons, int i){
+    hover();
+    if (active){
+      display();
+    }
+  }  
   void hover(){
-    if (mouseX < position.x+size.x/2 && mouseX > position.x-size.x/2 && mouseY < position.y+size.y/2 && mouseY > position.y-size.y/2 && alive || depressed && alive){
+    if (mouseX < position.x+size.x/2 && mouseX > position.x-size.x/2 && mouseY < position.y+size.y/2 && mouseY > position.y-size.y/2 && alive && active && active || depressed && alive){
       sprite = spriteTwo;
       fill(235);
       noStroke();
@@ -49,6 +55,12 @@ class TowerBuy extends Button {
         text("Cannon", 800, 266);
         textFont(ETFont);
         text("$100", 800, 296);
+      }  
+      else if (twType == "woodWall"){
+        text("Wooden", 800, 241);
+        text("Wall", 800, 266);
+        textFont(ETFont);
+        text("$50", 800, 296);
       }  
       if (mousePressed && millis() - actionTime >= 100 && money >= price && alive){
         action();
