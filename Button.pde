@@ -2,8 +2,8 @@ class Button extends Icon {
   int actionTime;
   PImage spriteOne;
   PImage spriteTwo;
-  Button(float x, float y, String type){
-    super(x,y,type);
+  Button(float x, float y, String type, boolean active){
+    super(x,y,type,active);
     position = new PVector(x, y);
     size = new PVector(25, 25);
     spriteLocation = "sprites/icons/buttons/null/";
