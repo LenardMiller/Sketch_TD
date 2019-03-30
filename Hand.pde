@@ -16,7 +16,7 @@ class Hand{
     }  
   }  
   void checkPlaceable(){
-    if (!((10*(ceil(mouseX/10))) < boardWidth-(size.x) && (10*(ceil(mouseX/10))) > (size.x) && (10*(ceil(mouseY/10))) < boardHeight-(size.y) && (10*(ceil(mouseY/10))) > (size.y))){
+    if (!((10*(ceil(mouseX/10))) <= boardWidth-(size.x) && (10*(ceil(mouseX/10))) >= (size.x) && (10*(ceil(mouseY/10))) <= boardHeight-(size.y) && (10*(ceil(mouseY/10))) >= (size.y))){
       intersecting = true;
     }  
     else{
@@ -59,6 +59,11 @@ class Hand{
        size = new PVector(25,25);
        held = setHeld;
      }  
+     else if (setHeld == "woodWall"){
+       heldSprite = loadImage("sprites/towers/walls/woodWall.png");
+       size = new PVector(60,18.5);
+       held = setHeld;
+     }  
      else if (setHeld == "null"){
        held = "null";  
      }  
@@ -75,6 +80,10 @@ class Hand{
     else if (held == "randomCannon" && money >= 100 && alive){
       money -= 100;
       towers.add(new RandomCannon((10*(ceil(mouseX/10)))+(25),(10*(ceil(mouseY/10)))+(25)));
+    }  
+    else if (held == "woodWall" && money >= 50 && alive){
+      money -= 50;
+      towers.add(new WoodWall((10*(ceil(mouseX/10)))+(60),(10*(ceil(mouseY/10)))+(18.5)));
     }  
   }  
 }
