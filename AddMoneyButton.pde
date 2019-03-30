@@ -1,6 +1,6 @@
 class AddMoneyButton extends Button {
-  AddMoneyButton(float x, float y, String type){
-    super(x,y,type);
+  AddMoneyButton(float x, float y, String type, boolean active){
+    super(x,y,type,active);
     position = new PVector(x, y);
     size = new PVector(25, 25);
     spriteLocation = "sprites/icons/buttons/moneyAdd/";
