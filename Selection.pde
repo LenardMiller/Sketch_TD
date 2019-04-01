@@ -89,6 +89,24 @@ class Selection{
       x = 25;
       towerPortrait.sprite = towerPortrait.portraits[15];
     }  
+    else if (tower.name == "stoneWall"){
+      text("Stone", 800, 241);
+      text("Wall", 800, 266);
+      x = 25;
+      towerPortrait.sprite = towerPortrait.portraits[16];
+    }  
+    else if (tower.name == "metalWall"){
+      text("Metal", 800, 241);
+      text("Wall", 800, 266);
+      x = 25;
+      towerPortrait.sprite = towerPortrait.portraits[17];
+    }  
+    else if (tower.name == "crystalWall"){
+      text("Crystal", 800, 241);
+      text("Wall", 800, 266);
+      x = 25;
+      towerPortrait.sprite = towerPortrait.portraits[18];
+    }  
     else if (tower.name == "devWall"){
       text("Developer", 800, 241);
       text("Wall", 800, 266);
@@ -128,7 +146,7 @@ class Selection{
       text("Priority: " + priority, 800, 843);
     }
     fill(75,0,0);
-    text("Sell for: $" + tower.value, 800, 888);
+    text("Sell for: $" + round(tower.value*.8), 800, 888);
     fill(0);
     textFont(ETFont);
     textAlign(LEFT);
