@@ -60,7 +60,25 @@ class TowerBuy extends Button {
         text("Wooden", 800, 241);
         text("Wall", 800, 266);
         textFont(ETFont);
-        text("$50", 800, 296);
+        text("$25", 800, 296);
+      }  
+      else if (twType == "stoneWall"){
+        text("Stone", 800, 241);
+        text("Wall", 800, 266);
+        textFont(ETFont);
+        text("$75", 800, 296);
+      }  
+      else if (twType == "metalWall"){
+        text("Metal", 800, 241);
+        text("Wall", 800, 266);
+        textFont(ETFont);
+        text("$175", 800, 296);
+      }  
+      else if (twType == "crystalWall"){
+        text("Crystal", 800, 241);
+        text("Wall", 800, 266);
+        textFont(ETFont);
+        text("$400", 800, 296);
       }  
       if (mousePressed && millis() - actionTime >= 100 && money >= price && alive){
         action();
