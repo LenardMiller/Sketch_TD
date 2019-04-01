@@ -74,10 +74,10 @@ void gui(){ //gui icons & buttons
   icons.add(new TowerBuy(boardWidth + 179.5, 167,"null",false));
   //buy tower buttons tab 2 (19-33)
   icons.add(new TowerBuy(boardWidth + 21.5, 87,"woodWall",true)); //row 1
-  icons.add(new TowerBuy(boardWidth + 60.5, 87,"null",true));
-  icons.add(new TowerBuy(boardWidth + 101.5, 87,"null",true));
-  icons.add(new TowerBuy(boardWidth + 140.5, 87,"null",true)); //placeholders
-  icons.add(new TowerBuy(boardWidth + 179.5, 87,"null",true));
+  icons.add(new TowerBuy(boardWidth + 60.5, 87,"stoneWall",true));
+  icons.add(new TowerBuy(boardWidth + 101.5, 87,"metalWall",true)); 
+  icons.add(new TowerBuy(boardWidth + 140.5, 87,"crystalWall",true)); 
+  icons.add(new TowerBuy(boardWidth + 179.5, 87,"null",true)); //placeholders
   icons.add(new TowerBuy(boardWidth + 21.5, 127,"null",true)); //row 2
   icons.add(new TowerBuy(boardWidth + 60.5, 127,"null",true));
   icons.add(new TowerBuy(boardWidth + 101.5, 127,"null",true));
