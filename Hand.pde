@@ -64,6 +64,21 @@ class Hand{
        size = new PVector(60,18.5);
        held = setHeld;
      }  
+     else if (setHeld == "stoneWall"){
+       heldSprite = loadImage("sprites/towers/walls/stoneWall.png");
+       size = new PVector(60,18.5);
+       held = setHeld;
+     }  
+     else if (setHeld == "metalWall"){
+       heldSprite = loadImage("sprites/towers/walls/metalWall.png");
+       size = new PVector(60,18.5);
+       held = setHeld;
+     }  
+     else if (setHeld == "crystalWall"){
+       heldSprite = loadImage("sprites/towers/walls/crystalWall.png");
+       size = new PVector(60,18.5);
+       held = setHeld;
+     }  
      else if (setHeld == "null"){
        held = "null";  
      }  
@@ -81,9 +96,21 @@ class Hand{
       money -= 100;
       towers.add(new RandomCannon((10*(ceil(mouseX/10)))+(25),(10*(ceil(mouseY/10)))+(25)));
     }  
-    else if (held == "woodWall" && money >= 50 && alive){
-      money -= 50;
+    else if (held == "woodWall" && money >= 25 && alive){
+      money -= 25;
       towers.add(new WoodWall((10*(ceil(mouseX/10)))+(60),(10*(ceil(mouseY/10)))+(18.5)));
+    }  
+    else if (held == "stoneWall" && money >= 75 && alive){
+      money -= 75;
+      towers.add(new StoneWall((10*(ceil(mouseX/10)))+(60),(10*(ceil(mouseY/10)))+(18.5)));
+    }  
+    else if (held == "metalWall" && money >= 175 && alive){
+      money -= 175;
+      towers.add(new MetalWall((10*(ceil(mouseX/10)))+(60),(10*(ceil(mouseY/10)))+(18.5)));
+    }  
+    else if (held == "crystalWall" && money >= 175 && alive){
+      money -= 400;
+      towers.add(new CrystalWall((10*(ceil(mouseX/10)))+(60),(10*(ceil(mouseY/10)))+(18.5)));
     }  
   }  
 }
