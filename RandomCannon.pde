@@ -18,8 +18,8 @@ class RandomCannon extends Turret{
     delayTime = delay;
     pjSpeed = 12;
     error = 0; //irrelivant, set in fire()
-    numFireFrames = 11;
-    numLoadFrames = 33;
+    numFireFrames = 12;
+    numLoadFrames = 34;
     spriteLocation = "sprites/towers/turrets/miscCannon/";
     fireFramesMisc = new PImage[numFireFrames];
     fireFramesWater = new PImage[numFireFrames];
@@ -31,7 +31,7 @@ class RandomCannon extends Turret{
     loadDelay = 0;
     loadDelayTime = 0;
     projectile = 0;
-    miscChance = 5; //still decideing, default 5?
+    miscChance = 5; //still deciding, default 5?
     loadSprites(fireFramesMisc,fireFramesWater,fireFramesAcid,fireFramesUrchin);
     debrisType = "metal";
     value = 100;
@@ -64,26 +64,38 @@ class RandomCannon extends Turret{
       error = specialError;
       projectiles.add(new Urchin(spp.x,spp.y, angle));
     }
+    else{ //just in case
+      error = miscError;
+      projectiles.add(new MiscProjectile(spp.x,spp.y, angle, round(random(0,5))));
+    }
   }  
   void loadSprites(PImage[] fireFramesMisc, PImage[] fireFramesWater, PImage[] fireFramesAcid, PImage[] fireFramesUrchin){
     sBase = loadImage(spriteLocation + "base.png");
     sIdle = loadImage(spriteLocation + "idle.png");
-    for (int i = 0; i < numFireFrames; i++) {
-      String imageName = spriteLocation + "fire/misc/fire" + nf(i, 3) + ".png";
+    for (int i = 0; i < numFireFrames; i++) { //I do this in a weird way in order to half framerate
+      String imageName = spriteLocation + "fire/misc/fire" + nf(i/2, 3) + ".png";
+      fireFramesMisc[i] = loadImage(imageName);
+      i++;
       fireFramesMisc[i] = loadImage(imageName);
     }  
     for (int i = 0; i < numFireFrames; i++) {
-      String imageName = spriteLocation + "fire/water/fire" + nf(i, 3) + ".png";
+      String imageName = spriteLocation + "fire/water/fire" + nf(i/2, 3) + ".png";
+      fireFramesWater[i] = loadImage(imageName);
+      i++;
       fireFramesWater[i] = loadImage(imageName);
     }  
     for (int i = 0; i < numFireFrames; i++) {
-      String imageName = spriteLocation + "fire/acid/fire" + nf(i, 3) + ".png";
+      String imageName = spriteLocation + "fire/acid/fire" + nf(i/2, 3) + ".png";
+      fireFramesAcid[i] = loadImage(imageName);
+      i++;
       fireFramesAcid[i] = loadImage(imageName);
     }  
     for (int i = 0; i < numFireFrames; i++) {
-      String imageName = spriteLocation + "fire/urchin/fire" + nf(i, 3) + ".png";
+      String imageName = spriteLocation + "fire/urchin/fire" + nf(i/2, 3) + ".png";
       fireFramesUrchin[i] = loadImage(imageName);
-    }  
+      i++;
+      fireFramesUrchin[i] = loadImage(imageName);
+    }   
     for (int i = 0; i < numLoadFrames; i++) {
       String imageName = spriteLocation + "load/load" + nf(i, 3) + ".png";
       loadFrames[i] = loadImage(imageName);
