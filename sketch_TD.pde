@@ -30,8 +30,11 @@ int money = 6000;
 int boardWidth = 700;
 int boardHeight = 900;
 
-void setup(){
+void settings(){
   size(900, 900);
+}  
+
+void setup(){
   //creates ArrayLists
   enemies = new ArrayList<Enemy>();
   enTrak = new EnemyTracker();
@@ -272,7 +275,7 @@ void spawnKeys(){
     particles.add(new Ouch(mouseX, mouseY, random(0,360), "greyPuff"));
   }  
   if (keyPressed == true && key == 'b' && alive){ //debris
-    int num = round(random(0,3));
+    int num = round(random(0,4));
     String type = "null";
     if (num == 0){
       type = "wood";
@@ -284,6 +287,9 @@ void spawnKeys(){
       type = "metal";
     } 
     else if (num == 3){
+      type = "crystal";
+    } 
+    else if (num == 4){
       type = "devWood";
     } 
     particles.add(new Debris(mouseX, mouseY, random(0,360), type));
