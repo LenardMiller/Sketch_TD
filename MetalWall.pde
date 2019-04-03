@@ -9,6 +9,7 @@ class MetalWall extends Tower{
     hit = false;
     sprite = loadImage("sprites/towers/walls/metalWall.png");
     debrisType = "metal";
-    value = 175;
+    price = 175;
+    value = price;
   }  
 }  
