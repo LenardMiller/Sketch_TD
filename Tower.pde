@@ -12,6 +12,7 @@ class Tower {
   int barTrans;
   int tintColor;
   String debrisType;
+  int price;
   int value;
   boolean turret;
   int priority;
@@ -28,7 +29,8 @@ class Tower {
     barTrans = 255;
     tintColor = 255;
     debrisType = "null";
-    value = 0;
+    price = 0;
+    value = price;
     turret = false;
   }  
   
@@ -37,6 +39,7 @@ class Tower {
        die();
        towers.remove(i);
     }  
+    value = round((float(twHP)/float(maxHP))*price);
     if (mousePressed && mouseX < position.x && mouseX > position.x-size.x && mouseY < position.y && mouseY > position.y-size.y && alive){
       selection.swapSel(i);
     }

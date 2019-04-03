@@ -9,6 +9,7 @@ class WoodWall extends Tower{
     hit = false;
     sprite = loadImage("sprites/towers/walls/woodWall.png");
     debrisType = "wood";
-    value = 25;
+    price = 25;
+    value = price;
   }  
 }  

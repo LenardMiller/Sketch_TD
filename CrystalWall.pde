@@ -9,6 +9,7 @@ class CrystalWall extends Tower{
     hit = false;
     sprite = loadImage("sprites/towers/walls/crystalWall.png");
     debrisType = "crystal";
-    value = 400;
+    price = 400;
+    value = price;
   }  
 }  

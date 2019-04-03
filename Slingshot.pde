@@ -23,7 +23,8 @@ class Slingshot extends Turret{
     loadDelayTime = 0;
     loadSprites();
     debrisType = "stone";
-    value = 50;
+    price = 50;
+    value = price;
     priority = 0; //first
   }  
   @Override

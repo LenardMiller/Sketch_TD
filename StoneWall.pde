@@ -9,6 +9,7 @@ class StoneWall extends Tower{
     hit = false;
     sprite = loadImage("sprites/towers/walls/stoneWall.png");
     debrisType = "stone";
-    value = 75;
+    price = 75;
+    value = price;
   }  
 }  

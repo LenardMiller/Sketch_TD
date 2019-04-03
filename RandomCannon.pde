@@ -34,7 +34,8 @@ class RandomCannon extends Turret{
     miscChance = 5; //still deciding, default 5?
     loadSprites(fireFramesMisc,fireFramesWater,fireFramesAcid,fireFramesUrchin);
     debrisType = "metal";
-    value = 100;
+    price = 100;
+    value = price;
     priority = 1; //last
   }  
   @Override
