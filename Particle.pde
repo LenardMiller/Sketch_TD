@@ -62,9 +62,9 @@ class Particle{
    }  
    angleTwo += radians(angularVelocity);
    pushMatrix();
-   translate(position.x-size.x/2,position.y-size.y/2);
+   translate(position.x,position.y);
    rotate(angleTwo);
-   image(sprites[sprite],-size.x,-size.y);
+   image(sprites[sprite],-size.x+2.5,-size.y+2.5);
    popMatrix();
   }  
   void move(){
