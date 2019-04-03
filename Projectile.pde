@@ -37,6 +37,7 @@ class Projectile {
   }  
   
   void pjMain(ArrayList<Projectile> projectiles, int i){
+    trail();
     display();
     move();
     collideEN();
@@ -46,14 +47,13 @@ class Projectile {
     if (dead){
       projectiles.remove(i);
     }  
-    trail();
   }  
   
   void trail(){
     if (isTrail){
       int num = round(random(0,2));
       if (num == 0){
-        particles.add(new BuffPt(position.x+2.5, position.y+size.y, random(0,360), trail)); 
+        particles.add(new BuffPt(position.x, position.y, random(0,360), trail)); 
       }
     }
   }
