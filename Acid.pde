@@ -1,10 +1,10 @@
-class Acid extends Projectile{ //TODO: poison damage & particles
+class Acid extends Projectile{ 
   Acid(float x, float y, float angle) {
     super(x, y, angle);
     position = new PVector(x, y);
     size = new PVector(15, 15);
     radius = 7.5;
-    maxSpeed = 12;
+    maxSpeed = 12; //default: 12
     speed = maxSpeed;
     damage = 10;
     pierce = 1;
