@@ -23,7 +23,7 @@ class Crossbow extends Turret{
     loadDelayTime = 0;
     loadSprites();
     debrisType = "wood";
-    value = 80;
+    value = 100;
     priority = 1; //last
   }  
   @Override

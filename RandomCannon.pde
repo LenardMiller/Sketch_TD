@@ -34,31 +34,35 @@ class RandomCannon extends Turret{
     miscChance = 5; //still decideing, default 5?
     loadSprites(fireFramesMisc,fireFramesWater,fireFramesAcid,fireFramesUrchin);
     debrisType = "metal";
-    value = 80;
+    value = 100;
     priority = 1; //last
   }  
   @Override
-  void fire(){ //needed to change projectile fired
+  void fire(){
     int miscError = 5; //default 5
     int specialError = 2; //default 2
     projectile = round(random(0,miscChance+3.49));
     angle += radians(random(-error,error));
     delayTime = millis() + delay; //waits this time before firing
+    PVector spp = new PVector(position.x-size.x/2,position.y-size.y/2);
+    PVector spa = PVector.fromAngle(angle-HALF_PI);
+    spa.setMag(20);
+    spp.add(spa);
     if (projectile <= miscChance){
       error = miscError;
-      projectiles.add(new MiscProjectile(position.x-size.x/2,position.y-size.y/2, angle, round(random(0,5))));
+      projectiles.add(new MiscProjectile(spp.x,spp.y, angle, round(random(0,5))));
     }
     else if (projectile == miscChance+1){
       error = specialError;
-      projectiles.add(new Waterball(position.x-size.x/2,position.y-size.y/2, angle));
+      projectiles.add(new Waterball(spp.x,spp.y, angle));
     }
     else if (projectile == miscChance+2){
       error = specialError;
-      projectiles.add(new Acid(position.x-size.x/2,position.y-size.y/2, angle));
+      projectiles.add(new Acid(spp.x,spp.y, angle));
     }
     else if (projectile == miscChance+3){
       error = specialError;
-      projectiles.add(new Urchin(position.x-size.x/2,position.y-size.y/2, angle));
+      projectiles.add(new Urchin(spp.x,spp.y, angle));
     }
   }  
   void loadSprites(PImage[] fireFramesMisc, PImage[] fireFramesWater, PImage[] fireFramesAcid, PImage[] fireFramesUrchin){

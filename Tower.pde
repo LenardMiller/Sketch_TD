@@ -13,6 +13,8 @@ class Tower {
   int tintColor;
   String debrisType;
   int value;
+  boolean turret;
+  int priority;
   Tower(float x, float y) {
     name = "null";
     position = new PVector(x, y);
@@ -27,6 +29,7 @@ class Tower {
     tintColor = 255;
     debrisType = "null";
     value = 0;
+    turret = false;
   }  
   
   void twMain(ArrayList<Tower> towers, int i){
