@@ -16,7 +16,12 @@ class Selection{
     sellButton.active = true;
     if (tower.turret){
       targetButton.active = true;
+      repairButton.active = false; 
     }
+    if (!tower.turret){
+      targetButton.active = false;
+      repairButton.active = true;  
+    }  
     towerPortrait.active = true;
   }  
   void clickoff(){
@@ -24,6 +29,7 @@ class Selection{
       name = "null";
       sellButton.active = false;
       targetButton.active = false;
+      repairButton.active = false;
       towerPortrait.active = false;
     }  
     else{
@@ -32,11 +38,12 @@ class Selection{
         name = "null";
         sellButton.active = false;
         targetButton.active = false;
+        repairButton.active = false;
         towerPortrait.active = false;
       }  
     }
   }  
-  void display(){
+  void display(){ //TODO: organize this, it is a MESS
     Tower tower = towers.get(id);
     int damage = 0;
     int speed = 0;
@@ -48,7 +55,7 @@ class Selection{
       rect(700,210,200,600);
     }
     else{
-      rect(700,210,200,645);
+      rect(700,210,200,495);
     }  
     textAlign(CENTER); 
     fill(0);
@@ -145,7 +152,19 @@ class Selection{
       fill(75,45,0);
       text("Priority: " + priority, 800, 843);
     }
+    if (!tower.turret){
+      if (tower.twHP < tower.maxHP){
+        fill(11,56,0);
+        text("$" + ceil(float(tower.price) - float(tower.value)), 800, 843);
+      }
+      else{
+        fill(15);
+      }  
+      text("Repair", 800, 735);
+    }  
     fill(75,0,0);
+    textFont(TFFont);
+    textAlign(CENTER);
     text("Sell for: $" + round(tower.value*.8), 800, 888);
     fill(0);
     textFont(ETFont);
