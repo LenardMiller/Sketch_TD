@@ -16,6 +16,8 @@ class SellTower extends Button {
     money += tower.value;
     tower.twHP = 0;
     active = false;
+    targetButton.active = false;
+    repairButton.active = false;
     towerPortrait.active = false;
     selection.name = "null";
   }  
