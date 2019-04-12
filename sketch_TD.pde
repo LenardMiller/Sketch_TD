@@ -12,6 +12,7 @@ ArrayList<Icon> icons;
 Icon towerTabButton;
 Icon sellButton;
 Icon targetButton;
+Icon repairButton;
 Hand hand;
 Selection selection;
 TowerPortrait towerPortrait;
@@ -99,6 +100,8 @@ void gui(){ //gui icons & buttons
   sellButton = new SellTower(800,877.5,"null",false);
   //target priority button
   targetButton = new TargetPriority(800,832.5,"null",false);
+  //repair wall button
+  repairButton = new RepairWall(800,780,"null",false);
 }  
 
 void draw(){
@@ -131,6 +134,7 @@ void drawGuiObjects(ArrayList<Tower> towers, ArrayList<Icon> icons){
   if (towers.size() == 0){ //force deactivation if no towers
     sellButton.active = false;  
     targetButton.active = false;
+    repairButton.active = false;
     towerPortrait.active = false;
   }  
   //switch tower tab button, jumps to ucMain
@@ -139,6 +143,8 @@ void drawGuiObjects(ArrayList<Tower> towers, ArrayList<Icon> icons){
   sellButton.icMain(icons, 0);
   //target priority button, jumps to icMain
   targetButton.icMain(icons, 0);
+  //repair wall button, jumps to icMain
+  repairButton.icMain(icons, 0);
   //currently selected, jumps to sMain
   if (towers.size() != 0){
     selection.sMain();
@@ -257,7 +263,7 @@ void spawnKeys(){
     }  
   }
   //particle form: spawn x, spawn y, angle
-  if (keyPressed == true && key == 'c' && alive){ //hurt
+  if (keyPressed == true && key == 'z' && alive){ //hurt
     int num = round(random(0,2));
     String type = "null";
     if (num == 0){
@@ -271,10 +277,10 @@ void spawnKeys(){
     } 
     particles.add(new Ouch(mouseX, mouseY, random(0,360), type));
   } 
-  if (keyPressed == true && key == 'v' && alive){ //die
+  if (keyPressed == true && key == 'x' && alive){ //die
     particles.add(new Ouch(mouseX, mouseY, random(0,360), "greyPuff"));
   }  
-  if (keyPressed == true && key == 'b' && alive){ //debris
+  if (keyPressed == true && key == 'c' && alive){ //debris
     int num = round(random(0,4));
     String type = "null";
     if (num == 0){
@@ -294,7 +300,7 @@ void spawnKeys(){
     } 
     particles.add(new Debris(mouseX, mouseY, random(0,360), type));
   }  
-  if (keyPressed == true && key == 'n' && alive){ //buff
+  if (keyPressed == true && key == 'v' && alive){ //buff
     int num = round(random(0,2));
     String type = "null";
     if (num == 0){
@@ -340,5 +346,8 @@ void keyReleased() {
   //enemy form: spawn x, spawn y
   if (key == '1' && alive){ //dev enemy
     enemies.add(new DevEnemy(mouseX,mouseY));
+  }  
+  if (key == '0' && alive){ //null enemy
+    enemies.add(new Enemy(mouseX,mouseY));
   }  
 }  

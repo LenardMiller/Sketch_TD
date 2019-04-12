@@ -39,7 +39,7 @@ class Tower {
        die();
        towers.remove(i);
     }  
-    value = round((float(twHP)/float(maxHP))*price);
+    value = floor((float(twHP)/float(maxHP))*price);
     if (mousePressed && mouseX < position.x && mouseX > position.x-size.x && mouseY < position.y && mouseY > position.y-size.y && alive){
       selection.swapSel(i);
     }
