@@ -11,7 +11,7 @@ class Acid extends Projectile{
     this.angle = angle;
     angleTwo = angle;
     angularVelocity = 20; //degrees mode
-    sprite = loadImage("sprites/projectiles/acid.png");
+    sprite = spritesH.get("acidPj");
     isTrail = true;
     trail = "poison";
     buff = "poison";
