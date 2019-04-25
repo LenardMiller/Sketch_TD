@@ -1,3 +1,5 @@
+import java.util.Map;
+
 Enemy enemy;
 ArrayList<Enemy> enemies;
 EnemyTracker enTrak;
@@ -15,7 +17,6 @@ Icon targetButton;
 Icon repairButton;
 Hand hand;
 Selection selection;
-TowerPortrait towerPortrait;
 int backRed = 25;
 int redSpeed = 8;
 float enSize;
@@ -30,6 +31,9 @@ boolean alive = true;
 int money = 6000;
 int boardWidth = 700;
 int boardHeight = 900;
+//images
+HashMap<String,PImage> sprites = new HashMap<String,PImage>();
+HashMap<String,PImage[]> spritesAnim = new HashMap<String,PImage[]>();
 
 void settings(){
   size(900, 900);
@@ -50,8 +54,50 @@ void setup(){
   TFFont = createFont("STHeitiSC-Light", 24);
   ETFont = createFont("STHeitiSC-Light", 18);
   TWFont = createFont("STHeitiSC-Light", 12);
+  loadSprites();
+  loadSpritesAnim();
   gui();
 }
+
+void loadSprites(){
+  sprites.put("devEn",loadImage("sprites/enemies/devEnemy.png"));
+  sprites.put("nullEn",loadImage("sprites/enemies/nullEnemy.png"));
+  sprites.put("livesIc",loadImage("sprites/icons/lives.png"));
+  sprites.put("moneyIc",loadImage("sprites/icons/money.png"));
+  sprites.put("nullIc",loadImage("sprites/icons/null.png"));
+  sprites.put("crystalPt",loadImage("sprites/particles/debris/crystal.png"));
+  sprites.put("devWoodPt",loadImage("sprites/particles/debris/devWood.png"));
+  sprites.put("metalPt",loadImage("sprites/particles/debris/metal.png"));
+  sprites.put("stonePt",loadImage("sprites/particles/debris/stone.png"));
+  sprites.put("woodPt",loadImage("sprites/particles/debris/wood.png"));
+  sprites.put("nullPt",loadImage("sprites/particles/null/null.png"));
+  sprites.put("acidPj",loadImage("sprites/projectiles/acid.png"));
+  sprites.put("boltPj",loadImage("sprites/projectiles/bolt.png"));
+  sprites.put("devPj",loadImage("sprites/projectiles/dev.png"));
+  sprites.put("nullPj",loadImage("sprites/projectiles/null.png"));
+  sprites.put("pebblePj",loadImage("sprites/projectiles/pebble.png"));
+  sprites.put("urchinPj",loadImage("sprites/projectiles/urchin.png"));
+  sprites.put("waterballPj",loadImage("sprites/projectiles/waterball.png"));
+  sprites.put("crossbowBaseTR",loadImage("sprites/towers/turrets/crossbow/base.png"));
+  sprites.put("crossbowFullTR",loadImage("sprites/towers/turrets/crossbow/full.png"));
+  sprites.put("crossbowIdleTR",loadImage("sprites/towers/turrets/crossbow/idle.png"));
+  sprites.put("miscCannonBaseTR",loadImage("sprites/towers/turrets/miscCannon/base.png"));
+  sprites.put("miscCannonFullTR",loadImage("sprites/towers/turrets/miscCannon/full.png"));
+  sprites.put("miscCannonIdleTR",loadImage("sprites/towers/turrets/miscCannon/idle.png"));
+  sprites.put("slingshotBaseTR",loadImage("sprites/towers/turrets/slingshot/base.png"));
+  sprites.put("slingshotFullTR",loadImage("sprites/towers/turrets/slingshot/full.png"));
+  sprites.put("slingshotIdleTR",loadImage("sprites/towers/turrets/slingshot/idle.png"));
+  sprites.put("crystalWallTW",loadImage("sprites/towers/walls/crystal.png"));
+  sprites.put("devWallTW",loadImage("sprites/towers/walls/dev.png"));
+  sprites.put("metalWallTW",loadImage("sprites/towers/walls/metal.png"));
+  sprites.put("nullWallTW",loadImage("sprites/towers/walls/null.png"));
+  sprites.put("stoneWallTW",loadImage("sprites/towers/walls/stone.png"));
+  sprites.put("woodWallTW",loadImage("sprites/towers/walls/wood.png"));
+}  
+
+void loadSpritesAnim(){
+  //spritesAnim.put("livesAddBt
+}  
 
 void gui(){ //gui icons & buttons
   //add money & add lives buttons
@@ -94,8 +140,6 @@ void gui(){ //gui icons & buttons
   icons.add(new TowerBuy(boardWidth + 179.5, 167,"null",true));
   //switch tower tab button
   towerTabButton = new TowerTabButton(800,198,"null",true);
-  //tower portrait
-  towerPortrait = new TowerPortrait(722.5,263,"null",false);
   //sell tower button
   sellButton = new SellTower(800,877.5,"null",false);
   //target priority button
@@ -135,7 +179,6 @@ void drawGuiObjects(ArrayList<Tower> towers, ArrayList<Icon> icons){
     sellButton.active = false;  
     targetButton.active = false;
     repairButton.active = false;
-    towerPortrait.active = false;
   }  
   //switch tower tab button, jumps to ucMain
   towerTabButton.icMain(icons, 0);
@@ -149,8 +192,6 @@ void drawGuiObjects(ArrayList<Tower> towers, ArrayList<Icon> icons){
   if (towers.size() != 0){
     selection.sMain();
   }
-  //tower protrait
-  towerPortrait.icMain(icons, 0);
   //icons, jumps to icMain
   for (int i = icons.size()-1; i >= 0; i--){
     Icon icon = icons.get(i);
