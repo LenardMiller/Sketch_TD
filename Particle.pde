@@ -12,7 +12,9 @@ class Particle{
   boolean dead;
   int lifespan;
   int numFrames;
-  int sprite;
+  int currentSprite;
+  PImage sprite;
+  boolean animated;
   int delay;
   int delayTime;
   String spriteLocation;
@@ -27,10 +29,11 @@ class Particle{
     lifespan += (round(random(-(lifespan/4),lifespan/4))); //injects 10% randomness so all don't die at once
     numFrames = 1;
     spriteLocation = "sprites/particles/null/null/";
-    sprite = 0;
+    currentSprite = 0;
+    animated = false;
+    sprite = spritesH.get("nullPt");
     sprites = new PImage[numFrames];
     velocity = PVector.fromAngle(angle-HALF_PI);
-    loadSprites(sprites);
   }  
   void ptMain(ArrayList<Particle> particles, int i){
     if (position.y - size.y > boardHeight || position.x - size.x > boardWidth || position.y + size.y < 0 || position.x + size.x < 0){ //if crossed edge, delete
@@ -42,21 +45,13 @@ class Particle{
     display();
     move();
   }  
-  void loadSprites(PImage[] sprites){
-    for (int i = 0; i < numFrames; i++) {
-      String imageName = spriteLocation + nf(i, 3) + ".png";
-      sprites[i] = loadImage(imageName);
-    }   
-    delay = lifespan/numFrames;
-    delayTime = millis() + delay;
-  }  
   void display(){ //move and rotate whole grid before displaying, than reset
    if (millis() - delayTime >= delay){
-     if (sprite == numFrames-1){
+     if (currentSprite == numFrames-1){
       dead = true;       
      }
      else{
-      sprite++;  
+      currentSprite++;  
       delayTime = millis() + delay;
      }  
    }  
@@ -64,7 +59,7 @@ class Particle{
    pushMatrix();
    translate(position.x,position.y);
    rotate(angleTwo);
-   image(sprites[sprite],-size.x+2.5,-size.y+2.5);
+   image(sprites[currentSprite],-size.x+2.5,-size.y+2.5);
    popMatrix();
   }  
   void move(){
