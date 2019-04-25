@@ -11,7 +11,7 @@ class Waterball extends Projectile{ //TODO: particles
     this.angle = angle;
     angleTwo = angle;
     angularVelocity = 20; //degrees mode
-    sprite = loadImage("sprites/projectiles/waterball.png");
+    sprite = spritesH.get("waterballPj");
     isTrail = true;
     trail = "water";
     buff = "wet";
