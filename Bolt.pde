@@ -9,6 +9,6 @@ class Bolt extends Projectile{
     damage = 20;
     pierce = 3;
     this.angle = angle;
-    sprite = loadImage("sprites/projectiles/bolt.png");
+    sprite = spritesH.get("boltPj");
   }  
 }  
