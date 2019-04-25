@@ -32,8 +32,8 @@ int money = 6000;
 int boardWidth = 700;
 int boardHeight = 900;
 //images
-HashMap<String,PImage> sprites = new HashMap<String,PImage>();
-HashMap<String,PImage[]> spritesAnim = new HashMap<String,PImage[]>();
+HashMap<String,PImage> spritesH = new HashMap<String,PImage>();
+HashMap<String,PImage[]> spritesAnimH = new HashMap<String,PImage[]>();
 
 void settings(){
   size(900, 900);
@@ -60,43 +60,46 @@ void setup(){
 }
 
 void loadSprites(){
-  sprites.put("devEn",loadImage("sprites/enemies/devEnemy.png"));
-  sprites.put("nullEn",loadImage("sprites/enemies/nullEnemy.png"));
-  sprites.put("livesIc",loadImage("sprites/icons/lives.png"));
-  sprites.put("moneyIc",loadImage("sprites/icons/money.png"));
-  sprites.put("nullIc",loadImage("sprites/icons/null.png"));
-  sprites.put("crystalPt",loadImage("sprites/particles/debris/crystal.png"));
-  sprites.put("devWoodPt",loadImage("sprites/particles/debris/devWood.png"));
-  sprites.put("metalPt",loadImage("sprites/particles/debris/metal.png"));
-  sprites.put("stonePt",loadImage("sprites/particles/debris/stone.png"));
-  sprites.put("woodPt",loadImage("sprites/particles/debris/wood.png"));
-  sprites.put("nullPt",loadImage("sprites/particles/null/null.png"));
-  sprites.put("acidPj",loadImage("sprites/projectiles/acid.png"));
-  sprites.put("boltPj",loadImage("sprites/projectiles/bolt.png"));
-  sprites.put("devPj",loadImage("sprites/projectiles/dev.png"));
-  sprites.put("nullPj",loadImage("sprites/projectiles/null.png"));
-  sprites.put("pebblePj",loadImage("sprites/projectiles/pebble.png"));
-  sprites.put("urchinPj",loadImage("sprites/projectiles/urchin.png"));
-  sprites.put("waterballPj",loadImage("sprites/projectiles/waterball.png"));
-  sprites.put("crossbowBaseTR",loadImage("sprites/towers/turrets/crossbow/base.png"));
-  sprites.put("crossbowFullTR",loadImage("sprites/towers/turrets/crossbow/full.png"));
-  sprites.put("crossbowIdleTR",loadImage("sprites/towers/turrets/crossbow/idle.png"));
-  sprites.put("miscCannonBaseTR",loadImage("sprites/towers/turrets/miscCannon/base.png"));
-  sprites.put("miscCannonFullTR",loadImage("sprites/towers/turrets/miscCannon/full.png"));
-  sprites.put("miscCannonIdleTR",loadImage("sprites/towers/turrets/miscCannon/idle.png"));
-  sprites.put("slingshotBaseTR",loadImage("sprites/towers/turrets/slingshot/base.png"));
-  sprites.put("slingshotFullTR",loadImage("sprites/towers/turrets/slingshot/full.png"));
-  sprites.put("slingshotIdleTR",loadImage("sprites/towers/turrets/slingshot/idle.png"));
-  sprites.put("crystalWallTW",loadImage("sprites/towers/walls/crystal.png"));
-  sprites.put("devWallTW",loadImage("sprites/towers/walls/dev.png"));
-  sprites.put("metalWallTW",loadImage("sprites/towers/walls/metal.png"));
-  sprites.put("nullWallTW",loadImage("sprites/towers/walls/null.png"));
-  sprites.put("stoneWallTW",loadImage("sprites/towers/walls/stone.png"));
-  sprites.put("woodWallTW",loadImage("sprites/towers/walls/wood.png"));
+  spritesH.put("devEn",loadImage("sprites/enemies/devEnemy.png"));
+  spritesH.put("nullEn",loadImage("sprites/enemies/nullEnemy.png"));
+  spritesH.put("livesIc",loadImage("sprites/icons/lives.png"));
+  spritesH.put("moneyIc",loadImage("sprites/icons/money.png"));
+  spritesH.put("nullIc",loadImage("sprites/icons/null.png"));
+  spritesH.put("crystalPt",loadImage("sprites/particles/debris/crystal.png"));
+  spritesH.put("devWoodPt",loadImage("sprites/particles/debris/devWood.png"));
+  spritesH.put("metalPt",loadImage("sprites/particles/debris/metal.png"));
+  spritesH.put("stonePt",loadImage("sprites/particles/debris/stone.png"));
+  spritesH.put("woodPt",loadImage("sprites/particles/debris/wood.png"));
+  spritesH.put("nullPt",loadImage("sprites/particles/null/null.png"));
+  spritesH.put("acidPj",loadImage("sprites/projectiles/acid.png"));
+  spritesH.put("boltPj",loadImage("sprites/projectiles/bolt.png"));
+  spritesH.put("devPj",loadImage("sprites/projectiles/dev.png"));
+  spritesH.put("nullPj",loadImage("sprites/projectiles/null.png"));
+  spritesH.put("pebblePj",loadImage("sprites/projectiles/pebble.png"));
+  spritesH.put("urchinPj",loadImage("sprites/projectiles/urchin.png"));
+  spritesH.put("waterballPj",loadImage("sprites/projectiles/waterball.png"));
+  spritesH.put("crossbowBaseTR",loadImage("sprites/towers/turrets/crossbow/base.png"));
+  spritesH.put("crossbowFullTR",loadImage("sprites/towers/turrets/crossbow/full.png"));
+  spritesH.put("crossbowIdleTR",loadImage("sprites/towers/turrets/crossbow/idle.png"));
+  spritesH.put("miscCannonBaseTR",loadImage("sprites/towers/turrets/miscCannon/base.png"));
+  spritesH.put("miscCannonFullTR",loadImage("sprites/towers/turrets/miscCannon/full.png"));
+  spritesH.put("miscCannonIdleTR",loadImage("sprites/towers/turrets/miscCannon/idle.png"));
+  spritesH.put("slingshotBaseTR",loadImage("sprites/towers/turrets/slingshot/base.png"));
+  spritesH.put("slingshotFullTR",loadImage("sprites/towers/turrets/slingshot/full.png"));
+  spritesH.put("slingshotIdleTR",loadImage("sprites/towers/turrets/slingshot/idle.png"));
+  spritesH.put("crystalWallTW",loadImage("sprites/towers/walls/crystal.png"));
+  spritesH.put("devWallTW",loadImage("sprites/towers/walls/dev.png"));
+  spritesH.put("metalWallTW",loadImage("sprites/towers/walls/metal.png"));
+  spritesH.put("nullWallTW",loadImage("sprites/towers/walls/null.png"));
+  spritesH.put("stoneWallTW",loadImage("sprites/towers/walls/stone.png"));
+  spritesH.put("woodWallTW",loadImage("sprites/towers/walls/wood.png"));
 }  
 
 void loadSpritesAnim(){
-  //spritesAnim.put("livesAddBt
+  spritesAnimH.put("livesAddBt",new PImage[2]);
+  for (int i = 2; i >= 1; i--){
+    spritesAnimH.get("livesAddBt",PImage[i-1] = 
+  }  
 }  
 
 void gui(){ //gui icons & buttons
