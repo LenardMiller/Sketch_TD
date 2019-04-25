@@ -22,7 +22,6 @@ class Selection{
       targetButton.active = false;
       repairButton.active = true;  
     }  
-    towerPortrait.active = true;
   }  
   void clickoff(){
     if (towers.size() < id+1){
@@ -30,7 +29,6 @@ class Selection{
       sellButton.active = false;
       targetButton.active = false;
       repairButton.active = false;
-      towerPortrait.active = false;
     }  
     else{
       Tower tower = towers.get(id);
@@ -39,7 +37,6 @@ class Selection{
         sellButton.active = false;
         targetButton.active = false;
         repairButton.active = false;
-        towerPortrait.active = false;
       }  
     }
   }  
@@ -64,7 +61,6 @@ class Selection{
       text("Slingshot", 800, 241);
       damage = 10;
       speed = 12;
-      towerPortrait.sprite = towerPortrait.portraits[0];
     }  
     else if (tower.name == "crossbow"){
       text("Crossbow", 800, 241);
@@ -75,7 +71,6 @@ class Selection{
       fill(100,0,200);
       text("Piercing",710,526 + x);
       fill(0);
-      towerPortrait.sprite = towerPortrait.portraits[1];
     }  
     else if (tower.name == "randomCannon"){
       text("Random", 800, 241);
@@ -88,31 +83,26 @@ class Selection{
       text("Random projectiles",710,526 + x);
       text("Poison/fire/water",710,546 + x);
       fill(0);
-      towerPortrait.sprite = towerPortrait.portraits[2];
     }  
     else if (tower.name == "woodWall"){
       text("Wooden", 800, 241);
       text("Wall", 800, 266);
       x = 25;
-      towerPortrait.sprite = towerPortrait.portraits[15];
     }  
     else if (tower.name == "stoneWall"){
       text("Stone", 800, 241);
       text("Wall", 800, 266);
       x = 25;
-      towerPortrait.sprite = towerPortrait.portraits[16];
     }  
     else if (tower.name == "metalWall"){
       text("Metal", 800, 241);
       text("Wall", 800, 266);
       x = 25;
-      towerPortrait.sprite = towerPortrait.portraits[17];
     }  
     else if (tower.name == "crystalWall"){
       text("Crystal", 800, 241);
       text("Wall", 800, 266);
       x = 25;
-      towerPortrait.sprite = towerPortrait.portraits[18];
     }  
     else if (tower.name == "devWall"){
       text("Developer", 800, 241);
@@ -123,13 +113,6 @@ class Selection{
       fill(100,0,200);
       text("Invulnerable",710,446 + x);
       fill(0);
-      towerPortrait.sprite = towerPortrait.portraits[30];
-    }  
-    if (x == 25){
-      towerPortrait.position.y = 288;
-    }  
-    else{
-      towerPortrait.position.y = 263;
     }  
     fill(255,25);
     stroke(255);
