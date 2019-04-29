@@ -11,9 +11,8 @@ class Ouch extends Particle{
     lifespan += (round(random(-(lifespan/4),lifespan/4))); //injects 25% randomness so all don't die at once
     numFrames = 11;
     spriteLocation = "sprites/particles/enemy/" + type + "/";
-    sprite = 0;
+    currentSprite = 0;
     sprites = new PImage[numFrames];
     velocity = PVector.fromAngle(angle-HALF_PI);
-    loadSprites(sprites);
   }  
 }  
