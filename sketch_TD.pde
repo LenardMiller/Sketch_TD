@@ -97,8 +97,8 @@ void loadSprites(){
 
 void loadSpritesAnim(){
   spritesAnimH.put("livesAddBt",new PImage[2]);
-  for (int i = 2; i >= 1; i--){
-    spritesAnimH.get("livesAddBt",PImage[i-1] = 
+  for (int i = 1; i >= 0; i--){
+    spritesAnimH.get("livesAddBt")[i] = loadImage("sprites/icons/butttons/livesAdd/" + nf(i,3) + ".png");
   }  
 }  
 
@@ -107,8 +107,8 @@ void gui(){ //gui icons & buttons
   icons.add(new AddHPButton(boardWidth + 22.5,17.5,"null",true));
   icons.add(new AddMoneyButton(boardWidth + 22.5,47.5,"null",true));
   //money and lives icons
-  icons.add(new Icon(boardWidth + 57.5, 17.5,"lives",true));
-  icons.add(new Icon(boardWidth + 57.5, 47.5,"money",true));
+  icons.add(new Icon(boardWidth + 57.5, 17.5,"livesIc",true));
+  icons.add(new Icon(boardWidth + 57.5, 47.5,"moneyIc",true));
   //buy tower buttons tab 1 (4-18)
   icons.add(new TowerBuy(boardWidth + 21.5, 87,"slingshot",false)); //row 1
   icons.add(new TowerBuy(boardWidth + 60.5, 87,"crossbow",false));
