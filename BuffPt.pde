@@ -11,19 +11,18 @@ class BuffPt extends Particle{
     lifespan += (round(random((-lifespan)+20,lifespan))); //injects 25% randomness so all don't die at once
     numFrames = 8;
     spriteLocation = "sprites/particles/buff/" + type + "/";
-    sprite = 0;
+    currentSprite = 0;
     sprites = new PImage[numFrames];
     velocity = PVector.fromAngle(angle-HALF_PI);
-    loadSprites(sprites);
   }  
   @Override
   void display(){ //move and rotate whole grid before displaying, than reset
    if (millis() - delayTime >= delay){
-     if (sprite == numFrames-1){
+     if (currentSprite == numFrames-1){
       dead = true;       
      }
      else{
-      sprite++;  
+      currentSprite++;  
       delayTime = millis() + delay;
      }  
    }  
@@ -31,7 +30,7 @@ class BuffPt extends Particle{
    pushMatrix();
    translate(position.x,position.y);
    rotate(angleTwo);
-   image(sprites[sprite],-size.x+1.5,-size.y+1.5);
+   image(sprites[currentSprite],-size.x+1.5,-size.y+1.5);
    popMatrix();
   }  
 }  
