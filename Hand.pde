@@ -60,22 +60,22 @@ class Hand{
        held = setHeld;
      }  
      else if (setHeld == "woodWall"){
-       heldSprite = loadImage("sprites/towers/walls/woodWall.png");
+       heldSprite = spritesH.get("woodWallTw");
        size = new PVector(60,18.5);
        held = setHeld;
      }  
      else if (setHeld == "stoneWall"){
-       heldSprite = loadImage("sprites/towers/walls/stoneWall.png");
+       heldSprite = spritesH.get("stoneWallTw");
        size = new PVector(60,18.5);
        held = setHeld;
      }  
      else if (setHeld == "metalWall"){
-       heldSprite = loadImage("sprites/towers/walls/metalWall.png");
+       heldSprite = spritesH.get("metalWallTw");
        size = new PVector(60,18.5);
        held = setHeld;
      }  
      else if (setHeld == "crystalWall"){
-       heldSprite = loadImage("sprites/towers/walls/crystalWall.png");
+       heldSprite = spritesH.get("crystalWallTw");
        size = new PVector(60,18.5);
        held = setHeld;
      }  
