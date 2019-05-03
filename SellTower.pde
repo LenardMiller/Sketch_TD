@@ -3,9 +3,8 @@ class SellTower extends Button {
     super(x,y,type,active);
     position = new PVector(x, y);
     size = new PVector(200, 45);
-    spriteLocation = "sprites/icons/buttons/sellTower/";
-    spriteOne = loadImage(spriteLocation + "000.png");
-    spriteTwo = loadImage(spriteLocation + "001.png");
+    spriteOne = spritesAnimH.get("sellTowerBT")[0];
+    spriteTwo = spritesAnimH.get("sellTowerBT")[1];
     sprite = spriteOne;
     actionTime = millis() + 100;
     active = false;
@@ -18,7 +17,6 @@ class SellTower extends Button {
     active = false;
     targetButton.active = false;
     repairButton.active = false;
-    towerPortrait.active = false;
     selection.name = "null";
   }  
 }  
