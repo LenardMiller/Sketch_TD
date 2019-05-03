@@ -5,11 +5,10 @@ class RepairWall extends Button{
     super(x,y,type,active);
     position = new PVector(x, y);
     size = new PVector(200, 150);
-    spriteLocation = "sprites/icons/buttons/repairButton/";
-    spriteOne = loadImage(spriteLocation + "000.png");
-    spriteTwo = loadImage(spriteLocation + "001.png");
-    spriteRed = loadImage(spriteLocation + "002.png");
-    spriteGrey = loadImage(spriteLocation + "003.png");
+    spriteOne = spritesAnimH.get("repairBT")[0];
+    spriteTwo = spritesAnimH.get("repairBT")[1];
+    spriteRed = spritesAnimH.get("repairBT")[2];
+    spriteGrey = spritesAnimH.get("repairBT")[3];
     sprite = spriteOne;
     actionTime = millis() + 100;
     active = false;
