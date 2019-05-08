@@ -3,8 +3,8 @@ class AddHPButton extends Button {
     super(x,y,type,active);
     position = new PVector(x, y);
     size = new PVector(25, 25);
-    spriteOne = spritesAnimH.get("addLivesBT")[0];
-    spriteTwo = spritesAnimH.get("addLivesBT")[1];
+    spriteOne = spritesAnimH.get("livesAddBT")[0];
+    spriteTwo = spritesAnimH.get("livesAddBT")[1];
     sprite = spriteOne;
     actionTime = millis() + 100;
   }
