@@ -17,7 +17,6 @@ class Particle{
   boolean animated;
   int delay;
   int delayTime;
-  String spriteLocation;
   Particle(float x, float y, float angle) {
     position = new PVector(x, y);
     size = new PVector(5, 5);
@@ -28,11 +27,11 @@ class Particle{
     lifespan = 1000; //in milliseconds
     lifespan += (round(random(-(lifespan/4),lifespan/4))); //injects 10% randomness so all don't die at once
     numFrames = 1;
-    spriteLocation = "sprites/particles/null/null/";
     currentSprite = 0;
     animated = false;
+    delay = lifespan/numFrames;
+    delayTime = millis() + delay;
     sprite = spritesH.get("nullPt");
-    sprites = new PImage[numFrames];
     velocity = PVector.fromAngle(angle-HALF_PI);
   }  
   void ptMain(ArrayList<Particle> particles, int i){
@@ -46,21 +45,34 @@ class Particle{
     move();
   }  
   void display(){ //move and rotate whole grid before displaying, than reset
-   if (millis() - delayTime >= delay){
-     if (currentSprite == numFrames-1){
-      dead = true;       
-     }
-     else{
-      currentSprite++;  
-      delayTime = millis() + delay;
+   if (animated){
+     if (millis() - delayTime >= delay){
+       if (currentSprite == numFrames-1){
+        dead = true;       
+       }
+       else{
+        currentSprite++;  
+        delayTime = millis() + delay;
+       }  
      }  
+     angleTwo += radians(angularVelocity);
+     pushMatrix();
+     translate(position.x,position.y);
+     rotate(angleTwo);
+     image(sprites[currentSprite],-size.x+2.5,-size.y+2.5);
+     popMatrix();
+   } 
+   else{
+     if (millis() - delayTime >= delay){
+       dead = true;
+     }  
+     angleTwo += radians(angularVelocity);
+     pushMatrix();
+     translate(position.x,position.y);
+     rotate(angleTwo);
+     image(sprite,-size.x/2,-size.y/2);
+     popMatrix();  
    }  
-   angleTwo += radians(angularVelocity);
-   pushMatrix();
-   translate(position.x,position.y);
-   rotate(angleTwo);
-   image(sprites[currentSprite],-size.x+2.5,-size.y+2.5);
-   popMatrix();
   }  
   void move(){
     velocity.setMag(speed);
