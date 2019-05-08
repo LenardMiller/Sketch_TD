@@ -60,8 +60,8 @@ void setup(){
 }
 
 void loadSprites(){
-  spritesH.put("devEn",loadImage("sprites/enemies/devEnemy.png"));
-  spritesH.put("nullEn",loadImage("sprites/enemies/nullEnemy.png"));
+  spritesH.put("devEn",loadImage("sprites/enemies/dev.png"));
+  spritesH.put("nullEn",loadImage("sprites/enemies/null.png"));
   spritesH.put("livesIc",loadImage("sprites/icons/lives.png"));
   spritesH.put("moneyIc",loadImage("sprites/icons/money.png"));
   spritesH.put("nullIc",loadImage("sprites/icons/null.png"));
@@ -107,35 +107,35 @@ void loadSprites(){
 void loadSpritesAnim(){
   spritesAnimH.put("livesAddBT",new PImage[2]);
   for (int i = 1; i >= 0; i--){
-    spritesAnimH.get("livesAddBT")[i] = loadImage("sprites/icons/butttons/livesAdd/" + nf(i,3) + ".png");
+    spritesAnimH.get("livesAddBT")[i] = loadImage("sprites/icons/buttons/livesAdd/" + nf(i,3) + ".png");
   }  
   spritesAnimH.put("moneyAddBT",new PImage[2]);
   for (int i = 1; i >= 0; i--){
-    spritesAnimH.get("moneyAddBt")[i] = loadImage("sprites/icons/butttons/moneyAdd/" + nf(i,3) + ".png");
+    spritesAnimH.get("moneyAddBT")[i] = loadImage("sprites/icons/buttons/moneyAdd/" + nf(i,3) + ".png");
   }  
   spritesAnimH.put("nullBT",new PImage[2]);
   for (int i = 1; i >= 0; i--){
-    spritesAnimH.get("nullBT")[i] = loadImage("sprites/icons/butttons/null/" + nf(i,3) + ".png");
+    spritesAnimH.get("nullBT")[i] = loadImage("sprites/icons/buttons/null/" + nf(i,3) + ".png");
   }  
   spritesAnimH.put("repairBT",new PImage[4]);
   for (int i = 3; i >= 0; i--){
-    spritesAnimH.get("repairBT")[i] = loadImage("sprites/icons/butttons/repairButton/" + nf(i,3) + ".png");
+    spritesAnimH.get("repairBT")[i] = loadImage("sprites/icons/buttons/repairButton/" + nf(i,3) + ".png");
   }  
   spritesAnimH.put("sellTowerBT",new PImage[2]);
   for (int i = 1; i >= 0; i--){
-    spritesAnimH.get("sellTowerBT")[i] = loadImage("sprites/icons/butttons/sellTower/" + nf(i,3) + ".png");
+    spritesAnimH.get("sellTowerBT")[i] = loadImage("sprites/icons/buttons/sellTower/" + nf(i,3) + ".png");
   }  
   spritesAnimH.put("targetPriorityBT",new PImage[2]);
   for (int i = 1; i >= 0; i--){
-    spritesAnimH.get("targetPriorityBT")[i] = loadImage("sprites/icons/butttons/targetPriority/" + nf(i,3) + ".png");
+    spritesAnimH.get("targetPriorityBT")[i] = loadImage("sprites/icons/buttons/targetPriority/" + nf(i,3) + ".png");
   }  
-  spritesAnimH.put("towerBuyBT",new PImage[2]);
-  for (int i = 1; i >= 0; i--){
-    spritesAnimH.get("towerBuyBT")[i] = loadImage("sprites/icons/butttons/towerBuy/" + nf(i,3) + ".png");
-  }  
+  //spritesAnimH.put("towerBuyBT",new PImage[2]);
+  //for (int i = 1; i >= 0; i--){
+  //  spritesAnimH.get("towerBuyBT")[i] = loadImage("sprites/icons/buttons/towerBuy/" + nf(i,3) + ".png");
+  //}  
   spritesAnimH.put("towerTabSwitchBT",new PImage[2]);
   for (int i = 1; i >= 0; i--){
-    spritesAnimH.get("towerTabSwitchBT")[i] = loadImage("sprites/icons/butttons/towerTabSwitch/" + nf(i,3) + ".png");
+    spritesAnimH.get("towerTabSwitchBT")[i] = loadImage("sprites/icons/buttons/towerTabSwitch/" + nf(i,3) + ".png");
   }  
   spritesAnimH.put("fireBuffPT",new PImage[8]);
   for (int i = 7; i >= 0; i--){
@@ -171,39 +171,39 @@ void loadSpritesAnim(){
   }  
   spritesAnimH.put("slingshotFireTR",new PImage[34]);
   for (int i = 33; i >= 0; i--){
-    spritesAnimH.get("slingshotFireTR")[i] = loadImage("sprites/towers/turrets/slingshot/fire/" + nf(i,3) + ".png");
+    spritesAnimH.get("slingshotFireTR")[i] = loadImage("sprites/towers/turrets/slingshot/fire/fire" + nf(i,3) + ".png");
   }  
   spritesAnimH.put("slingshotLoadTR",new PImage[59]);
   for (int i = 58; i >= 0; i--){
-    spritesAnimH.get("slingshotLoadTR")[i] = loadImage("sprites/towers/turrets/slingshot/load/" + nf(i,3) + ".png");
+    spritesAnimH.get("slingshotLoadTR")[i] = loadImage("sprites/towers/turrets/slingshot/load/load" + nf(i,3) + ".png");
   }  
   spritesAnimH.put("crossbowFireTR",new PImage[13]);
   for (int i = 12; i >= 0; i--){
-    spritesAnimH.get("crossbowFireTR")[i] = loadImage("sprites/towers/turrets/crossbow/fire/" + nf(i,3) + ".png");
+    spritesAnimH.get("crossbowFireTR")[i] = loadImage("sprites/towers/turrets/crossbow/fire/fire" + nf(i,3) + ".png");
   }  
   spritesAnimH.put("crossbowLoadTR",new PImage[81]);
   for (int i = 58; i >= 0; i--){
-    spritesAnimH.get("crossbowLoadTR")[i] = loadImage("sprites/towers/turrets/crossbow/load/" + nf(i,3) + ".png");
+    spritesAnimH.get("crossbowLoadTR")[i] = loadImage("sprites/towers/turrets/crossbow/load/load" + nf(i,3) + ".png");
   }  
   spritesAnimH.put("randomCannonFireAcidTR",new PImage[6]);
   for (int i = 5; i >= 0; i--){
-    spritesAnimH.get("randomCannonFireAcidTR")[i] = loadImage("sprites/towers/turrets/randomCannon/fire/acid/" + nf(i,3) + ".png");
+    spritesAnimH.get("randomCannonFireAcidTR")[i] = loadImage("sprites/towers/turrets/miscCannon/fire/acid/fire" + nf(i,3) + ".png");
   }  
   spritesAnimH.put("randomCannonFireMiscTR",new PImage[6]);
   for (int i = 5; i >= 0; i--){
-    spritesAnimH.get("randomCannonFireMiscTR")[i] = loadImage("sprites/towers/turrets/randomCannon/fire/misc/" + nf(i,3) + ".png");
+    spritesAnimH.get("randomCannonFireMiscTR")[i] = loadImage("sprites/towers/turrets/miscCannon/fire/misc/fire" + nf(i,3) + ".png");
   }  
   spritesAnimH.put("randomCannonFireUrchinTR",new PImage[6]);
   for (int i = 5; i >= 0; i--){
-    spritesAnimH.get("randomCannonFireUrchinTR")[i] = loadImage("sprites/towers/turrets/randomCannon/fire/urchin/" + nf(i,3) + ".png");
+    spritesAnimH.get("randomCannonFireUrchinTR")[i] = loadImage("sprites/towers/turrets/miscCannon/fire/urchin/fire" + nf(i,3) + ".png");
   }  
   spritesAnimH.put("randomCannonFireWaterTR",new PImage[6]);
   for (int i = 5; i >= 0; i--){
-    spritesAnimH.get("randomCannonFireWaterTR")[i] = loadImage("sprites/towers/turrets/randomCannon/fire/water/" + nf(i,3) + ".png");
+    spritesAnimH.get("randomCannonFireWaterTR")[i] = loadImage("sprites/towers/turrets/miscCannon/fire/water/fire" + nf(i,3) + ".png");
   }  
   spritesAnimH.put("randomCannonLoadTR",new PImage[34]);
   for (int i = 33; i >= 0; i--){
-    spritesAnimH.get("randomCannonLoadTR")[i] = loadImage("sprites/towers/turrets/randomCannon/load/" + nf(i,3) + ".png");
+    spritesAnimH.get("randomCannonLoadTR")[i] = loadImage("sprites/towers/turrets/miscCannon/load/load" + nf(i,3) + ".png");
   }  
 }  
 
@@ -414,7 +414,7 @@ void spawnKeys(){
   //particle form: spawn x, spawn y, angle
   if (keyPressed == true && key == 'z' && alive){ //hurt
     int num = round(random(0,2));
-    String type = "null";
+    String type = "redOuch";
     if (num == 0){
       type = "redOuch";
     } 
@@ -451,7 +451,7 @@ void spawnKeys(){
   }  
   if (keyPressed == true && key == 'v' && alive){ //buff
     int num = round(random(0,2));
-    String type = "null";
+    String type = "poison";
     if (num == 0){
       type = "poison";
     } 
