@@ -69,7 +69,7 @@ class Selection{
       textFont(ETFont);
       textAlign(LEFT);
       fill(100,0,200);
-      text("Piercing",710,526 + x);
+      text("Piercing",710,376 + x);
       fill(0);
     }  
     else if (tower.name == "randomCannon"){
@@ -80,8 +80,8 @@ class Selection{
       textFont(ETFont);
       textAlign(LEFT);
       fill(100,0,200);
-      text("Random projectiles",710,526 + x);
-      text("Poison/fire/water",710,546 + x);
+      text("Random projectiles",710,376 + x);
+      text("Poison/fire/water",710,396 + x);
       fill(0);
     }  
     else if (tower.name == "woodWall"){
@@ -111,7 +111,7 @@ class Selection{
       textFont(ETFont);
       textAlign(LEFT);
       fill(100,0,200);
-      text("Invulnerable",710,446 + x);
+      text("Invulnerable",710,296 + x);
       fill(0);
     }  
     fill(255,25);
@@ -138,7 +138,7 @@ class Selection{
     if (!tower.turret){
       if (tower.twHP < tower.maxHP){
         fill(11,56,0);
-        text("$" + ceil(float(tower.price) - float(tower.value)), 800, 843);
+        text("$" + ceil(float(tower.price) - float(tower.value)), 800, 693);
       }
       else{
         fill(15);
@@ -155,38 +155,38 @@ class Selection{
     text("Health: " + tower.twHP + "/" + tower.maxHP, 710, 276 + x);
     if (tower.turret){
       if (name == "randomCannon"){
-        text("Damage: 6/10/22", 710, 446 + x);
-        text("Low/medium acc.", 710, 506 + x);
+        text("Damage: 6/10/22", 710, 296 + x);
+        text("Low/medium acc.", 710, 356 + x);
       }
       else{
-        text("Damage: " + damage, 710, 446 + x);
+        text("Damage: " + damage, 710, 296 + x);
         if (tower.error < 1){
-          text("High accuracy", 710, 506 + x);
+          text("High accuracy", 710, 356 + x);
         }  
         else if (tower.error >= 1 && tower.error <= 3){
-          text("Medium accuracy", 710, 506 + x);
+          text("Medium accuracy", 710, 356 + x);
         }  
         else if (tower.error > 3){
-          text("Low accuracy", 710, 506 + x);
+          text("Low accuracy", 710, 356 + x);
         }  
       }
       if (speed < 8){
-          text("Low velocity", 710, 466 + x);
+          text("Low velocity", 710, 316 + x);
         }  
         else if (speed >= 8 && speed <= 18){
-          text("Medium velocity", 710, 466 + x);
+          text("Medium velocity", 710, 316 + x);
         }  
         else if (speed > 18){
-          text("High velocity", 710, 466 + x);
+          text("High velocity", 710, 316 + x);
         }  
       if (tower.delay > 3500){
-          text("Low firerate", 710, 486 + x);
+          text("Low firerate", 710, 336 + x);
         }  
         else if (tower.delay <= 3500 && tower.delay >= 1500){
-          text("Medium firerate", 710, 486 + x);
+          text("Medium firerate", 710, 336 + x);
         }  
         else if (tower.delay < 1500){
-          text("High firerate", 710, 486 + x);
+          text("High firerate", 710, 336 + x);
         }    
     }  
   }  
