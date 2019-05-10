@@ -8,13 +8,13 @@ class BuffPt extends Particle{
     speed = maxSpeed;
     angleTwo = angle;
     angularVelocity = 5; //degrees mode
-    lifespan = 100; //in milliseconds, default: 100
+    lifespan = 25; //in milliseconds, default: 25
     lifespan += (round(random((-lifespan)+20,lifespan))); //injects 25% randomness so all don't die at once
     delay = lifespan/numFrames;
     delayTime = millis() + delay;
     numFrames = 8;
     currentSprite = 0;
-    sprites = spritesAnimH.get(type + "buffPT");
+    sprites = spritesAnimH.get(type + "BuffPT");
     velocity = PVector.fromAngle(angle-HALF_PI);
   }  
   @Override
