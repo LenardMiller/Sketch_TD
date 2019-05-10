@@ -14,12 +14,7 @@ class MiscProjectile extends Projectile{
     angleTwo = angle;
     angularVelocity = 15; //degrees mode
     this.spriteType = spriteType;
-    sprites[0] = loadImage("sprites/projectiles/misc/boot.png");
-    sprites[1] = loadImage("sprites/projectiles/misc/heel.png");
-    sprites[2] = loadImage("sprites/projectiles/misc/pscontroller.png");
-    sprites[3] = loadImage("sprites/projectiles/misc/slipper.png");
-    sprites[4] = loadImage("sprites/projectiles/misc/swcontroller.png");
-    sprites[5] = loadImage("sprites/projectiles/misc/xbcontroller.png");
+    sprites = spritesAnimH.get("miscPJ");
     sprite = sprites[spriteType];
   }  
 }  
