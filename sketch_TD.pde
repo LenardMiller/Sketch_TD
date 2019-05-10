@@ -167,7 +167,7 @@ void loadSpritesAnim(){
   }  
   spritesAnimH.put("miscPJ",new PImage[6]);
   for (int i = 5; i >= 0; i--){
-    spritesAnimH.get("miscPJ")[i] = loadImage("sprites/particles/enemy/greenOuch/" + nf(i,3) + ".png");
+    spritesAnimH.get("miscPJ")[i] = loadImage("sprites/projectiles/misc/" + nf(i,3) + ".png");
   }  
   spritesAnimH.put("slingshotFireTR",new PImage[34]);
   for (int i = 33; i >= 0; i--){
