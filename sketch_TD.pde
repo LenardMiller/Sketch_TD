@@ -182,7 +182,7 @@ void loadSpritesAnim(){
     spritesAnimH.get("crossbowFireTR")[i] = loadImage("sprites/towers/turrets/crossbow/fire/fire" + nf(i,3) + ".png");
   }  
   spritesAnimH.put("crossbowLoadTR",new PImage[81]);
-  for (int i = 58; i >= 0; i--){
+  for (int i = 80; i >= 0; i--){
     spritesAnimH.get("crossbowLoadTR")[i] = loadImage("sprites/towers/turrets/crossbow/load/load" + nf(i,3) + ".png");
   }  
   spritesAnimH.put("randomCannonFireAcidTR",new PImage[6]);
