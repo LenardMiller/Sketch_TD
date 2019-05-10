@@ -7,7 +7,7 @@ class CrystalWall extends Tower{
     maxHP = 500;
     twHP = maxHP;
     hit = false;
-    sprite = spritesH.get("crystalWallTw");
+    sprite = spritesH.get("crystalWallTW");
     debrisType = "crystal";
     price = 400;
     value = price;
