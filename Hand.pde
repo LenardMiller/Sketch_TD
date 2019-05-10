@@ -45,37 +45,37 @@ class Hand{
   }
   void setHeld(String setHeld){
      if (setHeld == "slingshot"){
-       heldSprite = loadImage("sprites/towers/turrets/slingshot/full.png");
+       heldSprite = spritesH.get("slingshotFullTR");
        size = new PVector(25,25);
        held = setHeld;
      }  
      else if (setHeld == "crossbow"){
-       heldSprite = loadImage("sprites/towers/turrets/crossbow/full.png");
+       heldSprite = spritesH.get("crossbowFullTR");
        size = new PVector(27,27);
        held = setHeld;
      }  
      else if (setHeld == "randomCannon"){
-       heldSprite = loadImage("sprites/towers/turrets/miscCannon/full.png");
+       heldSprite = spritesH.get("randomCannonFullTR");
        size = new PVector(25,25);
        held = setHeld;
      }  
      else if (setHeld == "woodWall"){
-       heldSprite = spritesH.get("woodWallTw");
+       heldSprite = spritesH.get("woodWallTW"); 
        size = new PVector(60,18.5);
        held = setHeld;
      }  
      else if (setHeld == "stoneWall"){
-       heldSprite = spritesH.get("stoneWallTw");
+       heldSprite = spritesH.get("stoneWallTW");
        size = new PVector(60,18.5);
        held = setHeld;
      }  
      else if (setHeld == "metalWall"){
-       heldSprite = spritesH.get("metalWallTw");
+       heldSprite = spritesH.get("metalWallTW");
        size = new PVector(60,18.5);
        held = setHeld;
      }  
      else if (setHeld == "crystalWall"){
-       heldSprite = spritesH.get("crystalWallTw");
+       heldSprite = spritesH.get("crystalWallTW");
        size = new PVector(60,18.5);
        held = setHeld;
      }  
