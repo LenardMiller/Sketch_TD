@@ -20,7 +20,6 @@ class RandomCannon extends Turret{
     error = 0; //irrelivant, set in fire()
     numFireFrames = 12;
     numLoadFrames = 34;
-    spriteLocation = "sprites/towers/turrets/miscCannon/";
     fireFramesMisc = new PImage[numFireFrames];
     fireFramesWater = new PImage[numFireFrames];
     fireFramesAcid = new PImage[numFireFrames];
@@ -32,11 +31,11 @@ class RandomCannon extends Turret{
     loadDelayTime = 0;
     projectile = 0;
     miscChance = 5; //still deciding, default 5?
-    loadSprites(fireFramesMisc,fireFramesWater,fireFramesAcid,fireFramesUrchin);
+    loadSprites();
     debrisType = "metal";
     price = 100;
     value = price;
-    priority = 1; //last
+    priority = 2; //strong
   }  
   @Override
   void fire(){
@@ -70,37 +69,14 @@ class RandomCannon extends Turret{
       projectiles.add(new MiscProjectile(spp.x,spp.y, angle, round(random(0,5))));
     }
   }  
-  void loadSprites(PImage[] fireFramesMisc, PImage[] fireFramesWater, PImage[] fireFramesAcid, PImage[] fireFramesUrchin){
-    sBase = loadImage(spriteLocation + "base.png");
-    sIdle = loadImage(spriteLocation + "idle.png");
-    for (int i = 0; i < numFireFrames; i++) { //I do this in a weird way in order to half framerate
-      String imageName = spriteLocation + "fire/misc/fire" + nf(i/2, 3) + ".png";
-      fireFramesMisc[i] = loadImage(imageName);
-      i++;
-      fireFramesMisc[i] = loadImage(imageName);
-    }  
-    for (int i = 0; i < numFireFrames; i++) {
-      String imageName = spriteLocation + "fire/water/fire" + nf(i/2, 3) + ".png";
-      fireFramesWater[i] = loadImage(imageName);
-      i++;
-      fireFramesWater[i] = loadImage(imageName);
-    }  
-    for (int i = 0; i < numFireFrames; i++) {
-      String imageName = spriteLocation + "fire/acid/fire" + nf(i/2, 3) + ".png";
-      fireFramesAcid[i] = loadImage(imageName);
-      i++;
-      fireFramesAcid[i] = loadImage(imageName);
-    }  
-    for (int i = 0; i < numFireFrames; i++) {
-      String imageName = spriteLocation + "fire/urchin/fire" + nf(i/2, 3) + ".png";
-      fireFramesUrchin[i] = loadImage(imageName);
-      i++;
-      fireFramesUrchin[i] = loadImage(imageName);
-    }   
-    for (int i = 0; i < numLoadFrames; i++) {
-      String imageName = spriteLocation + "load/load" + nf(i, 3) + ".png";
-      loadFrames[i] = loadImage(imageName);
-    }  
+  void loadSprites(){
+    sBase = spritesH.get("randomCannonBaseTR");
+    sIdle = spritesH.get("randomCannonIdleTR");
+    fireFramesMisc = spritesAnimH.get("randomCannonFireMiscTR");
+    fireFramesWater = spritesAnimH.get("randomCannonFireWaterTR");
+    fireFramesAcid = spritesAnimH.get("randomCannonFireAcidTR");
+    fireFramesUrchin = spritesAnimH.get("randomCannonFireUrchinTR");
+    loadFrames = spritesAnimH.get("randomCannonLoadTR"); 
   } 
  void display(){
     if (spriteType == 0){ //idle
