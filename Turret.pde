@@ -28,7 +28,6 @@ class Turret extends Tower{
     error = 0;
     numFireFrames = 1;
     numLoadFrames = 1;
-    spriteLocation = "sprites/towers/turrets/null/";
     debrisType = "null";
     //the following is usually unchanged.
     fireFrames = new PImage[numFireFrames];
@@ -109,14 +108,10 @@ class Turret extends Tower{
     projectiles.add(new Projectile(position.x-size.x/2,position.y-size.y/2, angle));
   }  
   void loadSprites(){
-    sBase = loadImage(spriteLocation + "base.png");
-    sIdle = loadImage(spriteLocation + "idle.png");
-    for (int i = 0; i < numFireFrames; i++) {
-      fireFrames[i] = loadImage(spriteLocation + "fire/fire" + nf(i, 3) + ".png");
-    }  
-    for (int i = 0; i < numLoadFrames; i++) {
-      loadFrames[i] = loadImage(spriteLocation + "load/load" + nf(i, 3) + ".png");
-    }  
+    sBase = spritesH.get(name+"BaseTR");
+    sIdle = spritesH.get(name+"IdleTR");
+    fireFrames = spritesAnimH.get(name+"FireTR");
+    loadFrames = spritesAnimH.get(name+"LoadTR"); 
   }  
   @Override
   void twMain(ArrayList<Tower> towers, int i){ //need to check target
