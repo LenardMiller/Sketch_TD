@@ -185,21 +185,29 @@ void loadSpritesAnim(){
   for (int i = 80; i >= 0; i--){
     spritesAnimH.get("crossbowLoadTR")[i] = loadImage("sprites/towers/turrets/crossbow/load/load" + nf(i,3) + ".png");
   }  
-  spritesAnimH.put("randomCannonFireAcidTR",new PImage[6]);
-  for (int i = 5; i >= 0; i--){
-    spritesAnimH.get("randomCannonFireAcidTR")[i] = loadImage("sprites/towers/turrets/miscCannon/fire/acid/fire" + nf(i,3) + ".png");
+  spritesAnimH.put("randomCannonFireAcidTR",new PImage[12]);
+  for (int i = 11; i >= 0; i--){
+    spritesAnimH.get("randomCannonFireAcidTR")[i] = loadImage("sprites/towers/turrets/miscCannon/fire/acid/fire" + nf(i/2,3) + ".png");
+    i--;
+    spritesAnimH.get("randomCannonFireAcidTR")[i] = loadImage("sprites/towers/turrets/miscCannon/fire/acid/fire" + nf(i/2,3) + ".png");
   }  
-  spritesAnimH.put("randomCannonFireMiscTR",new PImage[6]);
-  for (int i = 5; i >= 0; i--){
-    spritesAnimH.get("randomCannonFireMiscTR")[i] = loadImage("sprites/towers/turrets/miscCannon/fire/misc/fire" + nf(i,3) + ".png");
+  spritesAnimH.put("randomCannonFireMiscTR",new PImage[12]);
+  for (int i = 11; i >= 0; i--){
+    spritesAnimH.get("randomCannonFireMiscTR")[i] = loadImage("sprites/towers/turrets/miscCannon/fire/misc/fire" + nf(i/2,3) + ".png");
+    i--;
+    spritesAnimH.get("randomCannonFireMiscTR")[i] = loadImage("sprites/towers/turrets/miscCannon/fire/misc/fire" + nf(i/2,3) + ".png");
   }  
-  spritesAnimH.put("randomCannonFireUrchinTR",new PImage[6]);
-  for (int i = 5; i >= 0; i--){
-    spritesAnimH.get("randomCannonFireUrchinTR")[i] = loadImage("sprites/towers/turrets/miscCannon/fire/urchin/fire" + nf(i,3) + ".png");
+  spritesAnimH.put("randomCannonFireUrchinTR",new PImage[12]);
+  for (int i = 11; i >= 0; i--){
+    spritesAnimH.get("randomCannonFireUrchinTR")[i] = loadImage("sprites/towers/turrets/miscCannon/fire/urchin/fire" + nf(i/2,3) + ".png");
+    i--;
+    spritesAnimH.get("randomCannonFireUrchinTR")[i] = loadImage("sprites/towers/turrets/miscCannon/fire/urchin/fire" + nf(i/2,3) + ".png");
   }  
-  spritesAnimH.put("randomCannonFireWaterTR",new PImage[6]);
-  for (int i = 5; i >= 0; i--){
-    spritesAnimH.get("randomCannonFireWaterTR")[i] = loadImage("sprites/towers/turrets/miscCannon/fire/water/fire" + nf(i,3) + ".png");
+  spritesAnimH.put("randomCannonFireWaterTR",new PImage[12]);
+  for (int i = 11; i >= 0; i--){
+    spritesAnimH.get("randomCannonFireWaterTR")[i] = loadImage("sprites/towers/turrets/miscCannon/fire/water/fire" + nf(i/2,3) + ".png");
+    i--;
+    spritesAnimH.get("randomCannonFireWaterTR")[i] = loadImage("sprites/towers/turrets/miscCannon/fire/water/fire" + nf(i/2,3) + ".png");
   }  
   spritesAnimH.put("randomCannonLoadTR",new PImage[34]);
   for (int i = 33; i >= 0; i--){
