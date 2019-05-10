@@ -7,7 +7,7 @@ class StoneWall extends Tower{
     maxHP = 125;
     twHP = maxHP;
     hit = false;
-    sprite = spritesH.get("stoneWallTw");
+    sprite = spritesH.get("stoneWallTW");
     debrisType = "stone";
     price = 75;
     value = price;
