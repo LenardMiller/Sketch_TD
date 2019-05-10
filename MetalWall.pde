@@ -7,7 +7,7 @@ class MetalWall extends Tower{
     maxHP = 250;
     twHP = maxHP;
     hit = false;
-    sprite = loadImage("sprites/towers/walls/metalWall.png");
+    sprite = spritesH.get("metalWallTW");
     debrisType = "metal";
     price = 175;
     value = price;

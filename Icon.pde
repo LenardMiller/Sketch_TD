@@ -8,8 +8,7 @@ class Icon{
     active = active_;
     position = new PVector(x, y);
     size = new PVector(25, 25);
-    spriteLocation = "sprites/icons/" + type + "/";
-    sprite = loadImage(spriteLocation + "000.png");
+    sprite = spritesH.get(type);
   }
   void icMain(ArrayList<Icon> icons, int i){
     if (active){

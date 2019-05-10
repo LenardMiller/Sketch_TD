@@ -29,7 +29,7 @@ class Projectile {
     hitTime = 0;
     angleTwo = angle;
     angularVelocity = 0; //degrees mode
-    sprite = loadImage("sprites/projectiles/null10x10.png");
+    sprite = spritesH.get("nullPj");
     velocity = PVector.fromAngle(angle-HALF_PI);
     isTrail = false;
     trail = "null";

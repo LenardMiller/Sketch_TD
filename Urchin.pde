@@ -11,7 +11,7 @@ class Urchin extends Projectile{ //TODO: fire damage & particles
     this.angle = angle;
     angleTwo = angle;
     angularVelocity = 20; //degrees mode
-    sprite = loadImage("sprites/projectiles/urchin.png");
+    sprite = spritesH.get("urchinPj");
     isTrail = true;
     trail = "fire";
     buff = "burning";

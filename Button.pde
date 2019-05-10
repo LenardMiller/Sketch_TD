@@ -6,9 +6,8 @@ class Button extends Icon {
     super(x,y,type,active);
     position = new PVector(x, y);
     size = new PVector(25, 25);
-    spriteLocation = "sprites/icons/buttons/null/";
-    spriteOne = loadImage(spriteLocation + "001.png");
-    spriteTwo = loadImage(spriteLocation + "000.png");
+    spriteOne = spritesAnimH.get("nullBT")[0];
+    spriteTwo = spritesAnimH.get("nullBT")[1];
     sprite = spriteOne;
     actionTime = millis() + 100;
   }

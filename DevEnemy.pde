@@ -10,7 +10,7 @@ class DevEnemy extends Enemy{
     enHP = maxHP;
     hitTime = 0;
     barTrans = 0;
-    sprite = loadImage("sprites/enemies/devEnemy.png");
+    sprite = spritesH.get("devEn");
   }  
   @Override
   void enMain(ArrayList<Enemy> enemies, int i){

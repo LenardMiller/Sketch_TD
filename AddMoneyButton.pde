@@ -3,9 +3,8 @@ class AddMoneyButton extends Button {
     super(x,y,type,active);
     position = new PVector(x, y);
     size = new PVector(25, 25);
-    spriteLocation = "sprites/icons/buttons/moneyAdd/";
-    spriteOne = loadImage(spriteLocation + "000.png");
-    spriteTwo = loadImage(spriteLocation + "001.png");
+    spriteOne = spritesAnimH.get("moneyAddBT")[0];
+    spriteTwo = spritesAnimH.get("moneyAddBT")[1];
     sprite = spriteOne;
     actionTime = millis() + 100;
   }

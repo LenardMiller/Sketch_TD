@@ -22,7 +22,6 @@ class Selection{
       targetButton.active = false;
       repairButton.active = true;  
     }  
-    towerPortrait.active = true;
   }  
   void clickoff(){
     if (towers.size() < id+1){
@@ -30,7 +29,6 @@ class Selection{
       sellButton.active = false;
       targetButton.active = false;
       repairButton.active = false;
-      towerPortrait.active = false;
     }  
     else{
       Tower tower = towers.get(id);
@@ -39,7 +37,6 @@ class Selection{
         sellButton.active = false;
         targetButton.active = false;
         repairButton.active = false;
-        towerPortrait.active = false;
       }  
     }
   }  
@@ -64,7 +61,6 @@ class Selection{
       text("Slingshot", 800, 241);
       damage = 10;
       speed = 12;
-      towerPortrait.sprite = towerPortrait.portraits[0];
     }  
     else if (tower.name == "crossbow"){
       text("Crossbow", 800, 241);
@@ -73,9 +69,8 @@ class Selection{
       textFont(ETFont);
       textAlign(LEFT);
       fill(100,0,200);
-      text("Piercing",710,526 + x);
+      text("Piercing",710,376 + x);
       fill(0);
-      towerPortrait.sprite = towerPortrait.portraits[1];
     }  
     else if (tower.name == "randomCannon"){
       text("Random", 800, 241);
@@ -85,34 +80,29 @@ class Selection{
       textFont(ETFont);
       textAlign(LEFT);
       fill(100,0,200);
-      text("Random projectiles",710,526 + x);
-      text("Poison/fire/water",710,546 + x);
+      text("Random projectiles",710,376 + x);
+      text("Poison/fire/water",710,396 + x);
       fill(0);
-      towerPortrait.sprite = towerPortrait.portraits[2];
     }  
     else if (tower.name == "woodWall"){
       text("Wooden", 800, 241);
       text("Wall", 800, 266);
       x = 25;
-      towerPortrait.sprite = towerPortrait.portraits[15];
     }  
     else if (tower.name == "stoneWall"){
       text("Stone", 800, 241);
       text("Wall", 800, 266);
       x = 25;
-      towerPortrait.sprite = towerPortrait.portraits[16];
     }  
     else if (tower.name == "metalWall"){
       text("Metal", 800, 241);
       text("Wall", 800, 266);
       x = 25;
-      towerPortrait.sprite = towerPortrait.portraits[17];
     }  
     else if (tower.name == "crystalWall"){
       text("Crystal", 800, 241);
       text("Wall", 800, 266);
       x = 25;
-      towerPortrait.sprite = towerPortrait.portraits[18];
     }  
     else if (tower.name == "devWall"){
       text("Developer", 800, 241);
@@ -121,15 +111,8 @@ class Selection{
       textFont(ETFont);
       textAlign(LEFT);
       fill(100,0,200);
-      text("Invulnerable",710,446 + x);
+      text("Invulnerable",710,296 + x);
       fill(0);
-      towerPortrait.sprite = towerPortrait.portraits[30];
-    }  
-    if (x == 25){
-      towerPortrait.position.y = 288;
-    }  
-    else{
-      towerPortrait.position.y = 263;
     }  
     fill(255,25);
     stroke(255);
@@ -155,7 +138,7 @@ class Selection{
     if (!tower.turret){
       if (tower.twHP < tower.maxHP){
         fill(11,56,0);
-        text("$" + ceil(float(tower.price) - float(tower.value)), 800, 843);
+        text("$" + ceil(float(tower.price) - float(tower.value)), 800, 693);
       }
       else{
         fill(15);
@@ -169,41 +152,41 @@ class Selection{
     fill(0);
     textFont(ETFont);
     textAlign(LEFT);
-    text("Health: " + tower.twHP + "/" + tower.maxHP, 710, 426 + x);
+    text("Health: " + tower.twHP + "/" + tower.maxHP, 710, 276 + x);
     if (tower.turret){
       if (name == "randomCannon"){
-        text("Damage: 6/10/22", 710, 446 + x);
-        text("Low/medium acc.", 710, 506 + x);
+        text("Damage: 6/10/22", 710, 296 + x);
+        text("Low/medium acc.", 710, 356 + x);
       }
       else{
-        text("Damage: " + damage, 710, 446 + x);
+        text("Damage: " + damage, 710, 296 + x);
         if (tower.error < 1){
-          text("High accuracy", 710, 506 + x);
+          text("High accuracy", 710, 356 + x);
         }  
         else if (tower.error >= 1 && tower.error <= 3){
-          text("Medium accuracy", 710, 506 + x);
+          text("Medium accuracy", 710, 356 + x);
         }  
         else if (tower.error > 3){
-          text("Low accuracy", 710, 506 + x);
+          text("Low accuracy", 710, 356 + x);
         }  
       }
       if (speed < 8){
-          text("Low velocity", 710, 466 + x);
+          text("Low velocity", 710, 316 + x);
         }  
         else if (speed >= 8 && speed <= 18){
-          text("Medium velocity", 710, 466 + x);
+          text("Medium velocity", 710, 316 + x);
         }  
         else if (speed > 18){
-          text("High velocity", 710, 466 + x);
+          text("High velocity", 710, 316 + x);
         }  
       if (tower.delay > 3500){
-          text("Low firerate", 710, 486 + x);
+          text("Low firerate", 710, 336 + x);
         }  
         else if (tower.delay <= 3500 && tower.delay >= 1500){
-          text("Medium firerate", 710, 486 + x);
+          text("Medium firerate", 710, 336 + x);
         }  
         else if (tower.delay < 1500){
-          text("High firerate", 710, 486 + x);
+          text("High firerate", 710, 336 + x);
         }    
     }  
   }  

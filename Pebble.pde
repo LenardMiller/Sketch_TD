@@ -9,6 +9,6 @@ class Pebble extends Projectile{
     damage = 10;
     pierce = 1;
     this.angle = angle;
-    sprite = loadImage("sprites/projectiles/pebble.png");
+    sprite = spritesH.get("pebblePj");
   }  
 }  

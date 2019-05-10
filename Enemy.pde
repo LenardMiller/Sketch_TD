@@ -25,7 +25,7 @@ class Enemy {
     maxHP = 100; //HP <---------------------------
     enHP = maxHP;
     hitTime = 0;
-    sprite = loadImage("sprites/enemies/null20x20.png");
+    sprite = spritesH.get("nullEn");
     barTrans = 0;
     tintColor = 255;
     buffEffectTimers = new ArrayList<Integer>();

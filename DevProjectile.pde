@@ -9,7 +9,7 @@ class DevProjectile extends Projectile{
     damage = 9999;
     pierce = 9999;
     this.angle = angle;
-    sprite = loadImage("sprites/projectiles/devProjectile.png");
+    sprite = spritesH.get("devPj");
   }  
   @Override
    void collideEN(){
