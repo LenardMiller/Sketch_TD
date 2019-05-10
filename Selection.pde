@@ -152,7 +152,7 @@ class Selection{
     fill(0);
     textFont(ETFont);
     textAlign(LEFT);
-    text("Health: " + tower.twHP + "/" + tower.maxHP, 710, 426 + x);
+    text("Health: " + tower.twHP + "/" + tower.maxHP, 710, 276 + x);
     if (tower.turret){
       if (name == "randomCannon"){
         text("Damage: 6/10/22", 710, 446 + x);
