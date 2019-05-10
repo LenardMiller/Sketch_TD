@@ -1,93 +1,116 @@
-class Tower {
-  String name;
-  float angle;
-  int delay;
-  float error;
-  PVector position;
+class Hand{
+  String held;
+  PImage heldSprite;
   PVector size;
-  int maxHP;
-  int twHP;
-  boolean hit;
-  PImage sprite;
-  int barTrans;
-  int tintColor;
-  String debrisType;
-  int price;
-  int value;
-  boolean turret;
-  int priority;
-  Tower(float x, float y) {
-    name = "null";
-    position = new PVector(x, y);
-    size = new PVector(120, 37);
-    delay = 0;
-    error = 0;
-    this.maxHP = 1;
-    twHP = maxHP;
-    hit = false;
-    sprite = spritesH.get("nullWallTw");
-    barTrans = 255;
-    tintColor = 255;
-    debrisType = "null";
-    price = 0;
-    value = price;
-    turret = false;
+  boolean intersecting;
+  Hand(){
+    held = "null";
+    size = new PVector(25,25);
+    intersecting = false;
   }  
-  
-  void twMain(ArrayList<Tower> towers, int i){
-    if (twHP <= 0){
-       die();
-       towers.remove(i);
+  void hMain(){
+    checkPlaceable();
+    displayHeld();
+    if (mousePressed == true && !intersecting){
+      place();
     }  
-    value = floor((float(twHP)/float(maxHP))*price);
-    if (mousePressed && mouseX < position.x && mouseX > position.x-size.x && mouseY < position.y && mouseY > position.y-size.y && alive){
-      selection.swapSel(i);
-    }
-    display();
   }  
-  void display(){;   
-    if (hit){ //change to red if under attack
-      tintColor = 0;
-      hit = false;
-    } 
-    tint(255,tintColor,tintColor);
-    image(sprite,position.x-size.x,position.y-size.y);
-    tint(255);
-    if (twHP > 0){
-      HPBar();
-    }
-    if (tintColor < 255){
-      tintColor += 20;  
+  void checkPlaceable(){
+    if (!((10*(ceil(mouseX/10))) <= boardWidth-(size.x) && (10*(ceil(mouseX/10))) >= (size.x) && (10*(ceil(mouseY/10))) <= boardHeight-(size.y) && (10*(ceil(mouseY/10))) >= (size.y))){
+      intersecting = true;
+    }  
+    else{
+      intersecting = false;  
+    }  
+    for (int i = towers.size()-1; i >= 0; i--){
+      Tower tower = towers.get(i);
+      float dx = (tower.position.x - tower.size.x/2) - (10*(ceil(mouseX/10)));
+      float dy = (tower.position.y - tower.size.y/2) - (10*(ceil(mouseY/10)));
+      if (dy < size.y + tower.size.y/2 && dy > -(tower.size.y/2) - size.y && dx < size.x + tower.size.x/2 && dx > -(tower.size.x/2) - size.x){ //if touching tower
+        intersecting = true;
+      }
+    }  
+  }  
+  void displayHeld(){
+    if (held != "null" && alive){
+      if (intersecting){
+        tint(255, 0, 0, 150);
+      }  
+      else{
+        tint(255,150);  
+      }  
+      image(heldSprite,(10*(ceil(mouseX/10)))-(size.x),(10*(ceil(mouseY/10)))-(size.y));
+      tint(255);
     }  
   }
-  
-  void collideEN(int dangerLevel){ //if it touches an enemy, animate and loose health
-    twHP -= dangerLevel;
-    hit = true;
-    barTrans = 255;
-    int num = round(random(1,3));
-    for (int i = num; i >= 0; i--){
-      particles.add(new Debris((position.x-size.x/2)+random((size.x/2)*-1,size.x/2), (position.y-size.y/2)+random((size.y/2)*-1,size.y/2), random(0,360), debrisType));
-    }
-  }  
-  
-  void die(){
-    int num = round(random(30,50));
-    for (int i = num; i >= 0; i--){
-      particles.add(new Debris((position.x-size.x/2)+random((size.x/2)*-1,size.x/2), (position.y-size.y/2)+random((size.y/2)*-1,size.y/2), random(0,360), debrisType));
-    }
+  void setHeld(String setHeld){
+     if (setHeld == "slingshot"){
+       heldSprite = spritesH.get("slingshotFullTR");
+       size = new PVector(25,25);
+       held = setHeld;
+     }  
+     else if (setHeld == "crossbow"){
+       heldSprite = spritesH.get("crossbowFullTR");
+       size = new PVector(27,27);
+       held = setHeld;
+     }  
+     else if (setHeld == "randomCannon"){
+       heldSprite = spritesH.get("randomCannonFullTR");
+       size = new PVector(25,25);
+       held = setHeld;
+     }  
+     else if (setHeld == "woodWall"){
+       heldSprite = spritesH.get("woodWallTW"); 
+       size = new PVector(60,18.5);
+       held = setHeld;
+     }  
+     else if (setHeld == "stoneWall"){
+       heldSprite = spritesH.get("stoneWallTW");
+       size = new PVector(60,18.5);
+       held = setHeld;
+     }  
+     else if (setHeld == "metalWall"){
+       heldSprite = spritesH.get("metalWallTW");
+       size = new PVector(60,18.5);
+       held = setHeld;
+     }  
+     else if (setHeld == "crystalWall"){
+       heldSprite = spritesH.get("crystalWallTW");
+       size = new PVector(60,18.5);
+       held = setHeld;
+     }  
+     else if (setHeld == "null"){
+       held = "null";  
+     }  
   }
-  
-  void HPText(){ //displays the towers health
-    text(twHP, position.x-size.x/2, position.y + size.y/4);
-  }
-  
-  void HPBar(){
-    fill(0,255,0,barTrans);
-    if (barTrans > 0 && twHP > maxHP/2){
-      barTrans--;
+  void place(){
+    if (held == "slingshot" && money >= 50 && alive){
+      money -= 50;
+      towers.add(new Slingshot((10*(ceil(mouseX/10)))+(25),(10*(ceil(mouseY/10)))+(25)));
     }  
-    noStroke();
-    rect(position.x-size.x, position.y + size.y/4, (size.x)*(((float) twHP)/((float) maxHP)), -6);
+    else if (held == "crossbow" && money >= 100 && alive){
+      money -= 100;
+      towers.add(new Crossbow((10*(ceil(mouseX/10)))+(27),(10*(ceil(mouseY/10)))+(27)));
+    }  
+    else if (held == "randomCannon" && money >= 100 && alive){
+      money -= 100;
+      towers.add(new RandomCannon((10*(ceil(mouseX/10)))+(25),(10*(ceil(mouseY/10)))+(25)));
+    }  
+    else if (held == "woodWall" && money >= 25 && alive){
+      money -= 25;
+      towers.add(new WoodWall((10*(ceil(mouseX/10)))+(60),(10*(ceil(mouseY/10)))+(18.5)));
+    }  
+    else if (held == "stoneWall" && money >= 75 && alive){
+      money -= 75;
+      towers.add(new StoneWall((10*(ceil(mouseX/10)))+(60),(10*(ceil(mouseY/10)))+(18.5)));
+    }  
+    else if (held == "metalWall" && money >= 175 && alive){
+      money -= 175;
+      towers.add(new MetalWall((10*(ceil(mouseX/10)))+(60),(10*(ceil(mouseY/10)))+(18.5)));
+    }  
+    else if (held == "crystalWall" && money >= 175 && alive){
+      money -= 400;
+      towers.add(new CrystalWall((10*(ceil(mouseX/10)))+(60),(10*(ceil(mouseY/10)))+(18.5)));
+    }  
   }  
-}  
+}
