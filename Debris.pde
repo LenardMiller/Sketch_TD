@@ -10,6 +10,9 @@ class Debris extends Particle{
     lifespan = 100; //in milliseconds, default: 100
     lifespan += (round(random((-lifespan)+20,lifespan))); //injects 100% randomness so all don't die at once
     numFrames = 1;
+    animated = false;
+    delay = lifespan/numFrames;
+    delayTime = millis() + delay;
     sprite = spritesH.get(type + "Pt");
     velocity = PVector.fromAngle(angle-HALF_PI);
   }  
