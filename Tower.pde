@@ -25,7 +25,7 @@ class Tower {
     this.maxHP = 1;
     twHP = maxHP;
     hit = false;
-    sprite = spritesH.get("nullWallTw");
+    sprite = spritesH.get("nullWallTW");
     barTrans = 255;
     tintColor = 255;
     debrisType = "null";
