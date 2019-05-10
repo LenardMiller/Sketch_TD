@@ -7,7 +7,7 @@ class WoodWall extends Tower{
     maxHP = 50;
     twHP = maxHP;
     hit = false;
-    sprite = spritesH.get("woodWallTw");
+    sprite = spritesH.get("woodWallTW");
     debrisType = "wood";
     price = 25;
     value = price;
