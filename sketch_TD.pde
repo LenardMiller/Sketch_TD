@@ -1,3 +1,5 @@
+import java.util.Map;
+
 Enemy enemy;
 ArrayList<Enemy> enemies;
 EnemyTracker enTrak;
@@ -15,7 +17,6 @@ Icon targetButton;
 Icon repairButton;
 Hand hand;
 Selection selection;
-TowerPortrait towerPortrait;
 int backRed = 25;
 int redSpeed = 8;
 float enSize;
@@ -30,6 +31,9 @@ boolean alive = true;
 int money = 6000;
 int boardWidth = 700;
 int boardHeight = 900;
+//images
+HashMap<String,PImage> spritesH = new HashMap<String,PImage>();
+HashMap<String,PImage[]> spritesAnimH = new HashMap<String,PImage[]>();
 
 void settings(){
   size(900, 900);
@@ -50,16 +54,174 @@ void setup(){
   TFFont = createFont("STHeitiSC-Light", 24);
   ETFont = createFont("STHeitiSC-Light", 18);
   TWFont = createFont("STHeitiSC-Light", 12);
+  loadSprites();
+  loadSpritesAnim();
   gui();
 }
+
+void loadSprites(){
+  spritesH.put("devEn",loadImage("sprites/enemies/dev.png"));
+  spritesH.put("nullEn",loadImage("sprites/enemies/null.png"));
+  spritesH.put("livesIc",loadImage("sprites/icons/lives.png"));
+  spritesH.put("moneyIc",loadImage("sprites/icons/money.png"));
+  spritesH.put("nullIc",loadImage("sprites/icons/null.png"));
+  spritesH.put("crystalPt",loadImage("sprites/particles/debris/crystal.png"));
+  spritesH.put("devWoodPt",loadImage("sprites/particles/debris/devWood.png"));
+  spritesH.put("metalPt",loadImage("sprites/particles/debris/metal.png"));
+  spritesH.put("stonePt",loadImage("sprites/particles/debris/stone.png"));
+  spritesH.put("woodPt",loadImage("sprites/particles/debris/wood.png"));
+  spritesH.put("nullPt",loadImage("sprites/particles/null/null.png"));
+  spritesH.put("acidPj",loadImage("sprites/projectiles/acid.png"));
+  spritesH.put("boltPj",loadImage("sprites/projectiles/bolt.png"));
+  spritesH.put("devPj",loadImage("sprites/projectiles/dev.png"));
+  spritesH.put("nullPj",loadImage("sprites/projectiles/null.png"));
+  spritesH.put("pebblePj",loadImage("sprites/projectiles/pebble.png"));
+  spritesH.put("urchinPj",loadImage("sprites/projectiles/urchin.png"));
+  spritesH.put("waterballPj",loadImage("sprites/projectiles/waterball.png"));
+  spritesH.put("crossbowBaseTR",loadImage("sprites/towers/turrets/crossbow/base.png"));
+  spritesH.put("crossbowFullTR",loadImage("sprites/towers/turrets/crossbow/full.png"));
+  spritesH.put("crossbowIdleTR",loadImage("sprites/towers/turrets/crossbow/idle.png"));
+  spritesH.put("miscCannonBaseTR",loadImage("sprites/towers/turrets/miscCannon/base.png"));
+  spritesH.put("miscCannonFullTR",loadImage("sprites/towers/turrets/miscCannon/full.png"));
+  spritesH.put("miscCannonIdleTR",loadImage("sprites/towers/turrets/miscCannon/idle.png"));
+  spritesH.put("slingshotBaseTR",loadImage("sprites/towers/turrets/slingshot/base.png"));
+  spritesH.put("slingshotFullTR",loadImage("sprites/towers/turrets/slingshot/full.png"));
+  spritesH.put("slingshotIdleTR",loadImage("sprites/towers/turrets/slingshot/idle.png"));
+  spritesH.put("crystalWallTW",loadImage("sprites/towers/walls/crystal.png"));
+  spritesH.put("devWallTW",loadImage("sprites/towers/walls/dev.png"));
+  spritesH.put("metalWallTW",loadImage("sprites/towers/walls/metal.png"));
+  spritesH.put("nullWallTW",loadImage("sprites/towers/walls/null.png"));
+  spritesH.put("stoneWallTW",loadImage("sprites/towers/walls/stone.png"));
+  spritesH.put("woodWallTW",loadImage("sprites/towers/walls/wood.png"));
+  spritesH.put("slingshotFullTR",loadImage("sprites/towers/turrets/slingshot/full.png"));
+  spritesH.put("slingshotIdleTR",loadImage("sprites/towers/turrets/slingshot/idle.png"));
+  spritesH.put("slingshotBaseTR",loadImage("sprites/towers/turrets/slingshot/base.png"));
+  spritesH.put("crossbowFullTR",loadImage("sprites/towers/turrets/crossbow/full.png"));
+  spritesH.put("crossbowIdleTR",loadImage("sprites/towers/turrets/crossbow/idle.png"));
+  spritesH.put("crossbowBaseTR",loadImage("sprites/towers/turrets/crossbow/base.png"));
+  spritesH.put("randomCannonFullTR",loadImage("sprites/towers/turrets/miscCannon/full.png"));
+  spritesH.put("randomCannonIdleTR",loadImage("sprites/towers/turrets/miscCannon/idle.png"));
+  spritesH.put("randomCannonBaseTR",loadImage("sprites/towers/turrets/miscCannon/base.png"));
+}  
+
+void loadSpritesAnim(){
+  spritesAnimH.put("livesAddBT",new PImage[2]);
+  for (int i = 1; i >= 0; i--){
+    spritesAnimH.get("livesAddBT")[i] = loadImage("sprites/icons/buttons/livesAdd/" + nf(i,3) + ".png");
+  }  
+  spritesAnimH.put("moneyAddBT",new PImage[2]);
+  for (int i = 1; i >= 0; i--){
+    spritesAnimH.get("moneyAddBT")[i] = loadImage("sprites/icons/buttons/moneyAdd/" + nf(i,3) + ".png");
+  }  
+  spritesAnimH.put("nullBT",new PImage[2]);
+  for (int i = 1; i >= 0; i--){
+    spritesAnimH.get("nullBT")[i] = loadImage("sprites/icons/buttons/null/" + nf(i,3) + ".png");
+  }  
+  spritesAnimH.put("repairBT",new PImage[4]);
+  for (int i = 3; i >= 0; i--){
+    spritesAnimH.get("repairBT")[i] = loadImage("sprites/icons/buttons/repairButton/" + nf(i,3) + ".png");
+  }  
+  spritesAnimH.put("sellTowerBT",new PImage[2]);
+  for (int i = 1; i >= 0; i--){
+    spritesAnimH.get("sellTowerBT")[i] = loadImage("sprites/icons/buttons/sellTower/" + nf(i,3) + ".png");
+  }  
+  spritesAnimH.put("targetPriorityBT",new PImage[2]);
+  for (int i = 1; i >= 0; i--){
+    spritesAnimH.get("targetPriorityBT")[i] = loadImage("sprites/icons/buttons/targetPriority/" + nf(i,3) + ".png");
+  }  
+  //spritesAnimH.put("towerBuyBT",new PImage[2]);
+  //for (int i = 1; i >= 0; i--){
+  //  spritesAnimH.get("towerBuyBT")[i] = loadImage("sprites/icons/buttons/towerBuy/" + nf(i,3) + ".png");
+  //}  
+  spritesAnimH.put("towerTabSwitchBT",new PImage[2]);
+  for (int i = 1; i >= 0; i--){
+    spritesAnimH.get("towerTabSwitchBT")[i] = loadImage("sprites/icons/buttons/towerTabSwitch/" + nf(i,3) + ".png");
+  }  
+  spritesAnimH.put("fireBuffPT",new PImage[8]);
+  for (int i = 7; i >= 0; i--){
+    spritesAnimH.get("fireBuffPT")[i] = loadImage("sprites/particles/buff/fire/" + nf(i,3) + ".png");
+  }  
+  spritesAnimH.put("poisonBuffPT",new PImage[8]);
+  for (int i = 7; i >= 0; i--){
+    spritesAnimH.get("poisonBuffPT")[i] = loadImage("sprites/particles/buff/poison/" + nf(i,3) + ".png");
+  }  
+  spritesAnimH.put("waterBuffPT",new PImage[8]);
+  for (int i = 7; i >= 0; i--){
+    spritesAnimH.get("waterBuffPT")[i] = loadImage("sprites/particles/buff/water/" + nf(i,3) + ".png");
+  }  
+  spritesAnimH.put("greenOuchEnemyPT",new PImage[11]);
+  for (int i = 10; i >= 0; i--){
+    spritesAnimH.get("greenOuchEnemyPT")[i] = loadImage("sprites/particles/enemy/greenOuch/" + nf(i,3) + ".png");
+  }  
+  spritesAnimH.put("greyPuffEnemyPT",new PImage[11]);
+  for (int i = 10; i >= 0; i--){
+    spritesAnimH.get("greyPuffEnemyPT")[i] = loadImage("sprites/particles/enemy/greyPuff/" + nf(i,3) + ".png");
+  }  
+  spritesAnimH.put("pinkOuchEnemyPT",new PImage[11]);
+  for (int i = 10; i >= 0; i--){
+    spritesAnimH.get("pinkOuchEnemyPT")[i] = loadImage("sprites/particles/enemy/pinkOuch/" + nf(i,3) + ".png");
+  }  
+  spritesAnimH.put("redOuchEnemyPT",new PImage[11]);
+  for (int i = 10; i >= 0; i--){
+    spritesAnimH.get("redOuchEnemyPT")[i] = loadImage("sprites/particles/enemy/redOuch/" + nf(i,3) + ".png");
+  }  
+  spritesAnimH.put("miscPJ",new PImage[6]);
+  for (int i = 5; i >= 0; i--){
+    spritesAnimH.get("miscPJ")[i] = loadImage("sprites/projectiles/misc/" + nf(i,3) + ".png");
+  }  
+  spritesAnimH.put("slingshotFireTR",new PImage[34]);
+  for (int i = 33; i >= 0; i--){
+    spritesAnimH.get("slingshotFireTR")[i] = loadImage("sprites/towers/turrets/slingshot/fire/fire" + nf(i,3) + ".png");
+  }  
+  spritesAnimH.put("slingshotLoadTR",new PImage[59]);
+  for (int i = 58; i >= 0; i--){
+    spritesAnimH.get("slingshotLoadTR")[i] = loadImage("sprites/towers/turrets/slingshot/load/load" + nf(i,3) + ".png");
+  }  
+  spritesAnimH.put("crossbowFireTR",new PImage[13]);
+  for (int i = 12; i >= 0; i--){
+    spritesAnimH.get("crossbowFireTR")[i] = loadImage("sprites/towers/turrets/crossbow/fire/fire" + nf(i,3) + ".png");
+  }  
+  spritesAnimH.put("crossbowLoadTR",new PImage[81]);
+  for (int i = 80; i >= 0; i--){
+    spritesAnimH.get("crossbowLoadTR")[i] = loadImage("sprites/towers/turrets/crossbow/load/load" + nf(i,3) + ".png");
+  }  
+  spritesAnimH.put("randomCannonFireAcidTR",new PImage[12]);
+  for (int i = 11; i >= 0; i--){
+    spritesAnimH.get("randomCannonFireAcidTR")[i] = loadImage("sprites/towers/turrets/miscCannon/fire/acid/fire" + nf(i/2,3) + ".png");
+    i--;
+    spritesAnimH.get("randomCannonFireAcidTR")[i] = loadImage("sprites/towers/turrets/miscCannon/fire/acid/fire" + nf(i/2,3) + ".png");
+  }  
+  spritesAnimH.put("randomCannonFireMiscTR",new PImage[12]);
+  for (int i = 11; i >= 0; i--){
+    spritesAnimH.get("randomCannonFireMiscTR")[i] = loadImage("sprites/towers/turrets/miscCannon/fire/misc/fire" + nf(i/2,3) + ".png");
+    i--;
+    spritesAnimH.get("randomCannonFireMiscTR")[i] = loadImage("sprites/towers/turrets/miscCannon/fire/misc/fire" + nf(i/2,3) + ".png");
+  }  
+  spritesAnimH.put("randomCannonFireUrchinTR",new PImage[12]);
+  for (int i = 11; i >= 0; i--){
+    spritesAnimH.get("randomCannonFireUrchinTR")[i] = loadImage("sprites/towers/turrets/miscCannon/fire/urchin/fire" + nf(i/2,3) + ".png");
+    i--;
+    spritesAnimH.get("randomCannonFireUrchinTR")[i] = loadImage("sprites/towers/turrets/miscCannon/fire/urchin/fire" + nf(i/2,3) + ".png");
+  }  
+  spritesAnimH.put("randomCannonFireWaterTR",new PImage[12]);
+  for (int i = 11; i >= 0; i--){
+    spritesAnimH.get("randomCannonFireWaterTR")[i] = loadImage("sprites/towers/turrets/miscCannon/fire/water/fire" + nf(i/2,3) + ".png");
+    i--;
+    spritesAnimH.get("randomCannonFireWaterTR")[i] = loadImage("sprites/towers/turrets/miscCannon/fire/water/fire" + nf(i/2,3) + ".png");
+  }  
+  spritesAnimH.put("randomCannonLoadTR",new PImage[34]);
+  for (int i = 33; i >= 0; i--){
+    spritesAnimH.get("randomCannonLoadTR")[i] = loadImage("sprites/towers/turrets/miscCannon/load/load" + nf(i,3) + ".png");
+  }  
+}  
 
 void gui(){ //gui icons & buttons
   //add money & add lives buttons
   icons.add(new AddHPButton(boardWidth + 22.5,17.5,"null",true));
   icons.add(new AddMoneyButton(boardWidth + 22.5,47.5,"null",true));
   //money and lives icons
-  icons.add(new Icon(boardWidth + 57.5, 17.5,"lives",true));
-  icons.add(new Icon(boardWidth + 57.5, 47.5,"money",true));
+  icons.add(new Icon(boardWidth + 57.5, 17.5,"livesIc",true));
+  icons.add(new Icon(boardWidth + 57.5, 47.5,"moneyIc",true));
   //buy tower buttons tab 1 (4-18)
   icons.add(new TowerBuy(boardWidth + 21.5, 87,"slingshot",false)); //row 1
   icons.add(new TowerBuy(boardWidth + 60.5, 87,"crossbow",false));
@@ -94,8 +256,6 @@ void gui(){ //gui icons & buttons
   icons.add(new TowerBuy(boardWidth + 179.5, 167,"null",true));
   //switch tower tab button
   towerTabButton = new TowerTabButton(800,198,"null",true);
-  //tower portrait
-  towerPortrait = new TowerPortrait(722.5,263,"null",false);
   //sell tower button
   sellButton = new SellTower(800,877.5,"null",false);
   //target priority button
@@ -135,7 +295,6 @@ void drawGuiObjects(ArrayList<Tower> towers, ArrayList<Icon> icons){
     sellButton.active = false;  
     targetButton.active = false;
     repairButton.active = false;
-    towerPortrait.active = false;
   }  
   //switch tower tab button, jumps to ucMain
   towerTabButton.icMain(icons, 0);
@@ -149,8 +308,6 @@ void drawGuiObjects(ArrayList<Tower> towers, ArrayList<Icon> icons){
   if (towers.size() != 0){
     selection.sMain();
   }
-  //tower protrait
-  towerPortrait.icMain(icons, 0);
   //icons, jumps to icMain
   for (int i = icons.size()-1; i >= 0; i--){
     Icon icon = icons.get(i);
@@ -265,7 +422,7 @@ void spawnKeys(){
   //particle form: spawn x, spawn y, angle
   if (keyPressed == true && key == 'z' && alive){ //hurt
     int num = round(random(0,2));
-    String type = "null";
+    String type = "redOuch";
     if (num == 0){
       type = "redOuch";
     } 
@@ -302,7 +459,7 @@ void spawnKeys(){
   }  
   if (keyPressed == true && key == 'v' && alive){ //buff
     int num = round(random(0,2));
-    String type = "null";
+    String type = "poison";
     if (num == 0){
       type = "poison";
     } 
