@@ -24,7 +24,10 @@ class Buff{
     }  
   }  
   void effect(){
-    println(enId);  
+    if (millis() > effectTimer){
+      print(enId + " ");  
+      effectTimer = millis() + effectDelay;
+    }  
   }  
   void display(){
     Enemy enemy = enemies.get(enId);
