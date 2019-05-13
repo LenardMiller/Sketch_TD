@@ -7,7 +7,7 @@ class Buff{
   int enId;
   Buff(int enId){
     effectDelay = 1000; //milliseconds
-    effectTimer = 0;
+    effectTimer = millis() + effectDelay;
     lifeDuration = 10 * 1000; //seconds * 1000
     lifeTimer = millis() + lifeDuration;
     particle = "null";
@@ -16,6 +16,7 @@ class Buff{
   void bMain(int i){
     live(i);
     effect();
+    display();
   }  
   void live(int id){
     if (millis() > lifeTimer){
@@ -24,5 +25,12 @@ class Buff{
   }  
   void effect(){
     println(enId);  
+  }  
+  void display(){
+    Enemy enemy = enemies.get(enId);
+    int num = round(random(0,8));
+    if (num == 0){
+      particles.add(new Particle(enemy.position.x+2.5+random((enemy.size.x/2)*-1,(enemy.size.x/2)), enemy.position.y+2.5+random((enemy.size.x/2)*-1,(enemy.size.x/2)), random(0,360))); 
+    }  
   }  
 }  
