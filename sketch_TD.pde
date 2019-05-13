@@ -11,6 +11,8 @@ Particle particle;
 ArrayList<Particle> particles;
 Icon icon;
 ArrayList<Icon> icons;
+Buff buff;
+ArrayList<Buff> buffs;
 Icon towerTabButton;
 Icon sellButton;
 Icon targetButton;
@@ -47,6 +49,7 @@ void setup(){
   projectiles = new ArrayList<Projectile>();
   particles = new ArrayList<Particle>();
   icons = new ArrayList<Icon>();
+  buffs = new ArrayList<Buff>();
   hand = new Hand();
   selection = new Selection();
   //loads font (default STHeitiSC-Light)
@@ -274,7 +277,7 @@ void draw(){
   debugKeys();
   spawnKeys();
   //self explanitory
-  drawObjects(enemies,projectiles,towers,particles);
+  drawObjects(enemies,projectiles,towers,particles,buffs);
   //bg part 2: red (TODO: put in own function)
   if (backRed < 25 ){
         backRed = 25;
@@ -315,7 +318,7 @@ void drawGuiObjects(ArrayList<Tower> towers, ArrayList<Icon> icons){
   }
 }  
 
-void drawObjects(ArrayList <Enemy> enemies, ArrayList<Projectile> projectiles, ArrayList<Tower> towers, ArrayList<Particle> particles){ 
+void drawObjects(ArrayList <Enemy> enemies, ArrayList<Projectile> projectiles, ArrayList<Tower> towers, ArrayList<Particle> particles, ArrayList<Buff> buffs){ 
   //enemy tracker, jumps to entMain
   enTrak.entMain(enemies);
   //towers, jumps to twMain
@@ -337,6 +340,11 @@ void drawObjects(ArrayList <Enemy> enemies, ArrayList<Projectile> projectiles, A
   for (int i = particles.size()-1; i >= 0; i--){
     Particle particle = particles.get(i);
     particle.ptMain(particles, i);
+  }  
+  //buffs, jumps to bMain
+  for (int i = buffs.size()-1; i >= 0; i--){
+    Buff buff = buffs.get(i);
+    buff.bMain(i);
   }  
   //currently held, jumps to hMain
   hand.hMain();
