@@ -132,10 +132,6 @@ void loadSpritesAnim(){
   for (int i = 1; i >= 0; i--){
     spritesAnimH.get("targetPriorityBT")[i] = loadImage("sprites/icons/buttons/targetPriority/" + nf(i,3) + ".png");
   }  
-  //spritesAnimH.put("towerBuyBT",new PImage[2]);
-  //for (int i = 1; i >= 0; i--){
-  //  spritesAnimH.get("towerBuyBT")[i] = loadImage("sprites/icons/buttons/towerBuy/" + nf(i,3) + ".png");
-  //}  
   spritesAnimH.put("towerTabSwitchBT",new PImage[2]);
   for (int i = 1; i >= 0; i--){
     spritesAnimH.get("towerTabSwitchBT")[i] = loadImage("sprites/icons/buttons/towerTabSwitch/" + nf(i,3) + ".png");
@@ -151,6 +147,10 @@ void loadSpritesAnim(){
   spritesAnimH.put("waterBuffPT",new PImage[8]);
   for (int i = 7; i >= 0; i--){
     spritesAnimH.get("waterBuffPT")[i] = loadImage("sprites/particles/buff/water/" + nf(i,3) + ".png");
+  }  
+  spritesAnimH.put("nullBuffPT",new PImage[8]);
+  for (int i = 7; i >= 0; i--){
+    spritesAnimH.get("nullBuffPT")[i] = loadImage("sprites/particles/buff/null/" + nf(i,3) + ".png");
   }  
   spritesAnimH.put("greenOuchEnemyPT",new PImage[11]);
   for (int i = 10; i >= 0; i--){
