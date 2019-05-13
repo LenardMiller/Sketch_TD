@@ -515,4 +515,8 @@ void keyReleased() {
   if (key == '0' && alive){ //null enemy
     enemies.add(new Enemy(mouseX,mouseY));
   }  
+  //buff form: enemy id
+  if (key == '/' && alive){ //null buff
+    buffs.add(new Buff(int(random(0,enemies.size()))));
+  }  
 }  
