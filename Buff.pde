@@ -30,7 +30,7 @@ class Buff{
     Enemy enemy = enemies.get(enId);
     int num = round(random(0,8));
     if (num == 0){
-      particles.add(new Particle(enemy.position.x+2.5+random((enemy.size.x/2)*-1,(enemy.size.x/2)), enemy.position.y+2.5+random((enemy.size.x/2)*-1,(enemy.size.x/2)), random(0,360))); 
+      particles.add(new BuffPt(enemy.position.x+2.5+random((enemy.size.x/2)*-1,(enemy.size.x/2)), enemy.position.y+2.5+random((enemy.size.x/2)*-1,(enemy.size.x/2)), random(0,360), particle)); 
     }  
   }  
 }  
