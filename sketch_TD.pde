@@ -395,6 +395,7 @@ void debugKeys(){
   //kill all enemies: s
   if (keyPressed == true && key == 's' && alive){
     enemies = new ArrayList <Enemy>();
+    buffs = new ArrayList <Buff>();
   }
   
   //kill all towers: d
