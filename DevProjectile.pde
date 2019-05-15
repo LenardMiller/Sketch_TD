@@ -18,6 +18,12 @@ class DevProjectile extends Projectile{
         Enemy enemy = enemies.get(i);
         if (abs(enemy.position.x-position.x) <= (radius + enemy.radius) && abs(enemy.position.y-position.y) <= (radius + enemy.radius)){
           enemies.remove(i); //straight up obliterates the hit enemy
+          for (int j = buffs.size()-1; j >= 0; j--){
+            Buff buff = buffs.get(j);
+            if (buff.enId == i){
+              buffs.remove(j);  
+            }  
+          }  
           hitTime = millis() + 0; 
           pierce -= 1;
           if (pierce <= 0) {
