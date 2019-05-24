@@ -15,19 +15,19 @@ class Buff{
   }  
   void bMain(int i){
     live(i);
-    effect();
+    if (millis() > effectTimer){
+      effect();
+      effectTimer = millis() + effectDelay;
+    }  
     display();
   }  
-  void live(int id){
+  void live(int i){
     if (millis() > lifeTimer){
-      buffs.remove(id);  
+      buffs.remove(i);  
     }  
   }  
   void effect(){
-    if (millis() > effectTimer){
-      print(enId + " ");  
-      effectTimer = millis() + effectDelay;
-    }  
+    print(enId + " ");   
   }  
   void display(){
     Enemy enemy = enemies.get(enId);
