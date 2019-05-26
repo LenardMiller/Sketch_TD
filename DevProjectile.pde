@@ -16,10 +16,10 @@ class DevProjectile extends Projectile{
     if (millis() > hitTime){
       for (int i = enemies.size()-1; i >= 0; i--){
         Enemy enemy = enemies.get(i);
-        if (abs(enemy.position.x-position.x) <= (radius + enemy.radius) && abs(enemy.position.y-position.y) <= (radius + enemy.radius)){
+        if (abs(enemy.position.x-position.x) <= (radius + enemy.radius) && abs(enemy.position.y-position.y) <= (radius + enemy.radius)){ //touching enemy
           enemies.remove(i); //straight up obliterates the hit enemy
           for (int j = buffs.size()-1; j >= 0; j--){
-            Buff buff = buffs.get(j);
+            Buff buff = buffs.get(j); //gets rid of the buffs that enemy had
             if (buff.enId == i){
               buffs.remove(j);  
             }  
