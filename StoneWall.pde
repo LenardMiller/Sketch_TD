@@ -4,8 +4,8 @@ class StoneWall extends Tower{
     name = "stoneWall";
     position = new PVector(x,y);
     size = new PVector(120,37);
-    maxHP = 125;
-    twHP = maxHP;
+    maxHp = 125;
+    twHp = maxHp;
     hit = false;
     sprite = spritesH.get("stoneWallTW");
     debrisType = "stone";
