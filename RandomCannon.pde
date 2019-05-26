@@ -10,8 +10,8 @@ class RandomCannon extends Turret{
     name = "randomCannon";
     position = new PVector(x,y);
     size = new PVector(50,50);
-    maxHP = 20;
-    twHP = maxHP;
+    maxHp = 20;
+    twHp = maxHp;
     hit = false;
     delay = 3000; //default: 3000 milliseconds
     delay += (round(random(-(delay/10),delay/10))); //injects 10% randomness so all don't fire at once
@@ -48,7 +48,7 @@ class RandomCannon extends Turret{
     PVector spa = PVector.fromAngle(angle-HALF_PI);
     spa.setMag(20);
     spp.add(spa);
-    if (projectile <= miscChance){
+    if (projectile <= miscChance){ //chooses projectile to fire randomly
       error = miscError;
       projectiles.add(new MiscProjectile(spp.x,spp.y, angle, round(random(0,5))));
     }
@@ -66,7 +66,7 @@ class RandomCannon extends Turret{
     }
     else{ //just in case
       error = miscError;
-      projectiles.add(new MiscProjectile(spp.x,spp.y, angle, round(random(0,5))));
+      projectiles.add(new MiscProjectile(spp.x,spp.y,angle,floor(random(0,6.9)))); //idk if it will ever choose the max, but I don't want to risk that
     }
   }  
   void loadSprites(){
@@ -85,7 +85,7 @@ class RandomCannon extends Turret{
     else if (spriteType == 1){ //fire
       if (frame < numFireFrames-1){ //if not done, keep going
         frame++;
-        if (projectile <= miscChance){
+        if (projectile <= miscChance){ //all different firing animations
           sprite = fireFramesMisc[frame];
         }
         else if (projectile == miscChance+1){
@@ -124,8 +124,8 @@ class RandomCannon extends Turret{
       hit = false;
     }  
    image(sBase,position.x-size.x,position.y-size.y);
-   if (twHP > 0){
-      HPBar();
+   if (twHp > 0){
+      HpBar();
     }
    pushMatrix();
    translate(position.x-size.x/2,position.y-size.y/2);
