@@ -30,7 +30,7 @@ PFont ETFont;
 PFont TWFont;
 int Hp = 200;
 boolean alive = true;
-int money = 200;
+int money = 2000;
 int boardWidth = 700;
 int boardHeight = 900;
 HashMap<String,PImage> spritesH = new HashMap<String,PImage>();
