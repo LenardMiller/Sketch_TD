@@ -77,7 +77,7 @@ class Projectile {
       for (int i = enemies.size()-1; i >= 0; i--){
         Enemy enemy = enemies.get(i);
         if (abs(enemy.position.x-position.x) <= (radius + enemy.radius) && abs(enemy.position.y-position.y) <= (radius + enemy.radius) && pierce > 0){
-          enemy.collidePJ(damage,buff);
+          enemy.collidePJ(damage,buff,i);
           hitTime = millis() + 100; 
           pierce--;
         }            

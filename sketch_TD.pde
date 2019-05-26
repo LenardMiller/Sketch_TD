@@ -1,3 +1,4 @@
+//THIS REALLY NEEDS TO BE ORGANIZED
 import java.util.Map;
 
 Enemy enemy;
@@ -11,6 +12,8 @@ Particle particle;
 ArrayList<Particle> particles;
 Icon icon;
 ArrayList<Icon> icons;
+Buff buff;
+ArrayList<Buff> buffs;
 Icon towerTabButton;
 Icon sellButton;
 Icon targetButton;
@@ -47,6 +50,7 @@ void setup(){
   projectiles = new ArrayList<Projectile>();
   particles = new ArrayList<Particle>();
   icons = new ArrayList<Icon>();
+  buffs = new ArrayList<Buff>();
   hand = new Hand();
   selection = new Selection();
   //loads font (default STHeitiSC-Light)
@@ -129,10 +133,6 @@ void loadSpritesAnim(){
   for (int i = 1; i >= 0; i--){
     spritesAnimH.get("targetPriorityBT")[i] = loadImage("sprites/icons/buttons/targetPriority/" + nf(i,3) + ".png");
   }  
-  //spritesAnimH.put("towerBuyBT",new PImage[2]);
-  //for (int i = 1; i >= 0; i--){
-  //  spritesAnimH.get("towerBuyBT")[i] = loadImage("sprites/icons/buttons/towerBuy/" + nf(i,3) + ".png");
-  //}  
   spritesAnimH.put("towerTabSwitchBT",new PImage[2]);
   for (int i = 1; i >= 0; i--){
     spritesAnimH.get("towerTabSwitchBT")[i] = loadImage("sprites/icons/buttons/towerTabSwitch/" + nf(i,3) + ".png");
@@ -148,6 +148,10 @@ void loadSpritesAnim(){
   spritesAnimH.put("waterBuffPT",new PImage[8]);
   for (int i = 7; i >= 0; i--){
     spritesAnimH.get("waterBuffPT")[i] = loadImage("sprites/particles/buff/water/" + nf(i,3) + ".png");
+  }  
+  spritesAnimH.put("nullBuffPT",new PImage[8]);
+  for (int i = 7; i >= 0; i--){
+    spritesAnimH.get("nullBuffPT")[i] = loadImage("sprites/particles/buff/null/" + nf(i,3) + ".png");
   }  
   spritesAnimH.put("greenOuchEnemyPT",new PImage[11]);
   for (int i = 10; i >= 0; i--){
@@ -274,7 +278,7 @@ void draw(){
   debugKeys();
   spawnKeys();
   //self explanitory
-  drawObjects(enemies,projectiles,towers,particles);
+  drawObjects(enemies,projectiles,towers,particles,buffs);
   //bg part 2: red (TODO: put in own function)
   if (backRed < 25 ){
         backRed = 25;
@@ -315,7 +319,7 @@ void drawGuiObjects(ArrayList<Tower> towers, ArrayList<Icon> icons){
   }
 }  
 
-void drawObjects(ArrayList <Enemy> enemies, ArrayList<Projectile> projectiles, ArrayList<Tower> towers, ArrayList<Particle> particles){ 
+void drawObjects(ArrayList <Enemy> enemies, ArrayList<Projectile> projectiles, ArrayList<Tower> towers, ArrayList<Particle> particles, ArrayList<Buff> buffs){ 
   //enemy tracker, jumps to entMain
   enTrak.entMain(enemies);
   //towers, jumps to twMain
@@ -328,6 +332,9 @@ void drawObjects(ArrayList <Enemy> enemies, ArrayList<Projectile> projectiles, A
     Enemy enemy = enemies.get(i);
     enemy.enMain(enemies, i);
   }   
+  if (enemies.size() == 0){
+    buffs = new ArrayList <Buff>();
+  }  
   //projectiles, jumps to pjMain
   for (int i = projectiles.size()-1; i >= 0; i--){
     Projectile projectile = projectiles.get(i);
@@ -337,6 +344,11 @@ void drawObjects(ArrayList <Enemy> enemies, ArrayList<Projectile> projectiles, A
   for (int i = particles.size()-1; i >= 0; i--){
     Particle particle = particles.get(i);
     particle.ptMain(particles, i);
+  }  
+  //buffs, jumps to bMain
+  for (int i = buffs.size()-1; i >= 0; i--){
+    Buff buff = buffs.get(i);
+    buff.bMain(i);
   }  
   //currently held, jumps to hMain
   hand.hMain();
@@ -387,6 +399,7 @@ void debugKeys(){
   //kill all enemies: s
   if (keyPressed == true && key == 's' && alive){
     enemies = new ArrayList <Enemy>();
+    buffs = new ArrayList <Buff>();
   }
   
   //kill all towers: d
@@ -506,5 +519,18 @@ void keyReleased() {
   }  
   if (key == '0' && alive){ //null enemy
     enemies.add(new Enemy(mouseX,mouseY));
+  }  
+  //buff form: enemy id
+  if (key == '?' && alive){ //null buff
+    buffs.add(new Buff(int(random(0,enemies.size()))));
+  }  
+  if (key == ',' && alive){ //poison
+    buffs.add(new Poisoned(int(random(0,enemies.size()))));
+  }  
+  if (key == '.' && alive){ //wet
+    buffs.add(new Wet(int(random(0,enemies.size()))));
+  }  
+  if (key == '/' && alive){ //burning
+    buffs.add(new Burning(int(random(0,enemies.size()))));
   }  
 }  
