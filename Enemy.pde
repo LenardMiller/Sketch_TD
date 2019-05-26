@@ -46,7 +46,7 @@ class Enemy {
       }
       for (int j = buffs.size()-1; j >= 0; j--){
         Buff buff = buffs.get(j);
-        if (buff.enId == i || enemies.size() == 1){
+        if (buff.enId == i){
           buffs.remove(j);  
         }  
         else if (buff.enId > i){
