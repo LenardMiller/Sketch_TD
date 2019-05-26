@@ -527,4 +527,10 @@ void keyReleased() {
   if (key == ',' && alive){ //poison
     buffs.add(new Poison(int(random(0,enemies.size()))));
   }  
+  if (key == '.' && alive){ //wet
+    buffs.add(new Wet(int(random(0,enemies.size()))));
+  }  
+  if (key == '/' && alive){ //burning
+    buffs.add(new Burning(int(random(0,enemies.size()))));
+  }  
 }  
