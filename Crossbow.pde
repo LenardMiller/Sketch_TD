@@ -4,8 +4,8 @@ class Crossbow extends Turret{
     name = "crossbow";
     position = new PVector(x,y);
     size = new PVector(54,54);
-    maxHP = 20;
-    twHP = maxHP;
+    maxHp = 20;
+    twHp = maxHp;
     hit = false;
     delay = 4000; //default: 4000 milliseconds
     delay += (round(random(-(delay/10),delay/10))); //injects 10% randomness so all don't fire at once
