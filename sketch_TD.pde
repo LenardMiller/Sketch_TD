@@ -525,7 +525,7 @@ void keyReleased() {
     buffs.add(new Buff(int(random(0,enemies.size()))));
   }  
   if (key == ',' && alive){ //poison
-    buffs.add(new Poison(int(random(0,enemies.size()))));
+    buffs.add(new Poisoned(int(random(0,enemies.size()))));
   }  
   if (key == '.' && alive){ //wet
     buffs.add(new Wet(int(random(0,enemies.size()))));
