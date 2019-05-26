@@ -8,7 +8,7 @@ class TowerBuy extends Button {
     position = new PVector(x, y);
     size = new PVector(35, 35);
     twType = type;
-    spriteLocation = "sprites/icons/buttons/towerBuy/" + twType + "/";
+    spriteLocation = "sprites/icons/buttons/towerBuy/" + twType + "/"; //still uses old system because it is only created at beginning of game
     spriteOne = loadImage(spriteLocation + "000.png");
     spriteTwo = loadImage(spriteLocation + "001.png");
     sprite = spriteOne;
@@ -31,15 +31,15 @@ class TowerBuy extends Button {
       display();
     }
   }  
-  void hover(){
-    if (mouseX < position.x+size.x/2 && mouseX > position.x-size.x/2 && mouseY < position.y+size.y/2 && mouseY > position.y-size.y/2 && alive && active && active || depressed && alive){
+  void hover(){ //below is if hovered or depressed
+    if (mouseX < position.x+size.x/2 && mouseX > position.x-size.x/2 && mouseY < position.y+size.y/2 && mouseY > position.y-size.y/2 && alive && active || depressed && alive){
       sprite = spriteTwo;
       fill(235);
       noStroke();
       rect(700,211,200,707);
       textAlign(CENTER); 
       fill(0);
-      textFont(TFFont);
+      textFont(TFFont); //displays info about tower TODO: put more info
       if (twType == "slingshot"){
         text("Slingshot", 800, 241);
         textFont(ETFont);
@@ -80,7 +80,7 @@ class TowerBuy extends Button {
         textFont(ETFont);
         text("$400", 800, 296);
       }  
-      if (mousePressed && millis() - actionTime >= 100 && money >= price && alive){
+      if (mousePressed && millis() - actionTime >= 100 && money >= price && alive){ //if pressed
         action();
       }  
     }  
@@ -89,12 +89,12 @@ class TowerBuy extends Button {
     }  
   }  
   void action(){
-    depressed = !depressed;
+    depressed = !depressed; //invert depression
     actionTime = millis() + 100;
-    if (hand.held == twType){
+    if (hand.held == twType){ //if already holding, stop
       hand.setHeld("null");
     }   
-    else if (hand.held != twType && depressed){
+    else if (hand.held != twType && depressed){ //if not, do
       hand.setHeld(twType);  
     }  
   }  
