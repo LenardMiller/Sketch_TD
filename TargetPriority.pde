@@ -11,11 +11,11 @@ class TargetPriority extends Button {
   }
   @Override
   void action(){
-    Tower tower = towers.get(selection.id);
+    Tower tower = towers.get(selection.id); //switch selected tower's priority
     if (tower.priority < 2){
       tower.priority += 1;
     }
-    else{
+    else{ //roll over
       tower.priority = 0;
     }  
     actionTime = millis() + 100;
