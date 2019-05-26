@@ -5,6 +5,7 @@ class CrystalWall extends Tower{
     position = new PVector(x,y);
     size = new PVector(120,37);
     maxHp = 500;
+    twHp = maxHp;
     hit = false;
     sprite = spritesH.get("crystalWallTW");
     debrisType = "crystal";
