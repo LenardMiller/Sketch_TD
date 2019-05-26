@@ -1,6 +1,6 @@
 void gui(){ //gui icons & buttons
   //add money & add lives buttons
-  icons.add(new AddHpButton(boardWidth + 22.5,17.5,"null",true));
+  icons.add(new AddHPButton(boardWidth + 22.5,17.5,"null",true));
   icons.add(new AddMoneyButton(boardWidth + 22.5,47.5,"null",true));
   //money and lives icons
   icons.add(new Icon(boardWidth + 57.5, 17.5,"livesIc",true));
