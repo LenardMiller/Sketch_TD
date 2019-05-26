@@ -49,12 +49,11 @@ class Enemy {
       dead = true;
     }  
     if (dead){
-      int num = round(random(2.5,4.5));
+      int num = floor(random(2,5));
       for (int j = num; j >= 0; j--){
         particles.add(new Ouch(position.x+random((size.x/2)*-1,size.x/2), position.y+random((size.y/2)*-1,size.y/2), random(0,360), "greyPuff"));
       }
-      num = buffs.size()-1;
-      for (int j = num; j >= 0; j--){
+      for (int j = buffs.size()-1; j >= 0; j--){
         Buff buff = buffs.get(j);
         if (buff.enId == i || enemies.size() == 1){
           buffs.remove(j);  
