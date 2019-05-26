@@ -4,8 +4,8 @@ class WoodWall extends Tower{
     name = "woodWall";
     position = new PVector(x,y);
     size = new PVector(120,37);
-    maxHP = 50;
-    twHP = maxHP;
+    maxHp = 50;
+    twHp = maxHp;
     hit = false;
     sprite = spritesH.get("woodWallTW");
     debrisType = "wood";
