@@ -4,8 +4,8 @@ class MetalWall extends Tower{
     name = "metalWall";
     position = new PVector(x,y);
     size = new PVector(120,37);
-    maxHP = 250;
-    twHP = maxHP;
+    maxHp = 250;
+    twHp = maxHp;
     hit = false;
     sprite = spritesH.get("metalWallTW");
     debrisType = "metal";

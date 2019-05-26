@@ -6,15 +6,15 @@ class Button extends Icon {
     super(x,y,type,active);
     position = new PVector(x, y);
     size = new PVector(25, 25);
-    spriteOne = spritesAnimH.get("nullBT")[0];
-    spriteTwo = spritesAnimH.get("nullBT")[1];
+    spriteOne = spritesAnimH.get("nullBT")[0]; //popped out
+    spriteTwo = spritesAnimH.get("nullBT")[1]; //pushed in
     sprite = spriteOne;
     actionTime = millis() + 100;
   }
-  void hover(){
+  void hover(){ //if mouse over, push in
     if (mouseX < position.x+size.x/2 && mouseX > position.x-size.x/2 && mouseY < position.y+size.y/2 && mouseY > position.y-size.y/2 && alive){
       sprite = spriteTwo;
-      if (mousePressed && millis() - actionTime >= 100 && alive){
+      if (mousePressed && millis() - actionTime >= 100 && alive){ //if hovering and click
         action();
       }  
     }  
@@ -22,7 +22,7 @@ class Button extends Icon {
       sprite = spriteOne;
     }  
   }  
-  void action(){
+  void action(){ //prints "Boink!"
     println("Boink!");
     actionTime = millis() + 100;
   }  

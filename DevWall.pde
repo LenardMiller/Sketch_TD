@@ -4,8 +4,8 @@ class DevWall extends Tower{
     name = "devWall";
     position = new PVector(x,y);
     size = new PVector(120,37);
-    maxHP = 9999;
-    twHP = maxHP;
+    maxHp = 9999;
+    twHp = maxHp;
     hit = false;
     sprite = spritesH.get("devWallTW");
     debrisType = "devWood";
@@ -22,12 +22,12 @@ class DevWall extends Tower{
   void HPText(){ //displays infinity
     text("infinity", position.x-size.x/2, position.y + size.y/4);
   } 
-  void HPBar(){
+  void HpBar(){ //same as normal, but pink
     fill(255,0,255,barTrans);
-    if (barTrans > 0 && twHP > maxHP/2){
+    if (barTrans > 0 && twHp > maxHp/2){
       barTrans--;
     }  
     noStroke();
-    rect(position.x-size.x, position.y + size.y/4, (size.x)*(((float) twHP)/((float) maxHP)), -6);
+    rect(position.x-size.x, position.y + size.y/4, (size.x)*(((float) twHp)/((float) maxHp)), -6);
   } 
 }  

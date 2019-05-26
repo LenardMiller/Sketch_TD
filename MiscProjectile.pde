@@ -1,5 +1,5 @@
 class MiscProjectile extends Projectile{
-  PImage[] sprites = new PImage[6];
+  PImage[] sprites = new PImage[6]; //alturnate sprites, passed in
   int spriteType;
   MiscProjectile(float x, float y, float angle, int spriteType) {
     super(x, y, angle);

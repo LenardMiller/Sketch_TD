@@ -40,7 +40,7 @@ class Projectile {
     trail();
     display();
     move();
-    collideEN();
+    collideEn();
     if (position.y - size.y > boardHeight || position.x - size.x > boardWidth || position.y + size.y < 0 || position.x + size.x < 0){ //if crossed edge, delete
       dead = true;
     }  
@@ -49,9 +49,9 @@ class Projectile {
     }  
   }  
   
-  void trail(){
+  void trail(){ //leaves a trail of particles
     if (isTrail){
-      int num = round(random(0,2));
+      int num = floor(random(0,3));
       if (num == 0){
         particles.add(new BuffPt(position.x, position.y, random(0,360), trail)); 
       }
@@ -72,13 +72,13 @@ class Projectile {
     position.add(velocity);
   }  
   
-  void collideEN(){
+  void collideEn(){
     if (millis() > hitTime){
       for (int i = enemies.size()-1; i >= 0; i--){
         Enemy enemy = enemies.get(i);
-        if (abs(enemy.position.x-position.x) <= (radius + enemy.radius) && abs(enemy.position.y-position.y) <= (radius + enemy.radius) && pierce > 0){
+        if (abs(enemy.position.x-position.x) <= (radius + enemy.radius) && abs(enemy.position.y-position.y) <= (radius + enemy.radius) && pierce > 0){ //if touching enemy, and has pierce
           enemy.collidePJ(damage,buff,i);
-          hitTime = millis() + 100; 
+          hitTime = millis() + 100; //little timer so no constant damage, kind of unneccissary
           pierce--;
         }            
         if (pierce == 0) {

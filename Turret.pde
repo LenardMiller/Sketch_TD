@@ -19,8 +19,8 @@ class Turret extends Tower{
     name = "null";
     position = new PVector(x,y);
     size = new PVector(50,50);
-    maxHP = 20;
-    twHP = maxHP;
+    maxHp = 20;
+    twHp = maxHp;
     hit = false;
     delay = 4000;
     delayTime = delay;
@@ -115,7 +115,7 @@ class Turret extends Tower{
   }  
   @Override
   void twMain(ArrayList<Tower> towers, int i){ //need to check target
-    if (twHP <= 0){
+    if (twHp <= 0){
        die();
        towers.remove(i);
     }  
@@ -164,8 +164,8 @@ class Turret extends Tower{
       tintColor = 0;
       hit = false;
    }  
-   if (twHP > 0){
-      HPBar();
+   if (twHp > 0){
+      HpBar();
    }
    tint(255,tintColor,tintColor);
    image(sBase,position.x-size.x,position.y-size.y);

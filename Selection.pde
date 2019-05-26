@@ -1,15 +1,15 @@
-class Selection{
+class Selection{ //what tower is selected
   String name;
   int id;
   Selection(){
   }  
   void sMain(){
     clickoff();
-    if (name != "null"){
+    if (name != "null"){ //don't display if nothing held
       display();
     }
   }  
-  void swapSel(int twid){
+  void swapSel(int twid){ //switches what is selected
     id = twid;
     Tower tower = towers.get(id);
     name = tower.name;
@@ -23,15 +23,15 @@ class Selection{
       repairButton.active = true;  
     }  
   }  
-  void clickoff(){
+  void clickoff(){ //desselect, hide stuff
     if (towers.size() < id+1){
       name = "null";
       sellButton.active = false;
       targetButton.active = false;
       repairButton.active = false;
     }  
-    else{
-      Tower tower = towers.get(id);
+    else{ 
+      Tower tower = towers.get(id); //idk
       if (mousePressed && mouseX < 700 && (mouseX > tower.position.x || mouseX < tower.position.x-tower.size.x || mouseY > tower.position.y || mouseY < tower.position.y-tower.size.y) && alive){
         name = "null";
         sellButton.active = false;
@@ -40,20 +40,24 @@ class Selection{
       }  
     }
   }  
-  void display(){ //TODO: organize this, it is a MESS
+  void display(){
     Tower tower = towers.get(id);
     int damage = 0;
     int speed = 0;
     int x = 0;
     String priority = "first";
+    
+    //draw bg
     fill(235);
     noStroke();
-    if (tower.turret){
+    if (tower.turret){ //different size bg so butons fit
       rect(700,210,200,600);
     }
     else{
       rect(700,210,200,495);
     }  
+    
+    //name and special features
     textAlign(CENTER); 
     fill(0);
     textFont(TFFont);
@@ -114,9 +118,13 @@ class Selection{
       text("Invulnerable",710,296 + x);
       fill(0);
     }  
+    
+    //put box around selected
     fill(255,25);
     stroke(255);
     rect(tower.position.x-tower.size.x,tower.position.y-tower.size.y,tower.size.x,tower.size.y);
+    
+    //priority 
     textFont(TFFont);
     textAlign(CENTER);
     if (tower.priority == 0){
@@ -135,24 +143,37 @@ class Selection{
       fill(75,45,0);
       text("Priority: " + priority, 800, 843);
     }
+    
+    //repair
     if (!tower.turret){
-      if (tower.twHP < tower.maxHP){
-        fill(11,56,0);
-        text("$" + ceil(float(tower.price) - float(tower.value)), 800, 693);
+      if (tower.twHp < tower.maxHp){
+        if (money >= ceil(float(tower.price) - float(tower.value))){
+          fill(11,56,0);
+        }
+        else{
+          fill(75,0,0);  
+        }  
+        text("$" + ceil(float(tower.price) - float(tower.value)), 800, 843);
       }
       else{
         fill(15);
       }  
       text("Repair", 800, 735);
     }  
+    
+    //sell
     fill(75,0,0);
     textFont(TFFont);
     textAlign(CENTER);
     text("Sell for: $" + round(tower.value*.8), 800, 888);
+    
+    //health
     fill(0);
     textFont(ETFont);
     textAlign(LEFT);
-    text("Health: " + tower.twHP + "/" + tower.maxHP, 710, 276 + x);
+    text("Health: " + tower.twHp + "/" + tower.maxHp, 710, 276 + x);
+    
+    //stats
     if (tower.turret){
       if (name == "randomCannon"){
         text("Damage: 6/10/22", 710, 296 + x);

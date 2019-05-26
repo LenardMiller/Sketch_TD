@@ -1,4 +1,4 @@
-class EnemyTracker{
+class EnemyTracker{ //keeps track of first last and strongest enemies, I cannot believe this works
   int firstId;
   PVector firstPos;
   int lastId;
@@ -7,7 +7,7 @@ class EnemyTracker{
   int strength;
   PVector strongPos;
   EnemyTracker(){
-    firstId = -1;
+    firstId = -1; //set to -1 so not associated with any enemy
     firstPos = new PVector(0,-boardHeight);
     lastId = -1;
     lastPos = new PVector(0,2*boardHeight);

@@ -1,0 +1,44 @@
+void loadSprites(){ //its time for river rafting!!
+  spritesH.put("devEn",loadImage("sprites/enemies/dev.png"));
+  spritesH.put("nullEn",loadImage("sprites/enemies/null.png"));
+  spritesH.put("livesIc",loadImage("sprites/icons/lives.png"));
+  spritesH.put("moneyIc",loadImage("sprites/icons/money.png"));
+  spritesH.put("nullIc",loadImage("sprites/icons/null.png"));
+  spritesH.put("crystalPt",loadImage("sprites/particles/debris/crystal.png"));
+  spritesH.put("devWoodPt",loadImage("sprites/particles/debris/devWood.png"));
+  spritesH.put("metalPt",loadImage("sprites/particles/debris/metal.png"));
+  spritesH.put("stonePt",loadImage("sprites/particles/debris/stone.png"));
+  spritesH.put("woodPt",loadImage("sprites/particles/debris/wood.png"));
+  spritesH.put("nullPt",loadImage("sprites/particles/null/null.png"));
+  spritesH.put("acidPj",loadImage("sprites/projectiles/acid.png"));
+  spritesH.put("boltPj",loadImage("sprites/projectiles/bolt.png"));
+  spritesH.put("devPj",loadImage("sprites/projectiles/dev.png"));
+  spritesH.put("nullPj",loadImage("sprites/projectiles/null.png"));
+  spritesH.put("pebblePj",loadImage("sprites/projectiles/pebble.png"));
+  spritesH.put("urchinPj",loadImage("sprites/projectiles/urchin.png"));
+  spritesH.put("waterballPj",loadImage("sprites/projectiles/waterball.png"));
+  spritesH.put("crossbowBaseTR",loadImage("sprites/towers/turrets/crossbow/base.png"));
+  spritesH.put("crossbowFullTR",loadImage("sprites/towers/turrets/crossbow/full.png"));
+  spritesH.put("crossbowIdleTR",loadImage("sprites/towers/turrets/crossbow/idle.png"));
+  spritesH.put("miscCannonBaseTR",loadImage("sprites/towers/turrets/miscCannon/base.png"));
+  spritesH.put("miscCannonFullTR",loadImage("sprites/towers/turrets/miscCannon/full.png"));
+  spritesH.put("miscCannonIdleTR",loadImage("sprites/towers/turrets/miscCannon/idle.png"));
+  spritesH.put("slingshotBaseTR",loadImage("sprites/towers/turrets/slingshot/base.png"));
+  spritesH.put("slingshotFullTR",loadImage("sprites/towers/turrets/slingshot/full.png"));
+  spritesH.put("slingshotIdleTR",loadImage("sprites/towers/turrets/slingshot/idle.png"));
+  spritesH.put("crystalWallTW",loadImage("sprites/towers/walls/crystal.png"));
+  spritesH.put("devWallTW",loadImage("sprites/towers/walls/dev.png"));
+  spritesH.put("metalWallTW",loadImage("sprites/towers/walls/metal.png"));
+  spritesH.put("nullWallTW",loadImage("sprites/towers/walls/null.png"));
+  spritesH.put("stoneWallTW",loadImage("sprites/towers/walls/stone.png"));
+  spritesH.put("woodWallTW",loadImage("sprites/towers/walls/wood.png"));
+  spritesH.put("slingshotFullTR",loadImage("sprites/towers/turrets/slingshot/full.png")); //I think the river bugged out
+  spritesH.put("slingshotIdleTR",loadImage("sprites/towers/turrets/slingshot/idle.png"));
+  spritesH.put("slingshotBaseTR",loadImage("sprites/towers/turrets/slingshot/base.png"));
+  spritesH.put("crossbowFullTR",loadImage("sprites/towers/turrets/crossbow/full.png"));
+  spritesH.put("crossbowIdleTR",loadImage("sprites/towers/turrets/crossbow/idle.png"));
+  spritesH.put("crossbowBaseTR",loadImage("sprites/towers/turrets/crossbow/base.png"));
+  spritesH.put("randomCannonFullTR",loadImage("sprites/towers/turrets/miscCannon/full.png"));
+  spritesH.put("randomCannonIdleTR",loadImage("sprites/towers/turrets/miscCannon/idle.png"));
+  spritesH.put("randomCannonBaseTR",loadImage("sprites/towers/turrets/miscCannon/base.png"));
+}  

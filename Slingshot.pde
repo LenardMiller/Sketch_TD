@@ -4,8 +4,8 @@ class Slingshot extends Turret{
     name = "slingshot";
     position = new PVector(x,y);
     size = new PVector(50,50);
-    maxHP = 20;
-    twHP = maxHP;
+    maxHp = 20;
+    twHp = maxHp;
     hit = false;
     delay = 2000; //default: 2000 milliseconds
     delay += (round(random(-(delay/10),delay/10))); //injects 10% randomness so all don't fire at once

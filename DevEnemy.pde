@@ -6,8 +6,8 @@ class DevEnemy extends Enemy{
     maxSpeed = 1;
     speed = maxSpeed;
     dangerLevel = 9999;
-    maxHP = 9999;
-    enHP = maxHP;
+    maxHp = 9999;
+    enHp = maxHp;
     hitTime = 0;
     barTrans = 0;
     sprite = spritesH.get("devEn");
@@ -15,7 +15,7 @@ class DevEnemy extends Enemy{
   @Override
   void enMain(ArrayList<Enemy> enemies, int i){
     boolean dead = false;
-    enHP = maxHP;
+    enHp = maxHp;
     move();
     //buff(buffs);
     display();
@@ -24,7 +24,7 @@ class DevEnemy extends Enemy{
       enExit(); 
       dead = true;
     }  
-    if (enHP <= 0){ //if health is 0, die
+    if (enHp <= 0){ //if health is 0, die
       money += dangerLevel;
       dead = true;
     }  
@@ -40,20 +40,20 @@ class DevEnemy extends Enemy{
     barTrans = 255;
     tintColor = 0;
     int num = round(random(1,3));
-    for (int i = num; i >= 0; i--){
+    for (int i = num; i >= 0; i--){ //pink splatter
       particles.add(new Ouch(position.x+random((size.x/2)*-1,size.x/2), position.y+random((size.y/2)*-1,size.y/2), random(0,360), "pinkOuch"));
     }
   } 
 
-  void display(){
+  void display(){ //hpBar behaves like that of towers
     if (tintColor < 255){
       tintColor += 20;
     }  
     tint(255,tintColor,255);
     image(sprite,position.x-size.x/2,position.y-size.y/2);
     tint(255,255,255);
-    if (enHP > 0){
-      HPBar();
+    if (enHp > 0){
+      HpBar();
     }
   }
   void enExit(){ //enemy leave
@@ -63,20 +63,20 @@ class DevEnemy extends Enemy{
     else if (redSpeed > 1){ //red slow if room, else don't red
       redSpeed--;
     }
-    HP = 0;
+    Hp = 0;
     backRed = 255; //reset red
     alive = false;
     redSpeed = 0;
   } 
-  void HPText(){ //displays "unlimited"
+  void HpText(){ //displays "unlimited"
     text("unlimited", position.x, position.y + size.y/2 + 12);
   }  
-  void HPBar(){
+  void HpBar(){
     fill(255,0,255,barTrans);
-    if (barTrans > 0 && enHP > maxHP/2){
+    if (barTrans > 0 && enHp > maxHp/2){
       barTrans--;
     }
     noStroke();
-    rect(position.x-size.x, position.y+size.y/2 + 12, (2*size.x)*(((float) enHP)/((float) maxHP)), 6);
+    rect(position.x-size.x, position.y+size.y/2 + 12, (2*size.x)*(((float) enHp)/((float) maxHp)), 6);
   }  
 }  

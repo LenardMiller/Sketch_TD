@@ -9,7 +9,7 @@ class AddMoneyButton extends Button {
     actionTime = millis() + 100;
   }
   @Override
-  void action(){
+  void action(){ //give money
     money += 10;
   }  
 }  
