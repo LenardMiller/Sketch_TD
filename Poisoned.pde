@@ -11,7 +11,7 @@ class Poisoned extends Buff{
     Enemy enemy = enemies.get(enId);
     enemy.tintColor = 0;
     enemy.barTrans = 255;
-    enemy.enHP -= 3;
+    enemy.enHp -= 3;
     int num = ceil(random(0,3));
     for (int j = num; j >= 0; j--){ //sprays green
       particles.add(new Ouch(enemy.position.x+2.5+random((enemy.size.x/2)*-1,(enemy.size.x/2)), enemy.position.y+2.5+random((enemy.size.x/2)*-1,(enemy.size.x/2)), random(0,360), "greenOuch"));
