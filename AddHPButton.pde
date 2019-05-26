@@ -10,6 +10,6 @@ class AddHPButton extends Button {
   }
   @Override
   void action(){ //give lives
-    HP++;
+    Hp++;
   }  
 }  
