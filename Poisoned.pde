@@ -3,7 +3,7 @@ class Poisoned extends Buff{
     super(enId);
     effectDelay = 1000; //milliseconds
     lifeDuration = 10 * 1000; //seconds * 1000
-    particle = "poisoned";
+    particle = "poison";
     this.enId = enId;
   }    
   @Override
