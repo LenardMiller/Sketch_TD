@@ -13,7 +13,7 @@ class Burning extends Buff{
       enemy.tintColor = 100;  
     }  
     enemy.barTrans = 255;
-    enemy.enHP--;
+    enemy.enHp--;
     int num = floor(random(0,2));
     if (num == 0){ //small red splatter
       particles.add(new Ouch(enemy.position.x+2.5+random((enemy.size.x/2)*-1,(enemy.size.x/2)), enemy.position.y+2.5+random((enemy.size.x/2)*-1,(enemy.size.x/2)), random(0,360), "redOuch"));
