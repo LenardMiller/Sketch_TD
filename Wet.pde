@@ -7,7 +7,7 @@ class Wet extends Buff{
     this.enId = enId;
   }    
   @Override
-  void effect(){
+  void effect(){ //removes fire
     for (int i = buffs.size()-1; i >= 0; i--){
       Buff buff = buffs.get(i);
       if (buff.particle == "fire" && buff.enId == enId){
