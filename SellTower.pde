@@ -13,7 +13,7 @@ class SellTower extends Button {
   void action(){ //kills tower and gives value
     Tower tower = towers.get(selection.id);
     money += tower.value;
-    tower.twHP = 0; //creates particles (may need to change later)
+    tower.twHp = 0; //creates particles (may need to change later)
     active = false;
     targetButton.active = false;
     repairButton.active = false;
