@@ -1,20 +1,18 @@
 class Wet extends Buff{
   Wet(int enId){
     super(enId);
-    lifeDuration = 10 * 1000; //seconds * 1000
-    effectDelay = lifeDuration; //milliseconds
-    particle = "poison";
+    effectDelay = 100; //milliseconds
+    lifeDuration = 10 * 1000; //seconds * 1000    
+    particle = "water";
     this.enId = enId;
   }    
   @Override
   void effect(){
-    Enemy enemy = enemies.get(enId);
-    enemy.tintColor = 0;
-    enemy.barTrans = 255;
-    enemy.enHP -= 3;
-    int num = ceil(random(0,3));
-    for (int j = num; j >= 0; j--){
-      particles.add(new Ouch(enemy.position.x+2.5+random((enemy.size.x/2)*-1,(enemy.size.x/2)), enemy.position.y+2.5+random((enemy.size.x/2)*-1,(enemy.size.x/2)), random(0,360), "greenOuch"));
-    }
+    for (int i = buffs.size()-1; i >= 0; i--){
+      Buff buff = buffs.get(i);
+      if (buff.particle == "fire" && buff.enId == enId){
+        buffs.remove(i);  
+      }  
+    }  
   }  
 }  
