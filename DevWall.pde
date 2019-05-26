@@ -4,8 +4,8 @@ class DevWall extends Tower{
     name = "devWall";
     position = new PVector(x,y);
     size = new PVector(120,37);
-    maxHP = 9999;
-    twHP = maxHP;
+    maxHp = 9999;
+    twHp = maxHp;
     hit = false;
     sprite = spritesH.get("devWallTW");
     debrisType = "devWood";
