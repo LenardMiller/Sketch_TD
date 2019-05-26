@@ -17,7 +17,7 @@ class RepairWall extends Button{
   void icMain(ArrayList<Icon> icons, int i){
     if (active){ 
       Tower tower = towers.get(selection.id);
-      if (tower.twHP == tower.maxHP){ //if full health, grey out
+      if (tower.twHP == tower.maxHp){ //if full health, grey out
         sprite = spriteGrey;  
         actionTime = millis() + 50;
       }  
@@ -25,7 +25,7 @@ class RepairWall extends Button{
         sprite = spriteRed;
         actionTime = millis() + 50;
       }  
-      else if (ceil(float(tower.price) - float(tower.value)) <= money && tower.twHP < tower.maxHP){ //if neither, work fine
+      else if (ceil(float(tower.price) - float(tower.value)) <= money && tower.twHp < tower.maxHp){ //if neither, work fine
         hover();
       } 
       display();
@@ -34,7 +34,7 @@ class RepairWall extends Button{
   void action(){
     Tower tower = towers.get(selection.id);
     money -= ceil(float(tower.price) - float(tower.value));
-    tower.twHP = tower.maxHP;
+    tower.twHp = tower.maxHp;
     //actionTime = millis() + 100;
   } 
 }  
