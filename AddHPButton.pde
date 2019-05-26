@@ -9,7 +9,7 @@ class AddHPButton extends Button {
     actionTime = millis() + 100;
   }
   @Override
-  void action(){
+  void action(){ //give lives
     HP++;
   }  
 }  
