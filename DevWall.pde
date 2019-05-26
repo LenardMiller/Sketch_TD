@@ -22,7 +22,7 @@ class DevWall extends Tower{
   void HPText(){ //displays infinity
     text("infinity", position.x-size.x/2, position.y + size.y/4);
   } 
-  void HPBar(){
+  void HPBar(){ //same as normal, but pink
     fill(255,0,255,barTrans);
     if (barTrans > 0 && twHP > maxHP/2){
       barTrans--;
