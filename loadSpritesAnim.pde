@@ -1,4 +1,8 @@
 void loadSpritesAnim(){
+  spritesAnimH.put("upgradeIC",new PImage[5]);
+  for (int i = 4; i >= 0; i--){
+    spritesAnimH.get("upgradeIC")[i] = loadImage("sprites/icons/upgrades/" + nf(i,3) + ".png");
+  }  
   spritesAnimH.put("livesAddBT",new PImage[2]);
   for (int i = 1; i >= 0; i--){
     spritesAnimH.get("livesAddBT")[i] = loadImage("sprites/icons/buttons/livesAdd/" + nf(i,3) + ".png");
@@ -14,6 +18,10 @@ void loadSpritesAnim(){
   spritesAnimH.put("repairBT",new PImage[4]);
   for (int i = 3; i >= 0; i--){
     spritesAnimH.get("repairBT")[i] = loadImage("sprites/icons/buttons/repairButton/" + nf(i,3) + ".png");
+  }  
+  spritesAnimH.put("upgradeBT",new PImage[4]);
+  for (int i = 3; i >= 0; i--){
+    spritesAnimH.get("upgradeBT")[i] = loadImage("sprites/icons/buttons/upgradeButton/" + nf(i,3) + ".png");
   }  
   spritesAnimH.put("sellTowerBT",new PImage[2]);
   for (int i = 1; i >= 0; i--){
