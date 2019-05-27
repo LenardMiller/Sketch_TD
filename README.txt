@@ -1,6 +1,6 @@
 # Sketch_TD
 The working title for a small Tower Defence game made in Processing.
-Made for Java practice.
+Made for Java practice and an excuse to make lots of pixel art.
 
 Commands:
 debug
@@ -32,6 +32,6 @@ buffs
 ? [shift + /] - cause a random enemy to repeat its ID
 
 To run: 
-download whole folder
+unzip whole folder
 rename folder to Sketch_TD
 run any .pde file
