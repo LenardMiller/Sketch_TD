@@ -140,6 +140,10 @@ class Tower {
     else{
       upgradeIcon.sprite = spritesAnimH.get("upgradeIC")[0]; 
     }  
+    int num = floor(random(30,50)); //shower debris
+    for (int j = num; j >= 0; j--){
+      particles.add(new Debris((position.x-size.x/2)+random((size.x/2)*-1,size.x/2), (position.y-size.y/2)+random((size.y/2)*-1,size.y/2), random(0,360), debrisType));
+    }
   }  
   
   void die(int i){
