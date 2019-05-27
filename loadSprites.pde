@@ -31,6 +31,7 @@ void loadSprites(){ //its time for river rafting!!
   spritesH.put("metalWallTW",loadImage("sprites/towers/walls/metal.png"));
   spritesH.put("nullWallTW",loadImage("sprites/towers/walls/null.png"));
   spritesH.put("stoneWallTW",loadImage("sprites/towers/walls/stone.png"));
+  spritesH.put("ultimateWallTW",loadImage("sprites/towers/walls/ultimate.png"));
   spritesH.put("woodWallTW",loadImage("sprites/towers/walls/wood.png"));
   spritesH.put("slingshotFullTR",loadImage("sprites/towers/turrets/slingshot/full.png")); //I think the river bugged out
   spritesH.put("slingshotIdleTR",loadImage("sprites/towers/turrets/slingshot/idle.png"));
