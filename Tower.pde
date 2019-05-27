@@ -16,6 +16,14 @@ class Tower {
   int value;
   boolean turret;
   int priority;
+  int nextLevel;
+  int[] upgradePrices;
+  int[] upgradeHealth;
+  String[] upgradeNames;
+  String[] upgradeDebris;
+  String[] upgradeTitles;
+  PImage[] upgradeIcons;
+  PImage[] upgradeSprites;
   Tower(float x, float y) {
     name = "null";
     position = new PVector(x, y);
@@ -32,11 +40,56 @@ class Tower {
     price = 0;
     value = price;
     turret = false;
+    nextLevel = 0;
+    upgradePrices = new int[4];
+    upgradeHealth = new int[4];
+    upgradeNames = new String[4];
+    upgradeDebris = new String[4];
+    upgradeTitles = new String[4];
+    upgradeIcons = new PImage[4];
+    upgradeSprites = new PImage[4];
+    setUpgrades();
   }  
-  
+  void setUpgrades(){
+    //price
+    upgradePrices[0] = 50;
+    upgradePrices[1] = 100;
+    upgradePrices[2] = 225;
+    upgradePrices[3] = 500;
+    //heath
+    upgradeHealth[0] = 75;
+    upgradeHealth[1] = 125;
+    upgradeHealth[2] = 250;
+    upgradeHealth[3] = 500;
+    //names
+    upgradeNames[0] = "stoneWall";
+    upgradeNames[1] = "metalWall";
+    upgradeNames[2] = "crystalWall";
+    upgradeNames[3] = "ultimateWall";
+    //debris
+    upgradeDebris[0] = "stone";
+    upgradeDebris[1] = "metal";
+    upgradeDebris[2] = "crystal";
+    upgradeDebris[3] = "dev";
+    //titles
+    upgradeTitles[0] = "stone";
+    upgradeTitles[1] = "metal";
+    upgradeTitles[2] = "crystal";
+    upgradeTitles[3] = "ultimate";
+    //icons
+    upgradeIcons[0] = spritesAnimH.get("upgradeIC")[1];
+    upgradeIcons[1] = spritesAnimH.get("upgradeIC")[2];
+    upgradeIcons[2] = spritesAnimH.get("upgradeIC")[3];
+    upgradeIcons[3] = spritesAnimH.get("upgradeIC")[4];
+    //sprites
+    upgradeSprites[0] = spritesH.get("stoneWallTW");
+    upgradeSprites[1] = spritesH.get("metalWallTW");
+    upgradeSprites[2] = spritesH.get("crystalWallTW");
+    upgradeSprites[3] = spritesH.get("ultimateWallTW");
+  }  
   void twMain(ArrayList<Tower> towers, int i){
     if (twHp <= 0){
-       die();
+       die(i);
        towers.remove(i);
     }  
     value = floor((float(twHp)/float(maxHp))*price);
@@ -71,11 +124,35 @@ class Tower {
     }
   }  
   
-  void die(){
+  void upgrade(){
+    price += upgradePrices[nextLevel];
+    maxHp += upgradeHealth[nextLevel];
+    twHp += upgradeHealth[nextLevel];
+    name = upgradeNames[nextLevel];
+    debrisType = upgradeDebris[nextLevel];
+    sprite = upgradeSprites[nextLevel];
+    if (nextLevel < upgradeNames.length){
+      nextLevel++;
+    }
+    if (nextLevel < upgradeNames.length){
+      upgradeIcon.sprite = upgradeIcons[nextLevel];
+    }
+    else{
+      upgradeIcon.sprite = spritesAnimH.get("upgradeIC")[0]; 
+    }  
+  }  
+  
+  void die(int i){
     int num = floor(random(30,50)); //shower debris
-    for (int i = num; i >= 0; i--){
+    for (int j = num; j >= 0; j--){
       particles.add(new Debris((position.x-size.x/2)+random((size.x/2)*-1,size.x/2), (position.y-size.y/2)+random((size.y/2)*-1,size.y/2), random(0,360), debrisType));
     }
+    if (selection.id > i){
+      selection.id--;
+    }
+    if (selection.id == i){
+      selection.id = 0;
+    }  
   }
   
   void HpText(){ //displays the towers health
