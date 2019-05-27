@@ -3,6 +3,8 @@ void drawGuiObjects(ArrayList<Tower> towers, ArrayList<Icon> icons){
     sellButton.active = false;  
     targetButton.active = false;
     repairButton.active = false;
+    upgradeButton.active = false;
+    upgradeIcon.active = false;
   }  
   //switch tower tab button, jumps to ucMain
   towerTabButton.icMain(icons, 0);
@@ -12,6 +14,12 @@ void drawGuiObjects(ArrayList<Tower> towers, ArrayList<Icon> icons){
   targetButton.icMain(icons, 0);
   //repair wall button, jumps to icMain
   repairButton.icMain(icons, 0);
+  //upgrade wall button, jumps to icMain
+  upgradeButton.icMain(icons, 0);
+  //upgrade wall button, jumps to icMain
+  upgradeButton.icMain(icons, 0);
+  //upgrade wall icon, jumps to icMain
+  upgradeIcon.icMain(icons, 0);
   //currently selected, jumps to sMain
   if (towers.size() != 0){
     selection.sMain();

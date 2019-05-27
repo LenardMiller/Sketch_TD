@@ -66,30 +66,12 @@ class Hand{ //what is selected, eg: slingshot
        held = setHeld;
        price = 100;
      }  
-     else if (setHeld == "woodWall"){
+     else if (setHeld == "wall"){
        heldSprite = spritesH.get("woodWallTW"); 
        size = new PVector(60,18.5);
        held = setHeld;
        price = 25;
-     }  
-     else if (setHeld == "stoneWall"){
-       heldSprite = spritesH.get("stoneWallTW");
-       size = new PVector(60,18.5);
-       held = setHeld;
-       price = 75;
-     }  
-     else if (setHeld == "metalWall"){
-       heldSprite = spritesH.get("metalWallTW");
-       size = new PVector(60,18.5);
-       held = setHeld;
-       price = 175;
-     }  
-     else if (setHeld == "crystalWall"){
-       heldSprite = spritesH.get("crystalWallTW");
-       size = new PVector(60,18.5);
-       held = setHeld;
-       price = 400;
-     }  
+     }
      else if (setHeld == "null"){
        held = "null";  
      }  
@@ -107,22 +89,10 @@ class Hand{ //what is selected, eg: slingshot
       money -= 100;
       towers.add(new RandomCannon((10*(ceil(mouseX/10)))+(25),(10*(ceil(mouseY/10)))+(25)));
     }  
-    else if (held == "woodWall" && alive){
+    else if (held == "wall" && alive){
       money -= 25;
-      towers.add(new WoodWall((10*(ceil(mouseX/10)))+(60),(10*(ceil(mouseY/10)))+(18.5)));
+      towers.add(new Wall((10*(ceil(mouseX/10)))+(60),(10*(ceil(mouseY/10)))+(18.5)));
     }  
-    else if (held == "stoneWall" && alive){
-      money -= 75;
-      towers.add(new StoneWall((10*(ceil(mouseX/10)))+(60),(10*(ceil(mouseY/10)))+(18.5)));
-    }  
-    else if (held == "metalWall" && alive){
-      money -= 175;
-      towers.add(new MetalWall((10*(ceil(mouseX/10)))+(60),(10*(ceil(mouseY/10)))+(18.5)));
-    }  
-    else if (held == "crystalWall" && alive){
-      money -= 400;
-      towers.add(new CrystalWall((10*(ceil(mouseX/10)))+(60),(10*(ceil(mouseY/10)))+(18.5)));
-    }
     held = "null";
   }  
 }

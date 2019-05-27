@@ -17,7 +17,7 @@ class RepairWall extends Button{
   void icMain(ArrayList<Icon> icons, int i){
     if (active){ 
       Tower tower = towers.get(selection.id);
-      if (tower.twHP == tower.maxHp){ //if full health, grey out
+      if (tower.twHp == tower.maxHp){ //if full health, grey out
         sprite = spriteGrey;  
         actionTime = millis() + 50;
       }  

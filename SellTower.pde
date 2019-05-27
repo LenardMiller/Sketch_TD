@@ -12,11 +12,13 @@ class SellTower extends Button {
   @Override
   void action(){ //kills tower and gives value
     Tower tower = towers.get(selection.id);
-    money += tower.value;
+    money += floor(tower.value*.8);
     tower.twHp = 0; //creates particles (may need to change later)
     active = false;
     targetButton.active = false;
     repairButton.active = false;
+    upgradeButton.active = false;
+    upgradeIcon.active = false;
     selection.name = "null";
   }  
 }  
