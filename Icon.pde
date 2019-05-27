@@ -4,8 +4,8 @@ class Icon{
   String spriteLocation;
   PImage sprite;
   boolean active;
-  Icon(float x, float y, String type, boolean active_){
-    active = active_;
+  Icon(float x, float y, String type, boolean active){
+    this.active = active;
     position = new PVector(x, y);
     size = new PVector(25, 25);
     sprite = spritesH.get(type);
