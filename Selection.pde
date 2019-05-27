@@ -9,18 +9,28 @@ class Selection{ //what tower is selected
       display();
     }
   }  
-  void swapSel(int twid){ //switches what is selected
-    id = twid;
+  void swapSel(int id){ //switches what is selected
+    this.id = id;
     Tower tower = towers.get(id);
     name = tower.name;
     sellButton.active = true;
     if (tower.turret){
       targetButton.active = true;
       repairButton.active = false; 
+      upgradeButton.active = false; 
+      upgradeIcon.active = false;
     }
     if (!tower.turret){
       targetButton.active = false;
-      repairButton.active = true;  
+      repairButton.active = true;
+      upgradeButton.active = true;
+      upgradeIcon.active = true;
+      if (tower.nextLevel < tower.upgradeNames.length){
+        upgradeIcon.sprite = tower.upgradeIcons[tower.nextLevel];
+      }
+      else{
+        upgradeIcon.sprite = spritesAnimH.get("upgradeIC")[0];  
+      }  
     }  
   }  
   void clickoff(){ //desselect, hide stuff
@@ -29,6 +39,8 @@ class Selection{ //what tower is selected
       sellButton.active = false;
       targetButton.active = false;
       repairButton.active = false;
+      upgradeButton.active = false;
+      upgradeIcon.active = false;
     }  
     else{ 
       Tower tower = towers.get(id); //idk
@@ -37,6 +49,8 @@ class Selection{ //what tower is selected
         sellButton.active = false;
         targetButton.active = false;
         repairButton.active = false;
+        upgradeButton.active = false;
+        upgradeIcon.active = false;
       }  
     }
   }  
@@ -47,14 +61,14 @@ class Selection{ //what tower is selected
     int x = 0;
     String priority = "first";
     
-    //draw bg
+    //bg
     fill(235);
     noStroke();
     if (tower.turret){ //different size bg so butons fit
       rect(700,210,200,600);
     }
     else{
-      rect(700,210,200,495);
+      rect(700,210,200,345);
     }  
     
     //name and special features
@@ -108,14 +122,18 @@ class Selection{ //what tower is selected
       text("Wall", 800, 266);
       x = 25;
     }  
+    else if (tower.name == "ultimateWall"){ //placeholder name?
+      text("Ultimate", 800, 241);
+      text("Wall", 800, 266);
+      x = 25;
+    } 
     else if (tower.name == "devWall"){
       text("Developer", 800, 241);
       text("Wall", 800, 266);
-      x = 25;
       textFont(ETFont);
       textAlign(LEFT);
       fill(100,0,200);
-      text("Invulnerable",710,296 + x);
+      text("Invulnerable",710,296 + 25);
       fill(0);
     }  
     
@@ -161,11 +179,33 @@ class Selection{ //what tower is selected
       text("Repair", 800, 735);
     }  
     
+    //upgrade
+    if (!tower.turret){
+      if (tower.nextLevel < tower.upgradeNames.length){
+        if (money >= tower.upgradePrices[tower.nextLevel]){
+          fill(11,56,0);
+        }
+        else{
+          fill(75,0,0);  
+        }  
+        text(tower.upgradeTitles[tower.nextLevel], 800, 585);
+        text("$" + tower.upgradePrices[tower.nextLevel], 800, 693);
+      }
+      else{
+        fill(15);
+        text("N/A", 800, 585);
+        textFont(ETFont);
+        textAlign(LEFT);
+        text("No more",715,615); 
+        text("upgrades",715,635);
+      }  
+    }  
+    
     //sell
     fill(75,0,0);
     textFont(TFFont);
     textAlign(CENTER);
-    text("Sell for: $" + round(tower.value*.8), 800, 888);
+    text("Sell for: $" + floor(tower.value*.8), 800, 888);
     
     //health
     fill(0);
