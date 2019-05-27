@@ -116,7 +116,7 @@ class Turret extends Tower{
   @Override
   void twMain(ArrayList<Tower> towers, int i){ //need to check target
     if (twHp <= 0){
-       die();
+       die(i);
        towers.remove(i);
     }  
     if (enemies.size() > 0 && alive){
