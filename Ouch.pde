@@ -8,10 +8,10 @@ class Ouch extends Particle{
     speed = maxSpeed;
     angleTwo = angle;
     angularVelocity = 0; //degrees mode
-    lifespan = 10; //in milliseconds
+    lifespan = 1; //in frames
     lifespan += (round(random(-(lifespan/4),lifespan/4))); //injects 25% randomness so all don't die at once
     delay = lifespan/numFrames;
-    delayTime = millis() + delay;
+    delayTime = frameCount + delay;
     numFrames = 11;
     currentSprite = 0;
     sprites = spritesAnimH.get(type + "EnemyPT");
