@@ -6,23 +6,23 @@ class Buff{
   String particle;
   int enId;
   Buff(int enId){
-    effectDelay = 1000; //milliseconds
-    effectTimer = millis() + effectDelay;
-    lifeDuration = 10000; //milliseconds
-    lifeTimer = millis() + lifeDuration;
+    effectDelay = 60; //frames
+    effectTimer = frameCount + effectDelay;
+    lifeDuration = 600; //frames
+    lifeTimer = frameCount + lifeDuration;
     particle = "null";
     this.enId = enId;
   }  
   void bMain(int i){
     live(i);
-    if (millis() > effectTimer){
+    if (frameCount > effectTimer){
       effect();
-      effectTimer = millis() + effectDelay;
+      effectTimer = frameCount + effectDelay;
     }  
     display();
   }  
   void live(int i){ //ends if at end of lifespan
-    if (millis() > lifeTimer){
+    if (frameCount > lifeTimer){
       buffs.remove(i);  
     }  
   }  
