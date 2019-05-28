@@ -10,7 +10,7 @@ class UpgradeTower extends Button{
     spriteRed = spritesAnimH.get("upgradeBT")[2]; //red
     spriteGrey = spritesAnimH.get("upgradeBT")[3]; //grey
     sprite = spriteOne;
-    actionTime = millis() + 100;
+    actionTime = frameCount + 6;
     active = false;
   }
   @Override
@@ -19,11 +19,11 @@ class UpgradeTower extends Button{
       Tower tower = towers.get(selection.id);
       if (tower.upgradeNames.length == tower.nextLevel){ //if maxLevel, grey out
         sprite = spriteGrey;  
-        actionTime = millis() + 50;
+        actionTime = frameCount + 3;
       }  
       else if (tower.upgradePrices[tower.nextLevel] > money){ //if can't afford, red out
         sprite = spriteRed;
-        actionTime = millis() + 50;
+        actionTime = frameCount + 3;
       }  
       else{ //if neither, work fine
         hover();
@@ -35,6 +35,6 @@ class UpgradeTower extends Button{
     Tower tower = towers.get(selection.id);
     money -= tower.upgradePrices[tower.nextLevel];
     tower.upgrade();
-    actionTime = millis() + 100;
+    actionTime = frameCount + 6;
   } 
 }  
