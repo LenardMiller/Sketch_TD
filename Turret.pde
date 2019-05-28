@@ -146,7 +146,8 @@ class Turret extends Tower{
       else { //if done, switch to load
         frame = 0;
         spriteType = 2;
-        loadDelay = (int) (((delayTime - frameCount)/numLoadFrames)/3);
+        loadDelay = (int) (((delayTime - frameCount)/numLoadFrames));
+        println(loadDelay);
         loadDelayTime = frameCount + loadDelay;
       }  
     }
