@@ -119,12 +119,9 @@ class Enemy {
     }
     if (pjBuff == "burning"){
       if (buffs.size() > 0);{
-        println("size");
         for (int j = buffs.size()-1; j >= 0; j--){
-          println(j);
           Buff buff = buffs.get(j);
           if (buff.particle == "fire" && buff.enId == i){
-            println("found");
             buffs.remove(j);  
             
           }  
