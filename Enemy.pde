@@ -18,7 +18,7 @@ class Enemy {
     maxSpeed = 2.5;
     speed = maxSpeed;
     dangerLevel = 1;
-    maxHp = 100; //Hp <---------------------------
+    maxHp = 20; //Hp <---------------------------
     enHp = maxHp;
     hitTime = 0;
     sprite = spritesH.get("nullEn");
@@ -85,8 +85,8 @@ class Enemy {
       float dy = (tower.position.y - tower.size.y/2) - (position.y);
       if (dy <= size.y/2 + tower.size.y/2 && dy >= -(tower.size.y/2) - size.y/2 && dx <= size.x/2 + tower.size.x/2 && dx >= -(tower.size.x/2) - size.x/2){ //if touching tower
         speed = 0;
-        if (millis() > hitTime){ //enemy only attacks every second
-          hitTime = millis() + 1000;
+        if (frameCount > hitTime){ //enemy only attacks every second
+          hitTime = frameCount + 60;
           tower.collideEN(dangerLevel);
         }  
       }
