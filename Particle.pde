@@ -24,13 +24,13 @@ class Particle{
     speed = maxSpeed;
     angleTwo = angle;
     angularVelocity = 0; //degrees mode
-    lifespan = 1000; //in milliseconds
+    lifespan = 60; //in frames
     lifespan += (round(random(-(lifespan/4),lifespan/4))); //injects 10% randomness so all don't die at once
     numFrames = 1;
     currentSprite = 0;
     animated = false;
     delay = lifespan/numFrames;
-    delayTime = millis() + delay;
+    delayTime = frameCount + delay;
     sprite = spritesH.get("nullPt");
     velocity = PVector.fromAngle(angle-HALF_PI);
   }  
@@ -46,13 +46,13 @@ class Particle{
   }  
   void display(){ //move and rotate whole grid before displaying, than reset
    if (animated){
-     if (millis() - delayTime >= delay){
+     if (frameCount - delayTime >= delay){
        if (currentSprite == numFrames-1){
         dead = true;       
        }
        else{
         currentSprite++;  
-        delayTime = millis() + delay;
+        delayTime = frameCount + delay;
        }  
      }  
      angleTwo += radians(angularVelocity);
@@ -63,7 +63,7 @@ class Particle{
      popMatrix();
    } 
    else{
-     if (millis() - delayTime >= delay){
+     if (frameCount - delayTime >= delay){
        dead = true;
      }  
      angleTwo += radians(angularVelocity);
