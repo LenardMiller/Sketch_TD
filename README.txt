@@ -25,7 +25,7 @@ u - spawn a waterball projectile
 enemies
 0 - spawn a single null enemy
 1 - spawn a single dev enemy
-buffs
+buffs (be careful with these, they can stack buffs which can lead to crashes)
 , - afflict a random enemy with poison
 . - afflict a random enemy with water
 / - afflict a random enemy with fire
