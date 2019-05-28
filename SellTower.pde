@@ -6,7 +6,7 @@ class SellTower extends Button {
     spriteOne = spritesAnimH.get("sellTowerBT")[0];
     spriteTwo = spritesAnimH.get("sellTowerBT")[1];
     sprite = spriteOne;
-    actionTime = millis() + 100;
+    actionTime = frameCount + 6;
     active = false;
   }
   @Override
