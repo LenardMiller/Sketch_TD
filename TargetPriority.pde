@@ -7,7 +7,7 @@ class TargetPriority extends Button {
     spriteOne = loadImage(spriteLocation + "000.png");
     spriteTwo = loadImage(spriteLocation + "001.png");
     sprite = spriteOne;
-    actionTime = millis() + 100;
+    actionTime = frameCount + 6;
   }
   @Override
   void action(){
@@ -18,6 +18,6 @@ class TargetPriority extends Button {
     else{ //roll over
       tower.priority = 0;
     }  
-    actionTime = millis() + 100;
+    actionTime = frameCount + 6;
   }  
 }  
