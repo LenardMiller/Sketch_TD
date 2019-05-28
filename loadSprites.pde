@@ -8,6 +8,7 @@ void loadSprites(){ //its time for river rafting!!
   spritesH.put("devWoodPt",loadImage("sprites/particles/debris/devWood.png"));
   spritesH.put("metalPt",loadImage("sprites/particles/debris/metal.png"));
   spritesH.put("stonePt",loadImage("sprites/particles/debris/stone.png"));
+  spritesH.put("ultimatePt",loadImage("sprites/particles/debris/ultimate.png"));
   spritesH.put("woodPt",loadImage("sprites/particles/debris/wood.png"));
   spritesH.put("nullPt",loadImage("sprites/particles/null/null.png"));
   spritesH.put("acidPj",loadImage("sprites/projectiles/acid.png"));
