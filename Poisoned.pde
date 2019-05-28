@@ -1,8 +1,8 @@
 class Poisoned extends Buff{
   Poisoned(int enId){
     super(enId);
-    effectDelay = 1000; //milliseconds
-    lifeDuration = 10 * 1000; //seconds * 1000
+    effectDelay = 60; //frames
+    lifeDuration = 600;
     particle = "poison";
     this.enId = enId;
   }    
