@@ -8,10 +8,10 @@ class BuffPt extends Particle{
     speed = maxSpeed;
     angleTwo = angle;
     angularVelocity = 5; //degrees mode
-    lifespan = 25; //in milliseconds, default: 25
-    lifespan += (round(random((-lifespan)+20,lifespan))); //injects 25% randomness so all don't die at once
+    lifespan = 2; //in frames, default: 2
+    lifespan += (round(random((-lifespan)+2,lifespan))); //injects 25% randomness so all don't die at once
     delay = lifespan/numFrames;
-    delayTime = millis() + delay;
+    delayTime = frameCount + delay;
     numFrames = 8;
     currentSprite = 0;
     sprites = spritesAnimH.get(type + "BuffPT");
@@ -19,13 +19,13 @@ class BuffPt extends Particle{
   }  
   @Override
   void display(){ //move and rotate whole grid before displaying, than reset
-   if (millis() - delayTime >= delay){
+   if (frameCount - delayTime >= delay){
      if (currentSprite == numFrames-1){
       dead = true;       
      }
      else{
       currentSprite++;  
-      delayTime = millis() + delay;
+      delayTime = frameCount + delay;
      }  
    }  
    angleTwo += radians(angularVelocity);

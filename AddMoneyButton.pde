@@ -6,7 +6,7 @@ class AddMoneyButton extends Button {
     spriteOne = spritesAnimH.get("moneyAddBT")[0];
     spriteTwo = spritesAnimH.get("moneyAddBT")[1];
     sprite = spriteOne;
-    actionTime = millis() + 100;
+    actionTime = frameCount + 6;
   }
   @Override
   void action(){ //give money

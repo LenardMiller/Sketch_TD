@@ -17,7 +17,6 @@ class DevEnemy extends Enemy{
     boolean dead = false;
     enHp = maxHp;
     move();
-    //buff(buffs);
     display();
     collideTW();
     if (position.y - size.y > boardHeight){ //if enemy crosses edge of screen, enExit

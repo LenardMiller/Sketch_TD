@@ -9,12 +9,12 @@ class Button extends Icon {
     spriteOne = spritesAnimH.get("nullBT")[0]; //popped out
     spriteTwo = spritesAnimH.get("nullBT")[1]; //pushed in
     sprite = spriteOne;
-    actionTime = millis() + 100;
+    actionTime = frameCount + 6;
   }
   void hover(){ //if mouse over, push in
     if (mouseX < position.x+size.x/2 && mouseX > position.x-size.x/2 && mouseY < position.y+size.y/2 && mouseY > position.y-size.y/2 && alive){
       sprite = spriteTwo;
-      if (mousePressed && millis() - actionTime >= 100 && alive){ //if hovering and click
+      if (mousePressed && frameCount - actionTime >= 6 && alive){ //if hovering and click
         action();
       }  
     }  
@@ -24,7 +24,7 @@ class Button extends Icon {
   }  
   void action(){ //prints "Boink!"
     println("Boink!");
-    actionTime = millis() + 100;
+    actionTime = frameCount + 6;
   }  
   @Override
   void icMain(ArrayList<Icon> icons, int i){

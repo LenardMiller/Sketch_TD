@@ -1,7 +1,7 @@
 class Burning extends Buff{
   Burning(int enId){
     super(enId);
-    effectDelay = 200; //milliseconds
+    effectDelay = 12; //frames
     lifeDuration = round(random(2500,15000)); //milliseconds
     particle = "fire";
     this.enId = enId;

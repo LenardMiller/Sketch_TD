@@ -1,8 +1,8 @@
 class Wet extends Buff{
   Wet(int enId){
     super(enId);
-    effectDelay = 100; //milliseconds
-    lifeDuration = 10 * 1000; //seconds * 1000    
+    effectDelay = 6; //frames
+    lifeDuration = 600;
     particle = "water";
     this.enId = enId;
   }    

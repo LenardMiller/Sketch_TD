@@ -13,7 +13,7 @@ class RandomCannon extends Turret{
     maxHp = 20;
     twHp = maxHp;
     hit = false;
-    delay = 3000; //default: 3000 milliseconds
+    delay = 180; //default: 180 frames
     delay += (round(random(-(delay/10),delay/10))); //injects 10% randomness so all don't fire at once
     delayTime = delay;
     pjSpeed = 12;
@@ -43,7 +43,7 @@ class RandomCannon extends Turret{
     int specialError = 2; //default 2
     projectile = round(random(0,miscChance+3.49));
     angle += radians(random(-error,error));
-    delayTime = millis() + delay; //waits this time before firing
+    delayTime = frameCount + delay; //waits this time before firing
     PVector spp = new PVector(position.x-size.x/2,position.y-size.y/2);
     PVector spa = PVector.fromAngle(angle-HALF_PI);
     spa.setMag(20);
@@ -101,14 +101,14 @@ class RandomCannon extends Turret{
       else { //if done, switch to load
         frame = 0;
         spriteType = 2;
-        loadDelay = (int) (((delayTime - millis())/numLoadFrames)/3);
-        loadDelayTime = millis() + loadDelay;
+        loadDelay = (int) (((delayTime - frameCount)/numLoadFrames)/3);
+        loadDelayTime = frameCount + loadDelay;
       }  
     }
     else if (spriteType == 2){ //load
-      if (millis() - loadDelayTime >= loadDelay){ //SUPPOSSED to animate dialated to the remaining delay time, but it doesn't really. TODO: fix
+      if (frameCount - loadDelayTime >= loadDelay){ //SUPPOSSED to animate dialated to the remaining delay time, but it doesn't really. TODO: fix
         frame++;
-        loadDelayTime = millis() + loadDelay;
+        loadDelayTime = frameCount + loadDelay;
       }  
       if (frame < numLoadFrames){
         sprite = loadFrames[frame];

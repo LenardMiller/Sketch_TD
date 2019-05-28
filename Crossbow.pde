@@ -7,7 +7,7 @@ class Crossbow extends Turret{
     maxHp = 20;
     twHp = maxHp;
     hit = false;
-    delay = 4000; //default: 4000 milliseconds
+    delay = 240; //default: 240 frames
     delay += (round(random(-(delay/10),delay/10))); //injects 10% randomness so all don't fire at once
     delayTime = delay;
     pjSpeed = 24;
@@ -30,7 +30,7 @@ class Crossbow extends Turret{
   @Override
   void fire(){ //needed to change projectile fired
     angle += radians(random(-error,error));
-    delayTime = millis() + delay; //waits this time before firing
+    delayTime = frameCount + delay; //waits this time before firing
     projectiles.add(new Bolt(position.x-size.x/2,position.y-size.y/2, angle));
   }  
 }  

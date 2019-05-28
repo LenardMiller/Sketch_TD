@@ -10,7 +10,7 @@ class RepairWall extends Button{
     spriteRed = spritesAnimH.get("repairBT")[2]; //red
     spriteGrey = spritesAnimH.get("repairBT")[3]; //grey
     sprite = spriteOne;
-    actionTime = millis() + 100;
+    actionTime = frameCount + 6;
     active = false;
   }
   @Override
@@ -19,11 +19,11 @@ class RepairWall extends Button{
       Tower tower = towers.get(selection.id);
       if (tower.twHp == tower.maxHp){ //if full health, grey out
         sprite = spriteGrey;  
-        actionTime = millis() + 50;
+        actionTime = frameCount + 3;
       }  
       else if (ceil(float(tower.price) - float(tower.value)) > money){ //if can't afford, red out
         sprite = spriteRed;
-        actionTime = millis() + 50;
+        actionTime = frameCount + 3;
       }  
       else if (ceil(float(tower.price) - float(tower.value)) <= money && tower.twHp < tower.maxHp){ //if neither, work fine
         hover();
@@ -35,6 +35,6 @@ class RepairWall extends Button{
     Tower tower = towers.get(selection.id);
     money -= ceil(float(tower.price) - float(tower.value));
     tower.twHp = tower.maxHp;
-    //actionTime = millis() + 100;
+    //actionTime = frameCount + 6;
   } 
 }  
