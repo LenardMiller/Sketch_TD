@@ -12,7 +12,7 @@ class TowerBuy extends Button {
     spriteOne = loadImage(spriteLocation + "000.png");
     spriteTwo = loadImage(spriteLocation + "001.png");
     sprite = spriteOne;
-    actionTime = millis() + 100;
+    actionTime = frameCount + 6;
     depressed = false;
     if (type == "slingshot"){
       price = 50;  
@@ -62,12 +62,12 @@ class TowerBuy extends Button {
         textFont(ETFont);
         text("$25", 800, 296);
       }  
-      if (mousePressed && millis() - actionTime >= 100 && money >= price && alive){ //if pressed
+      if (mousePressed && frameCount - actionTime >= 6 && money >= price && alive){ //if pressed
         action();
       }  
-      else if (mousePressed && millis() - actionTime >= 100 && money < price && alive){ //if pressed but no money
+      else if (mousePressed && frameCount - actionTime >= 6 && money < price && alive){ //if pressed but no money
         depressed = !depressed; //invert depression
-        actionTime = millis() + 100;
+        actionTime = frameCount + 6;
       }
     }  
     else{
@@ -76,7 +76,7 @@ class TowerBuy extends Button {
   }  
   void action(){
     depressed = !depressed; //invert depression
-    actionTime = millis() + 100;
+    actionTime = frameCount + 6;
     if (hand.held == twType){ //if already holding, stop
       hand.setHeld("null");
     }   
