@@ -15,6 +15,7 @@ class Tower {
   int price;
   int value;
   boolean turret;
+  boolean visualize;
   int priority;
   int nextLevel;
   int[] upgradePrices;
@@ -40,6 +41,7 @@ class Tower {
     price = 0;
     value = price;
     turret = false;
+    visualize = false;
     nextLevel = 0;
     upgradePrices = new int[4];
     upgradeHealth = new int[4];
