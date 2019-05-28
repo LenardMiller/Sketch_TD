@@ -10,6 +10,10 @@ class Selection{ //what tower is selected
     }
   }  
   void swapSel(int id){ //switches what is selected
+    for (int i = towers.size()-1; i >= 0; i--){
+      Tower tower = towers.get(i);
+      tower.visualize = false;
+    }  
     this.id = id;
     Tower tower = towers.get(id);
     name = tower.name;
@@ -19,6 +23,7 @@ class Selection{ //what tower is selected
       repairButton.active = false; 
       upgradeButton.active = false; 
       upgradeIcon.active = false;
+      tower.visualize = true;
     }
     if (!tower.turret){
       targetButton.active = false;
@@ -34,6 +39,7 @@ class Selection{ //what tower is selected
     }  
   }  
   void clickoff(){ //desselect, hide stuff
+    Tower tower = towers.get(id);
     if (towers.size() < id+1){
       name = "null";
       sellButton.active = false;
@@ -41,9 +47,10 @@ class Selection{ //what tower is selected
       repairButton.active = false;
       upgradeButton.active = false;
       upgradeIcon.active = false;
+      tower.visualize = false;
     }  
     else{ 
-      Tower tower = towers.get(id); //idk
+      //idk
       if (mousePressed && mouseX < 700 && (mouseX > tower.position.x || mouseX < tower.position.x-tower.size.x || mouseY > tower.position.y || mouseY < tower.position.y-tower.size.y) && alive){
         name = "null";
         sellButton.active = false;
@@ -51,6 +58,7 @@ class Selection{ //what tower is selected
         repairButton.active = false;
         upgradeButton.active = false;
         upgradeIcon.active = false;
+        tower.visualize = false;
       }  
     }
   }  
@@ -123,7 +131,7 @@ class Selection{ //what tower is selected
       x = 25;
     }  
     else if (tower.name == "ultimateWall"){ //placeholder name?
-      text("Ultimate", 800, 241);
+      text("Titanium", 800, 241);
       text("Wall", 800, 266);
       x = 25;
     } 
