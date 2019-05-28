@@ -6,7 +6,7 @@ class TowerTabButton extends Button {
     spriteOne = spritesAnimH.get("towerTabSwitchBT")[0];
     spriteTwo = spritesAnimH.get("towerTabSwitchBT")[1];
     sprite = spriteOne;
-    actionTime = millis() + 100;
+    actionTime = frameCount + 6;
   }
   @Override
   void action(){
@@ -19,6 +19,6 @@ class TowerTabButton extends Button {
         button.active = false;  
       }  
     }
-    actionTime = millis() + 100;
+    actionTime = frameCount + 6;
   }  
 }  
