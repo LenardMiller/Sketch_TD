@@ -101,12 +101,12 @@ class RandomCannon extends Turret{
       else { //if done, switch to load
         frame = 0;
         spriteType = 2;
-        loadDelay = (int) (((delayTime - frameCount)/numLoadFrames)/3);
+        loadDelay = (int) (((delayTime - frameCount)/numLoadFrames));
         loadDelayTime = frameCount + loadDelay;
       }  
     }
     else if (spriteType == 2){ //load
-      if (frameCount - loadDelayTime >= loadDelay){ //SUPPOSSED to animate dialated to the remaining delay time, but it doesn't really. TODO: fix
+      if (frameCount - loadDelayTime >= loadDelay){
         frame++;
         loadDelayTime = frameCount + loadDelay;
       }  
