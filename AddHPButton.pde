@@ -6,7 +6,7 @@ class AddHPButton extends Button {
     spriteOne = spritesAnimH.get("livesAddBT")[0];
     spriteTwo = spritesAnimH.get("livesAddBT")[1];
     sprite = spriteOne;
-    actionTime = millis() + 100;
+    actionTime = frameCount + 6;
   }
   @Override
   void action(){ //give lives
