@@ -42,12 +42,12 @@ class Wall extends Tower{
     upgradeDebris[0] = "stone";
     upgradeDebris[1] = "metal";
     upgradeDebris[2] = "crystal";
-    upgradeDebris[3] = "devWood";
+    upgradeDebris[3] = "ultimate";
     //titles
     upgradeTitles[0] = "Stone";
     upgradeTitles[1] = "Metal";
     upgradeTitles[2] = "Crystal";
-    upgradeTitles[3] = "Ultimate";
+    upgradeTitles[3] = "Titanium";
     //icons
     upgradeIcons[0] = spritesAnimH.get("upgradeIC")[1];
     upgradeIcons[1] = spritesAnimH.get("upgradeIC")[2];
