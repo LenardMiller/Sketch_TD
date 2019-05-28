@@ -96,12 +96,36 @@ class Enemy {
   void collidePJ(int damage, String pjBuff, int i){ //when the enemy hits a projectile
     enHp -= damage;
     if (pjBuff == "poison"){ //applies buffs
+      if (buffs.size() > 0);{
+        for (int j = buffs.size()-1; j >= 0; j--){
+          Buff buff = buffs.get(j);
+          if (buff.particle == "poison" && buff.enId == i){
+            buffs.remove(i);  
+          }  
+        }  
+      }
       buffs.add(new Poisoned(i));
     }
     if (pjBuff == "wet"){
+      if (buffs.size() > 0);{
+        for (int j = buffs.size()-1; j >= 0; j--){
+          Buff buff = buffs.get(j);
+          if (buff.particle == "wet" && buff.enId == i){
+            buffs.remove(i);  
+          }  
+        }  
+      }
       buffs.add(new Wet(i));
     }
     if (pjBuff == "burning"){
+      if (buffs.size() > 0);{
+        for (int j = buffs.size()-1; j >= 0; j--){
+          Buff buff = buffs.get(j);
+          if (buff.particle == "burning" && buff.enId == i){
+            buffs.remove(i);  
+          }  
+        }  
+      } 
       buffs.add(new Burning(i));
     }
     barTrans = 255;
