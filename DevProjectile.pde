@@ -13,7 +13,7 @@ class DevProjectile extends Projectile{
   }  
   @Override
    void collideEn(){
-    if (millis() > hitTime){
+    if (frameCount > hitTime){
       for (int i = enemies.size()-1; i >= 0; i--){
         Enemy enemy = enemies.get(i);
         if (abs(enemy.position.x-position.x) <= (radius + enemy.radius) && abs(enemy.position.y-position.y) <= (radius + enemy.radius)){ //touching enemy
@@ -24,7 +24,7 @@ class DevProjectile extends Projectile{
               buffs.remove(j);  
             }  
           }  
-          hitTime = millis() + 0; 
+          hitTime = frameCount + 0; 
           pierce -= 1;
           if (pierce <= 0) {
             projectiles.remove(i);
