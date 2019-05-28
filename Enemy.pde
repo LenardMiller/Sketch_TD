@@ -100,7 +100,7 @@ class Enemy {
         for (int j = buffs.size()-1; j >= 0; j--){
           Buff buff = buffs.get(j);
           if (buff.particle == "poison" && buff.enId == i){
-            buffs.remove(i);  
+            buffs.remove(j);  
           }  
         }  
       }
@@ -110,8 +110,8 @@ class Enemy {
       if (buffs.size() > 0);{
         for (int j = buffs.size()-1; j >= 0; j--){
           Buff buff = buffs.get(j);
-          if (buff.particle == "wet" && buff.enId == i){
-            buffs.remove(i);  
+          if (buff.particle == "water" && buff.enId == i){
+            buffs.remove(j);  
           }  
         }  
       }
@@ -119,10 +119,14 @@ class Enemy {
     }
     if (pjBuff == "burning"){
       if (buffs.size() > 0);{
+        println("size");
         for (int j = buffs.size()-1; j >= 0; j--){
+          println(j);
           Buff buff = buffs.get(j);
-          if (buff.particle == "burning" && buff.enId == i){
-            buffs.remove(i);  
+          if (buff.particle == "fire" && buff.enId == i){
+            println("found");
+            buffs.remove(j);  
+            
           }  
         }  
       } 
