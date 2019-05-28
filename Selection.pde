@@ -251,7 +251,7 @@ class Selection{ //what tower is selected
       if (tower.delay > 210){
           text("Low firerate", 710, 336 + x);
         }  
-        else if (tower.delay <= 210 && tower.delay >= 1500){
+        else if (tower.delay <= 210 && tower.delay >= 90){
           text("Medium firerate", 710, 336 + x);
         }  
         else if (tower.delay < 90){
