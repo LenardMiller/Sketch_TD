@@ -22,7 +22,7 @@ class Turret extends Tower{
     maxHp = 20;
     twHp = maxHp;
     hit = false;
-    delay = 4000;
+    delay = 240;
     delayTime = delay;
     pjSpeed = 2;
     error = 0;
@@ -67,10 +67,6 @@ class Turret extends Tower{
     PVector newTarget = new PVector(target.x,target.y+(t.mag()*enemy.speed)); //target + how far the enemy will go in t
     target = newTarget; //leads shots
     ratio = PVector.sub(target,position);
-    //stroke(255,0,0,150);
-    //line(target.x-enemy.size.x/2,height,target.x-enemy.size.x/2,0);
-    //stroke(0,0,255,150);
-    //line(width,target.y-enemy.size.y/2,0,target.y-enemy.size.y/2);
     if (position.x == target.x){ //if on the same x
        if (position.y >= target.y){ //if below target or on same y, angle right
          angle = 0;
@@ -88,22 +84,30 @@ class Turret extends Tower{
        }  
     } 
     else{
-      if (position.x < target.x && position.y > target.y){ //if to left and below
-         angle = (atan(abs(ratio.x)/abs(ratio.y)));
+      if (position.x < target.x && position.y > target.y){ //if to left and below NOT WORKING
+        angle = (atan(abs(ratio.x+15)/abs(ratio.y)));
       }  
       else if (position.x < target.x && position.y < target.y){ //if to left and above
-         angle = (atan(abs(ratio.y)/abs(ratio.x))) + HALF_PI;
+        angle = (atan(abs(ratio.y)/abs(ratio.x))) + HALF_PI;
       } 
-      else if (position.x > target.x && position.y < target.y){ //if to right and above
-         angle = (atan(abs(ratio.x)/abs(ratio.y))) + PI;
+      else if (position.x > target.x && position.y < target.y){ //if to right and above NOT WORKING
+        angle = (atan(abs(ratio.x+15)/abs(ratio.y))) + PI;
       }  
       else if (position.x > target.x && position.y > target.y){ //if to right and below
-         angle = (atan(abs(ratio.y)/abs(ratio.x))) + 3*HALF_PI;
+        angle = (atan(abs(ratio.y)/abs(ratio.x))) + 3*HALF_PI;
       } 
+    }
+    if (visualize){ //cool lines
+      stroke(255);
+      line(position.x-size.x/2,position.y-size.y/2,target.x-enemy.size.x/2,target.y-enemy.size.y/2);
+      stroke(255,0,0,150);
+      line(target.x-enemy.size.x/2,height,target.x-enemy.size.x/2,0);
+      stroke(0,0,255,150);
+      line(width,target.y-enemy.size.y/2,0,target.y-enemy.size.y/2);
     }
   }  
   void fire(){  
-    delayTime = millis() + delay; //waits this time before firing
+    delayTime = frameCount + delay; //waits this time before firing
     angle += radians(random(-error,error));
     projectiles.add(new Projectile(position.x-size.x/2,position.y-size.y/2, angle));
   }  
@@ -142,14 +146,14 @@ class Turret extends Tower{
       else { //if done, switch to load
         frame = 0;
         spriteType = 2;
-        loadDelay = (int) (((delayTime - millis())/numLoadFrames)/3);
-        loadDelayTime = millis() + loadDelay;
+        loadDelay = (int) (((delayTime - frameCount)/numLoadFrames)/3);
+        loadDelayTime = frameCount + loadDelay;
       }  
     }
     else if (spriteType == 2){ //load
-      if (millis() - loadDelayTime >= loadDelay){ //animates dialated to the remaining delay time
+      if (frameCount - loadDelayTime >= loadDelay){ //animates dialated to the remaining delay time
         frame++;
-        loadDelayTime = millis() + loadDelay;
+        loadDelayTime = frameCount + loadDelay;
       }  
       if (frame < numLoadFrames){
         sprite = loadFrames[frame];
