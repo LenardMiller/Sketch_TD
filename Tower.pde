@@ -18,8 +18,12 @@ class Tower {
   boolean visualize;
   int priority;
   int nextLevel;
+  boolean[] upgradeSpecial;
   int[] upgradePrices;
   int[] upgradeHealth;
+  int[] upgradeDamage;
+  int[] upgradeDelay;
+  float[] upgradeError;
   String[] upgradeNames;
   String[] upgradeDebris;
   String[] upgradeTitles;
