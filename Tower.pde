@@ -7,6 +7,7 @@ class Tower {
   PVector size;
   int maxHp;
   int twHp;
+  int damage;
   boolean hit;
   PImage sprite;
   int barTrans;
@@ -18,8 +19,12 @@ class Tower {
   boolean visualize;
   int priority;
   int nextLevel;
+  boolean[] upgradeSpecial;
   int[] upgradePrices;
   int[] upgradeHealth;
+  int[] upgradeDamage;
+  int[] upgradeDelay;
+  float[] upgradeError;
   String[] upgradeNames;
   String[] upgradeDebris;
   String[] upgradeTitles;
@@ -33,6 +38,7 @@ class Tower {
     error = 0;
     this.maxHp = 1;
     twHp = maxHp;
+    damage = 0;
     hit = false;
     sprite = spritesH.get("nullWallTW");
     barTrans = 255;
@@ -43,8 +49,12 @@ class Tower {
     turret = false;
     visualize = false;
     nextLevel = 0;
+    upgradeSpecial = new boolean[4];
+    upgradeDamage = new int[4];
+    upgradeDelay = new int[4];
     upgradePrices = new int[4];
     upgradeHealth = new int[4];
+    upgradeError = new float[4];
     upgradeNames = new String[4];
     upgradeDebris = new String[4];
     upgradeTitles = new String[4];
@@ -53,6 +63,21 @@ class Tower {
     setUpgrades();
   }  
   void setUpgrades(){
+    //special
+    upgradeSpecial[0] = false;
+    upgradeSpecial[1] = false;
+    upgradeSpecial[2] = false;
+    upgradeSpecial[3] = false;
+    //damage
+    upgradeDamage[0] = 0;
+    upgradeDamage[1] = 0;
+    upgradeDamage[2] = 0;
+    upgradeDamage[3] = 0;
+    //delay (firerate)
+    upgradeDelay[0] = 0;
+    upgradeDelay[1] = 0;
+    upgradeDelay[2] = 0;
+    upgradeDelay[3] = 0;
     //price
     upgradePrices[0] = 50;
     upgradePrices[1] = 100;
@@ -63,6 +88,11 @@ class Tower {
     upgradeHealth[1] = 125;
     upgradeHealth[2] = 250;
     upgradeHealth[3] = 500;
+    //error (accuracy)
+    upgradeError[0] = 0;
+    upgradeError[1] = 0;
+    upgradeError[2] = 0;
+    upgradeError[3] = 0;
     //names
     upgradeNames[0] = "stoneWall";
     upgradeNames[1] = "metalWall";
