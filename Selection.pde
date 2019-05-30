@@ -18,24 +18,26 @@ class Selection{ //what tower is selected
     Tower tower = towers.get(id);
     name = tower.name;
     sellButton.active = true;
+    upgradeButton.active = true;
+    upgradeIcon.active = true;
     if (tower.turret){
       targetButton.active = true;
       repairButton.active = false; 
-      upgradeButton.active = false; 
-      upgradeIcon.active = false;
       tower.visualize = true;
+      upgradeButton.position.y = 735;
+      upgradeIcon.position.y = 715;
     }
     if (!tower.turret){
       targetButton.active = false;
       repairButton.active = true;
-      upgradeButton.active = true;
-      upgradeIcon.active = true;
-      if (tower.nextLevel < tower.upgradeNames.length){
-        upgradeIcon.sprite = tower.upgradeIcons[tower.nextLevel];
-      }
-      else{
-        upgradeIcon.sprite = spritesAnimH.get("upgradeIC")[0];  
-      }  
+      upgradeButton.position.y = 630;
+      upgradeIcon.position.y = 610;
+    }  
+    if (tower.nextLevel < tower.upgradeNames.length){
+      upgradeIcon.sprite = tower.upgradeIcons[tower.nextLevel];
+    }
+    else{
+      upgradeIcon.sprite = spritesAnimH.get("upgradeIC")[0];   
     }  
   }  
   void clickoff(){ //desselect, hide stuff
@@ -73,7 +75,7 @@ class Selection{ //what tower is selected
     fill(235);
     noStroke();
     if (tower.turret){ //different size bg so butons fit
-      rect(700,210,200,600);
+      rect(700,210,200,450);
     }
     else{
       rect(700,210,200,345);
@@ -83,14 +85,13 @@ class Selection{ //what tower is selected
     textAlign(CENTER); 
     fill(0);
     textFont(TFFont);
+    damage = tower.damage;
     if (tower.name == "slingshot"){
       text("Slingshot", 800, 241);
-      damage = 10;
       speed = 12;
     }  
     else if (tower.name == "crossbow"){
       text("Crossbow", 800, 241);
-      damage = 20;
       speed = 24;
       textFont(ETFont);
       textAlign(LEFT);
@@ -188,25 +189,27 @@ class Selection{ //what tower is selected
     }  
     
     //upgrade
-    if (!tower.turret){
-      if (tower.nextLevel < tower.upgradeNames.length){
-        if (money >= tower.upgradePrices[tower.nextLevel]){
-          fill(11,56,0);
-        }
-        else{
-          fill(75,0,0);  
-        }  
-        text(tower.upgradeTitles[tower.nextLevel], 800, 585);
-        text("$" + tower.upgradePrices[tower.nextLevel], 800, 693);
+    int y = 0;
+    if (tower.turret){
+      y = 105;  
+    }  
+    if (tower.nextLevel < tower.upgradeNames.length){
+      if (money >= tower.upgradePrices[tower.nextLevel]){
+        fill(11,56,0);
       }
       else{
-        fill(15);
-        text("N/A", 800, 585);
-        textFont(ETFont);
-        textAlign(LEFT);
-        text("No more",715,615); 
-        text("upgrades",715,635);
+        fill(75,0,0);  
       }  
+      text(tower.upgradeTitles[tower.nextLevel], 800, 585+y);
+      text("$" + tower.upgradePrices[tower.nextLevel], 800, 693+y);
+    }
+    else{
+      fill(15);
+      text("N/A", 800, 585+y);
+      textFont(ETFont);
+      textAlign(LEFT);
+      text("No more",715,615+y); 
+      text("upgrades",715,635+y);
     }  
     
     //sell
@@ -248,13 +251,13 @@ class Selection{ //what tower is selected
         else if (speed > 18){
           text("High velocity", 710, 316 + x);
         }  
-      if (tower.delay > 210){
+      if (tower.delay > 105){
           text("Low firerate", 710, 336 + x);
         }  
-        else if (tower.delay <= 210 && tower.delay >= 90){
+        else if (tower.delay <= 105 && tower.delay >= 45){
           text("Medium firerate", 710, 336 + x);
         }  
-        else if (tower.delay < 90){
+        else if (tower.delay < 45){
           text("High firerate", 710, 336 + x);
         }    
     }  
