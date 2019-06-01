@@ -28,6 +28,9 @@ class Tower {
   String[] upgradeNames;
   String[] upgradeDebris;
   String[] upgradeTitles;
+  String[] upgradeDescOne;
+  String[] upgradeDescTwo;
+  String[] upgradeDescThree;
   PImage[] upgradeIcons;
   PImage[] upgradeSprites;
   Tower(float x, float y) {
@@ -38,7 +41,6 @@ class Tower {
     error = 0;
     this.maxHp = 1;
     twHp = maxHp;
-    damage = 0;
     hit = false;
     sprite = spritesH.get("nullWallTW");
     barTrans = 255;
@@ -56,6 +58,9 @@ class Tower {
     upgradeHealth = new int[4];
     upgradeError = new float[4];
     upgradeNames = new String[4];
+    upgradeDescOne = new String[4];
+    upgradeDescTwo = new String[4];
+    upgradeDescThree = new String[4];
     upgradeDebris = new String[4];
     upgradeTitles = new String[4];
     upgradeIcons = new PImage[4];
@@ -108,6 +113,21 @@ class Tower {
     upgradeTitles[1] = "metal";
     upgradeTitles[2] = "crystal";
     upgradeTitles[3] = "ultimate";
+    //desc line one
+    upgradeDescOne[0] = "+75 HP";
+    upgradeDescOne[1] = "+100 HP";
+    upgradeDescOne[2] = "+225 HP";
+    upgradeDescOne[3] = "+500 HP";
+    //desc line two
+    upgradeDescTwo[0] = "";
+    upgradeDescTwo[1] = "";
+    upgradeDescTwo[2] = "";
+    upgradeDescTwo[3] = "";
+    //desc line three
+    upgradeDescThree[0] = "";
+    upgradeDescThree[1] = "";
+    upgradeDescThree[2] = "";
+    upgradeDescThree[3] = "";
     //icons
     upgradeIcons[0] = spritesAnimH.get("upgradeIC")[1];
     upgradeIcons[1] = spritesAnimH.get("upgradeIC")[2];
