@@ -48,6 +48,21 @@ class Wall extends Tower{
     upgradeTitles[1] = "Metal";
     upgradeTitles[2] = "Crystal";
     upgradeTitles[3] = "Titanium";
+    //desc line one
+    upgradeDescOne[0] = "+75 HP";
+    upgradeDescOne[1] = "+100 HP";
+    upgradeDescOne[2] = "+225 HP";
+    upgradeDescOne[3] = "+500 HP";
+    //desc line two
+    upgradeDescTwo[0] = "";
+    upgradeDescTwo[1] = "";
+    upgradeDescTwo[2] = "";
+    upgradeDescTwo[3] = "";
+    //desc line three
+    upgradeDescThree[0] = "";
+    upgradeDescThree[1] = "";
+    upgradeDescThree[2] = "";
+    upgradeDescThree[3] = "";
     //icons
     upgradeIcons[0] = spritesAnimH.get("upgradeIC")[1];
     upgradeIcons[1] = spritesAnimH.get("upgradeIC")[2];
