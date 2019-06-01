@@ -63,6 +63,15 @@ class Crossbow extends Turret{
     //titles
     upgradeTitles[0] = "Faster Firing";
     upgradeTitles[1] = "Yet Faster Firing";
+    //desc line one
+    upgradeDescOne[0] = "Increase";
+    upgradeDescOne[1] = "Further";
+    //desc line two
+    upgradeDescTwo[0] = "firerate";
+    upgradeDescTwo[1] = "Increase";
+    //desc line three
+    upgradeDescThree[0] = "";
+    upgradeDescThree[1] = "firerate";
     //icons
     upgradeIcons[0] = spritesAnimH.get("upgradeIC")[7];
     upgradeIcons[1] = spritesAnimH.get("upgradeIC")[10];
