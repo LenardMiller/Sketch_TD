@@ -85,14 +85,13 @@ class Selection{ //what tower is selected
     textAlign(CENTER); 
     fill(0);
     textFont(TFFont);
+    damage = tower.damage;
     if (tower.name == "slingshot"){
       text("Slingshot", 800, 241);
-      damage = 10;
       speed = 12;
     }  
     else if (tower.name == "crossbow"){
       text("Crossbow", 800, 241);
-      damage = 20;
       speed = 24;
       textFont(ETFont);
       textAlign(LEFT);
@@ -252,13 +251,13 @@ class Selection{ //what tower is selected
         else if (speed > 18){
           text("High velocity", 710, 316 + x);
         }  
-      if (tower.delay > 210){
+      if (tower.delay > 105){
           text("Low firerate", 710, 336 + x);
         }  
-        else if (tower.delay <= 210 && tower.delay >= 90){
+        else if (tower.delay <= 105 && tower.delay >= 45){
           text("Medium firerate", 710, 336 + x);
         }  
-        else if (tower.delay < 90){
+        else if (tower.delay < 45){
           text("High firerate", 710, 336 + x);
         }    
     }  
