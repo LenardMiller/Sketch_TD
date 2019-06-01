@@ -14,7 +14,6 @@ class Turret extends Tower{
   int frame;
   float loadDelay;
   float loadDelayTime;
-  int damage;
   Turret(float x, float y) {
     super(x,y);
     name = "null";
@@ -48,6 +47,9 @@ class Turret extends Tower{
     upgradeNames = new String[2];
     upgradeDebris = new String[2];
     upgradeTitles = new String[2];
+    upgradeDescOne = new String[2];
+    upgradeDescTwo = new String[2];
+    upgradeDescThree = new String[2];
     upgradeIcons = new PImage[2];
     upgradeSprites = new PImage[2];
   }
@@ -159,8 +161,6 @@ class Turret extends Tower{
         frame = 0;
         spriteType = 2;
         loadDelay = (int) (((delayTime - frameCount)/ (float) numLoadFrames));
-        println(delayTime - frameCount);
-        println((delayTime - frameCount)/ (float) numLoadFrames);
         loadDelayTime = frameCount + loadDelay;
       }  
     }
@@ -198,6 +198,7 @@ class Turret extends Tower{
     damage += upgradeDamage[nextLevel];
     delay += upgradeDelay[nextLevel];
     price += upgradePrices[nextLevel];
+    value += upgradePrices[nextLevel];
     maxHp += upgradeHealth[nextLevel];
     twHp += upgradeHealth[nextLevel];
     error += upgradeError[nextLevel];
