@@ -66,7 +66,6 @@ class Selection{ //what tower is selected
   }  
   void display(){
     Tower tower = towers.get(id);
-    int damage = 0;
     int speed = 0;
     int x = 0;
     String priority = "first";
@@ -74,7 +73,7 @@ class Selection{ //what tower is selected
     //bg
     fill(235);
     noStroke();
-    if (tower.turret){ //different size bg so butons fit
+    if (tower.turret){ //different size bg so buttons fit
       rect(700,210,200,450);
     }
     else{
@@ -85,7 +84,6 @@ class Selection{ //what tower is selected
     textAlign(CENTER); 
     fill(0);
     textFont(TFFont);
-    damage = tower.damage;
     if (tower.name == "slingshot"){
       text("Slingshot", 800, 241);
       speed = 12;
@@ -202,6 +200,11 @@ class Selection{ //what tower is selected
       }  
       text(tower.upgradeTitles[tower.nextLevel], 800, 585+y);
       text("$" + tower.upgradePrices[tower.nextLevel], 800, 693+y);
+      textFont(ETFont);
+      textAlign(LEFT);
+      text(tower.upgradeDescOne[tower.nextLevel],715,615+y); 
+      text(tower.upgradeDescTwo[tower.nextLevel],715,635+y);
+      text(tower.upgradeDescThree[tower.nextLevel],715,655+y);
     }
     else{
       fill(15);
@@ -231,7 +234,7 @@ class Selection{ //what tower is selected
         text("Low/medium acc.", 710, 356 + x);
       }
       else{
-        text("Damage: " + damage, 710, 296 + x);
+        text("Damage: " + tower.damage, 710, 296 + x);
         if (tower.error < 1){
           text("High accuracy", 710, 356 + x);
         }  
