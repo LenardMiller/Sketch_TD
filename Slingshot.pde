@@ -60,6 +60,15 @@ class Slingshot extends Turret{
     //titles
     upgradeTitles[0] = "Faster Firing";
     upgradeTitles[1] = "Damage Up";
+    //desc line one
+    upgradeDescOne[0] = "Increase";
+    upgradeDescOne[1] = "+10";
+    //desc line two
+    upgradeDescTwo[0] = "firerate";
+    upgradeDescTwo[1] = "damage";
+    //desc line three
+    upgradeDescThree[0] = "";
+    upgradeDescThree[1] = "";
     //icons
     upgradeIcons[0] = spritesAnimH.get("upgradeIC")[7];
     upgradeIcons[1] = spritesAnimH.get("upgradeIC")[8];
