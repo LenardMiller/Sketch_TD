@@ -18,7 +18,8 @@ class Tower {
   boolean turret;
   boolean visualize;
   int priority;
-  int nextLevel;
+  int nextLevelZero;
+  int nextLevelOne;
   boolean[] upgradeSpecial;
   int[] upgradePrices;
   int[] upgradeHealth;
@@ -50,7 +51,7 @@ class Tower {
     value = price;
     turret = false;
     visualize = false;
-    nextLevel = 0;
+    nextLevelOne = 2;
     upgradeSpecial = new boolean[4];
     upgradeDamage = new int[4];
     upgradeDelay = new int[4];
@@ -176,21 +177,21 @@ class Tower {
     }
   }  
   
-  void upgrade(){
-    price += upgradePrices[nextLevel];
-    maxHp += upgradeHealth[nextLevel];
-    twHp += upgradeHealth[nextLevel];
-    name = upgradeNames[nextLevel];
-    debrisType = upgradeDebris[nextLevel];
-    sprite = upgradeSprites[nextLevel];
-    if (nextLevel < upgradeNames.length){
-      nextLevel++;
+  void upgrade(int id){ //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    price += upgradePrices[nextLevelOne];
+    maxHp += upgradeHealth[nextLevelOne];
+    twHp += upgradeHealth[nextLevelOne];
+    name = upgradeNames[nextLevelOne];
+    debrisType = upgradeDebris[nextLevelOne];
+    sprite = upgradeSprites[nextLevelOne];
+    if (nextLevelOne < upgradeNames.length){
+      nextLevelOne++;
     }
-    if (nextLevel < upgradeNames.length){
-      upgradeIcon.sprite = upgradeIcons[nextLevel];
+    if (nextLevelOne < upgradeNames.length){
+      upgradeIconOne.sprite = upgradeIcons[nextLevelOne];
     }
     else{
-      upgradeIcon.sprite = spritesAnimH.get("upgradeIC")[0]; 
+      upgradeIconOne.sprite = spritesAnimH.get("upgradeIC")[0]; 
     }  
     int num = floor(random(30,50)); //shower debris
     for (int j = num; j >= 0; j--){
