@@ -11,7 +11,7 @@ class Wall extends Tower{
     debrisType = "wood";
     price = 25;
     value = price;
-    nextLevel = 0;
+    nextLevelOne = 0;
     upgradePrices = new int[4];
     upgradeHealth = new int[4];
     upgradeNames = new String[4];
@@ -50,8 +50,8 @@ class Wall extends Tower{
     upgradeTitles[3] = "Titanium";
     //desc line one
     upgradeDescOne[0] = "+75 HP";
-    upgradeDescOne[1] = "+100 HP";
-    upgradeDescOne[2] = "+225 HP";
+    upgradeDescOne[1] = "+125 HP";
+    upgradeDescOne[2] = "+250 HP";
     upgradeDescOne[3] = "+500 HP";
     //desc line two
     upgradeDescTwo[0] = "";
