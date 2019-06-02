@@ -5,16 +5,16 @@ void keyReleased() {
   }
   //projectile form: spawn x, spawn y, angle
   if (key == 'q' && alive){ //pebble
-    projectiles.add(new Pebble(mouseX, mouseY, 0));
+    projectiles.add(new Pebble(mouseX, mouseY, 0, 10));
   }  
   if (key == 'w' && alive){ //bolt
-    projectiles.add(new Bolt(mouseX, mouseY, 0));
+    projectiles.add(new Bolt(mouseX, mouseY, 0, 20, 2));
   }  
   if (key == 'e' && alive){ //dev projectile
     projectiles.add(new DevProjectile(mouseX, mouseY, 0));
   }  
   if (key == 'r' && alive){ //misc projectile
-    projectiles.add(new MiscProjectile(mouseX, mouseY, 0, round(random(0,5))));
+    projectiles.add(new MiscProjectile(mouseX, mouseY, 0, round(random(0,5)),6));
   } 
   if (key == 't' && alive){ //acid
     projectiles.add(new Acid(mouseX, mouseY, 0));

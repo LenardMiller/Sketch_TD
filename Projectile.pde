@@ -17,7 +17,7 @@ class Projectile {
   String trail;
   boolean isTrail;
   String buff;
-  
+  int hitDelay;
   Projectile(float x, float y, float angle) {
     position = new PVector(x, y);
     size = new PVector(10, 10);
@@ -34,6 +34,7 @@ class Projectile {
     isTrail = false;
     trail = "null";
     buff = "null";
+    hitDelay = 6;
   }  
   
   void pjMain(ArrayList<Projectile> projectiles, int i){
@@ -73,12 +74,12 @@ class Projectile {
   }  
   
   void collideEn(){
-    if (millis() > hitTime){
+    if (frameCount > hitTime){
       for (int i = enemies.size()-1; i >= 0; i--){
         Enemy enemy = enemies.get(i);
         if (abs(enemy.position.x-position.x) <= (radius + enemy.radius) && abs(enemy.position.y-position.y) <= (radius + enemy.radius) && pierce > 0){ //if touching enemy, and has pierce
           enemy.collidePJ(damage,buff,i);
-          hitTime = millis() + 100; //little timer so no constant damage, kind of unneccissary
+          hitTime = frameCount + hitDelay; //little timer so no constant damage, NOT unneccissary
           pierce--;
         }            
         if (pierce == 0) {

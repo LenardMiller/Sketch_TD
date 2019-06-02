@@ -30,7 +30,6 @@ class Turret extends Tower{
     numFireFrames = 1;
     numLoadFrames = 1;
     debrisType = "null";
-    //the following is usually unchanged.
     fireFrames = new PImage[numFireFrames];
     loadFrames = new PImage[numLoadFrames];
     spriteType = 0;
@@ -54,22 +53,22 @@ class Turret extends Tower{
   void checkTarget(){
     if (priority == 0){ //first
       aim(enTrak.firstPos,position,enTrak.firstId);
-    }  
+    }
     else if (priority == 1){ //last
       aim(enTrak.lastPos,position,enTrak.lastId);
-    }  
+    }
     else if (priority == 2){ //strong
       aim(enTrak.strongPos,position,enTrak.strongId);
-    }  
+    }
     else{ //first, placeholder for close
       aim(enTrak.firstPos,position,enTrak.firstId);
-    }  
+    }
     if (frame == 0 && spriteType == 0){ //if done animating
       spriteType = 1;
       frame = 0;
       fire();
     }
-  }  
+  }
   void aim(PVector target, PVector position, int id){
     Enemy enemy = enemies.get(id);
     PVector e = PVector.div(enemy.size,2);
@@ -82,32 +81,32 @@ class Turret extends Tower{
     if (position.x == target.x){ //if on the same x
        if (position.y >= target.y){ //if below target or on same y, angle right
          angle = 0;
-       }  
+       }
        else if (position.y < target.y){ //if above target, angle left
          angle = PI;
-       }  
+       }
     }
     else if (position.y == target.y){ //if on same y
        if (position.x > target.x){ //if  right of target, angle down
          angle = 3*HALF_PI;
-       }  
+       }
        else if (position.x < target.x){ //if left of target, angle up
          angle = HALF_PI;
-       }  
-    } 
+       }
+    }
     else{
       if (position.x < target.x && position.y > target.y){ //if to left and below NOT WORKING
         angle = (atan(abs(ratio.x+15)/abs(ratio.y)));
-      }  
+      }
       else if (position.x < target.x && position.y < target.y){ //if to left and above
         angle = (atan(abs(ratio.y)/abs(ratio.x))) + HALF_PI;
-      } 
+      }
       else if (position.x > target.x && position.y < target.y){ //if to right and above NOT WORKING
         angle = (atan(abs(ratio.x+15)/abs(ratio.y))) + PI;
-      }  
+      }
       else if (position.x > target.x && position.y > target.y){ //if to right and below
         angle = (atan(abs(ratio.y)/abs(ratio.x))) + 3*HALF_PI;
-      } 
+      }
     }
     if (visualize){ //cool lines
       stroke(255);
@@ -117,24 +116,24 @@ class Turret extends Tower{
       stroke(0,0,255,150);
       line(width,target.y-enemy.size.y/2,0,target.y-enemy.size.y/2);
     }
-  }  
-  void fire(){  
+  }
+  void fire(){
     delayTime = frameCount + delay; //waits this time before firing
     angle += radians(random(-error,error));
     projectiles.add(new Projectile(position.x-size.x/2,position.y-size.y/2, angle));
-  }  
+  }
   void loadSprites(){
     sBase = spritesH.get(name+"BaseTR");
     sIdle = spritesH.get(name+"IdleTR");
     fireFrames = spritesAnimH.get(name+"FireTR");
-    loadFrames = spritesAnimH.get(name+"LoadTR"); 
-  }  
+    loadFrames = spritesAnimH.get(name+"LoadTR");
+  }
   @Override
   void twMain(ArrayList<Tower> towers, int i){ //need to check target
     if (twHp <= 0){
        die(i);
        towers.remove(i);
-    }  
+    }
     if (enemies.size() > 0 && alive){
       checkTarget();
     }
@@ -142,19 +141,19 @@ class Turret extends Tower{
       selection.swapSel(i);
     }
     display();
-  }  
+  }
   void display(){
     if (tintColor < 255){
-      tintColor += 20;  
-    }  
+      tintColor += 20;
+    }
     if (spriteType == 0){ //idle
       sprite = sIdle;
-    }  
+    }
     else if (spriteType == 1){ //fire
       if (frame < numFireFrames-1){ //if not done, keep going
         frame++;
         sprite = fireFrames[frame];
-      }  
+      }
       else { //if done, switch to load
         frame = 0;
         spriteType = 2;
@@ -162,13 +161,13 @@ class Turret extends Tower{
         println(delayTime - frameCount);
         println((delayTime - frameCount)/ (float) numLoadFrames);
         loadDelayTime = frameCount + loadDelay;
-      }  
+      }
     }
     else if (spriteType == 2){ //load
       if (frameCount - loadDelayTime >= loadDelay){ //animates dialated to the remaining delay time
         frame++;
         loadDelayTime = frameCount + loadDelay;
-      }  
+      }
       if (frame < numLoadFrames){
         sprite = loadFrames[frame];
       }
@@ -176,12 +175,12 @@ class Turret extends Tower{
         frame = 0;
         sprite = sIdle;
         spriteType = 0;
-      }  
-   }  
+      }
+   }
    if (hit){ //change to red if under attack
       tintColor = 0;
       hit = false;
-   }  
+   }  x
    if (twHp > 0){
       HpBar();
    }
@@ -211,11 +210,11 @@ class Turret extends Tower{
       upgradeIcon.sprite = upgradeIcons[nextLevel];
     }
     else{
-      upgradeIcon.sprite = spritesAnimH.get("upgradeIC")[0]; 
-    }  
+      upgradeIcon.sprite = spritesAnimH.get("upgradeIC")[0];
+    }
     int num = floor(random(30,50)); //shower debris
     for (int j = num; j >= 0; j--){
       particles.add(new Debris((position.x-size.x/2)+random((size.x/2)*-1,size.x/2), (position.y-size.y/2)+random((size.y/2)*-1,size.y/2), random(0,360), debrisType));
     }
-  }  
-}  
+  }
+}

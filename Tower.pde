@@ -28,6 +28,9 @@ class Tower {
   String[] upgradeNames;
   String[] upgradeDebris;
   String[] upgradeTitles;
+  String[] upgradeDescOne;
+  String[] upgradeDescTwo;
+  String[] upgradeDescThree;
   PImage[] upgradeIcons;
   PImage[] upgradeSprites;
   Tower(float x, float y) {
@@ -56,12 +59,15 @@ class Tower {
     upgradeHealth = new int[4];
     upgradeError = new float[4];
     upgradeNames = new String[4];
+    upgradeDescOne = new String[4];
+    upgradeDescTwo = new String[4];
+    upgradeDescThree = new String[4];
     upgradeDebris = new String[4];
     upgradeTitles = new String[4];
     upgradeIcons = new PImage[4];
     upgradeSprites = new PImage[4];
     setUpgrades();
-  }  
+  }
   void setUpgrades(){
     //special
     upgradeSpecial[0] = false;
@@ -108,6 +114,21 @@ class Tower {
     upgradeTitles[1] = "metal";
     upgradeTitles[2] = "crystal";
     upgradeTitles[3] = "ultimate";
+    //desc line one
+    upgradeDescOne[0] = "+75 HP";
+    upgradeDescOne[1] = "+100 HP";
+    upgradeDescOne[2] = "+225 HP";
+    upgradeDescOne[3] = "+500 HP";
+    //desc line two
+    upgradeDescTwo[0] = "";
+    upgradeDescTwo[1] = "";
+    upgradeDescTwo[2] = "";
+    upgradeDescTwo[3] = "";
+    //desc line three
+    upgradeDescThree[0] = "";
+    upgradeDescThree[1] = "";
+    upgradeDescThree[2] = "";
+    upgradeDescThree[3] = "";
     //icons
     upgradeIcons[0] = spritesAnimH.get("upgradeIC")[1];
     upgradeIcons[1] = spritesAnimH.get("upgradeIC")[2];
@@ -118,23 +139,23 @@ class Tower {
     upgradeSprites[1] = spritesH.get("metalWallTW");
     upgradeSprites[2] = spritesH.get("crystalWallTW");
     upgradeSprites[3] = spritesH.get("ultimateWallTW");
-  }  
+  }
   void twMain(ArrayList<Tower> towers, int i){
     if (twHp <= 0){
        die(i);
        towers.remove(i);
-    }  
+    }
     value = floor((float(twHp)/float(maxHp))*price);
     if (mousePressed && mouseX < position.x && mouseX > position.x-size.x && mouseY < position.y && mouseY > position.y-size.y && alive){ //clicked on
       selection.swapSel(i);
     }
     display();
-  }  
-  void display(){;   
+  }
+  void display(){;
     if (hit){ //change to red if under attack
       tintColor = 0;
       hit = false;
-    } 
+    }
     tint(255,tintColor,tintColor);
     image(sprite,position.x-size.x,position.y-size.y);
     tint(255);
@@ -142,10 +163,10 @@ class Tower {
       HpBar();
     }
     if (tintColor < 255){
-      tintColor += 20;  
-    }  
+      tintColor += 20;
+    }
   }
-  
+
   void collideEN(int dangerLevel){ //if it touches an enemy, animate and loose health
     twHp -= dangerLevel;
     hit = true;
@@ -154,30 +175,30 @@ class Tower {
     for (int i = num; i >= 0; i--){ //spray debris
       particles.add(new Debris((position.x-size.x/2)+random((size.x/2)*-1,size.x/2), (position.y-size.y/2)+random((size.y/2)*-1,size.y/2), random(0,360), debrisType));
     }
-  }  
-  
-  void upgrade(){
-    price += upgradePrices[nextLevel];
-    maxHp += upgradeHealth[nextLevel];
-    twHp += upgradeHealth[nextLevel];
-    name = upgradeNames[nextLevel];
-    debrisType = upgradeDebris[nextLevel];
-    sprite = upgradeSprites[nextLevel];
-    if (nextLevel < upgradeNames.length){
-      nextLevel++;
+  }
+
+  void upgrade(int id){ //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    price += upgradePrices[nextLevelOne];
+    maxHp += upgradeHealth[nextLevelOne];
+    twHp += upgradeHealth[nextLevelOne];
+    name = upgradeNames[nextLevelOne];
+    debrisType = upgradeDebris[nextLevelOne];
+    sprite = upgradeSprites[nextLevelOne];
+    if (nextLevelOne < upgradeNames.length){
+      nextLevelOne++;
     }
-    if (nextLevel < upgradeNames.length){
-      upgradeIcon.sprite = upgradeIcons[nextLevel];
+    if (nextLevelOne < upgradeNames.length){
+      upgradeIconOne.sprite = upgradeIcons[nextLevelOne];
     }
     else{
-      upgradeIcon.sprite = spritesAnimH.get("upgradeIC")[0]; 
-    }  
+      upgradeIconOne.sprite = spritesAnimH.get("upgradeIC")[0];
+    }
     int num = floor(random(30,50)); //shower debris
     for (int j = num; j >= 0; j--){
       particles.add(new Debris((position.x-size.x/2)+random((size.x/2)*-1,size.x/2), (position.y-size.y/2)+random((size.y/2)*-1,size.y/2), random(0,360), debrisType));
     }
-  }  
-  
+  }
+
   void die(int i){
     int num = floor(random(30,50)); //shower debris
     for (int j = num; j >= 0; j--){
@@ -188,19 +209,19 @@ class Tower {
     }
     if (selection.id == i){
       selection.id = 0;
-    }  
+    }
   }
-  
+
   void HpText(){ //displays the towers health
     text(twHp, position.x-size.x/2, position.y + size.y/4);
   }
-  
+
   void HpBar(){ //displays the towers health with style
-    fill(0,255,0,barTrans); 
+    fill(0,255,0,barTrans);
     if (barTrans > 0 && twHp > maxHp/2){ //after hit or if below 50%
       barTrans--;
-    }  
+    }
     noStroke();
     rect(position.x-size.x, position.y + size.y/4, (size.x)*(((float) twHp)/((float) maxHp)), -6);
-  }  
-}  
+  }
+}

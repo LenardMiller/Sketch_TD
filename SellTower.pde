@@ -17,8 +17,10 @@ class SellTower extends Button {
     active = false;
     targetButton.active = false;
     repairButton.active = false;
-    upgradeButton.active = false;
-    upgradeIcon.active = false;
+    upgradeButtonZero.active = false;
+    upgradeButtonOne.active = false;
+    upgradeIconZero.active = false;
+    upgradeIconOne.active = false;
     selection.name = "null";
   }  
 }  

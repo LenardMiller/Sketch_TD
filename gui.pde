@@ -45,8 +45,12 @@ void gui(){ //gui icons & buttons
   targetButton = new TargetPriority(800,832.5,"null",false);
   //repair wall button
   repairButton = new RepairWall(800,780,"null",false);
-  //upgrade wall button
-  upgradeButton = new UpgradeTower(800,630,"null",false);
+  //upgrade wall button zero
+  upgradeButtonZero = new UpgradeTower(800,480,"null",false, 0);
+  //upgrade wall button one
+  upgradeButtonOne = new UpgradeTower(800,630,"null",false, 1);
   //upgrade wall icon
-  upgradeIcon = new UpgradeIcon(830,610,"null",false);
+  upgradeIconZero = new UpgradeIcon(830,610,"null",false);
+  //upgrade wall icon
+  upgradeIconOne = new UpgradeIcon(830,610,"null",false);
 }  
