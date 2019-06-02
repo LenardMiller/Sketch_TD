@@ -2,7 +2,7 @@
 The working title for a small Tower Defence game made in Processing.
 Made for Java practice and an excuse to make lots of pixel art.
 
-Commands: (WARNING: these are experimental and can crash your game)
+Commands: (WARNING: these are for debug only and can crash your game)
 debug
 s - kill all enemies
 d - kill all towers
