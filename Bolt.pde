@@ -1,5 +1,5 @@
 class Bolt extends Projectile{
-  Bolt(float x, float y, float angle, int damage) {
+  Bolt(float x, float y, float angle, int damage, int pierce) {
     super(x, y, angle);
     position = new PVector(x, y);
     size = new PVector(7, 32);
@@ -7,8 +7,9 @@ class Bolt extends Projectile{
     maxSpeed = 24;
     speed = maxSpeed;
     this.damage = damage;
-    pierce = 3;
+    this.pierce = pierce;
     this.angle = angle;
+    hitDelay = 2;
     sprite = spritesH.get("boltPj");
   }  
 }  
