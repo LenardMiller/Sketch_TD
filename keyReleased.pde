@@ -17,7 +17,7 @@ void keyReleased() {
     projectiles.add(new MiscProjectile(mouseX, mouseY, 0, round(random(0,5)),6));
   } 
   if (key == 't' && alive){ //acid
-    projectiles.add(new Acid(mouseX, mouseY, 0));x
+    projectiles.add(new Acid(mouseX, mouseY, 0));
   } 
   if (key == 'y' && alive){ //urchin
     projectiles.add(new Urchin(mouseX, mouseY, 0));
