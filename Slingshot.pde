@@ -14,7 +14,6 @@ class Slingshot extends Turret{
     error = 5; //set to 360 for a fun time. default: 5 degrees
     numFireFrames = 34;
     numLoadFrames = 59;
-    spriteLocation = "sprites/towers/turrets/slingshot/";
     fireFrames = new PImage[numFireFrames];
     loadFrames = new PImage[numLoadFrames];
     spriteType = 0;
@@ -24,6 +23,8 @@ class Slingshot extends Turret{
     price = 50;
     value = price;
     priority = 0; //first
+    nextLevelZero = 0;
+    nextLevelOne = 2;
     setUpgrades();
   }  
   @Override
@@ -36,44 +37,72 @@ class Slingshot extends Turret{
     //special
     upgradeSpecial[0] = false;
     upgradeSpecial[1] = false;
+    upgradeSpecial[2] = false;
+    upgradeSpecial[3] = false;
     //damage
     upgradeDamage[0] = 0;
-    upgradeDamage[1] = 10;
+    upgradeDamage[1] = 0;
+    upgradeDamage[2] = 0;
+    upgradeDamage[3] = 10;
     //delay (firerate)
-    upgradeDelay[0] = -30;
+    upgradeDelay[0] = 0;
     upgradeDelay[1] = 0;
+    upgradeDelay[2] = -30;
+    upgradeDelay[3] = 0;
     //price
     upgradePrices[0] = 50;
     upgradePrices[1] = 100;
+    upgradePrices[2] = 50;
+    upgradePrices[3] = 100;
     //heath
     upgradeHealth[0] = 0;
     upgradeHealth[1] = 0;
+    upgradeHealth[2] = 0;
+    upgradeHealth[3] = 0;
     //error (accuracy)
-    upgradeError[0] = 0;
-    upgradeError[1] = 0;
+    upgradeError[0] = -1;
+    upgradeError[1] = -2;
+    upgradeError[2] = 0;
+    upgradeError[3] = 0;
     //names
     upgradeNames[0] = "slingshot";
     upgradeNames[1] = "slingshot";
+    upgradeNames[2] = "slingshot";
+    upgradeNames[3] = "slingshot";
     //debris
     upgradeDebris[0] = "stone";
     upgradeDebris[1] = "stone";
+    upgradeDebris[2] = "stone";
+    upgradeDebris[3] = "stone";
     //titles
-    upgradeTitles[0] = "Faster Firing";
-    upgradeTitles[1] = "Damage Up";
+    upgradeTitles[0] = "More Precise";
+    upgradeTitles[1] = "Super Precise";
+    upgradeTitles[2] = "Faster Firing";
+    upgradeTitles[3] = "Damage Up";
     //desc line one
     upgradeDescOne[0] = "Increase";
-    upgradeDescOne[1] = "+10";
+    upgradeDescOne[1] = "further";
+    upgradeDescOne[2] = "Increase";
+    upgradeDescOne[3] = "+10";
     //desc line two
-    upgradeDescTwo[0] = "firerate";
-    upgradeDescTwo[1] = "damage";
+    upgradeDescTwo[0] = "accuracy";
+    upgradeDescTwo[1] = "increase";
+    upgradeDescTwo[2] = "firerate";
+    upgradeDescTwo[3] = "damage";
     //desc line three
     upgradeDescThree[0] = "";
-    upgradeDescThree[1] = "";
+    upgradeDescThree[1] = "accuracy";
+    upgradeDescThree[2] = "";
+    upgradeDescThree[3] = "";
     //icons
-    upgradeIcons[0] = spritesAnimH.get("upgradeIC")[7];
-    upgradeIcons[1] = spritesAnimH.get("upgradeIC")[8];
+    upgradeIcons[0] = spritesAnimH.get("upgradeIC")[5];
+    upgradeIcons[1] = spritesAnimH.get("upgradeIC")[6];
+    upgradeIcons[2] = spritesAnimH.get("upgradeIC")[7];
+    upgradeIcons[3] = spritesAnimH.get("upgradeIC")[8];
     //sprites
     upgradeSprites[0] = spritesH.get("stoneWallTW");
     upgradeSprites[1] = spritesH.get("metalWallTW");
+    upgradeSprites[2] = spritesH.get("stoneWallTW");
+    upgradeSprites[3] = spritesH.get("metalWallTW");
   }  
 }
