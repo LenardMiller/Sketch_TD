@@ -18,7 +18,8 @@ class Tower {
   boolean turret;
   boolean visualize;
   int priority;
-  int nextLevel;
+  int nextLevelZero;
+  int nextLevelOne;
   boolean[] upgradeSpecial;
   int[] upgradePrices;
   int[] upgradeHealth;
@@ -41,7 +42,6 @@ class Tower {
     error = 0;
     this.maxHp = 1;
     twHp = maxHp;
-    damage = 0;
     hit = false;
     sprite = spritesH.get("nullWallTW");
     barTrans = 255;
@@ -51,7 +51,7 @@ class Tower {
     value = price;
     turret = false;
     visualize = false;
-    nextLevel = 0;
+    nextLevelOne = 2;
     upgradeSpecial = new boolean[4];
     upgradeDamage = new int[4];
     upgradeDelay = new int[4];
@@ -224,4 +224,4 @@ class Tower {
     noStroke();
     rect(position.x-size.x, position.y + size.y/4, (size.x)*(((float) twHp)/((float) maxHp)), -6);
   }
-}
+}  

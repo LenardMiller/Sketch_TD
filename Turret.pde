@@ -14,7 +14,6 @@ class Turret extends Tower{
   int frame;
   float loadDelay;
   float loadDelayTime;
-  int damage;
   Turret(float x, float y) {
     super(x,y);
     name = "null";
@@ -38,17 +37,20 @@ class Turret extends Tower{
     loadDelayTime = 0;
     turret = true;
     loadSprites();
-    upgradeSpecial = new boolean[2];
-    upgradeDamage = new int[2];
-    upgradeDelay = new int[2];
-    upgradePrices = new int[2];
-    upgradeHealth = new int[2];
-    upgradeError = new float[2];
-    upgradeNames = new String[2];
-    upgradeDebris = new String[2];
-    upgradeTitles = new String[2];
-    upgradeIcons = new PImage[2];
-    upgradeSprites = new PImage[2];
+    upgradeSpecial = new boolean[4];
+    upgradeDamage = new int[4];
+    upgradeDelay = new int[4];
+    upgradePrices = new int[4];
+    upgradeHealth = new int[4];
+    upgradeError = new float[4];
+    upgradeNames = new String[4];
+    upgradeDebris = new String[4];
+    upgradeTitles = new String[4];
+    upgradeDescOne = new String[4];
+    upgradeDescTwo = new String[4];
+    upgradeDescThree = new String[4];
+    upgradeIcons = new PImage[4];
+    upgradeSprites = new PImage[4];
   }
   void checkTarget(){
     if (priority == 0){ //first
@@ -158,8 +160,6 @@ class Turret extends Tower{
         frame = 0;
         spriteType = 2;
         loadDelay = (int) (((delayTime - frameCount)/ (float) numLoadFrames));
-        println(delayTime - frameCount);
-        println((delayTime - frameCount)/ (float) numLoadFrames);
         loadDelayTime = frameCount + loadDelay;
       }
     }
@@ -180,7 +180,7 @@ class Turret extends Tower{
    if (hit){ //change to red if under attack
       tintColor = 0;
       hit = false;
-   }  x
+   }
    if (twHp > 0){
       HpBar();
    }
@@ -193,28 +193,49 @@ class Turret extends Tower{
    popMatrix();
    tint(255,255,255);
   }
-  void upgrade(){
+  void upgrade(int id){
+    int nextLevel;
+    if (id == 0){
+      nextLevel = nextLevelZero;
+    }
+    else{
+      nextLevel = nextLevelOne;
+    }
     damage += upgradeDamage[nextLevel];
     delay += upgradeDelay[nextLevel];
     price += upgradePrices[nextLevel];
+    value += upgradePrices[nextLevel];
     maxHp += upgradeHealth[nextLevel];
     twHp += upgradeHealth[nextLevel];
     error += upgradeError[nextLevel];
     name = upgradeNames[nextLevel];
     debrisType = upgradeDebris[nextLevel];
     sprite = upgradeSprites[nextLevel];
-    if (nextLevel < upgradeNames.length){
-      nextLevel++;
+    if (nextLevel < upgradeNames.length && id == 0){
+      nextLevelZero++;
     }
-    if (nextLevel < upgradeNames.length){
-      upgradeIcon.sprite = upgradeIcons[nextLevel];
+    else if (nextLevel < upgradeNames.length && id == 1){
+      nextLevelOne++;
     }
-    else{
-      upgradeIcon.sprite = spritesAnimH.get("upgradeIC")[0];
+    if (id == 0){
+      if (nextLevelZero < upgradeNames.length/2){
+        upgradeIconZero.sprite = upgradeIcons[nextLevelZero];
+      }
+      else{
+        upgradeIconZero.sprite = spritesAnimH.get("upgradeIC")[0];
+      }
+    }
+    if (id == 1){
+      if (nextLevelOne < upgradeNames.length){
+        upgradeIconOne.sprite = upgradeIcons[nextLevelOne];
+      }
+      else{
+        upgradeIconOne.sprite = spritesAnimH.get("upgradeIC")[0];
+      }
     }
     int num = floor(random(30,50)); //shower debris
     for (int j = num; j >= 0; j--){
       particles.add(new Debris((position.x-size.x/2)+random((size.x/2)*-1,size.x/2), (position.y-size.y/2)+random((size.y/2)*-1,size.y/2), random(0,360), debrisType));
     }
   }
-}
+}  

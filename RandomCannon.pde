@@ -41,7 +41,7 @@ class RandomCannon extends Turret{
     nextLevelZero = 0;
     nextLevelOne = 2;
     setUpgrades();
-  }  
+  }
   @Override
   void fire(){
     float miscError = error; //default 5
@@ -72,7 +72,7 @@ class RandomCannon extends Turret{
       angle += radians(random(-miscError,miscError));
       projectiles.add(new MiscProjectile(spp.x,spp.y,angle,floor(random(0,6.9)),damage)); //idk if it will ever choose the max, but I don't want to risk that
     }
-  }  
+  }
   void setUpgrades(){
     //special
     upgradeSpecial[0] = false;
@@ -144,15 +144,15 @@ class RandomCannon extends Turret{
     upgradeSprites[1] = spritesH.get("metalWallTW");
     upgradeSprites[2] = spritesH.get("stoneWallTW");
     upgradeSprites[3] = spritesH.get("metalWallTW");
-  }  
+  }
   void upgrade(int id){
     int nextLevel;
     if (id == 0){
       nextLevel = nextLevelZero;
     }
     else{
-      nextLevel = nextLevelOne;  
-    }  
+      nextLevel = nextLevelOne;
+    }
     damage += upgradeDamage[nextLevel];
     delay += upgradeDelay[nextLevel];
     price += upgradePrices[nextLevel];
@@ -170,7 +170,7 @@ class RandomCannon extends Turret{
     sprite = upgradeSprites[nextLevel];
     if (upgradeSpecial[nextLevel]){
       miscChance -= 4;
-    }  
+    }
     if (nextLevel < upgradeNames.length && id == 0){
       nextLevelZero++;
     }
@@ -183,21 +183,21 @@ class RandomCannon extends Turret{
       }
       else{
         upgradeIconZero.sprite = spritesAnimH.get("upgradeIC")[0];
-      }  
+      }
     }
     if (id == 1){
       if (nextLevelOne < upgradeNames.length){
         upgradeIconOne.sprite = upgradeIcons[nextLevelOne];
       }
       else{
-        upgradeIconOne.sprite = spritesAnimH.get("upgradeIC")[0]; 
-      }  
+        upgradeIconOne.sprite = spritesAnimH.get("upgradeIC")[0];
+      }
     }
     int num = floor(random(30,50)); //shower debris
     for (int j = num; j >= 0; j--){
       particles.add(new Debris((position.x-size.x/2)+random((size.x/2)*-1,size.x/2), (position.y-size.y/2)+random((size.y/2)*-1,size.y/2), random(0,360), debrisType));
     }
-  } 
+  }
   void loadSprites(){
     sBase = spritesH.get("randomCannonBaseTR");
     sIdle = spritesH.get("randomCannonIdleTR");
@@ -205,12 +205,12 @@ class RandomCannon extends Turret{
     fireFramesWater = spritesAnimH.get("randomCannonFireWaterTR");
     fireFramesAcid = spritesAnimH.get("randomCannonFireAcidTR");
     fireFramesUrchin = spritesAnimH.get("randomCannonFireUrchinTR");
-    loadFrames = spritesAnimH.get("randomCannonLoadTR"); 
-  } 
+    loadFrames = spritesAnimH.get("randomCannonLoadTR");
+  }
  void display(){
     if (spriteType == 0){ //idle
       sprite = sIdle;
-    }  
+    }
     else if (spriteType == 1){ //fire
       if (frame < numFireFrames-1){ //if not done, keep going
         frame++;
@@ -226,19 +226,19 @@ class RandomCannon extends Turret{
         else if (projectile == miscChance+3){
           sprite = fireFramesUrchin[frame];
         }
-      }  
+      }
       else { //if done, switch to load
         frame = 0;
         spriteType = 2;
         loadDelay = (int) (((delayTime - frameCount)/numLoadFrames));
         loadDelayTime = frameCount + loadDelay;
-      }  
+      }
     }
     else if (spriteType == 2){ //load
       if (frameCount - loadDelayTime >= loadDelay){
         frame++;
         loadDelayTime = frameCount + loadDelay;
-      }  
+      }
       if (frame < numLoadFrames){
         sprite = loadFrames[frame];
       }
@@ -246,12 +246,12 @@ class RandomCannon extends Turret{
         frame = 0;
         sprite = sIdle;
         spriteType = 0;
-      }  
-    }  
+      }
+    }
     if (hit){ //change to red if under attack
       tint(255,45,45);
       hit = false;
-    }  
+    }
    image(sBase,position.x-size.x,position.y-size.y);
    if (twHp > 0){
       HpBar();
@@ -262,5 +262,5 @@ class RandomCannon extends Turret{
    image(sprite,-size.x/2,-size.y/2);
    popMatrix();
    tint(255,255,255);
-  } 
+  }
 }  

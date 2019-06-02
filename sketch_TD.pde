@@ -42,7 +42,7 @@ HashMap<String,PImage[]> spritesAnimH = new HashMap<String,PImage[]>();
 
 void settings(){
   size(900, 900);
-}  
+}
 
 void setup(){
   //creates ArrayLists

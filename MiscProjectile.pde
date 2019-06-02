@@ -1,5 +1,5 @@
 class MiscProjectile extends Projectile{
-  PImage[] sprites = new PImage[6]; //alturnate sprites, passed in
+  PImage[] sprites = new PImage[6]; //alternate sprites, passed in
   int spriteType;
   MiscProjectile(float x, float y, float angle, int spriteType, int damage) {
     super(x, y, angle);
@@ -16,5 +16,5 @@ class MiscProjectile extends Projectile{
     this.spriteType = spriteType;
     sprites = spritesAnimH.get("miscPJ");
     sprite = sprites[spriteType];
-  }  
-}  
+  }
+}
