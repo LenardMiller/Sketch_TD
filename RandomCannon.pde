@@ -13,7 +13,7 @@ class RandomCannon extends Turret{
     maxHp = 20;
     twHp = maxHp;
     hit = false;
-    delay = 90; //default: 90 frames
+    delay = 150; //default: 150 frames
     delay += (round(random(-(delay/10),delay/10))); //injects 10% randomness so all don't fire at once
     delayTime = delay;
     pjSpeed = 12;
@@ -228,19 +228,33 @@ class RandomCannon extends Turret{
         }
       }
       else { //if done, switch to load
+        ArrayList<Integer> oldArray = new ArrayList();
+        int oldSize = numLoadFrames;
+        int newSize = (delayTime - frameCount);
+        spriteArray = new ArrayList<Integer>();
+        for (int i = 0; i < oldSize; i++){
+          oldArray.add(i);
+        }  
+        for (int i = 0; i < oldSize; i++){
+          spriteArray.add(i);
+        }  
+        int count = 0;
+        while (spriteArray.size() != newSize){
+          count++;
+          compress = new CompressArray(spriteArray.size(),newSize,count,oldArray,spriteArray);
+          compress.cMain();
+        }  
         frame = 0;
         spriteType = 2;
-        loadDelay = (int) (((delayTime - frameCount)/numLoadFrames));
-        loadDelayTime = frameCount + loadDelay;
+        //println();
+        //println(spriteArray.size()+"<-"+oldSize);
       }
     }
     else if (spriteType == 2){ //load
-      if (frameCount - loadDelayTime >= loadDelay){
-        frame++;
-        loadDelayTime = frameCount + loadDelay;
-      }
-      if (frame < numLoadFrames){
-        sprite = loadFrames[frame];
+      frame++;
+      if (frame < spriteArray.size()){
+        sprite = loadFrames[spriteArray.get(frame)];
+        //print(spriteArray.get(frame)+", ");
       }
       else{ //if time runs out, switch to idle
         frame = 0;

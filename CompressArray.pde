@@ -6,24 +6,18 @@ class CompressArray{
   int count;
   int changed;
   int metaCount;
-  ArrayList fullArray;
-  ArrayList compArray;
-  CompressArray(int oldSize, int newSize, int metaCount){
+  ArrayList<Integer> fullArray;
+  ArrayList<Integer> compArray;
+  CompressArray(int oldSize, int newSize, int metaCount, ArrayList<Integer> fullArray, ArrayList<Integer> compArray){
+    this.fullArray = fullArray;
+    this.compArray = compArray;
     this.oldSize = oldSize;
     this.newSize = newSize;
     factor = newSize-oldSize;
     period = (newSize/abs(float(factor)))-1;
     count = 0;
     changed = 0;
-    this.metaCount = metaCount;
-    fullArray = new ArrayList();
-    compArray = new ArrayList();
-    for (int i = 0; i < oldSize; i++){
-      fullArray.add(i);
-    }  
-    for (int i = 0; i < oldSize; i++){
-      compArray.add(i);
-    }  
+    this.metaCount = metaCount; 
   }  
   void cMain(){
     if (factor < 0){

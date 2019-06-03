@@ -14,6 +14,7 @@ class Turret extends Tower{
   int frame;
   float loadDelay;
   float loadDelayTime;
+  ArrayList<Integer> spriteArray;
   Turret(float x, float y) {
     super(x,y);
     name = "null";
@@ -31,6 +32,7 @@ class Turret extends Tower{
     debrisType = "null";
     fireFrames = new PImage[numFireFrames];
     loadFrames = new PImage[numLoadFrames];
+    spriteArray = new ArrayList<Integer>();
     spriteType = 0;
     frame = 0;
     loadDelay = 0;
@@ -157,19 +159,33 @@ class Turret extends Tower{
         sprite = fireFrames[frame];
       }
       else { //if done, switch to load
+        ArrayList<Integer> oldArray = new ArrayList();
+        int oldSize = numLoadFrames;
+        int newSize = (delayTime - frameCount);
+        spriteArray = new ArrayList<Integer>();
+        for (int i = 0; i < oldSize; i++){
+          oldArray.add(i);
+        }  
+        for (int i = 0; i < oldSize; i++){
+          spriteArray.add(i);
+        }  
+        int count = 0;
+        while (spriteArray.size() != newSize){
+          count++;
+          compress = new CompressArray(spriteArray.size(),newSize,count,oldArray,spriteArray);
+          compress.cMain();
+        }  
         frame = 0;
         spriteType = 2;
-        loadDelay = (int) (((delayTime - frameCount)/ (float) numLoadFrames));
-        loadDelayTime = frameCount + loadDelay;
+        //println();
+        //println(spriteArray.size()+"<-"+oldSize);
       }
     }
     else if (spriteType == 2){ //load
-      if (frameCount - loadDelayTime >= loadDelay){ //animates dialated to the remaining delay time
-        frame++;
-        loadDelayTime = frameCount + loadDelay;
-      }
-      if (frame < numLoadFrames){
-        sprite = loadFrames[frame];
+      frame++;
+      if (frame < spriteArray.size()){
+        sprite = loadFrames[spriteArray.get(frame)];
+        //print(spriteArray.get(frame)+", ");
       }
       else{ //if time runs out, switch to idle
         frame = 0;

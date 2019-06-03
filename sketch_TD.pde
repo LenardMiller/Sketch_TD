@@ -23,6 +23,7 @@ Icon upgradeIconZero;
 Icon upgradeIconOne;
 Hand hand;
 Selection selection;
+CompressArray compress;
 int backRed = 25;
 int redSpeed = 8;
 float enSize;
