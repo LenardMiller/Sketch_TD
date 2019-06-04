@@ -304,35 +304,27 @@ class Selection{ //what tower is selected
       else{
         text("Damage: " + tower.damage, 710, 296 + x);
       }
+      //firerate (delay)
+      text("Load time: " + float(round(float(tower.delay)/6))/10 + "s", 710, 316 + x);
       //accuracy (error)
       if (tower.error < 1){
-        text("High accuracy", 710, 356 + x);
+        text("High accuracy", 710, 336 + x);
       }
       else if (tower.error >= 1 && tower.error <= 3){
-        text("Medium accuracy", 710, 356 + x);
+        text("Medium accuracy", 710, 336 + x);
       }
       else if (tower.error > 3){
-        text("Low accuracy", 710, 356 + x);
+        text("Low accuracy", 710, 336 + x);
       }
       //velocity
       if (speed < 8){
-        text("Low velocity", 710, 316 + x);
+        text("Low velocity", 710, 356 + x);
       }
       else if (speed >= 8 && speed <= 18){
-        text("Medium velocity", 710, 316 + x);
+        text("Medium velocity", 710, 356 + x);
       }
       else if (speed > 18){
-        text("High velocity", 710, 316 + x);
-      }
-      //firerate (delay)
-      if (tower.delay > 105){
-        text("Low firerate", 710, 336 + x);
-      }
-      else if (tower.delay <= 105 && tower.delay >= 45){
-        text("Medium firerate", 710, 336 + x);
-      }
-      else if (tower.delay < 45){
-        text("High firerate", 710, 336 + x);
+        text("High velocity", 710, 356 + x);
       }
     }
   }
