@@ -35,6 +35,10 @@ void loadSpritesAnim(){
   for (int i = 1; i >= 0; i--){
     spritesAnimH.get("towerTabSwitchBT")[i] = loadImage("sprites/icons/buttons/towerTabSwitch/" + nf(i,3) + ".png");
   }  
+  spritesAnimH.put("energyBuffPT",new PImage[8]);
+  for (int i = 7; i >= 0; i--){
+    spritesAnimH.get("energyBuffPT")[i] = loadImage("sprites/particles/buff/energy/" + nf(i,3) + ".png");
+  }  
   spritesAnimH.put("fireBuffPT",new PImage[8]);
   for (int i = 7; i >= 0; i--){
     spritesAnimH.get("fireBuffPT")[i] = loadImage("sprites/particles/buff/fire/" + nf(i,3) + ".png");
