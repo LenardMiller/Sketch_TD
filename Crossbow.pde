@@ -4,7 +4,7 @@ class Crossbow extends Turret{
     super(x,y);
     name = "crossbow";
     position = new PVector(x,y);
-    size = new PVector(54,54);
+    size = new PVector(50,50);
     maxHp = 20;
     twHp = maxHp;
     hit = false;
@@ -157,5 +157,15 @@ class Crossbow extends Turret{
     for (int j = num; j >= 0; j--){
       particles.add(new Debris((position.x-size.x/2)+random((size.x/2)*-1,size.x/2), (position.y-size.y/2)+random((size.y/2)*-1,size.y/2), random(0,360), debrisType));
     }
+  }
+  void display(){
+   tint(255,tintColor,tintColor);
+   image(sBase,position.x-size.x,position.y-size.y);
+   pushMatrix();
+   translate(position.x-size.x/2,position.y-size.y/2);
+   rotate(angle);
+   image(sprite,-size.x/2-2,-size.y/2-2);
+   popMatrix();
+   tint(255,255,255);
   }
 }  

@@ -132,21 +132,7 @@ class Turret extends Tower{
     fireFrames = spritesAnimH.get(name+"FireTR");
     loadFrames = spritesAnimH.get(name+"LoadTR");
   }
-  @Override
-  void twMain(ArrayList<Tower> towers, int i){ //need to check target
-    if (twHp <= 0){
-       die(i);
-       towers.remove(i);
-    }
-    if (enemies.size() > 0 && alive){
-      checkTarget();
-    }
-    if (mousePressed && mouseX < position.x && mouseX > position.x-size.x && mouseY < position.y && mouseY > position.y-size.y && alive){
-      selection.swapSel(i);
-    }
-    display();
-  }
-  void display(){
+  void preDisplay(){
     if (tintColor < 255){
       tintColor += 20;
     }
@@ -192,14 +178,31 @@ class Turret extends Tower{
         sprite = sIdle;
         spriteType = 0;
       }
-   }
-   if (hit){ //change to red if under attack
-      tintColor = 0;
-      hit = false;
-   }
-   if (twHp > 0){
-      HpBar();
-   }
+    }
+    if (hit){ //change to red if under attack
+        tintColor = 0;
+        hit = false;
+    }
+    if (twHp > 0){
+        HpBar();
+    }
+    display();
+  }  
+  @Override
+  void twMain(ArrayList<Tower> towers, int i){ //need to check target
+    if (twHp <= 0){
+       die(i);
+       towers.remove(i);
+    }
+    if (enemies.size() > 0 && alive){
+      checkTarget();
+    }
+    if (mousePressed && mouseX < position.x && mouseX > position.x-size.x && mouseY < position.y && mouseY > position.y-size.y && alive){
+      selection.swapSel(i);
+    }
+    preDisplay();
+  }
+  void display(){
    tint(255,tintColor,tintColor);
    image(sBase,position.x-size.x,position.y-size.y);
    pushMatrix();

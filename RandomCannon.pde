@@ -207,7 +207,7 @@ class RandomCannon extends Turret{
     fireFramesUrchin = spritesAnimH.get("randomCannonFireUrchinTR");
     loadFrames = spritesAnimH.get("randomCannonLoadTR");
   }
- void display(){
+ void preDisplay(){
     if (spriteType == 0){ //idle
       sprite = sIdle;
     }
@@ -266,15 +266,9 @@ class RandomCannon extends Turret{
       tint(255,45,45);
       hit = false;
     }
-   image(sBase,position.x-size.x,position.y-size.y);
    if (twHp > 0){
       HpBar();
     }
-   pushMatrix();
-   translate(position.x-size.x/2,position.y-size.y/2);
-   rotate(angle);
-   image(sprite,-size.x/2,-size.y/2);
-   popMatrix();
-   tint(255,255,255);
+    display();
   }
 }  
