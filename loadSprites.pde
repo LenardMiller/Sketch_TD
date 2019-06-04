@@ -14,6 +14,7 @@ void loadSprites(){ //its time for river rafting!!
   spritesH.put("acidPj",loadImage("sprites/projectiles/acid.png"));
   spritesH.put("boltPj",loadImage("sprites/projectiles/bolt.png"));
   spritesH.put("devPj",loadImage("sprites/projectiles/dev.png"));
+  spritesH.put("energyPj",loadImage("sprites/projectiles/energy.png"));
   spritesH.put("nullPj",loadImage("sprites/projectiles/null.png"));
   spritesH.put("pebblePj",loadImage("sprites/projectiles/pebble.png"));
   spritesH.put("urchinPj",loadImage("sprites/projectiles/urchin.png"));
@@ -21,6 +22,9 @@ void loadSprites(){ //its time for river rafting!!
   spritesH.put("crossbowBaseTR",loadImage("sprites/towers/turrets/crossbow/base.png"));
   spritesH.put("crossbowFullTR",loadImage("sprites/towers/turrets/crossbow/full.png"));
   spritesH.put("crossbowIdleTR",loadImage("sprites/towers/turrets/crossbow/idle.png"));
+  spritesH.put("energyBlasterBaseTR",loadImage("sprites/towers/turrets/energyBlaster/base.png"));
+  spritesH.put("energyBlasterFullTR",loadImage("sprites/towers/turrets/energyBlaster/full.png"));
+  spritesH.put("energyBlasterIdleTR",loadImage("sprites/towers/turrets/energyBlaster/idle.png"));
   spritesH.put("miscCannonBaseTR",loadImage("sprites/towers/turrets/miscCannon/base.png"));
   spritesH.put("miscCannonFullTR",loadImage("sprites/towers/turrets/miscCannon/full.png"));
   spritesH.put("miscCannonIdleTR",loadImage("sprites/towers/turrets/miscCannon/idle.png"));
@@ -34,13 +38,4 @@ void loadSprites(){ //its time for river rafting!!
   spritesH.put("stoneWallTW",loadImage("sprites/towers/walls/stone.png"));
   spritesH.put("ultimateWallTW",loadImage("sprites/towers/walls/ultimate.png"));
   spritesH.put("woodWallTW",loadImage("sprites/towers/walls/wood.png"));
-  spritesH.put("slingshotFullTR",loadImage("sprites/towers/turrets/slingshot/full.png")); //I think the river bugged out
-  spritesH.put("slingshotIdleTR",loadImage("sprites/towers/turrets/slingshot/idle.png"));
-  spritesH.put("slingshotBaseTR",loadImage("sprites/towers/turrets/slingshot/base.png"));
-  spritesH.put("crossbowFullTR",loadImage("sprites/towers/turrets/crossbow/full.png"));
-  spritesH.put("crossbowIdleTR",loadImage("sprites/towers/turrets/crossbow/idle.png"));
-  spritesH.put("crossbowBaseTR",loadImage("sprites/towers/turrets/crossbow/base.png"));
-  spritesH.put("randomCannonFullTR",loadImage("sprites/towers/turrets/miscCannon/full.png"));
-  spritesH.put("randomCannonIdleTR",loadImage("sprites/towers/turrets/miscCannon/idle.png"));
-  spritesH.put("randomCannonBaseTR",loadImage("sprites/towers/turrets/miscCannon/base.png"));
 }  

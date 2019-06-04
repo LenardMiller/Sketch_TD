@@ -7,7 +7,7 @@ class RandomCannon extends Turret{
   int miscChance;
   RandomCannon(float x, float y) {
     super(x,y);
-    name = "randomCannon";
+    name = "miscCannon";
     position = new PVector(x,y);
     size = new PVector(50,50);
     maxHp = 20;
@@ -199,13 +199,13 @@ class RandomCannon extends Turret{
     }
   }
   void loadSprites(){
-    sBase = spritesH.get("randomCannonBaseTR");
-    sIdle = spritesH.get("randomCannonIdleTR");
-    fireFramesMisc = spritesAnimH.get("randomCannonFireMiscTR");
-    fireFramesWater = spritesAnimH.get("randomCannonFireWaterTR");
-    fireFramesAcid = spritesAnimH.get("randomCannonFireAcidTR");
-    fireFramesUrchin = spritesAnimH.get("randomCannonFireUrchinTR");
-    loadFrames = spritesAnimH.get("randomCannonLoadTR");
+    sBase = spritesH.get("miscCannonBaseTR");
+    sIdle = spritesH.get("miscCannonIdleTR");
+    fireFramesMisc = spritesAnimH.get("miscCannonFireMiscTR");
+    fireFramesWater = spritesAnimH.get("miscCannonFireWaterTR");
+    fireFramesAcid = spritesAnimH.get("miscCannonFireAcidTR");
+    fireFramesUrchin = spritesAnimH.get("miscCannonFireUrchinTR");
+    loadFrames = spritesAnimH.get("miscCannonLoadTR");
   }
  void preDisplay(){
     if (spriteType == 0){ //idle

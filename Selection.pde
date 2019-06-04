@@ -119,7 +119,7 @@ class Selection{ //what tower is selected
       text("Piercing",710,376 + x);
       fill(0);
     }
-    else if (tower.name == "randomCannon"){
+    else if (tower.name == "miscCannon"){
       text("Random", 800, 241);
       text("Cannon", 800, 266);
       x = 25;
@@ -142,6 +142,12 @@ class Selection{ //what tower is selected
       text("Random projectiles",710,376 + x);
       text("Poison/fire/water",710,396 + x);
       fill(0);
+    }
+    if (tower.name == "slingshot"){
+      text("Energy", 800, 241);
+      text("Blaster", 800, 266);
+      x = 25;
+      speed = 16;
     }
     else if (tower.name == "woodWall"){
       text("Wooden", 800, 241);
@@ -298,7 +304,7 @@ class Selection{ //what tower is selected
 
     //stats
     if (tower.turret){
-      if (name == "randomCannon" || name == "consistantCannon"){
+      if (name == "miscCannon" || name == "consistantCannon"){
         text("Damage: "+tower.damage+"/10/22", 710, 296 + x);
       }
       else{

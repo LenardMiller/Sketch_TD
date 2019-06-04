@@ -8,9 +8,9 @@ void gui(){ //gui icons & buttons
   //buy tower buttons tab 1 (4-18)
   icons.add(new TowerBuy(boardWidth + 21.5, 87,"slingshot",true)); //row 1
   icons.add(new TowerBuy(boardWidth + 60.5, 87,"crossbow",true));
-  icons.add(new TowerBuy(boardWidth + 101.5, 87,"randomCannon",true));
-  icons.add(new TowerBuy(boardWidth + 140.5, 87,"null",true)); //placeholders
-  icons.add(new TowerBuy(boardWidth + 179.5, 87,"null",true));
+  icons.add(new TowerBuy(boardWidth + 101.5, 87,"miscCannon",true));
+  icons.add(new TowerBuy(boardWidth + 140.5, 87,"energyBlaster",true)); 
+  icons.add(new TowerBuy(boardWidth + 179.5, 87,"null",true)); //placeholders
   icons.add(new TowerBuy(boardWidth + 21.5, 127,"null",true)); //row 2
   icons.add(new TowerBuy(boardWidth + 60.5, 127,"null",true));
   icons.add(new TowerBuy(boardWidth + 101.5, 127,"null",true));

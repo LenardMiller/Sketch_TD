@@ -20,7 +20,7 @@ class TowerBuy extends Button {
     else if (type == "crossbow"){
       price = 100;  
     } 
-    else if (type == "randomCannon"){
+    else if (type == "miscCannon"){
       price = 100;  
     } 
   }
@@ -50,7 +50,7 @@ class TowerBuy extends Button {
         textFont(ETFont);
         text("$100", 800, 271);
       }  
-      else if (twType == "randomCannon"){
+      else if (twType == "miscCannon"){
         text("Random", 800, 241);
         text("Cannon", 800, 266);
         textFont(ETFont);
