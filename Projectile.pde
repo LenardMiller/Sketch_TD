@@ -18,6 +18,7 @@ class Projectile {
   boolean isTrail;
   String buff;
   int hitDelay;
+  int effectRadius;
   Projectile(float x, float y, float angle) {
     position = new PVector(x, y);
     size = new PVector(10, 10);
@@ -34,6 +35,7 @@ class Projectile {
     isTrail = false;
     trail = "null";
     buff = "null";
+    effectRadius = 0;
     hitDelay = 6;
   }  
   
@@ -81,6 +83,12 @@ class Projectile {
           enemy.collidePJ(damage,buff,i);
           hitTime = frameCount + hitDelay; //little timer so no constant damage, NOT unneccissary
           pierce--;
+          for (int j = enemies.size()-1; j >= 0; j--){
+            Enemy erEnemy = enemies.get(j);
+            if (abs(erEnemy.position.x-position.x) <= (effectRadius + erEnemy.radius) && abs(erEnemy.position.y-position.y) <= (effectRadius + erEnemy.radius)){ //if near enemy
+              erEnemy.collidePJ(damage/2,buff,i);
+            }
+          }
         }            
         if (pierce == 0) {
           dead = true;

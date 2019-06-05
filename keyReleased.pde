@@ -26,7 +26,7 @@ void keyReleased() {
     projectiles.add(new Waterball(mouseX, mouseY, 0));
   } 
   if (key == 'i' && alive){ //energy blast
-    projectiles.add(new EnergyBlast(mouseX, mouseY, 0, 30));
+    projectiles.add(new EnergyBlast(mouseX, mouseY, 0, 20, 15));
   } 
   //enemy form: spawn x, spawn y
   if (key == '1' && alive){ //dev enemy

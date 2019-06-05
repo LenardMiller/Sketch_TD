@@ -146,6 +146,10 @@ class Selection{ //what tower is selected
     if (tower.name == "energyBlaster"){
       text("Energy Blaster", 800, 241);
       speed = 16;
+      textFont(ETFont);
+      textAlign(LEFT);
+      fill(100,0,200);
+      text("Splash damage",710,376 + x);
     }
     else if (tower.name == "woodWall"){
       text("Wooden", 800, 241);

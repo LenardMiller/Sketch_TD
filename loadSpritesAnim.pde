@@ -1,6 +1,6 @@
 void loadSpritesAnim(){
-  spritesAnimH.put("upgradeIC",new PImage[12]);
-  for (int i = 11; i >= 0; i--){
+  spritesAnimH.put("upgradeIC",new PImage[13]);
+  for (int i = 12; i >= 0; i--){
     spritesAnimH.get("upgradeIC")[i] = loadImage("sprites/icons/upgrades/" + nf(i,3) + ".png");
   }  
   spritesAnimH.put("livesAddBT",new PImage[2]);
