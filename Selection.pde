@@ -143,10 +143,8 @@ class Selection{ //what tower is selected
       text("Poison/fire/water",710,396 + x);
       fill(0);
     }
-    if (tower.name == "slingshot"){
-      text("Energy", 800, 241);
-      text("Blaster", 800, 266);
-      x = 25;
+    if (tower.name == "energyBlaster"){
+      text("Energy Blaster", 800, 241);
       speed = 16;
     }
     else if (tower.name == "woodWall"){

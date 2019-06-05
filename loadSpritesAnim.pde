@@ -123,8 +123,8 @@ void loadSpritesAnim(){
   for (int i = 13; i >= 0; i--){
     spritesAnimH.get("energyBlasterFireTR")[i] = loadImage("sprites/towers/turrets/energyBlaster/fire/fire" + nf(i,3) + ".png");
   }  
-  spritesAnimH.put("energyBlasterLoadTR",new PImage[18]);
-  for (int i = 17; i >= 0; i--){
+  spritesAnimH.put("energyBlasterLoadTR",new PImage[42]);
+  for (int i = 41; i >= 0; i--){
     spritesAnimH.get("energyBlasterLoadTR")[i] = loadImage("sprites/towers/turrets/energyBlaster/load/load" + nf(i,3) + ".png");
   }  
 }  

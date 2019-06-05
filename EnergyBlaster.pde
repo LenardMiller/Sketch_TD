@@ -14,7 +14,7 @@ class EnergyBlaster extends Turret{
     pjSpeed = 16;
     error = 3; //set to 360 for a fun time. default: 5 degrees
     numFireFrames = 14;
-    numLoadFrames = 18;
+    numLoadFrames = 42;
     fireFrames = new PImage[numFireFrames];
     loadFrames = new PImage[numLoadFrames];
     spriteType = 0;
