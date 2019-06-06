@@ -1,5 +1,6 @@
 class EnergyBlaster extends Turret{
   int effectRadius;
+  boolean bigExplosion;
   EnergyBlaster(float x, float y) {
     super(x,y);
     name = "energyBlaster";
@@ -21,6 +22,7 @@ class EnergyBlaster extends Turret{
     spriteType = 0;
     damage = 20;
     effectRadius = 15;
+    bigExplosion = false;
     loadSprites();
     debrisType = "metal";
     price = 150;
@@ -38,7 +40,7 @@ class EnergyBlaster extends Turret{
     PVector spa = PVector.fromAngle(angle-HALF_PI);
     spa.setMag(40);
     spp.add(spa);
-    projectiles.add(new EnergyBlast(spp.x,spp.y, angle, damage, effectRadius));
+    projectiles.add(new EnergyBlast(spp.x,spp.y, angle, damage, effectRadius, bigExplosion));
   }
   void setUpgrades(){
     //special
@@ -132,6 +134,7 @@ class EnergyBlaster extends Turret{
     sprite = upgradeSprites[nextLevel];
     if (upgradeSpecial[nextLevel]){
       effectRadius += 10;
+      bigExplosion = true;
     }
     if (nextLevel < upgradeNames.length && id == 0){
       nextLevelZero++;

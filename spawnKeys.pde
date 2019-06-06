@@ -67,7 +67,10 @@ void spawnKeys(){
     } 
     particles.add(new BuffPt(mouseX, mouseY, random(0,360), type));
   } 
-  if (keyPressed == true && key == 'b' && alive){ //explosion
+  if (keyPressed == true && key == 'b' && alive){ //medium explosion
     particles.add(new MediumExplosion(mouseX, mouseY, random(0,360)));
+  } 
+  if (keyPressed == true && key == 'n' && alive){ //large explosion
+    particles.add(new LargeExplosion(mouseX, mouseY, random(0,360)));
   } 
 }  

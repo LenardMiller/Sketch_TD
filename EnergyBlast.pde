@@ -1,5 +1,6 @@
 class EnergyBlast extends Projectile{
-  EnergyBlast(float x, float y, float angle, int damage, int effectRadius) {
+  boolean bigExplosion;
+  EnergyBlast(float x, float y, float angle, int damage, int effectRadius, boolean bigExplosion) {
     super(x, y, angle);
     position = new PVector(x, y);
     size = new PVector(10, 18);
@@ -13,6 +14,7 @@ class EnergyBlast extends Projectile{
     isTrail = true;
     this.effectRadius = effectRadius;
     trail = "energy";
+    this.bigExplosion = bigExplosion;
   }
   @Override
   void collideEn(){
@@ -21,7 +23,12 @@ class EnergyBlast extends Projectile{
         Enemy enemy = enemies.get(i);
         if (abs(enemy.position.x-position.x) <= (radius + enemy.radius) && abs(enemy.position.y-position.y) <= (radius + enemy.radius) && pierce > 0){ //if touching enemy, and has pierce
           enemy.collidePJ(damage,buff,i);
-          particles.add(new MediumExplosion(position.x, position.y, random(0,360)));
+          if (!bigExplosion){
+            particles.add(new MediumExplosion(position.x, position.y, random(0,360)));
+          }
+          else{
+            particles.add(new LargeExplosion(position.x, position.y, random(0,360)));
+          }  
           hitTime = frameCount + hitDelay; //little timer so no constant damage, NOT unneccissary
           pierce--;
           for (int j = enemies.size()-1; j >= 0; j--){

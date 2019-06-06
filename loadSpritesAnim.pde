@@ -75,6 +75,10 @@ void loadSpritesAnim(){
   for (int i = 17; i >= 0; i--){
     spritesAnimH.get("mediumExplosionPT")[i] = loadImage("sprites/particles/mediumExplosion/" + nf(i,3) + ".png");
   } 
+  spritesAnimH.put("largeExplosionPT",new PImage[18]);
+  for (int i = 17; i >= 0; i--){
+    spritesAnimH.get("largeExplosionPT")[i] = loadImage("sprites/particles/largeExplosion/" + nf(i,3) + ".png");
+  } 
   spritesAnimH.put("miscPJ",new PImage[6]);
   for (int i = 5; i >= 0; i--){
     spritesAnimH.get("miscPJ")[i] = loadImage("sprites/projectiles/misc/" + nf(i,3) + ".png");
