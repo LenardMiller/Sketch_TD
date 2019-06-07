@@ -24,7 +24,7 @@ r - spawn random misc projectiles
 t - spawn an acid projectile
 y - spawn an urchin projectile
 u - spawn a waterball projectile
-i - span a energy blast projectile
+i - spawn an energy blast projectile
 enemies
 0 - spawn a single null enemy
 1 - spawn a single dev enemy
