@@ -24,9 +24,17 @@ class EnergyBlast extends Projectile{
         if (abs(enemy.position.x-position.x) <= (radius + enemy.radius) && abs(enemy.position.y-position.y) <= (radius + enemy.radius) && pierce > 0){ //if touching enemy, and has pierce
           enemy.collidePJ(damage,buff,i);
           if (!bigExplosion){
+            int num = floor(random(10,16));
+            for (int j = num; j >= 0; j--){
+              particles.add(new ExplosionDebris(position.x, position.y, random(0,360), "energy", maxSpeed = random(0.5,2.5)));
+            }  
             particles.add(new MediumExplosion(position.x, position.y, random(0,360)));
           }
           else{
+            int num = floor(random(16,42));
+            for (int j = num; j >= 0; j--){
+              particles.add(new ExplosionDebris(position.x, position.y, random(0,360), "energy", maxSpeed = random(1.5,4.5)));
+            }  
             particles.add(new LargeExplosion(position.x, position.y, random(0,360)));
           }  
           hitTime = frameCount + hitDelay; //little timer so no constant damage, NOT unneccissary

@@ -1,20 +1,20 @@
-class BuffPt extends Particle{
-  BuffPt(float x, float y, float angle, String type) {
+class ExplosionDebris extends Particle{
+  ExplosionDebris(float x, float y, float angle, String type, float maxSpeed) {
     super(x, y, angle);
     animated = true;
     position = new PVector(x, y);
-    size = new PVector(7, 7);
-    maxSpeed = 0.25;
+    size = new PVector(9, 9);
+    this.maxSpeed = maxSpeed;
     speed = maxSpeed;
     angleTwo = angle;
     angularVelocity = 5; //degrees mode
-    lifespan = 2; //in frames, default: 2
+    lifespan = 0; //in frames, default: 0
     lifespan += (round(random((-lifespan)+2,lifespan))); //injects 25% randomness so all don't die at once
     delay = lifespan/numFrames;
     delayTime = frameCount + delay;
-    numFrames = 8;
+    numFrames = 4;
     currentSprite = 0;
-    sprites = spritesAnimH.get(type + "BuffPT");
+    sprites = spritesAnimH.get(type + "ExDebrisPT");
     velocity = PVector.fromAngle(angle-HALF_PI);
   }  
 }  

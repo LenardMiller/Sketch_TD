@@ -8,7 +8,7 @@ class MediumExplosion extends Particle{
     speed = maxSpeed;
     angleTwo = angle;
     angularVelocity = 0; //degrees mode
-    lifespan = 0; //in frames, default: 2
+    lifespan = 0; //in frames, default: 0
     delay = lifespan/numFrames;
     delayTime = frameCount + delay;
     numFrames = 18;
