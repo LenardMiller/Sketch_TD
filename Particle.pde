@@ -59,7 +59,7 @@ class Particle{
      pushMatrix();
      translate(position.x,position.y);
      rotate(angleTwo);
-     image(sprites[currentSprite],-size.x+2.5,-size.y+2.5);
+     image(sprites[currentSprite],-size.x/2,-size.y/2);
      popMatrix();
    } 
    else{

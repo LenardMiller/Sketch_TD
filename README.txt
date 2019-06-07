@@ -14,6 +14,8 @@ z - spawn random hurt particles
 x - spawn death particles
 c - spawn random debris particles
 v - spawn random buff particles
+b - spawn medium explosions
+n - spawn large explosions
 projectiles
 q - spawn a pebble projectile
 w - spawn a bolt projectile
@@ -22,6 +24,7 @@ r - spawn random misc projectiles
 t - spawn an acid projectile
 y - spawn an urchin projectile
 u - spawn a waterball projectile
+i - span a energy blast projectile
 enemies
 0 - spawn a single null enemy
 1 - spawn a single dev enemy
@@ -31,7 +34,7 @@ buffs (be careful with these, they can stack buffs which can lead to crashes)
 / - afflict a random enemy with fire
 ? [shift + /] - cause a random enemy to repeat its ID
 
-To run: 
+To run:
 unzip whole folder
 rename folder to Sketch_TD
 run any .pde file

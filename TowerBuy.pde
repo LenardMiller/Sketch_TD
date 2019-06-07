@@ -20,7 +20,7 @@ class TowerBuy extends Button {
     else if (type == "crossbow"){
       price = 100;  
     } 
-    else if (type == "randomCannon"){
+    else if (type == "miscCannon"){
       price = 100;  
     } 
   }
@@ -30,7 +30,7 @@ class TowerBuy extends Button {
     if (active){
       display();
     }
-  }  
+  } 
   void hover(){ //below is if hovered or depressed
     if (mouseX < position.x+size.x/2 && mouseX > position.x-size.x/2 && mouseY < position.y+size.y/2 && mouseY > position.y-size.y/2 && alive && active || depressed && alive){
       sprite = spriteTwo;
@@ -50,11 +50,16 @@ class TowerBuy extends Button {
         textFont(ETFont);
         text("$100", 800, 271);
       }  
-      else if (twType == "randomCannon"){
+      else if (twType == "miscCannon"){
         text("Random", 800, 241);
         text("Cannon", 800, 266);
         textFont(ETFont);
         text("$100", 800, 296);
+      }  
+      else if (twType == "energyBlaster"){
+        text("Energy Blaster", 800, 241);
+        textFont(ETFont);
+        text("$150", 800, 271);
       }  
       else if (twType == "wall"){
         text("Wooden", 800, 241);

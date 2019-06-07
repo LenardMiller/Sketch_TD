@@ -2,11 +2,13 @@ class Hand{ //what is selected, eg: slingshot
   String held;
   PImage heldSprite;
   PVector size;
+  PVector offset;
   boolean implaceable;
   int price;
   Hand(){
     held = "null";
     size = new PVector(25,25);
+    offset = new PVector(0,0);
     implaceable = false;
   }  
   void hMain(){
@@ -43,7 +45,7 @@ class Hand{ //what is selected, eg: slingshot
       else{ 
         tint(255,150);  
       }  
-      image(heldSprite,(10*(ceil(mouseX/10)))-(size.x),(10*(ceil(mouseY/10)))-(size.y));
+      image(heldSprite,(10*(ceil(mouseX/10)))-(size.x)-offset.x,(10*(ceil(mouseY/10)))-(size.y)-offset.y);
       tint(255);
     }  
   }
@@ -51,24 +53,35 @@ class Hand{ //what is selected, eg: slingshot
      if (setHeld == "slingshot"){
        heldSprite = spritesH.get("slingshotFullTR");
        size = new PVector(25,25);
+       offset = new PVector(0,0);
        held = setHeld;
        price = 50;
      }  
      else if (setHeld == "crossbow"){
        heldSprite = spritesH.get("crossbowFullTR");
-       size = new PVector(27,27);
+       size = new PVector(25,25);
+       offset = new PVector(2,2);
        held = setHeld;
        price = 100;
      }  
-     else if (setHeld == "randomCannon"){
-       heldSprite = spritesH.get("randomCannonFullTR");
+     else if (setHeld == "miscCannon"){
+       heldSprite = spritesH.get("miscCannonFullTR");
        size = new PVector(25,25);
+       offset = new PVector(0,0);
        held = setHeld;
        price = 100;
+     }  
+     else if (setHeld == "energyBlaster"){
+       heldSprite = spritesH.get("energyBlasterFullTR");
+       size = new PVector(25,25);
+       offset = new PVector(11,11);
+       held = setHeld;
+       price = 150;
      }  
      else if (setHeld == "wall"){
        heldSprite = spritesH.get("woodWallTW"); 
        size = new PVector(60,18.5);
+       offset = new PVector(0,0);
        held = setHeld;
        price = 25;
      }
@@ -83,11 +96,15 @@ class Hand{ //what is selected, eg: slingshot
     }  
     else if (held == "crossbow" && alive){
       money -= 100;
-      towers.add(new Crossbow((10*(ceil(mouseX/10)))+(27),(10*(ceil(mouseY/10)))+(27)));
+      towers.add(new Crossbow((10*(ceil(mouseX/10)))+(25),(10*(ceil(mouseY/10)))+(25)));
     }  
-    else if (held == "randomCannon" && alive){
+    else if (held == "miscCannon" && alive){
       money -= 100;
       towers.add(new RandomCannon((10*(ceil(mouseX/10)))+(25),(10*(ceil(mouseY/10)))+(25)));
+    }  
+    else if (held == "energyBlaster" && alive){
+      money -= 150;
+      towers.add(new EnergyBlaster((10*(ceil(mouseX/10)))+(25),(10*(ceil(mouseY/10)))+(25)));
     }  
     else if (held == "wall" && alive){
       money -= 25;

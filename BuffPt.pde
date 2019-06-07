@@ -3,7 +3,7 @@ class BuffPt extends Particle{
     super(x, y, angle);
     animated = true;
     position = new PVector(x, y);
-    size = new PVector(5, 5);
+    size = new PVector(7, 7);
     maxSpeed = 0.25;
     speed = maxSpeed;
     angleTwo = angle;
@@ -16,23 +16,5 @@ class BuffPt extends Particle{
     currentSprite = 0;
     sprites = spritesAnimH.get(type + "BuffPT");
     velocity = PVector.fromAngle(angle-HALF_PI);
-  }  
-  @Override
-  void display(){ //move and rotate whole grid before displaying, than reset
-   if (frameCount - delayTime >= delay){
-     if (currentSprite == numFrames-1){
-      dead = true;       
-     }
-     else{
-      currentSprite++;  
-      delayTime = frameCount + delay;
-     }  
-   }  
-   angleTwo += radians(angularVelocity);
-   pushMatrix();
-   translate(position.x,position.y);
-   rotate(angleTwo);
-   image(sprites[currentSprite],-size.x+1.5,-size.y+1.5);
-   popMatrix();
   }  
 }  

@@ -119,7 +119,7 @@ class Selection{ //what tower is selected
       text("Piercing",710,376 + x);
       fill(0);
     }
-    else if (tower.name == "randomCannon"){
+    else if (tower.name == "miscCannon"){
       text("Random", 800, 241);
       text("Cannon", 800, 266);
       x = 25;
@@ -142,6 +142,14 @@ class Selection{ //what tower is selected
       text("Random projectiles",710,376 + x);
       text("Poison/fire/water",710,396 + x);
       fill(0);
+    }
+    if (tower.name == "energyBlaster"){
+      text("Energy Blaster", 800, 241);
+      speed = 16;
+      textFont(ETFont);
+      textAlign(LEFT);
+      fill(100,0,200);
+      text("Splash damage",710,376 + x);
     }
     else if (tower.name == "woodWall"){
       text("Wooden", 800, 241);
@@ -298,41 +306,33 @@ class Selection{ //what tower is selected
 
     //stats
     if (tower.turret){
-      if (name == "randomCannon" || name == "consistantCannon"){
+      if (name == "miscCannon" || name == "consistantCannon"){
         text("Damage: "+tower.damage+"/10/22", 710, 296 + x);
       }
       else{
         text("Damage: " + tower.damage, 710, 296 + x);
       }
+      //firerate (delay)
+      text("Load time: " + float(round(float(tower.delay)/6))/10 + "s", 710, 316 + x);
       //accuracy (error)
       if (tower.error < 1){
-        text("High accuracy", 710, 356 + x);
+        text("High accuracy", 710, 336 + x);
       }
       else if (tower.error >= 1 && tower.error <= 3){
-        text("Medium accuracy", 710, 356 + x);
+        text("Medium accuracy", 710, 336 + x);
       }
       else if (tower.error > 3){
-        text("Low accuracy", 710, 356 + x);
+        text("Low accuracy", 710, 336 + x);
       }
       //velocity
       if (speed < 8){
-        text("Low velocity", 710, 316 + x);
+        text("Low velocity", 710, 356 + x);
       }
       else if (speed >= 8 && speed <= 18){
-        text("Medium velocity", 710, 316 + x);
+        text("Medium velocity", 710, 356 + x);
       }
       else if (speed > 18){
-        text("High velocity", 710, 316 + x);
-      }
-      //firerate (delay)
-      if (tower.delay > 105){
-        text("Low firerate", 710, 336 + x);
-      }
-      else if (tower.delay <= 105 && tower.delay >= 45){
-        text("Medium firerate", 710, 336 + x);
-      }
-      else if (tower.delay < 45){
-        text("High firerate", 710, 336 + x);
+        text("High velocity", 710, 356 + x);
       }
     }
   }

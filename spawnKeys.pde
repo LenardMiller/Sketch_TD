@@ -51,7 +51,7 @@ void spawnKeys(){
     particles.add(new Debris(mouseX, mouseY, random(0,360), type));
   }  
   if (keyPressed == true && key == 'v' && alive){ //buff
-    int num = round(random(0,2));
+    int num = floor(random(0,3.9));
     String type = "poison";
     if (num == 0){
       type = "poison";
@@ -62,6 +62,15 @@ void spawnKeys(){
     else if (num == 2){
       type = "fire";
     } 
+    else if (num == 3){
+      type = "energy";
+    } 
     particles.add(new BuffPt(mouseX, mouseY, random(0,360), type));
+  } 
+  if (keyPressed == true && key == 'b' && alive){ //medium explosion
+    particles.add(new MediumExplosion(mouseX, mouseY, random(0,360)));
+  } 
+  if (keyPressed == true && key == 'n' && alive){ //large explosion
+    particles.add(new LargeExplosion(mouseX, mouseY, random(0,360)));
   } 
 }  
