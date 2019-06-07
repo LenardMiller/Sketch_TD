@@ -10,8 +10,8 @@ void gui(){ //gui icons & buttons
   icons.add(new TowerBuy(boardWidth + 60.5, 87,"crossbow",true));
   icons.add(new TowerBuy(boardWidth + 101.5, 87,"miscCannon",true));
   icons.add(new TowerBuy(boardWidth + 140.5, 87,"energyBlaster",true)); 
-  icons.add(new TowerBuy(boardWidth + 179.5, 87,"null",true)); //placeholders
-  icons.add(new TowerBuy(boardWidth + 21.5, 127,"null",true)); //row 2
+  icons.add(new TowerBuy(boardWidth + 179.5, 87,"magicMissleer",true));
+  icons.add(new TowerBuy(boardWidth + 21.5, 127,"null",true)); //row 2 placeholders
   icons.add(new TowerBuy(boardWidth + 60.5, 127,"null",true));
   icons.add(new TowerBuy(boardWidth + 101.5, 127,"null",true));
   icons.add(new TowerBuy(boardWidth + 140.5, 127,"null",true));

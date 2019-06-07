@@ -51,7 +51,7 @@ void spawnKeys(){
     particles.add(new Debris(mouseX, mouseY, random(0,360), type));
   }  
   if (keyPressed == true && key == 'v' && alive){ //buff
-    int num = floor(random(0,3.9));
+    int num = floor(random(0,4.9));
     String type = "poison";
     if (num == 0){
       type = "poison";
@@ -64,6 +64,9 @@ void spawnKeys(){
     } 
     else if (num == 3){
       type = "energy";
+    } 
+    else if (num == 4){
+      type = "greenMagic";
     } 
     particles.add(new BuffPt(mouseX, mouseY, random(0,360), type));
   } 

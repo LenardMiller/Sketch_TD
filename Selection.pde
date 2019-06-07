@@ -151,6 +151,14 @@ class Selection{ //what tower is selected
       fill(100,0,200);
       text("Splash damage",710,376 + x);
     }
+    if (tower.name == "magicMissleer"){
+      text("Magic Missleer", 800, 241);
+      speed = 5;
+      textFont(ETFont);
+      textAlign(LEFT);
+      fill(100,0,200);
+      text("Unfinished",710,376 + x);
+    }
     else if (tower.name == "woodWall"){
       text("Wooden", 800, 241);
       text("Wall", 800, 266);
