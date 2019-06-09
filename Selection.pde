@@ -43,6 +43,13 @@ class Selection{ //what tower is selected
         upgradeIconOne.sprite = spritesAnimH.get("upgradeIC")[0];
       }
     }
+    if (tower.name == "magicMissleer"){
+      targetButton.active = false;  
+      upgradeButtonOne.position.y += 45;
+      upgradeButtonZero.position.y += 45;
+      upgradeIconZero.position.y += 45;
+      upgradeIconOne.position.y += 45;
+    }  
     if (!tower.turret){
       targetButton.active = false;
       repairButton.active = true;
@@ -98,7 +105,10 @@ class Selection{ //what tower is selected
     if (tower.turret){ //different size bg so buttons fit
       rect(700,210,200,300);
     }
-    else{
+    if (tower.name == "magicMissleer"){
+      rect(700,210,200,345);
+    }  
+    if (!tower.turret){
       rect(700,210,200,345);
     }
 
@@ -157,7 +167,8 @@ class Selection{ //what tower is selected
       textFont(ETFont);
       textAlign(LEFT);
       fill(100,0,200);
-      text("Unfinished",710,376 + x);
+      text("Three homing missles",710,376 + x);
+      text("First, last and strong",710,396 + x);
     }
     else if (tower.name == "woodWall"){
       text("Wooden", 800, 241);
@@ -214,7 +225,7 @@ class Selection{ //what tower is selected
     else if (tower.priority == 3){
       priority = "close";
     }
-    if (tower.turret){
+    if (tower.turret && tower.name != "magicMissleer"){
       fill(75,45,0);
       text("Priority: " + priority, 800, 843);
     }
@@ -242,6 +253,9 @@ class Selection{ //what tower is selected
       if (tower.turret){
         y = -45;
       }
+      if (tower.name == "magicMissleer"){
+        y += 45;  
+      }  
       if (tower.nextLevelZero < tower.upgradeNames.length/2){
         if (money >= tower.upgradePrices[tower.nextLevelZero]){
           fill(11,56,0);
@@ -273,6 +287,9 @@ class Selection{ //what tower is selected
     if (tower.turret){
       y = 105;
     }
+    if (tower.name == "magicMissleer"){
+      y += 45;  
+    }  
     if (tower.nextLevelOne < tower.upgradeNames.length){
       if (money >= tower.upgradePrices[tower.nextLevelOne]){
         fill(11,56,0);
@@ -323,7 +340,10 @@ class Selection{ //what tower is selected
       //firerate (delay)
       text("Load time: " + float(round(float(tower.delay)/6))/10 + "s", 710, 316 + x);
       //accuracy (error)
-      if (tower.error < 1){
+      if (tower.error == 0){
+        text("Perfect accuracy", 710, 336 + x);
+      }  
+      else if (tower.error > 0 && tower.error < 1){
         text("High accuracy", 710, 336 + x);
       }
       else if (tower.error >= 1 && tower.error <= 3){

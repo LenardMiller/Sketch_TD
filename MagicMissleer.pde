@@ -7,12 +7,12 @@ class MagicMissleer extends Turret{
     maxHp = 20;
     twHp = maxHp;
     hit = false;
-    delay = 30; //240 frames
+    delay = 60; //60 frames
     delay += (round(random(-(delay/10),delay/10))); //injects 10% randomness so all don't fire at once
     delayTime = delay;
-    damage = 30;
+    damage = 5;
     pjSpeed = 5;
-    error = 20; //0 degrees
+    error = 0; //0 degrees
     numFireFrames = 8; //8
     numLoadFrames = 26; //26
     fireFrames = new PImage[numFireFrames];
@@ -29,12 +29,18 @@ class MagicMissleer extends Turret{
     setUpgrades();
   }
   @Override
+  void checkTarget(){
+    if (frame == 0 && spriteType == 0){ //if done animating
+      spriteType = 1;
+      frame = 0;
+      fire();
+    }
+  }
   void fire(){ //needed to change projectile fired
-    angle += radians(random(-error,error));
     delayTime = frameCount + delay; //waits this time before firing
-    projectiles.add(new MagicMissle(position.x-size.x/2,position.y-size.y/2, angle, damage, 0));
-    projectiles.add(new MagicMissle(position.x-size.x/2,position.y-size.y/2, angle, damage, 1));
-    projectiles.add(new MagicMissle(position.x-size.x/2,position.y-size.y/2, angle, damage, 2));
+    projectiles.add(new MagicMissle(random(position.x-size.x,position.x),random(position.y-size.y,position.y), angle, damage, 0));
+    projectiles.add(new MagicMissle(random(position.x-size.x,position.x),random(position.y-size.y,position.y), angle, damage, 1));
+    projectiles.add(new MagicMissle(random(position.x-size.x,position.x),random(position.y-size.y,position.y), angle, damage, 2));
   }
   void setUpgrades(){
     //special

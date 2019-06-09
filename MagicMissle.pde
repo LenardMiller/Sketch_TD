@@ -34,8 +34,6 @@ class MagicMissle extends Projectile{
       id = 0;  
     }  
     Enemy enemy = enemies.get(id);
-    PVector e = PVector.div(enemy.size,2);
-    target = PVector.add(target,e);
     PVector ratio = PVector.sub(target,position);
     if (position.x == target.x){ //if on the same x
        if (position.y >= target.y){ //if below target or on same y, angle right

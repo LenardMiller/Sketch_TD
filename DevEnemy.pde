@@ -3,7 +3,7 @@ class DevEnemy extends Enemy{
     super(x,y);
     size = new PVector(40,40);
     radius = 20;
-    maxSpeed = 1;
+    maxSpeed = 0.5;
     speed = maxSpeed;
     dangerLevel = 9999;
     maxHp = 9999;
@@ -11,6 +11,7 @@ class DevEnemy extends Enemy{
     hitTime = 0;
     barTrans = 0;
     sprite = spritesH.get("devEn");
+    hitParticle = "pinkOuch";
   }  
   @Override
   void enMain(ArrayList<Enemy> enemies, int i){
@@ -43,7 +44,6 @@ class DevEnemy extends Enemy{
       particles.add(new Ouch(position.x+random((size.x/2)*-1,size.x/2), position.y+random((size.y/2)*-1,size.y/2), random(0,360), "pinkOuch"));
     }
   } 
-
   void display(){ //hpBar behaves like that of towers
     if (tintColor < 255){
       tintColor += 20;
