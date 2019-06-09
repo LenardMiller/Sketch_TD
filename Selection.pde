@@ -43,7 +43,7 @@ class Selection{ //what tower is selected
         upgradeIconOne.sprite = spritesAnimH.get("upgradeIC")[0];
       }
     }
-    if (tower.name == "magicMissleer"){
+    if (tower.name == "magicMissleer" || tower.name == "magicMissleerFour"){
       targetButton.active = false;  
       upgradeButtonOne.position.y += 45;
       upgradeButtonZero.position.y += 45;
@@ -105,7 +105,7 @@ class Selection{ //what tower is selected
     if (tower.turret){ //different size bg so buttons fit
       rect(700,210,200,300);
     }
-    if (tower.name == "magicMissleer"){
+    if (tower.name == "magicMissleer" || tower.name == "magicMissleerFour"){
       rect(700,210,200,345);
     }  
     if (!tower.turret){
@@ -162,13 +162,23 @@ class Selection{ //what tower is selected
       text("Splash damage",710,376 + x);
     }
     if (tower.name == "magicMissleer"){
-      text("Magic Missleer", 800, 241);
+      text("Magic Missileer", 800, 241);
       speed = 5;
       textFont(ETFont);
       textAlign(LEFT);
       fill(100,0,200);
-      text("Three homing missles",710,376 + x);
+      text("Three homing missiles",710,376 + x);
       text("First, last and strong",710,396 + x);
+    }
+    if (tower.name == "magicMissleerFour"){
+      text("Magic Missileer", 800, 241);
+      speed = 5;
+      textFont(ETFont);
+      textAlign(LEFT);
+      fill(100,0,200);
+      text("Four homing missiles",710,376 + x);
+      text("First, last, strong",710,396 + x);
+      text("and random",710,416 + x);
     }
     else if (tower.name == "woodWall"){
       text("Wooden", 800, 241);
@@ -225,7 +235,7 @@ class Selection{ //what tower is selected
     else if (tower.priority == 3){
       priority = "close";
     }
-    if (tower.turret && tower.name != "magicMissleer"){
+    if (tower.turret && tower.name != "magicMissleer" && tower.name != "magicMissleerFour"){
       fill(75,45,0);
       text("Priority: " + priority, 800, 843);
     }
@@ -253,7 +263,7 @@ class Selection{ //what tower is selected
       if (tower.turret){
         y = -45;
       }
-      if (tower.name == "magicMissleer"){
+      if (tower.name == "magicMissleer" || tower.name == "magicMissleerFour"){
         y += 45;  
       }  
       if (tower.nextLevelZero < tower.upgradeNames.length/2){
@@ -287,7 +297,7 @@ class Selection{ //what tower is selected
     if (tower.turret){
       y = 105;
     }
-    if (tower.name == "magicMissleer"){
+    if (tower.name == "magicMissleer" || tower.name == "magicMissleerFour"){
       y += 45;  
     }  
     if (tower.nextLevelOne < tower.upgradeNames.length){

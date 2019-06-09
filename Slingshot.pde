@@ -65,10 +65,10 @@ class Slingshot extends Turret{
     upgradeError[2] = 0;
     upgradeError[3] = 0;
     //names
-    upgradeNames[0] = "slingshot";
-    upgradeNames[1] = "slingshot";
-    upgradeNames[2] = "slingshot";
-    upgradeNames[3] = "slingshot";
+    upgradeNames[0] = name;
+    upgradeNames[1] = name;
+    upgradeNames[2] = name;
+    upgradeNames[3] = name;
     //debris
     upgradeDebris[0] = "stone";
     upgradeDebris[1] = "stone";

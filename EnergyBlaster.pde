@@ -52,7 +52,7 @@ class EnergyBlaster extends Turret{
     upgradeDamage[0] = 0;
     upgradeDamage[1] = 0;
     upgradeDamage[2] = 0;
-    upgradeDamage[3] = 10;
+    upgradeDamage[3] = 0;
     //delay (firerate)
     upgradeDelay[0] = 0;
     upgradeDelay[1] = 0;
@@ -74,10 +74,10 @@ class EnergyBlaster extends Turret{
     upgradeError[2] = 0;
     upgradeError[3] = 0;
     //names
-    upgradeNames[0] = "energyBlaster";
-    upgradeNames[1] = "energyBlaster";
-    upgradeNames[2] = "energyBlaster";
-    upgradeNames[3] = "energyBlaster";
+    upgradeNames[0] = name;
+    upgradeNames[1] = name;
+    upgradeNames[2] = name;
+    upgradeNames[3] = name;
     //debris
     upgradeDebris[0] = "metal";
     upgradeDebris[1] = "metal";
