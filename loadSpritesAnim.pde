@@ -1,6 +1,6 @@
 void loadSpritesAnim(){
-  spritesAnimH.put("upgradeIC",new PImage[13]);
-  for (int i = 12; i >= 0; i--){
+  spritesAnimH.put("upgradeIC",new PImage[15]);
+  for (int i = 14; i >= 0; i--){
     spritesAnimH.get("upgradeIC")[i] = loadImage("sprites/icons/upgrades/" + nf(i,3) + ".png");
   }  
   spritesAnimH.put("livesAddBT",new PImage[2]);
@@ -83,6 +83,10 @@ void loadSpritesAnim(){
   for (int i = 3; i >= 0; i--){
     spritesAnimH.get("energyExDebrisPT")[i] = loadImage("sprites/particles/explosionDebris/energy/" + nf(i,3) + ".png");
   } 
+  spritesAnimH.put("greenMagicBuffPT",new PImage[8]);
+  for (int i = 7; i >= 0; i--){
+    spritesAnimH.get("greenMagicBuffPT")[i] = loadImage("sprites/particles/buff/greenMagic/" + nf(i,3) + ".png");
+  } 
   spritesAnimH.put("miscPJ",new PImage[6]);
   for (int i = 5; i >= 0; i--){
     spritesAnimH.get("miscPJ")[i] = loadImage("sprites/projectiles/misc/" + nf(i,3) + ".png");
@@ -138,5 +142,13 @@ void loadSpritesAnim(){
   spritesAnimH.put("energyBlasterLoadTR",new PImage[42]);
   for (int i = 41; i >= 0; i--){
     spritesAnimH.get("energyBlasterLoadTR")[i] = loadImage("sprites/towers/turrets/energyBlaster/load/load" + nf(i,3) + ".png");
+  }  
+  spritesAnimH.put("magicMissleerFireTR",new PImage[8]);
+  for (int i = 7; i >= 0; i--){
+    spritesAnimH.get("magicMissleerFireTR")[i] = loadImage("sprites/towers/turrets/magicMissleer/fire/fire" + nf(i,3) + ".png");
+  }  
+  spritesAnimH.put("magicMissleerLoadTR",new PImage[26]);
+  for (int i = 25; i >= 0; i--){
+    spritesAnimH.get("magicMissleerLoadTR")[i] = loadImage("sprites/towers/turrets/magicMissleer/load/load" + nf(i,3) + ".png");
   }  
 }  

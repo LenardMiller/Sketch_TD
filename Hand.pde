@@ -78,6 +78,13 @@ class Hand{ //what is selected, eg: slingshot
        held = setHeld;
        price = 150;
      }  
+     else if (setHeld == "magicMissleer"){
+       heldSprite = spritesH.get("magicMissleerFullTR");
+       size = new PVector(25,25);
+       offset = new PVector(0,0);
+       held = setHeld;
+       price = 150;
+     }  
      else if (setHeld == "wall"){
        heldSprite = spritesH.get("woodWallTW"); 
        size = new PVector(60,18.5);
@@ -106,6 +113,10 @@ class Hand{ //what is selected, eg: slingshot
       money -= 150;
       towers.add(new EnergyBlaster((10*(ceil(mouseX/10)))+(25),(10*(ceil(mouseY/10)))+(25)));
     }  
+    else if (held == "magicMissleer" && alive){
+      money -= 150;
+      towers.add(new MagicMissleer((10*(ceil(mouseX/10)))+(25),(10*(ceil(mouseY/10)))+(25)));
+    }
     else if (held == "wall" && alive){
       money -= 25;
       towers.add(new Wall((10*(ceil(mouseX/10)))+(60),(10*(ceil(mouseY/10)))+(18.5)));

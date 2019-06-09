@@ -15,6 +15,7 @@ void loadSprites(){ //its time for river rafting!!
   spritesH.put("boltPj",loadImage("sprites/projectiles/bolt.png"));
   spritesH.put("devPj",loadImage("sprites/projectiles/dev.png"));
   spritesH.put("energyPj",loadImage("sprites/projectiles/energy.png"));
+  spritesH.put("magicMisslePj",loadImage("sprites/projectiles/magicMissle.png"));
   spritesH.put("nullPj",loadImage("sprites/projectiles/null.png"));
   spritesH.put("pebblePj",loadImage("sprites/projectiles/pebble.png"));
   spritesH.put("urchinPj",loadImage("sprites/projectiles/urchin.png"));
@@ -25,6 +26,9 @@ void loadSprites(){ //its time for river rafting!!
   spritesH.put("energyBlasterBaseTR",loadImage("sprites/towers/turrets/energyBlaster/base.png"));
   spritesH.put("energyBlasterFullTR",loadImage("sprites/towers/turrets/energyBlaster/full.png"));
   spritesH.put("energyBlasterIdleTR",loadImage("sprites/towers/turrets/energyBlaster/idle.png"));
+  spritesH.put("magicMissleerBaseTR",loadImage("sprites/towers/turrets/magicMissleer/base.png"));
+  spritesH.put("magicMissleerFullTR",loadImage("sprites/towers/turrets/magicMissleer/full.png"));
+  spritesH.put("magicMissleerIdleTR",loadImage("sprites/towers/turrets/magicMissleer/idle.png"));
   spritesH.put("miscCannonBaseTR",loadImage("sprites/towers/turrets/miscCannon/base.png"));
   spritesH.put("miscCannonFullTR",loadImage("sprites/towers/turrets/miscCannon/full.png"));
   spritesH.put("miscCannonIdleTR",loadImage("sprites/towers/turrets/miscCannon/idle.png"));

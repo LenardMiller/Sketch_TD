@@ -11,11 +11,12 @@ class Enemy {
   PImage sprite;
   int barTrans;
   int tintColor;
+  String hitParticle;
   Enemy(float x, float y) {
     position = new PVector(x, y);
     size = new PVector(20,20);
     radius = 10;
-    maxSpeed = 2.5;
+    maxSpeed = 1;
     speed = maxSpeed;
     dangerLevel = 1;
     maxHp = 20; //Hp <---------------------------
@@ -24,6 +25,7 @@ class Enemy {
     sprite = spritesH.get("nullEn");
     barTrans = 0;
     tintColor = 255;
+    hitParticle = "redOuch";
   }  
   
   void enMain(ArrayList<Enemy> enemies, int i){
@@ -131,9 +133,9 @@ class Enemy {
     }
     barTrans = 255;
     tintColor = 0;
-    int num = floor(random(2,5));
+    int num = floor(random(1,3));
     for (int j = num; j >= 0; j--){ //sprays ouch
-      particles.add(new Ouch(position.x+random((size.x/2)*-1,size.x/2), position.y+random((size.y/2)*-1,size.y/2), random(0,360), "redOuch"));
+      particles.add(new Ouch(position.x+random((size.x/2)*-1,size.x/2), position.y+random((size.y/2)*-1,size.y/2), random(0,360), hitParticle));
     }
   }  
   

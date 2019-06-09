@@ -70,10 +70,10 @@ class Crossbow extends Turret{
     upgradeError[2] = 0;
     upgradeError[3] = 0;
     //names
-    upgradeNames[0] = "crossbow";
-    upgradeNames[1] = "crossbow";
-    upgradeNames[2] = "crossbow";
-    upgradeNames[3] = "crossbow";
+    upgradeNames[0] = name;
+    upgradeNames[1] = name;
+    upgradeNames[2] = name;
+    upgradeNames[3] = name;
     //debris
     upgradeDebris[0] = "wood";
     upgradeDebris[1] = "wood";

@@ -61,6 +61,11 @@ class TowerBuy extends Button {
         textFont(ETFont);
         text("$150", 800, 271);
       }  
+      else if (twType == "magicMissleer"){
+        text("Magic Missileer", 800, 241);
+        textFont(ETFont);
+        text("$150", 800, 271);
+      }  
       else if (twType == "wall"){
         text("Wooden", 800, 241);
         text("Wall", 800, 266);
