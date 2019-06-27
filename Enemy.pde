@@ -1,9 +1,12 @@
 class Enemy {
+  ArrayList<TurnPoint> points;
   PVector position;
   PVector size;
+  float angle;
   float radius;
   float maxSpeed;
   float speed = maxSpeed;
+  float mpNegation;
   int dangerLevel;
   int maxHp;
   int enHp;
@@ -12,9 +15,12 @@ class Enemy {
   int barTrans;
   int tintColor;
   String hitParticle;
-  Enemy(float x, float y) {
+  Enemy(float x, float y, float mpNegation) {
+    points = new ArrayList<TurnPoint>();
     position = new PVector(x, y);
     size = new PVector(20,20);
+    this.mpNegation = mpNegation;
+    angle = 0;
     radius = 10;
     maxSpeed = 1;
     speed = maxSpeed;
@@ -30,7 +36,9 @@ class Enemy {
   
   void enMain(ArrayList<Enemy> enemies, int i){
     boolean dead = false; //if its gotten this far, it must be alive?
-    move();
+    swapPoints(false);
+    println(points.size());
+    move(i);
     display();
     collideTW();
     if (position.y - size.y > boardHeight){ //if enemy crosses edge of screen, enExit
@@ -63,9 +71,37 @@ class Enemy {
     enemies.remove(i);
   }  
   
-  void move(){ //self explanitory
-    position.y += speed;
+  void move(int i){
+    PVector m = PVector.fromAngle(angle);
+    m.setMag(speed);
+    position.add(m);
+    if (points.size() != 0){
+      PVector p = points.get(points.size()-1).position;
+      boolean intersecting = false;
+      intersecting = (position.x > p.x && position.x < p.x+nSize+size.x) && (position.y > p.y && position.y < p.y+nSize+size.y);
+      if (intersecting && points.size() != 0){
+        swapPoints(true);
+      } 
+    }
+    if (points.size() == 0){
+      die(i);
+    }  
     speed = maxSpeed;
+  } 
+  
+  void requestPath(int i){
+    path.reqQ.add(new PathRequest(i,enemies.get(i)));
+  }  
+  
+  void swapPoints(boolean remove){
+    if (remove){
+      points.remove(points.size()-1);  
+    }  
+    if (points.size() != 0){
+      PVector p = points.get(points.size()-1).position;
+      p = new PVector(p.x+(nSize/2),p.y+(nSize/2));
+      findAngle(p,position);
+    }
   }  
   
   void display(){
@@ -165,3 +201,13 @@ class Enemy {
     rect(position.x-size.x, position.y+size.y/2 + 12, (2*size.x)*(((float) enHp)/((float) maxHp)), 6);
   }  
 }
+class TurnPoint{ //pathfinding
+  PVector position;
+  TurnPoint(PVector position){
+    this.position = position;
+  }  
+  void display(){
+    fill(0);
+    ellipse(position.x+nSize/2,position.y+nSize/2,nSize,nSize);
+  } 
+} 

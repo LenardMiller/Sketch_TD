@@ -1,6 +1,6 @@
 class DevEnemy extends Enemy{
-  DevEnemy(float x, float y) {
-    super(x,y);
+  DevEnemy(float x, float y, float mpNegation) {
+    super(x,y,mpNegation);
     size = new PVector(40,40);
     radius = 20;
     maxSpeed = 0.5;
@@ -17,9 +17,10 @@ class DevEnemy extends Enemy{
   void enMain(ArrayList<Enemy> enemies, int i){
     boolean dead = false;
     enHp = maxHp;
-    move();
+    move(i);
     display();
     collideTW();
+    swapPoints(false);
     if (position.y - size.y > boardHeight){ //if enemy crosses edge of screen, enExit
       enExit(); 
       dead = true;

@@ -40,6 +40,15 @@ int boardWidth = 700;
 int boardHeight = 900;
 HashMap<String,PImage> spritesH = new HashMap<String,PImage>();
 HashMap<String,PImage[]> spritesAnimH = new HashMap<String,PImage[]>();
+//pathfinding stuff
+Node[][] nodeGrid;
+HeapNode openNodes;
+Node start;
+Node[] end;
+AStar path;
+Fuzzer fuzz;
+int nSize;
+int numEnd;
 
 void settings(){
   size(900, 900);
@@ -66,6 +75,26 @@ void setup(){
   loadSpritesAnim();
   //create gui
   gui();
+  //pathfinding stuff
+  nSize = 10;
+  nodeGrid = new Node[boardWidth/nSize][boardHeight/nSize];
+  for (int x = 0; x < boardWidth/nSize; x++){
+    for (int y = 0; y < boardHeight/nSize; y++){
+      nodeGrid[x][y] = new Node(new PVector(nSize*x,nSize*y));
+    }  
+  }
+  path = new AStar();
+  openNodes = new HeapNode(int(sq(boardWidth/nSize)));
+  end = new Node[int(sq(1000/nSize))];
+  nodeGrid[(boardWidth/nSize)-2][(boardHeight/nSize)/2].setEnd((boardWidth/nSize)-2,(boardHeight/nSize)/2);
+  nodeGrid[1][(boardWidth/nSize)/2].setStart(1,(boardHeight/nSize)/2);
+  start.findGHF();
+  for (int i = 0; i < numEnd; i++){
+    end[i].findGHF();
+  }
+  updateNodes(start);
+  updatePath();
+  
 }
 
 void draw(){
@@ -92,4 +121,9 @@ void draw(){
   //text
   textAlign(LEFT);
   drawType(10);
+  //pathfinding
+  if (path.reqQ.size() > 0){
+    path.reqQ.get(0).getPath();
+    path.reqQ.remove(0);
+  }
 }
