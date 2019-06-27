@@ -100,41 +100,42 @@ class Hand{ //what is selected, eg: slingshot
     if (held == "slingshot" && alive){
       money -= 50;
       towers.add(new Slingshot((10*(ceil(mouseX/10)))+(25),(10*(ceil(mouseY/10)))+(25)));
-      modeCheckObs();
+      nodeCheckObs();
     }  
     else if (held == "crossbow" && alive){
       money -= 100;
       towers.add(new Crossbow((10*(ceil(mouseX/10)))+(25),(10*(ceil(mouseY/10)))+(25)));
-      modeCheckObs();
+      nodeCheckObs();
     }  
     else if (held == "miscCannon" && alive){
       money -= 100;
       towers.add(new RandomCannon((10*(ceil(mouseX/10)))+(25),(10*(ceil(mouseY/10)))+(25)));
-      modeCheckObs();
+      nodeCheckObs();
     }  
     else if (held == "energyBlaster" && alive){
       money -= 150;
       towers.add(new EnergyBlaster((10*(ceil(mouseX/10)))+(25),(10*(ceil(mouseY/10)))+(25)));
-      modeCheckObs();
+      nodeCheckObs();
     }  
     else if (held == "magicMissleer" && alive){
       money -= 150;
       towers.add(new MagicMissleer((10*(ceil(mouseX/10)))+(25),(10*(ceil(mouseY/10)))+(25)));
-      modeCheckObs();
+      nodeCheckObs();
     }
     else if (held == "wall" && alive){
       money -= 25;
       towers.add(new Wall((10*(ceil(mouseX/10)))+(60),(10*(ceil(mouseY/10)))+(18.5)));
-      modeCheckObs();
+      nodeCheckObs();
     }  
     held = "null";
   }  
-  void modeCheckObs(){
+  void nodeCheckObs(){
     for (int x = 0; x < nodeGrid.length; x++){
       for (int y = 0; y < nodeGrid[x].length; y++){
         nodeGrid[x][y].checkObs();
       }
     } 
+    fuzz = new Fuzzer(5);
     updatePath();
   }  
 }

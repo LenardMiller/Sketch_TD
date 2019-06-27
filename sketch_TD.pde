@@ -106,6 +106,11 @@ void draw(){
   //keys
   debugKeys();
   spawnKeys();
+  //pathfinding
+  if (path.reqQ.size() > 0){
+    path.reqQ.get(0).getPath();
+    path.reqQ.remove(0);
+  }
   //self explanitory
   drawObjects(enemies,projectiles,towers,particles,buffs);
   //bg part 2: red (this will need to be redone when bg textures are thrown in)
@@ -121,9 +126,4 @@ void draw(){
   //text
   textAlign(LEFT);
   drawType(10);
-  //pathfinding
-  if (path.reqQ.size() > 0){
-    path.reqQ.get(0).getPath();
-    path.reqQ.remove(0);
-  }
 }

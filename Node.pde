@@ -102,7 +102,7 @@ class Node{
       boolean intersecting = false;
       PVector op = towers.get(i).position;
       PVector os = towers.get(i).size;
-      intersecting = (position.x > op.x && position.x < op.x+os.x+nSize) && (position.y > op.y && position.y < op.y+os.y+nSize);
+      intersecting = (position.x > op.x-os.x && position.x < op.x+nSize) && (position.y > op.y-os.y && position.y < op.y+nSize);
       if (intersecting){
         mp += towers.get(i).twHp;
       }  

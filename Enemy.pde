@@ -37,7 +37,6 @@ class Enemy {
   void enMain(ArrayList<Enemy> enemies, int i){
     boolean dead = false; //if its gotten this far, it must be alive?
     swapPoints(false);
-    println(points.size());
     move(i);
     display();
     collideTW();
@@ -100,17 +99,22 @@ class Enemy {
     if (points.size() != 0){
       PVector p = points.get(points.size()-1).position;
       p = new PVector(p.x+(nSize/2),p.y+(nSize/2));
-      findAngle(p,position);
+      angle = findAngle(p,position);
     }
   }  
   
   void display(){
+    for (int i = points.size()-1; i > 0; i--){
+        points.get(i).display();  
+    }
     if (tintColor < 255){ //shift back to normal
       tintColor += 20;
     }  
-    tint(255,tintColor,tintColor);
-    image(sprite,position.x-size.x/2,position.y-size.y/2);
-    tint(255,255,255);
+    pushMatrix();
+    translate(position.x,position.y);
+    rotate(angle);
+    image(sprite,-size.x/2,-size.y/2);
+    popMatrix();
     if (enHp > 0){
       HpBar();
     }
@@ -207,7 +211,7 @@ class TurnPoint{ //pathfinding
     this.position = position;
   }  
   void display(){
-    fill(0);
+    fill(255);
     ellipse(position.x+nSize/2,position.y+nSize/2,nSize,nSize);
   } 
 } 
