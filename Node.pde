@@ -37,13 +37,11 @@ class Node{
     }
   }  
   void setStart(int x, int y){
-    //if (!s){
-      if (start != null){
-        start.s = false;
-      }
-      start = nodeGrid[x][y];
-      s = true;
-    //}
+    if (start != null){
+      start.s = false;
+    }
+    start = nodeGrid[x][y];
+    s = true;
   }  
   void setEnd(int x, int y){
     if (!e){

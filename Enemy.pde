@@ -83,6 +83,7 @@ class Enemy {
       } 
     }
     if (points.size() == 0){
+      println("no points");
       die(i);
     }  
     speed = maxSpeed;
@@ -208,7 +209,7 @@ class Enemy {
 class TurnPoint{ //pathfinding
   PVector position;
   TurnPoint(PVector position){
-    this.position = position;
+    this.position = new PVector(position.x,position.y+100);
   }  
   void display(){
     fill(255);

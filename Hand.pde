@@ -135,7 +135,7 @@ class Hand{ //what is selected, eg: slingshot
         nodeGrid[x][y].checkObs();
       }
     } 
-    fuzz = new Fuzzer(5);
+    fuzz = new Fuzzer(9);
     updatePath();
   }  
 }

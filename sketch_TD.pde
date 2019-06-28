@@ -38,6 +38,8 @@ int money = 2000;
 boolean alive = true;
 int boardWidth = 700;
 int boardHeight = 900;
+int gridWidth = 700;
+int gridHeight = 1100;
 HashMap<String,PImage> spritesH = new HashMap<String,PImage>();
 HashMap<String,PImage[]> spritesAnimH = new HashMap<String,PImage[]>();
 //pathfinding stuff
@@ -77,17 +79,17 @@ void setup(){
   gui();
   //pathfinding stuff
   nSize = 10;
-  nodeGrid = new Node[boardWidth/nSize][boardHeight/nSize];
-  for (int x = 0; x < boardWidth/nSize; x++){
-    for (int y = 0; y < boardHeight/nSize; y++){
-      nodeGrid[x][y] = new Node(new PVector(nSize*x,nSize*y));
+  nodeGrid = new Node[gridWidth/nSize][gridHeight/nSize];
+  for (int x = 0; x < gridWidth/nSize; x++){
+    for (int y = 0; y < gridHeight/nSize; y++){
+      nodeGrid[x][y] = new Node(new PVector(nSize*x,(nSize*y)-100));
     }  
   }
   path = new AStar();
-  openNodes = new HeapNode(int(sq(boardWidth/nSize)));
+  openNodes = new HeapNode(int(sq(gridWidth/nSize)));
   end = new Node[int(sq(1000/nSize))];
-  nodeGrid[(boardWidth/nSize)-2][(boardHeight/nSize)/2].setEnd((boardWidth/nSize)-2,(boardHeight/nSize)/2);
-  nodeGrid[1][(boardWidth/nSize)/2].setStart(1,(boardHeight/nSize)/2);
+  nodeGrid[(gridWidth/nSize)-2][(gridHeight/nSize)/2].setEnd((gridWidth/nSize)-2,(gridHeight/nSize)/2);
+  nodeGrid[1][(gridWidth/nSize)/2].setStart(1,(gridHeight/nSize)/2);
   start.findGHF();
   for (int i = 0; i < numEnd; i++){
     end[i].findGHF();

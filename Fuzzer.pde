@@ -13,14 +13,14 @@ class Fuzzer{
     topBottom();
   }  
   void leftRight(){
-    for (int y = 0; y < boardHeight/nSize; y++){
-      for (int x = 0; x < boardWidth/nSize; x++){
+    for (int y = 0; y < gridHeight/nSize; y++){
+      for (int x = 0; x < gridWidth/nSize; x++){
         for (int i = floor(-ks/2); i <= floor(ks/2); i++){
           if (x+i < 0){
             n[i+floor(ks/2)] = nodeGrid[0][y];
           }  
-          else if (x+i > boardWidth/nSize-1){
-            n[i+floor(ks/2)] = nodeGrid[boardWidth/nSize-1][y];
+          else if (x+i > gridWidth/nSize-1){
+            n[i+floor(ks/2)] = nodeGrid[gridWidth/nSize-1][y];
           }  
           else{
             n[i+floor(ks/2)] = nodeGrid[x+i][y];
@@ -35,14 +35,14 @@ class Fuzzer{
     }
   }  
   void topBottom(){
-    for (int y = 0; y < boardHeight/nSize; y++){
-      for (int x = 0; x < boardWidth/nSize; x++){
+    for (int y = 0; y < gridHeight/nSize; y++){
+      for (int x = 0; x < gridWidth/nSize; x++){
         for (int i = floor(-ks/2); i <= floor(ks/2); i++){
           if (y+i < 0){
             n[i+floor(ks/2)] = nodeGrid[x][0];
           }  
-          else if (y+i > (boardHeight/nSize)-1){
-            n[i+floor(ks/2)] = nodeGrid[x][(boardHeight/nSize)-1];
+          else if (y+i > (gridHeight/nSize)-1){
+            n[i+floor(ks/2)] = nodeGrid[x][(gridHeight/nSize)-1];
           }  
           else{
             n[i+floor(ks/2)] = nodeGrid[x][y+i];
