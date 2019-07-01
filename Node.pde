@@ -40,7 +40,7 @@ class Node{
     if (start != null){
       start.s = false;
     }
-    start = nodeGrid[x][y];
+    start = nodeGrid[x][y+10];
     s = true;
   }  
   void setEnd(int x, int y){
@@ -61,12 +61,12 @@ class Node{
       if ((o||c) && parent == null){
         parent = parentNew;
         findGHF();
-        openNodes.addItem(new ItemNode(nodeGrid[int(position.x/nSize)][int(position.y/nSize)]));
+        openNodes.addItem(new ItemNode(nodeGrid[int(position.x/nSize)][int(position.y/nSize)+10]));
       }  
       if ((o||c) && parentNew.g < parent.g){ //these have to be split in two because parent might be null
         parent = parentNew;
         findGHF();
-        openNodes.addItem(new ItemNode(nodeGrid[int(position.x/nSize)][int(position.y/nSize)]));
+        openNodes.addItem(new ItemNode(nodeGrid[int(position.x/nSize)][int(position.y/nSize)+10]));
       } 
     }  
   }  
@@ -82,7 +82,7 @@ class Node{
       parent.setDone();
     }
     else{
-      updateNodes(nodeGrid[int(position.x/nSize)][int(position.y/nSize)]);
+      updateNodes(nodeGrid[int(position.x/nSize)][int(position.y/nSize)+10]);
     }  
     findGHF();
   }  

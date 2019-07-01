@@ -31,7 +31,7 @@ class PathRequest{
       }
     }  
     e.points = new ArrayList<TurnPoint>();
-    nodeGrid[round((e.position.x-(e.size.x/2))/nSize)][round(((e.position.y-(e.size.y/2))+100)/nSize)].setStart(round((e.position.x-(e.size.x/2))/nSize),round(((e.position.y-(e.size.y/2))+100)/nSize));
+    nodeGrid[round((e.position.x-(e.size.x/2))/nSize)][round(((e.position.y-(e.size.y/2)))/nSize)+10].setStart(round((e.position.x-(e.size.x/2))/nSize),round(((e.position.y-(e.size.y/2)))/nSize));
     start.findGHF();
     updateNodes(start);
     path.done = false;

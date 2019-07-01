@@ -1,6 +1,6 @@
 void updateNodes(Node current){
   int x = int(current.position.x/nSize);
-  int y = int((current.position.y+100)/nSize);
+  int y = int(((current.position.y)/nSize)+10);
   if (x == 0 && y == 0){
     nodeGrid[x+1][y].setOpen(current);
     nodeGrid[x+1][y+1].setOpen(current);

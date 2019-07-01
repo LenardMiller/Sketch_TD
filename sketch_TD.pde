@@ -88,7 +88,9 @@ void setup(){
   path = new AStar();
   openNodes = new HeapNode(int(sq(gridWidth/nSize)));
   end = new Node[int(sq(1000/nSize))];
-  nodeGrid[(gridWidth/nSize)-2][(gridHeight/nSize)/2].setEnd((gridWidth/nSize)-2,(gridHeight/nSize)/2);
+  for (int i = (gridWidth/nSize)-1; i >= 0; i--){
+    nodeGrid[i][(gridHeight/nSize)-1].setEnd(i,(gridHeight/nSize)-1);
+  }  
   nodeGrid[1][(gridWidth/nSize)/2].setStart(1,(gridHeight/nSize)/2);
   start.findGHF();
   for (int i = 0; i < numEnd; i++){
@@ -96,7 +98,6 @@ void setup(){
   }
   updateNodes(start);
   updatePath();
-  
 }
 
 void draw(){
