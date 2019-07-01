@@ -75,7 +75,7 @@ class Node{
     o = false;
     if (e){
       path.done = true;
-      if (path.index != -1 && enemies.size() != 0){
+      if (path.index != -1 && enemies.size() > path.index){
         enemies.get(path.index).points.add(new TurnPoint(position));
         enemies.get(path.index).points.add(new TurnPoint(parent.position));
       }  
