@@ -1,10 +1,9 @@
 class Fuzzer{
   int ks;
   float mp; 
-  Node[] n;
+  float[] mps;
   Fuzzer(int ks){
     this.ks = ks;
-    n = new Node[ks];
     mp = 0;
     fuzz();
   }
@@ -14,46 +13,60 @@ class Fuzzer{
   }  
   void leftRight(){
     for (int y = 0; y < gridHeight/nSize; y++){
-      for (int x = 0; x < gridWidth/nSize; x++){
-        for (int i = floor(-ks/2); i <= floor(ks/2); i++){
-          if (x+i < 0){
-            n[i+floor(ks/2)] = nodeGrid[0][y];
-          }  
-          else if (x+i > gridWidth/nSize-1){
-            n[i+floor(ks/2)] = nodeGrid[gridWidth/nSize-1][y];
-          }  
-          else{
-            n[i+floor(ks/2)] = nodeGrid[x+i][y];
-          }  
-        }
-        for (int i = 0; i < ks; i++){
-          mp += n[i].mp/ks;
-        }  
-        nodeGrid[x][y].mp = mp;
-        mp = 0;
+      mps = new float[gridWidth/nSize];
+      for (int x = 0; x < mps.length; x++){
+        mps[x] = nodeGrid[x][y].mp;
       }  
-    }
+      mp = mps[0];
+      for (int i = 1; i <= floor(ks/2); i++){
+        mp += mps[0];
+        mp += mps[i];
+      }
+      nodeGrid[0][y].mp = mp/ks;
+      for (int x = 1; x < gridWidth/nSize; x++){
+        if (x - floor(ks/2) <= 0){
+          mp -= mps[0];
+        }  
+        else{
+          mp -= mps[x-ceil(float(ks)/2)];  
+        }  
+        if (x + floor(ks/2) >= gridWidth/nSize){
+          mp += mps[mps.length-1];
+        }  
+        else{
+          mp += mps[x+floor(ks/2)]; 
+        } 
+        nodeGrid[x][y].mp = mp/ks;
+      }  
+    }  
   }  
   void topBottom(){
-    for (int y = 0; y < gridHeight/nSize; y++){
-      for (int x = 0; x < gridWidth/nSize; x++){
-        for (int i = floor(-ks/2); i <= floor(ks/2); i++){
-          if (y+i < 0){
-            n[i+floor(ks/2)] = nodeGrid[x][0];
-          }  
-          else if (y+i > (gridHeight/nSize)-1){
-            n[i+floor(ks/2)] = nodeGrid[x][(gridHeight/nSize)-1];
-          }  
-          else{
-            n[i+floor(ks/2)] = nodeGrid[x][y+i];
-          }  
-        }
-        for (int i = 0; i < ks; i++){
-          mp += n[i].mp/ks;
-        }  
-        nodeGrid[x][y].mp = mp;
-        mp = 0;
+    for (int x = 0; x < gridWidth/nSize; x++){
+      mps = new float[gridHeight/nSize];
+      for (int y = 0; y < mps.length; y++){
+        mps[y] = nodeGrid[x][y].mp;
       }  
-    }
+      mp = mps[0];
+      for (int i = 1; i <= floor(ks/2); i++){
+        mp += mps[0];
+        mp += mps[i];
+      }
+      nodeGrid[x][0].mp = mp/ks;
+      for (int y = 1; y < gridHeight/nSize; y++){
+        if (y - floor(ks/2) <= 0){
+          mp -= mps[0];
+        }  
+        else{
+          mp -= mps[y-ceil(float(ks)/2)];  
+        }  
+        if (y + floor(ks/2) >= gridHeight/nSize){
+          mp += mps[mps.length-1];
+        }  
+        else{
+          mp += mps[y+floor(ks/2)]; 
+        }  
+        nodeGrid[x][y].mp = mp/ks;
+      } 
+    }  
   } 
 }  

@@ -197,7 +197,7 @@ class Tower {
     for (int j = num; j >= 0; j--){
       particles.add(new Debris((position.x-size.x/2)+random((size.x/2)*-1,size.x/2), (position.y-size.y/2)+random((size.y/2)*-1,size.y/2), random(0,360), debrisType));
     }
-    updatePath();
+    nodeCheckObs();
   }
 
   void die(int i){
@@ -211,12 +211,7 @@ class Tower {
     if (selection.id == i){
       selection.id = 0;
     }
-    for (int x = 0; x < nodeGrid.length; x++){
-      for (int y = 0; y < nodeGrid[x].length; y++){
-        nodeGrid[x][y].checkObs();
-      }
-    } 
-    updatePath();
+    nodeCheckObs();
   }
 
   void HpText(){ //displays the towers health

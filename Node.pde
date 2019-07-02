@@ -94,13 +94,15 @@ class Node{
       parent.setDone();
     }  
   }  
-  void checkObs(){
-    mp = 0;
+  void checkObs(boolean addMode){
+    if (!addMode){
+      mp = 0;
+    }
     for (int i = 0; i < towers.size(); i++){
       boolean intersecting = false;
       PVector op = towers.get(i).position;
       PVector os = towers.get(i).size;
-      intersecting = (position.x > op.x-os.x && position.x < op.x+nSize) && (position.y > op.y-os.y && position.y < op.y+nSize);
+      intersecting = (position.x > op.x-os.x-10 && position.x < op.x+nSize+10) && (position.y > op.y-os.y-10 && position.y < op.y+nSize+10);
       if (intersecting){
         mp += towers.get(i).twHp;
       }  

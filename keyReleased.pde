@@ -2,12 +2,7 @@ void keyReleased() {
   //tower form: spawn x, spawn y
   if (key == 'l' && alive){ //cheaty wall
     towers.add(new DevWall(10*(round(mouseX/10))+60, 10*(round(mouseY/10))));
-    for (int x = 0; x < nodeGrid.length; x++){
-      for (int y = 0; y < nodeGrid[x].length; y++){
-        nodeGrid[x][y].checkObs();
-      }
-    } 
-    updatePath();
+    nodeCheckObs();
   }
   //projectile form: spawn x, spawn y, angle
   if (key == 'q' && alive){ //pebble

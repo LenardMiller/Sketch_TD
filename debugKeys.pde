@@ -8,12 +8,7 @@ void debugKeys(){
   //kill all towers: d
   if (keyPressed == true && key == 'd' && alive){
     towers = new ArrayList <Tower>();
-    for (int x = 0; x < nodeGrid.length; x++){
-      for (int y = 0; y < nodeGrid[x].length; y++){
-        nodeGrid[x][y].checkObs();
-      }
-    } 
-    updatePath();
+    nodeCheckObs();
   }
   //kill all projectiles: f
   if (keyPressed == true && key == 'f' && alive){
