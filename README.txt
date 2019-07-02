@@ -9,6 +9,7 @@ d - kill all towers
 f - kill all projectiles
 a - spawn many null enemies
 l - place Dev Wall
+g - toggle path lines
 particles
 z - spawn random hurt particles
 x - spawn death particles

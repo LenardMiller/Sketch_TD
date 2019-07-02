@@ -17,9 +17,10 @@ class DevEnemy extends Enemy{
   void enMain(ArrayList<Enemy> enemies, int i){
     boolean dead = false;
     enHp = maxHp;
-    move();
+    move(i);
     display();
     collideTW();
+    swapPoints(false);
     if (position.y - size.y > boardHeight){ //if enemy crosses edge of screen, enExit
       enExit(); 
       dead = true;
@@ -48,9 +49,11 @@ class DevEnemy extends Enemy{
     if (tintColor < 255){
       tintColor += 20;
     }  
-    tint(255,tintColor,255);
-    image(sprite,position.x-size.x/2,position.y-size.y/2);
-    tint(255,255,255);
+    pushMatrix();
+    translate(position.x,position.y);
+    rotate(angle);
+    image(sprite,-size.x/2,-size.y/2);
+    popMatrix();
     if (enHp > 0){
       HpBar();
     }

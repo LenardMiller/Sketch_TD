@@ -10,7 +10,7 @@ void spawnKeys(){
       stroke(255,0,0);
       fill(255,0,0,100);
       rect((10*(round(mouseX/10)))-60, (10*(round(mouseY/10)))-37, 120, 37);
-    }  
+    } 
   }
   //particle form: spawn x, spawn y, angle
   if (keyPressed == true && key == 'z' && alive){ //hurt

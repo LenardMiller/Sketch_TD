@@ -38,8 +38,20 @@ int money = 2000;
 boolean alive = true;
 int boardWidth = 700;
 int boardHeight = 900;
+int gridWidth = 700;
+int gridHeight = 1100;
 HashMap<String,PImage> spritesH = new HashMap<String,PImage>();
 HashMap<String,PImage[]> spritesAnimH = new HashMap<String,PImage[]>();
+//pathfinding stuff
+Node[][] nodeGrid;
+HeapNode openNodes;
+Node start;
+Node[] end;
+AStar path;
+Fuzzer fuzz;
+int nSize;
+int numEnd;
+boolean pathLines = false;
 
 void settings(){
   size(900, 900);
@@ -66,6 +78,27 @@ void setup(){
   loadSpritesAnim();
   //create gui
   gui();
+  //pathfinding stuff
+  nSize = 10;
+  nodeGrid = new Node[gridWidth/nSize][gridHeight/nSize];
+  for (int x = 0; x < gridWidth/nSize; x++){
+    for (int y = 0; y < gridHeight/nSize; y++){
+      nodeGrid[x][y] = new Node(new PVector(nSize*x,(nSize*y)-100));
+    }  
+  }
+  path = new AStar();
+  openNodes = new HeapNode(int(sq(gridWidth/nSize)));
+  end = new Node[int(sq(1000/nSize))];
+  for (int i = (gridWidth/nSize)-1; i >= 0; i--){
+    nodeGrid[i][(gridHeight/nSize)-1].setEnd(i,(gridHeight/nSize)-1);
+  }  
+  nodeGrid[1][(gridWidth/nSize)/2].setStart(1,(gridHeight/nSize)/2);
+  start.findGHF();
+  for (int i = 0; i < numEnd; i++){
+    end[i].findGHF();
+  }
+  updateNodes(start);
+  updatePath();
 }
 
 void draw(){
@@ -77,6 +110,11 @@ void draw(){
   //keys
   debugKeys();
   spawnKeys();
+  //pathfinding
+  if (path.reqQ.size() > 0){
+    path.reqQ.get(0).getPath();
+    path.reqQ.remove(0);
+  }
   //self explanitory
   drawObjects(enemies,projectiles,towers,particles,buffs);
   //bg part 2: red (this will need to be redone when bg textures are thrown in)

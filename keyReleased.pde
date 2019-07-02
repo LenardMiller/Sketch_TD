@@ -2,6 +2,7 @@ void keyReleased() {
   //tower form: spawn x, spawn y
   if (key == 'l' && alive){ //cheaty wall
     towers.add(new DevWall(10*(round(mouseX/10))+60, 10*(round(mouseY/10))));
+    nodeCheckObs();
   }
   //projectile form: spawn x, spawn y, angle
   if (key == 'q' && alive){ //pebble
@@ -32,11 +33,23 @@ void keyReleased() {
     projectiles.add(new MagicMissle(mouseX, mouseY, 0, 5, 0));
   } 
   //enemy form: spawn x, spawn y
-  if (key == '1' && alive){ //dev enemy
+  if (key == '1' && alive && mouseX < boardWidth){ //dev enemy
     enemies.add(new DevEnemy(mouseX,mouseY));
+    for (int x = 0; x < nodeGrid.length; x++){
+      for (int y = 0; y < nodeGrid[x].length; y++){
+        nodeGrid[x][y].reset();
+      }
+    }  
+    enemies.get(enemies.size()-1).requestPath(enemies.size()-1);
   }  
-  if (key == '0' && alive){ //null enemy
+  if (key == '0' && alive && mouseX < boardWidth){ //null enemy
     enemies.add(new Enemy(mouseX,mouseY));
+    for (int x = 0; x < nodeGrid.length; x++){
+      for (int y = 0; y < nodeGrid[x].length; y++){
+        nodeGrid[x][y].reset();
+      }
+    }  
+    enemies.get(enemies.size()-1).requestPath(enemies.size()-1);
   }  
   //buff form: enemy id
   if (key == '?' && alive){ //null buff
@@ -50,5 +63,8 @@ void keyReleased() {
   }  
   if (key == '/' && alive){ //burning
     buffs.add(new Burning(int(random(0,enemies.size()))));
+  }  
+  if (key == 'g'){
+    pathLines = !pathLines;  
   }  
 }  
