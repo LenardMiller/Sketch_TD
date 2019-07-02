@@ -12,7 +12,7 @@ void updatePath(){
           d = true;  
         }  
       }
-      if (!d){
+      if (!d && enemies.get(i).speed != 0){
         enemies.get(i).requestPath(i);
       }
     }  
