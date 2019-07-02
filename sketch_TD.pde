@@ -51,6 +51,7 @@ AStar path;
 Fuzzer fuzz;
 int nSize;
 int numEnd;
+boolean pathLines = false;
 
 void settings(){
   size(900, 900);

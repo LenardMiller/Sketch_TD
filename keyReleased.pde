@@ -64,4 +64,7 @@ void keyReleased() {
   if (key == '/' && alive){ //burning
     buffs.add(new Burning(int(random(0,enemies.size()))));
   }  
+  if (key == 'g'){
+    pathLines = !pathLines;  
+  }  
 }  

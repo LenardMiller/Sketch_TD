@@ -100,8 +100,10 @@ class Enemy {
   }  
   
   void display(){
-    for (int i = points.size()-1; i > 0; i--){
-        points.get(i).display();  
+    if (pathLines){
+      for (int i = points.size()-1; i > 0; i--){
+          points.get(i).display();  
+      }
     }
     if (tintColor < 255){ //shift back to normal
       tintColor += 20;
