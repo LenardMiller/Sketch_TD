@@ -107,34 +107,14 @@ void loadSpritesAnim(){
   for (int i = 80; i >= 0; i--){
     spritesAnimH.get("crossbowLoadTR")[i] = loadImage("sprites/towers/turrets/crossbow/load/load" + nf(i,3) + ".png");
   }  
-  spritesAnimH.put("miscCannonFireAcidTR",new PImage[12]);
+  spritesAnimH.put("miscCannonFireTR",new PImage[12]);
   for (int i = 11; i >= 0; i--){
-    spritesAnimH.get("miscCannonFireAcidTR")[i] = loadImage("sprites/towers/turrets/miscCannon/fire/acid/fire" + nf(i/2,3) + ".png");
-    i--;
-    spritesAnimH.get("miscCannonFireAcidTR")[i] = loadImage("sprites/towers/turrets/miscCannon/fire/acid/fire" + nf(i/2,3) + ".png");
-  }  
-  spritesAnimH.put("miscCannonFireMiscTR",new PImage[12]);
-  for (int i = 11; i >= 0; i--){
-    spritesAnimH.get("miscCannonFireMiscTR")[i] = loadImage("sprites/towers/turrets/miscCannon/fire/misc/fire" + nf(i/2,3) + ".png");
-    i--;
-    spritesAnimH.get("miscCannonFireMiscTR")[i] = loadImage("sprites/towers/turrets/miscCannon/fire/misc/fire" + nf(i/2,3) + ".png");
-  }  
-  spritesAnimH.put("miscCannonFireUrchinTR",new PImage[12]);
-  for (int i = 11; i >= 0; i--){
-    spritesAnimH.get("miscCannonFireUrchinTR")[i] = loadImage("sprites/towers/turrets/miscCannon/fire/urchin/fire" + nf(i/2,3) + ".png");
-    i--;
-    spritesAnimH.get("miscCannonFireUrchinTR")[i] = loadImage("sprites/towers/turrets/miscCannon/fire/urchin/fire" + nf(i/2,3) + ".png");
-  }  
-  spritesAnimH.put("miscCannonFireWaterTR",new PImage[12]);
-  for (int i = 11; i >= 0; i--){
-    spritesAnimH.get("miscCannonFireWaterTR")[i] = loadImage("sprites/towers/turrets/miscCannon/fire/water/fire" + nf(i/2,3) + ".png");
-    i--;
-    spritesAnimH.get("miscCannonFireWaterTR")[i] = loadImage("sprites/towers/turrets/miscCannon/fire/water/fire" + nf(i/2,3) + ".png");
-  }  
-  spritesAnimH.put("miscCannonLoadTR",new PImage[34]);
-  for (int i = 33; i >= 0; i--){
+    spritesAnimH.get("miscCannonFireTR")[i] = loadImage("sprites/towers/turrets/miscCannon/fire/fire" + nf(i,3) + ".png");
+  }   
+  spritesAnimH.put("miscCannonLoadTR",new PImage[1]);
+  for (int i = 0; i >= 0; i--){
     spritesAnimH.get("miscCannonLoadTR")[i] = loadImage("sprites/towers/turrets/miscCannon/load/load" + nf(i,3) + ".png");
-  }  
+  }   
   spritesAnimH.put("energyBlasterFireTR",new PImage[14]);
   for (int i = 13; i >= 0; i--){
     spritesAnimH.get("energyBlasterFireTR")[i] = loadImage("sprites/towers/turrets/energyBlaster/fire/fire" + nf(i,3) + ".png");

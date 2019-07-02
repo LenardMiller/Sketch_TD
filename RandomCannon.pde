@@ -13,26 +13,20 @@ class RandomCannon extends Turret{
     maxHp = 20;
     twHp = maxHp;
     hit = false;
-    delay = 150; //default: 150 frames
+    delay = 40; //default: 40 frames
     delay += (round(random(-(delay/10),delay/10))); //injects 10% randomness so all don't fire at once
     delayTime = delay;
     pjSpeed = 12;
-    error = 0; //irrelivant, set in fire()
     numFireFrames = 12;
-    numLoadFrames = 34;
-    fireFramesMisc = new PImage[numFireFrames];
-    fireFramesWater = new PImage[numFireFrames];
-    fireFramesAcid = new PImage[numFireFrames];
-    fireFramesUrchin = new PImage[numFireFrames];
-    loadFrames = new PImage[numLoadFrames];
+    numLoadFrames = 1;
+    fireFrames = new PImage[numFireFrames];
     spriteType = 0;
     frame = 0;
     loadDelay = 0;
     loadDelayTime = 0;
     projectile = 0;
-    miscChance = 5; //still deciding, default 5?
-    damage = 6;
-    error = 5;
+    damage = 3;
+    error = 8; //default 8
     loadSprites();
     debrisType = "metal";
     price = 100;
@@ -43,35 +37,15 @@ class RandomCannon extends Turret{
     setUpgrades();
   }
   @Override
-  void fire(){
-    float miscError = error; //default 5
-    float specialError = error/2; //default 2.5
-    projectile = floor(random(0,miscChance+4));
+  void fire(){ //needed to change projectile fired
+    angle += radians(random(-error,error));
     delayTime = frameCount + delay; //waits this time before firing
+    int p = floor(random(0,5.99));
     PVector spp = new PVector(position.x-size.x/2,position.y-size.y/2);
     PVector spa = PVector.fromAngle(angle-HALF_PI);
     spa.setMag(20);
     spp.add(spa);
-    if (projectile <= miscChance){ //chooses projectile to fire randomly
-      angle += radians(random(-miscError,miscError));
-      projectiles.add(new MiscProjectile(spp.x,spp.y, angle, round(random(0,5)), damage));
-    }
-    else if (projectile == miscChance+1){
-      angle += radians(random(-specialError,specialError));
-      projectiles.add(new Waterball(spp.x,spp.y, angle));
-    }
-    else if (projectile == miscChance+2){
-      angle += radians(random(-specialError,specialError));
-      projectiles.add(new Acid(spp.x,spp.y, angle));
-    }
-    else if (projectile == miscChance+3){
-      angle += radians(random(-specialError,specialError));
-      projectiles.add(new Urchin(spp.x,spp.y, angle));
-    }
-    else{ //just in case
-      angle += radians(random(-miscError,miscError));
-      projectiles.add(new MiscProjectile(spp.x,spp.y,angle,floor(random(0,6.9)),damage)); //idk if it will ever choose the max, but I don't want to risk that
-    }
+    projectiles.add(new MiscProjectile(spp.x,spp.y, angle, p, damage));
   }
   void setUpgrades(){
     //special
@@ -80,14 +54,14 @@ class RandomCannon extends Turret{
     upgradeSpecial[2] = false;
     upgradeSpecial[3] = true;
     //damage
-    upgradeDamage[0] = 10;
+    upgradeDamage[0] = 3;
     upgradeDamage[1] = 0;
     upgradeDamage[2] = 0;
     upgradeDamage[3] = 0;
     //delay (firerate)
     upgradeDelay[0] = 0;
-    upgradeDelay[1] = 0;
-    upgradeDelay[2] = -20;
+    upgradeDelay[1] = -10;
+    upgradeDelay[2] = 0;
     upgradeDelay[3] = 0;
     //price
     upgradePrices[0] = 50;
@@ -101,14 +75,14 @@ class RandomCannon extends Turret{
     upgradeHealth[3] = 0;
     //error (accuracy)
     upgradeError[0] = 0;
-    upgradeError[1] = -2;
-    upgradeError[2] = 0;
-    upgradeError[3] = 0;
+    upgradeError[1] = 0;
+    upgradeError[2] = -2;
+    upgradeError[3] = -2;
     //names
     upgradeNames[0] = name;
     upgradeNames[1] = name;
     upgradeNames[2] = name;
-    upgradeNames[3] = "consistantCannon";
+    upgradeNames[3] = name;
     //debris
     upgradeDebris[0] = "metal";
     upgradeDebris[1] = "metal";
@@ -116,29 +90,29 @@ class RandomCannon extends Turret{
     upgradeDebris[3] = "metal";
     //titles
     upgradeTitles[0] = "Damage Up";
-    upgradeTitles[1] = "More Precise";
-    upgradeTitles[2] = "Faster Firing";
-    upgradeTitles[3] = "More Consistant";
+    upgradeTitles[1] = "Faster Firing";
+    upgradeTitles[2] = "Reduce Spread";
+    upgradeTitles[3] = "Limited Spread";
     //desc line one
-    upgradeDescOne[0] = "+10";
+    upgradeDescOne[0] = "+3";
     upgradeDescOne[1] = "Increase";
     upgradeDescOne[2] = "Increase";
-    upgradeDescOne[3] = "More";
+    upgradeDescOne[3] = "Further";
     //desc line two
-    upgradeDescTwo[0] = "normal";
-    upgradeDescTwo[1] = "accuracy";
-    upgradeDescTwo[2] = "firerate";
-    upgradeDescTwo[3] = "debuff";
+    upgradeDescTwo[0] = "damage";
+    upgradeDescTwo[1] = "firerate";
+    upgradeDescTwo[2] = "accuracy";
+    upgradeDescTwo[3] = "increase";
     //desc line three
-    upgradeDescThree[0] = "damage";
+    upgradeDescThree[0] = "";
     upgradeDescThree[1] = "";
     upgradeDescThree[2] = "";
-    upgradeDescThree[3] = "projectiles";
+    upgradeDescThree[3] = "accuracy";
     //icons
     upgradeIcons[0] = spritesAnimH.get("upgradeIC")[8];
-    upgradeIcons[1] = spritesAnimH.get("upgradeIC")[5];
-    upgradeIcons[2] = spritesAnimH.get("upgradeIC")[7];
-    upgradeIcons[3] = spritesAnimH.get("upgradeIC")[11];
+    upgradeIcons[1] = spritesAnimH.get("upgradeIC")[10];
+    upgradeIcons[2] = spritesAnimH.get("upgradeIC")[5];
+    upgradeIcons[3] = spritesAnimH.get("upgradeIC")[6];
     //sprites
     upgradeSprites[0] = spritesH.get("stoneWallTW");
     upgradeSprites[1] = spritesH.get("metalWallTW");
@@ -164,13 +138,11 @@ class RandomCannon extends Turret{
     upgradeNames[0] = name;
     upgradeNames[1] = name;
     upgradeNames[2] = name;
+    upgradeNames[3] = name;
     //
     name = upgradeNames[nextLevel];
     debrisType = upgradeDebris[nextLevel];
     sprite = upgradeSprites[nextLevel];
-    if (upgradeSpecial[nextLevel]){
-      miscChance -= 4;
-    }
     if (nextLevel < upgradeNames.length && id == 0){
       nextLevelZero++;
     }
@@ -201,74 +173,27 @@ class RandomCannon extends Turret{
   void loadSprites(){
     sBase = spritesH.get("miscCannonBaseTR");
     sIdle = spritesH.get("miscCannonIdleTR");
-    fireFramesMisc = spritesAnimH.get("miscCannonFireMiscTR");
-    fireFramesWater = spritesAnimH.get("miscCannonFireWaterTR");
-    fireFramesAcid = spritesAnimH.get("miscCannonFireAcidTR");
-    fireFramesUrchin = spritesAnimH.get("miscCannonFireUrchinTR");
+    fireFrames = spritesAnimH.get("miscCannonFireTR");
     loadFrames = spritesAnimH.get("miscCannonLoadTR");
-  }
- void preDisplay(){
-    if (spriteType == 0){ //idle
-      sprite = sIdle;
-    }
-    else if (spriteType == 1){ //fire
-      if (frame < numFireFrames-1){ //if not done, keep going
-        frame++;
-        if (projectile <= miscChance){ //all different firing animations
-          sprite = fireFramesMisc[frame];
-        }
-        else if (projectile == miscChance+1){
-          sprite = fireFramesWater[frame];
-        }
-        else if (projectile == miscChance+2){
-          sprite = fireFramesAcid[frame];
-        }
-        else if (projectile == miscChance+3){
-          sprite = fireFramesUrchin[frame];
-        }
-      }
-      else { //if done, switch to load
-        ArrayList<Integer> oldArray = new ArrayList();
-        int oldSize = numLoadFrames;
-        int newSize = (delayTime - frameCount);
-        spriteArray = new ArrayList<Integer>();
-        for (int i = 0; i < oldSize; i++){
-          oldArray.add(i);
-        }  
-        for (int i = 0; i < oldSize; i++){
-          spriteArray.add(i);
-        }  
-        int count = 0;
-        while (spriteArray.size() != newSize){
-          count++;
-          compress = new CompressArray(spriteArray.size(),newSize,count,oldArray,spriteArray);
-          compress.cMain();
-        }  
-        frame = 0;
-        spriteType = 2;
-        //println();
-        //println(spriteArray.size()+"<-"+oldSize);
-      }
-    }
-    else if (spriteType == 2){ //load
-      frame++;
-      if (frame < spriteArray.size()){
-        sprite = loadFrames[spriteArray.get(frame)];
-        //print(spriteArray.get(frame)+", ");
-      }
-      else{ //if time runs out, switch to idle
-        frame = 0;
-        sprite = sIdle;
-        spriteType = 0;
-      }
-    }
-    if (hit){ //change to red if under attack
-      tint(255,45,45);
-      hit = false;
-    }
-   if (twHp > 0){
-      HpBar();
-    }
-    display();
-  }
+  }  
 }  
+class MiscProjectile extends Projectile{
+  PImage[] sprites = new PImage[6]; //alternate sprites, passed in
+  int spriteType;
+  MiscProjectile(float x, float y, float angle, int spriteType, int damage) {
+    super(x, y, angle);
+    position = new PVector(x, y);
+    size = new PVector(10, 10);
+    radius = 5;
+    maxSpeed = 12;
+    speed = maxSpeed;
+    this.damage = damage;
+    pierce = 1;
+    this.angle = angle;
+    angleTwo = angle;
+    angularVelocity = 15; //degrees mode
+    this.spriteType = spriteType;
+    sprites = spritesAnimH.get("miscPJ");
+    sprite = sprites[spriteType];
+  }
+}

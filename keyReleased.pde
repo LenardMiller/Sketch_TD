@@ -17,19 +17,10 @@ void keyReleased() {
   if (key == 'r' && alive){ //misc projectile
     projectiles.add(new MiscProjectile(mouseX, mouseY, 0, round(random(0,5)),6));
   } 
-  if (key == 't' && alive){ //acid
-    projectiles.add(new Acid(mouseX, mouseY, 0));
-  } 
-  if (key == 'y' && alive){ //urchin
-    projectiles.add(new Urchin(mouseX, mouseY, 0));
-  } 
-  if (key == 'u' && alive){ //waterball
-    projectiles.add(new Waterball(mouseX, mouseY, 0));
-  } 
-  if (key == 'i' && alive){ //energy blast
+  if (key == 't' && alive){ //energy blast
     projectiles.add(new EnergyBlast(mouseX, mouseY, 0, 20, 15, false));
   } 
-  if (key == 'o' && alive){ //magic missle
+  if (key == 'y' && alive){ //magic missle
     projectiles.add(new MagicMissle(mouseX, mouseY, 0, 5, 0));
   } 
   //enemy form: spawn x, spawn y
