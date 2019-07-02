@@ -17,7 +17,7 @@ class Node{
   }  
   void setNotEnd(int x, int y){
     if (e){
-      e = false; //<>// //<>//
+      e = false; //<>// //<>// //<>//
       int index = numEnd+1;
       PVector p = new PVector(x*nSize,y*nSize);
       for (int i = 0; i < numEnd; i++){

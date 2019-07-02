@@ -11,15 +11,12 @@ void loadSprites(){ //its time for river rafting!!
   spritesH.put("ultimatePt",loadImage("sprites/particles/debris/ultimate.png"));
   spritesH.put("woodPt",loadImage("sprites/particles/debris/wood.png"));
   spritesH.put("nullPt",loadImage("sprites/particles/null/null.png"));
-  spritesH.put("acidPj",loadImage("sprites/projectiles/acid.png"));
   spritesH.put("boltPj",loadImage("sprites/projectiles/bolt.png"));
   spritesH.put("devPj",loadImage("sprites/projectiles/dev.png"));
   spritesH.put("energyPj",loadImage("sprites/projectiles/energy.png"));
   spritesH.put("magicMisslePj",loadImage("sprites/projectiles/magicMissle.png"));
   spritesH.put("nullPj",loadImage("sprites/projectiles/null.png"));
   spritesH.put("pebblePj",loadImage("sprites/projectiles/pebble.png"));
-  spritesH.put("urchinPj",loadImage("sprites/projectiles/urchin.png"));
-  spritesH.put("waterballPj",loadImage("sprites/projectiles/waterball.png"));
   spritesH.put("crossbowBaseTR",loadImage("sprites/towers/turrets/crossbow/base.png"));
   spritesH.put("crossbowFullTR",loadImage("sprites/towers/turrets/crossbow/full.png"));
   spritesH.put("crossbowIdleTR",loadImage("sprites/towers/turrets/crossbow/idle.png"));
