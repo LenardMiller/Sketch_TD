@@ -16,7 +16,7 @@ void debugKeys(){
   }
   //spam null enemies: a
   if (keyPressed == true && key == 'a' && alive && mouseX < boardWidth){
-    enemies.add(new Enemy(mouseX, mouseY, 0));
+    enemies.add(new Enemy(mouseX, mouseY));
     for (int x = 0; x < nodeGrid.length; x++){
       for (int y = 0; y < nodeGrid[x].length; y++){
         nodeGrid[x][y].reset();

@@ -1,6 +1,6 @@
 class DevEnemy extends Enemy{
-  DevEnemy(float x, float y, float mpNegation) {
-    super(x,y,mpNegation);
+  DevEnemy(float x, float y) {
+    super(x,y);
     size = new PVector(40,40);
     radius = 20;
     maxSpeed = 0.5;

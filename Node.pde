@@ -132,10 +132,8 @@ class Node{
       if (parent != null){
         d = PVector.sub(position,parent.position);
         g = sqrt(sq(d.x)+sq(d.y));
-        float mpn = mp - path.mpNegation;
-        if (mpn > 0){
-          g += mpn;
-        }
+        float mpn = mp;
+        g += mpn;
         g += parent.g;
       }
     }

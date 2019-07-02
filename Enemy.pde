@@ -15,11 +15,10 @@ class Enemy {
   int barTrans;
   int tintColor;
   String hitParticle;
-  Enemy(float x, float y, float mpNegation) {
+  Enemy(float x, float y) {
     points = new ArrayList<TurnPoint>();
     position = new PVector(x, y);
     size = new PVector(20,20);
-    this.mpNegation = mpNegation;
     angle = 0;
     radius = 10;
     maxSpeed = 1;
