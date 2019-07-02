@@ -136,21 +136,6 @@ class Selection{ //what tower is selected
       speed = 12;
       textFont(ETFont);
       textAlign(LEFT);
-      fill(100,0,200);
-      text("Random projectiles",710,376 + x);
-      text("Poison/fire/water",710,396 + x);
-      fill(0);
-    }
-    else if (tower.name == "consistantCannon"){
-      text("Consistant", 800, 241);
-      text("Cannon", 800, 266);
-      x = 25;
-      speed = 12;
-      textFont(ETFont);
-      textAlign(LEFT);
-      fill(100,0,200);
-      text("Random projectiles",710,376 + x);
-      text("Poison/fire/water",710,396 + x);
       fill(0);
     }
     if (tower.name == "energyBlaster"){
@@ -160,6 +145,7 @@ class Selection{ //what tower is selected
       textAlign(LEFT);
       fill(100,0,200);
       text("Splash damage",710,376 + x);
+      fill(0);
     }
     if (tower.name == "magicMissleer"){
       text("Magic Missileer", 800, 241);
@@ -341,12 +327,8 @@ class Selection{ //what tower is selected
 
     //stats
     if (tower.turret){
-      if (name == "miscCannon" || name == "consistantCannon"){
-        text("Damage: "+tower.damage+"/10/22", 710, 296 + x);
-      }
-      else{
-        text("Damage: " + tower.damage, 710, 296 + x);
-      }
+      //damage
+      text("Damage: " + tower.damage, 710, 296 + x);
       //firerate (delay)
       text("Load time: " + float(round(float(tower.delay)/6))/10 + "s", 710, 316 + x);
       //accuracy (error)
