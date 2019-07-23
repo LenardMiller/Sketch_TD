@@ -24,10 +24,6 @@ void keyReleased() {
     projectiles.add(new MagicMissle(mouseX, mouseY, 0, 5, 0));
   } 
   //enemy form: spawn x, spawn y
-  if (key == '1' && alive && mouseX < boardWidth){ //dev enemy
-    enemies.add(new DevEnemy(mouseX,mouseY));
-    enemies.get(enemies.size()-1).requestPath(enemies.size()-1);
-  }  
   if (key == '0' && alive && mouseX < boardWidth){ //null enemy
     enemies.add(new Enemy(mouseX,mouseY));
     enemies.get(enemies.size()-1).requestPath(enemies.size()-1);
