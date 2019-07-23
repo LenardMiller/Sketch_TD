@@ -12,9 +12,16 @@ class Enemy {
   int enHp;
   int hitTime;
   PImage sprite;
+  PImage sIdle;
+  PImage[] attackFrames;
+  PImage[] moveFrames;
+  float frame;
+  int numAttackFrames;
+  int numMoveFrames;
   int barTrans;
   int tintColor;
   String hitParticle;
+  String name;
   Enemy(float x, float y) {
     points = new ArrayList<TurnPoint>();
     position = new PVector(x, y);
@@ -27,10 +34,13 @@ class Enemy {
     maxHp = 20; //Hp <---------------------------
     enHp = maxHp;
     hitTime = 0;
-    sprite = spritesH.get("nullEN");
     barTrans = 0;
     tintColor = 255;
     hitParticle = "redOuch";
+    name = "null";
+    numAttackFrames = 1;
+    numMoveFrames = 1;
+    loadSprites();
   }  
   
   void enMain(ArrayList<Enemy> enemies, int i){
@@ -99,15 +109,26 @@ class Enemy {
     }
   }  
   
+  void preDisplay(){
+    sprite = moveFrames[floor(frame)];
+    if (frame < numMoveFrames-1){
+      frame += speed;
+    }  
+    else{
+      frame = 0;  
+    }  
+    if (tintColor < 255){ //shift back to normal
+      tintColor += 20;
+    }  
+  }  
+  
   void display(){
+    preDisplay();
     if (pathLines){
       for (int i = points.size()-1; i > 0; i--){
           points.get(i).display();  
       }
     }
-    if (tintColor < 255){ //shift back to normal
-      tintColor += 20;
-    }  
     pushMatrix();
     translate(position.x,position.y);
     rotate(angle);
@@ -202,6 +223,12 @@ class Enemy {
     noStroke();
     rect(position.x-size.x, position.y+size.y/2 + 12, (2*size.x)*(((float) enHp)/((float) maxHp)), 6);
   }  
+  
+  void loadSprites(){
+    sIdle = spritesH.get("nullEN");
+    attackFrames = spritesAnimH.get(name+"AttackEN");
+    moveFrames = spritesAnimH.get(name+"MoveEN");
+  }
 }
 class TurnPoint{ //pathfinding
   PVector position;

@@ -91,6 +91,10 @@ void loadSpritesAnim(){
   for (int i = 5; i >= 0; i--){
     spritesAnimH.get("miscPJ")[i] = loadImage("sprites/projectiles/misc/" + nf(i,3) + ".png");
   }  
+  spritesAnimH.put("nullAttackEN", new PImage[1]);
+  spritesAnimH.get("nullAttackEN")[0] = loadImage("sprites/enemies/null/attack/000.png");
+  spritesAnimH.put("nullMoveEN", new PImage[1]);
+  spritesAnimH.get("nullMoveEN")[0] = loadImage("sprites/enemies/null/move/000.png");
   spritesAnimH.put("treeSpiritAttackEN", new PImage[43]);
   for (int i = 42; i >= 0; i--){
     spritesAnimH.get("treeSpiritAttackEN")[i] = loadImage("sprites/enemies/treeSpirit/attack/" + nf(i,3) + ".png");
