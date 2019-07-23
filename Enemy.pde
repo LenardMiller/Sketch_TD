@@ -27,7 +27,7 @@ class Enemy {
     maxHp = 20; //Hp <---------------------------
     enHp = maxHp;
     hitTime = 0;
-    sprite = spritesH.get("nullEn");
+    sprite = spritesH.get("nullEN");
     barTrans = 0;
     tintColor = 255;
     hitParticle = "redOuch";
