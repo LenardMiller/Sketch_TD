@@ -1,5 +1,5 @@
 # Sketch_TD
-The working title for a small Tower Defence game made in Processing.
+The working title for a small Tower Defense game made in Processing.
 Made for Java practice and an excuse to make lots of pixel art.
 
 Commands: (WARNING: these are for testing only and can crash your game)

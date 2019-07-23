@@ -46,6 +46,11 @@ class DevEnemy extends Enemy{
     }
   } 
   void display(){ //hpBar behaves like that of towers
+    if (pathLines){
+      for (int i = points.size()-1; i > 0; i--){
+          points.get(i).display();  
+      }
+    }
     if (tintColor < 255){
       tintColor += 20;
     }  

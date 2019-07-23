@@ -26,20 +26,10 @@ void keyReleased() {
   //enemy form: spawn x, spawn y
   if (key == '1' && alive && mouseX < boardWidth){ //dev enemy
     enemies.add(new DevEnemy(mouseX,mouseY));
-    for (int x = 0; x < nodeGrid.length; x++){
-      for (int y = 0; y < nodeGrid[x].length; y++){
-        nodeGrid[x][y].reset();
-      }
-    }  
     enemies.get(enemies.size()-1).requestPath(enemies.size()-1);
   }  
   if (key == '0' && alive && mouseX < boardWidth){ //null enemy
     enemies.add(new Enemy(mouseX,mouseY));
-    for (int x = 0; x < nodeGrid.length; x++){
-      for (int y = 0; y < nodeGrid[x].length; y++){
-        nodeGrid[x][y].reset();
-      }
-    }  
     enemies.get(enemies.size()-1).requestPath(enemies.size()-1);
   }  
   //buff form: enemy id
