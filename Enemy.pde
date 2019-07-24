@@ -8,6 +8,7 @@ class Enemy {
   float speed = maxSpeed;
   float mpNegation;
   int dangerLevel;
+  int twDamage;
   int maxHp;
   int enHp;
   PImage sprite;
@@ -33,6 +34,7 @@ class Enemy {
     maxSpeed = 1;
     speed = maxSpeed;
     dangerLevel = 1;
+    twDamage = 1;
     maxHp = 20; //Hp <---------------------------
     enHp = maxHp;
     barTrans = 0;
@@ -165,7 +167,7 @@ class Enemy {
         ak = true;
         moveFrame = 0;
         if (attackFrame == numAttackFrames-1){ //enemy only attacks when punch
-          tower.collideEN(dangerLevel);
+          tower.collideEN(twDamage);
         }  
       }
     }

@@ -99,8 +99,8 @@ void loadSpritesAnim(){
   for (int i = 41; i >= 0; i--){
     spritesAnimH.get("treeSpiritAttackEN")[i] = loadImage("sprites/enemies/treeSpirit/attack/" + nf(i,3) + ".png");
   }  
-  spritesAnimH.put("treeSpiritMoveEN", new PImage[49]);
-  for (int i = 48; i >= 0; i--){
+  spritesAnimH.put("treeSpiritMoveEN", new PImage[47]);
+  for (int i = 46; i >= 0; i--){
     spritesAnimH.get("treeSpiritMoveEN")[i] = loadImage("sprites/enemies/treeSpirit/move/" + nf(i,3) + ".png");
   }  
   spritesAnimH.put("slingshotFireTR",new PImage[34]);

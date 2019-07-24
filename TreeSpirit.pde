@@ -6,12 +6,13 @@ class TreeSpirit extends Enemy{
     maxSpeed = .5;
     speed = maxSpeed;
     dangerLevel = 1;
+    twDamage = 5;
     maxHp = 40; //Hp <---------------------------
     enHp = maxHp;
     hitParticle = "redOuch";
     name = "treeSpirit";
     numAttackFrames = 42;
-    numMoveFrames = 49;
+    numMoveFrames = 47;
     startFrame = 22;
     loadSprites();
   }  
