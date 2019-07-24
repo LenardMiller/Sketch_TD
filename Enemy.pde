@@ -43,6 +43,7 @@ class Enemy {
     name = "null";
     numAttackFrames = 1;
     numMoveFrames = 1;
+    attackFrame = startFrame;
     startFrame = 0;
     loadSprites();
   }  
@@ -171,7 +172,7 @@ class Enemy {
         }  
       }
     }
-    if (!ak){
+    if (!ak && attackFrame == startFrame){
       attacking = false;
       attackFrame = startFrame;
     }  

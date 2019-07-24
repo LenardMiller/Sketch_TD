@@ -14,6 +14,7 @@ class TreeSpirit extends Enemy{
     numAttackFrames = 42;
     numMoveFrames = 47;
     startFrame = 22;
+    attackFrame = startFrame;
     loadSprites();
   }  
 }  
