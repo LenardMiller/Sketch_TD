@@ -7,7 +7,7 @@ class TreeSpirit extends Enemy{
     speed = maxSpeed;
     dangerLevel = 1;
     twDamage = 5;
-    maxHp = 40; //Hp <---------------------------
+    maxHp = 80; //Hp <---------------------------
     enHp = maxHp;
     hitParticle = "redOuch";
     name = "treeSpirit";

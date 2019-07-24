@@ -32,6 +32,10 @@ void keyReleased() {
     enemies.add(new TreeSpirit(mouseX,mouseY));
     enemies.get(enemies.size()-1).requestPath(enemies.size()-1);
   }  
+  if (key == '2' && alive && mouseX < boardWidth){ //medium bug
+    enemies.add(new MidBug(mouseX,mouseY));
+    enemies.get(enemies.size()-1).requestPath(enemies.size()-1);
+  }  
   //buff form: enemy id
   if (key == '?' && alive){ //null buff
     buffs.add(new Buff(int(random(0,enemies.size()))));
