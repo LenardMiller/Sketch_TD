@@ -10,14 +10,16 @@ class Enemy {
   int dangerLevel;
   int maxHp;
   int enHp;
-  int hitTime;
   PImage sprite;
   PImage sIdle;
   PImage[] attackFrames;
   PImage[] moveFrames;
-  float frame;
+  float moveFrame;
+  int attackFrame;
+  boolean attacking;
   int numAttackFrames;
   int numMoveFrames;
+  int startFrame;
   int barTrans;
   int tintColor;
   String hitParticle;
@@ -33,22 +35,24 @@ class Enemy {
     dangerLevel = 1;
     maxHp = 20; //Hp <---------------------------
     enHp = maxHp;
-    hitTime = 0;
     barTrans = 0;
     tintColor = 255;
     hitParticle = "redOuch";
     name = "null";
     numAttackFrames = 1;
     numMoveFrames = 1;
+    startFrame = 0;
     loadSprites();
   }  
   
   void enMain(ArrayList<Enemy> enemies, int i){
     boolean dead = false; //if its gotten this far, it must be alive?
     swapPoints(false);
-    move(i);
-    display();
     collideTW();
+    if (!attacking){
+      move(i);
+    }
+    display();
     if (position.y - size.y > boardHeight){ //if enemy crosses edge of screen, enExit
       enExit(); 
       dead = true;
@@ -110,13 +114,24 @@ class Enemy {
   }  
   
   void preDisplay(){
-    sprite = moveFrames[floor(frame)];
-    if (frame < numMoveFrames-1){
-      frame += speed;
-    }  
+    if (attacking){
+      sprite = attackFrames[attackFrame];
+      if (attackFrame < numAttackFrames-1){
+        attackFrame += 1;  
+      }  
+      else {
+        attackFrame = 0;
+      }  
+    }
     else{
-      frame = 0;  
-    }  
+      sprite = moveFrames[floor(moveFrame)];
+      if (moveFrame < numMoveFrames-1){
+        moveFrame += speed;
+      }  
+      else{
+        moveFrame = 0;  
+      }  
+    }
     if (tintColor < 255){ //shift back to normal
       tintColor += 20;
     }  
@@ -126,7 +141,7 @@ class Enemy {
     preDisplay();
     if (pathLines){
       for (int i = points.size()-1; i > 0; i--){
-          points.get(i).display();  
+        points.get(i).display();  
       }
     }
     pushMatrix();
@@ -140,17 +155,23 @@ class Enemy {
   }
   
   void collideTW(){ //when the enemy hits a tower
+    boolean ak = false;
     for (int i = towers.size()-1; i >= 0; i--){
       Tower tower = towers.get(i);
       float dx = (tower.position.x - tower.size.x/2) - (position.x);
       float dy = (tower.position.y - tower.size.y/2) - (position.y);
       if (dy <= size.y/2 + tower.size.y/2 && dy >= -(tower.size.y/2) - size.y/2 && dx <= size.x/2 + tower.size.x/2 && dx >= -(tower.size.x/2) - size.x/2){ //if touching tower
-        speed = 0;
-        if (frameCount > hitTime){ //enemy only attacks every second
-          hitTime = frameCount + 60;
+        attacking = true;
+        ak = true;
+        moveFrame = 0;
+        if (attackFrame == numAttackFrames-1){ //enemy only attacks when punch
           tower.collideEN(dangerLevel);
         }  
       }
+    }
+    if (!ak){
+      attacking = false;
+      attackFrame = startFrame;
     }  
   }  
   

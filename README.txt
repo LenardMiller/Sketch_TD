@@ -34,8 +34,3 @@ buffs (be careful with these, they can stack buffs which can lead to crashes)
 . - afflict a random enemy with water
 / - afflict a random enemy with fire
 ? [shift + /] - cause a random enemy to repeat its ID
-
-To run:
-unzip whole folder
-rename folder to Sketch_TD
-run any .pde file

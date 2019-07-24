@@ -10,8 +10,9 @@ class TreeSpirit extends Enemy{
     enHp = maxHp;
     hitParticle = "redOuch";
     name = "treeSpirit";
-    numAttackFrames = 43;
+    numAttackFrames = 42;
     numMoveFrames = 49;
+    startFrame = 22;
     loadSprites();
   }  
 }  
