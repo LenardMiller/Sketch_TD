@@ -119,6 +119,14 @@ void loadSpritesAnim(){
   for (int i = 23; i >= 0; i--){
     spritesAnimH.get("smolBugMoveEN")[i] = loadImage("sprites/enemies/smolBug/move/" + nf(i,3) + ".png");
   } 
+  spritesAnimH.put("bigBugAttackEN", new PImage[100]);
+  for (int i = 99; i >= 0; i--){
+    spritesAnimH.get("bigBugAttackEN")[i] = loadImage("sprites/enemies/bigBug/attack/" + nf(i,3) + ".png");
+  }  
+  spritesAnimH.put("bigBugMoveEN", new PImage[48]);
+  for (int i = 47; i >= 0; i--){
+    spritesAnimH.get("bigBugMoveEN")[i] = loadImage("sprites/enemies/bigBug/move/" + nf(i,3) + ".png");
+  } 
   spritesAnimH.put("slingshotFireTR",new PImage[34]);
   for (int i = 33; i >= 0; i--){
     spritesAnimH.get("slingshotFireTR")[i] = loadImage("sprites/towers/turrets/slingshot/fire/fire" + nf(i,3) + ".png");

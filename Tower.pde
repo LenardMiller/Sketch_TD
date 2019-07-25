@@ -211,7 +211,9 @@ class Tower {
     if (selection.id == i){
       selection.id = 0;
     }
+    println("1");
     nodeCheckObs();
+    println("2");
   }
 
   void HpText(){ //displays the towers health

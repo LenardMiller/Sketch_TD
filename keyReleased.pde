@@ -28,16 +28,20 @@ void keyReleased() {
     enemies.add(new Enemy(mouseX,mouseY));
     enemies.get(enemies.size()-1).requestPath(enemies.size()-1);
   }  
-  if (key == '1' && alive && mouseX < boardWidth){ //tree spirit
-    enemies.add(new TreeSpirit(mouseX,mouseY));
+  if (key == '1' && alive && mouseX < boardWidth){ //little bug
+    enemies.add(new SmolBug(mouseX,mouseY));
     enemies.get(enemies.size()-1).requestPath(enemies.size()-1);
   }  
   if (key == '2' && alive && mouseX < boardWidth){ //medium bug
     enemies.add(new MidBug(mouseX,mouseY));
     enemies.get(enemies.size()-1).requestPath(enemies.size()-1);
   }  
-  if (key == '3' && alive && mouseX < boardWidth){ //tiny bug
-    enemies.add(new SmolBug(mouseX,mouseY));
+  if (key == '3' && alive && mouseX < boardWidth){ //big bug
+    enemies.add(new BigBug(mouseX,mouseY));
+    enemies.get(enemies.size()-1).requestPath(enemies.size()-1);
+  } 
+  if (key == '4' && alive && mouseX < boardWidth){ //tree spirit
+    enemies.add(new TreeSpirit(mouseX,mouseY));
     enemies.get(enemies.size()-1).requestPath(enemies.size()-1);
   } 
   //buff form: enemy id
