@@ -36,6 +36,10 @@ void keyReleased() {
     enemies.add(new MidBug(mouseX,mouseY));
     enemies.get(enemies.size()-1).requestPath(enemies.size()-1);
   }  
+  if (key == '3' && alive && mouseX < boardWidth){ //tiny bug
+    enemies.add(new SmolBug(mouseX,mouseY));
+    enemies.get(enemies.size()-1).requestPath(enemies.size()-1);
+  } 
   //buff form: enemy id
   if (key == '?' && alive){ //null buff
     buffs.add(new Buff(int(random(0,enemies.size()))));
