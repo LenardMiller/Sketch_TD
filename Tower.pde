@@ -144,6 +144,7 @@ class Tower {
     if (twHp <= 0){
        die(i);
        towers.remove(i);
+       nodeCheckObs();
     }
     value = floor((float(twHp)/float(maxHp))*price);
     if (mousePressed && mouseX < position.x && mouseX > position.x-size.x && mouseY < position.y && mouseY > position.y-size.y && alive){ //clicked on
@@ -201,7 +202,7 @@ class Tower {
   }
 
   void die(int i){
-    int num = floor(random(30,50)); //shower debris //<>//
+    int num = floor(random(30,50)); //shower debris
     for (int j = num; j >= 0; j--){
       particles.add(new Debris((position.x-size.x/2)+random((size.x/2)*-1,size.x/2), (position.y-size.y/2)+random((size.y/2)*-1,size.y/2), random(0,360), debrisType));
     }
@@ -210,10 +211,7 @@ class Tower {
     }
     if (selection.id == i){
       selection.id = 0;
-    }
-    println("1");
-    nodeCheckObs();
-    println("2");
+    } //<>//
   }
 
   void HpText(){ //displays the towers health
