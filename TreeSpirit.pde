@@ -3,11 +3,11 @@ class TreeSpirit extends Enemy{
     super(x,y);
     size = new PVector(42,42);
     radius = 21;
-    maxSpeed = .5;
+    maxSpeed = .35;
     speed = maxSpeed;
     dangerLevel = 1;
     twDamage = 5;
-    maxHp = 80; //Hp <---------------------------
+    maxHp = 30; //Hp <---------------------------
     enHp = maxHp;
     hitParticle = "redOuch";
     name = "treeSpirit";

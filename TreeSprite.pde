@@ -6,13 +6,13 @@ class TreeSprite extends Enemy{
     maxSpeed = .4;
     speed = maxSpeed;
     dangerLevel = 1;
-    twDamage = 5;
+    twDamage = 2;
     maxHp = 80; //Hp <---------------------------
     enHp = maxHp;
     hitParticle = "redOuch";
     name = "treeSprite";
     numAttackFrames = 50;
-    numMoveFrames = 47;
+    numMoveFrames = 58;
     startFrame = 28;
     attackFrame = startFrame;
     loadSprites();
