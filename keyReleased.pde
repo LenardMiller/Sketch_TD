@@ -40,7 +40,11 @@ void keyReleased() {
     enemies.add(new BigBug(mouseX,mouseY));
     enemies.get(enemies.size()-1).requestPath(enemies.size()-1);
   } 
-  if (key == '4' && alive && mouseX < boardWidth){ //tree spirit
+  if (key == '4' && alive && mouseX < boardWidth){ //tree sprite
+    enemies.add(new TreeSprite(mouseX,mouseY));
+    enemies.get(enemies.size()-1).requestPath(enemies.size()-1);
+  } 
+  if (key == '5' && alive && mouseX < boardWidth){ //tree spirit
     enemies.add(new TreeSpirit(mouseX,mouseY));
     enemies.get(enemies.size()-1).requestPath(enemies.size()-1);
   } 

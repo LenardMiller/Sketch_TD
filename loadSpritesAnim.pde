@@ -103,6 +103,14 @@ void loadSpritesAnim(){
   for (int i = 46; i >= 0; i--){
     spritesAnimH.get("treeSpiritMoveEN")[i] = loadImage("sprites/enemies/treeSpirit/move/" + nf(i,3) + ".png");
   }  
+  spritesAnimH.put("treeSpriteMoveEN", new PImage[47]);
+  for (int i = 46; i >= 0; i--){
+    spritesAnimH.get("treeSpriteMoveEN")[i] = loadImage("sprites/enemies/treeSprite/move/" + nf(i,3) + ".png");
+  } 
+  spritesAnimH.put("treeSpriteAttackEN", new PImage[50]);
+  for (int i = 49; i >= 0; i--){
+    spritesAnimH.get("treeSpriteAttackEN")[i] = loadImage("sprites/enemies/treeSprite/attack/" + nf(i,3) + ".png");
+  } 
   spritesAnimH.put("midBugAttackEN", new PImage[42]);
   for (int i = 41; i >= 0; i--){
     spritesAnimH.get("midBugAttackEN")[i] = loadImage("sprites/enemies/midBug/attack/" + nf(i,3) + ".png");
