@@ -91,6 +91,50 @@ void loadSpritesAnim(){
   for (int i = 5; i >= 0; i--){
     spritesAnimH.get("miscPJ")[i] = loadImage("sprites/projectiles/misc/" + nf(i,3) + ".png");
   }  
+  spritesAnimH.put("nullAttackEN", new PImage[1]);
+  spritesAnimH.get("nullAttackEN")[0] = loadImage("sprites/enemies/null/attack/000.png");
+  spritesAnimH.put("nullMoveEN", new PImage[1]);
+  spritesAnimH.get("nullMoveEN")[0] = loadImage("sprites/enemies/null/move/000.png");
+  spritesAnimH.put("treeSpiritAttackEN", new PImage[42]);
+  for (int i = 41; i >= 0; i--){
+    spritesAnimH.get("treeSpiritAttackEN")[i] = loadImage("sprites/enemies/treeSpirit/attack/" + nf(i,3) + ".png");
+  }  
+  spritesAnimH.put("treeSpiritMoveEN", new PImage[47]);
+  for (int i = 46; i >= 0; i--){
+    spritesAnimH.get("treeSpiritMoveEN")[i] = loadImage("sprites/enemies/treeSpirit/move/" + nf(i,3) + ".png");
+  }  
+  spritesAnimH.put("treeSpriteMoveEN", new PImage[58]);
+  for (int i = 57; i >= 0; i--){
+    spritesAnimH.get("treeSpriteMoveEN")[i] = loadImage("sprites/enemies/treeSprite/move/" + nf(i,3) + ".png");
+  } 
+  spritesAnimH.put("treeSpriteAttackEN", new PImage[50]);
+  for (int i = 49; i >= 0; i--){
+    spritesAnimH.get("treeSpriteAttackEN")[i] = loadImage("sprites/enemies/treeSprite/attack/" + nf(i,3) + ".png");
+  } 
+  spritesAnimH.put("midBugAttackEN", new PImage[42]);
+  for (int i = 41; i >= 0; i--){
+    spritesAnimH.get("midBugAttackEN")[i] = loadImage("sprites/enemies/midBug/attack/" + nf(i,3) + ".png");
+  }  
+  spritesAnimH.put("midBugMoveEN", new PImage[32]);
+  for (int i = 31; i >= 0; i--){
+    spritesAnimH.get("midBugMoveEN")[i] = loadImage("sprites/enemies/midBug/move/" + nf(i,3) + ".png");
+  }  
+  spritesAnimH.put("smolBugAttackEN", new PImage[34]);
+  for (int i = 33; i >= 0; i--){
+    spritesAnimH.get("smolBugAttackEN")[i] = loadImage("sprites/enemies/smolBug/attack/" + nf(i,3) + ".png");
+  }  
+  spritesAnimH.put("smolBugMoveEN", new PImage[24]);
+  for (int i = 23; i >= 0; i--){
+    spritesAnimH.get("smolBugMoveEN")[i] = loadImage("sprites/enemies/smolBug/move/" + nf(i,3) + ".png");
+  } 
+  spritesAnimH.put("bigBugAttackEN", new PImage[100]);
+  for (int i = 99; i >= 0; i--){
+    spritesAnimH.get("bigBugAttackEN")[i] = loadImage("sprites/enemies/bigBug/attack/" + nf(i,3) + ".png");
+  }  
+  spritesAnimH.put("bigBugMoveEN", new PImage[48]);
+  for (int i = 47; i >= 0; i--){
+    spritesAnimH.get("bigBugMoveEN")[i] = loadImage("sprites/enemies/bigBug/move/" + nf(i,3) + ".png");
+  } 
   spritesAnimH.put("slingshotFireTR",new PImage[34]);
   for (int i = 33; i >= 0; i--){
     spritesAnimH.get("slingshotFireTR")[i] = loadImage("sprites/towers/turrets/slingshot/fire/fire" + nf(i,3) + ".png");

@@ -144,6 +144,7 @@ class Tower {
     if (twHp <= 0){
        die(i);
        towers.remove(i);
+       nodeCheckObs();
     }
     value = floor((float(twHp)/float(maxHp))*price);
     if (mousePressed && mouseX < position.x && mouseX > position.x-size.x && mouseY < position.y && mouseY > position.y-size.y && alive){ //clicked on
@@ -210,8 +211,7 @@ class Tower {
     }
     if (selection.id == i){
       selection.id = 0;
-    }
-    nodeCheckObs();
+    } //<>//
   }
 
   void HpText(){ //displays the towers health

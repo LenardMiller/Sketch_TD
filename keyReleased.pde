@@ -24,24 +24,30 @@ void keyReleased() {
     projectiles.add(new MagicMissle(mouseX, mouseY, 0, 5, 0));
   } 
   //enemy form: spawn x, spawn y
-  if (key == '1' && alive && mouseX < boardWidth){ //dev enemy
-    enemies.add(new DevEnemy(mouseX,mouseY));
-    for (int x = 0; x < nodeGrid.length; x++){
-      for (int y = 0; y < nodeGrid[x].length; y++){
-        nodeGrid[x][y].reset();
-      }
-    }  
-    enemies.get(enemies.size()-1).requestPath(enemies.size()-1);
-  }  
   if (key == '0' && alive && mouseX < boardWidth){ //null enemy
     enemies.add(new Enemy(mouseX,mouseY));
-    for (int x = 0; x < nodeGrid.length; x++){
-      for (int y = 0; y < nodeGrid[x].length; y++){
-        nodeGrid[x][y].reset();
-      }
-    }  
     enemies.get(enemies.size()-1).requestPath(enemies.size()-1);
   }  
+  if (key == '1' && alive && mouseX < boardWidth){ //little bug
+    enemies.add(new SmolBug(mouseX,mouseY));
+    enemies.get(enemies.size()-1).requestPath(enemies.size()-1);
+  }  
+  if (key == '2' && alive && mouseX < boardWidth){ //medium bug
+    enemies.add(new MidBug(mouseX,mouseY));
+    enemies.get(enemies.size()-1).requestPath(enemies.size()-1);
+  }  
+  if (key == '3' && alive && mouseX < boardWidth){ //big bug
+    enemies.add(new BigBug(mouseX,mouseY));
+    enemies.get(enemies.size()-1).requestPath(enemies.size()-1);
+  } 
+  if (key == '4' && alive && mouseX < boardWidth){ //tree sprite
+    enemies.add(new TreeSprite(mouseX,mouseY));
+    enemies.get(enemies.size()-1).requestPath(enemies.size()-1);
+  } 
+  if (key == '5' && alive && mouseX < boardWidth){ //tree spirit
+    enemies.add(new TreeSpirit(mouseX,mouseY));
+    enemies.get(enemies.size()-1).requestPath(enemies.size()-1);
+  } 
   //buff form: enemy id
   if (key == '?' && alive){ //null buff
     buffs.add(new Buff(int(random(0,enemies.size()))));

@@ -8,13 +8,23 @@ class Enemy {
   float speed = maxSpeed;
   float mpNegation;
   int dangerLevel;
+  int twDamage;
   int maxHp;
   int enHp;
-  int hitTime;
   PImage sprite;
+  PImage sIdle;
+  PImage[] attackFrames;
+  PImage[] moveFrames;
+  float moveFrame;
+  int attackFrame;
+  boolean attacking;
+  int numAttackFrames;
+  int numMoveFrames;
+  int startFrame;
   int barTrans;
   int tintColor;
   String hitParticle;
+  String name;
   Enemy(float x, float y) {
     points = new ArrayList<TurnPoint>();
     position = new PVector(x, y);
@@ -24,21 +34,28 @@ class Enemy {
     maxSpeed = 1;
     speed = maxSpeed;
     dangerLevel = 1;
+    twDamage = 1;
     maxHp = 20; //Hp <---------------------------
     enHp = maxHp;
-    hitTime = 0;
-    sprite = spritesH.get("nullEn");
     barTrans = 0;
     tintColor = 255;
     hitParticle = "redOuch";
+    name = "null";
+    numAttackFrames = 1;
+    numMoveFrames = 1;
+    attackFrame = startFrame;
+    startFrame = 0;
+    loadSprites();
   }  
   
   void enMain(ArrayList<Enemy> enemies, int i){
     boolean dead = false; //if its gotten this far, it must be alive?
     swapPoints(false);
-    move(i);
-    display();
     collideTW();
+    if (!attacking){
+      move(i);
+    }
+    display();
     if (position.y - size.y > boardHeight){ //if enemy crosses edge of screen, enExit
       enExit(); 
       dead = true;
@@ -99,15 +116,37 @@ class Enemy {
     }
   }  
   
-  void display(){
-    if (pathLines){
-      for (int i = points.size()-1; i > 0; i--){
-          points.get(i).display();  
-      }
+  void preDisplay(){
+    if (attacking){
+      sprite = attackFrames[attackFrame];
+      if (attackFrame < numAttackFrames-1){
+        attackFrame += 1;  
+      }  
+      else {
+        attackFrame = 0;
+      }  
+    }
+    else{
+      sprite = moveFrames[floor(moveFrame)];
+      if (moveFrame < numMoveFrames-1){
+        moveFrame += speed;
+      }  
+      else{
+        moveFrame = 0;  
+      }  
     }
     if (tintColor < 255){ //shift back to normal
       tintColor += 20;
     }  
+  }  
+  
+  void display(){
+    preDisplay();
+    if (pathLines){
+      for (int i = points.size()-1; i > 0; i--){
+        points.get(i).display();  
+      }
+    }
     pushMatrix();
     translate(position.x,position.y);
     rotate(angle);
@@ -119,17 +158,23 @@ class Enemy {
   }
   
   void collideTW(){ //when the enemy hits a tower
+    boolean ak = false;
     for (int i = towers.size()-1; i >= 0; i--){
       Tower tower = towers.get(i);
       float dx = (tower.position.x - tower.size.x/2) - (position.x);
       float dy = (tower.position.y - tower.size.y/2) - (position.y);
       if (dy <= size.y/2 + tower.size.y/2 && dy >= -(tower.size.y/2) - size.y/2 && dx <= size.x/2 + tower.size.x/2 && dx >= -(tower.size.x/2) - size.x/2){ //if touching tower
-        speed = 0;
-        if (frameCount > hitTime){ //enemy only attacks every second
-          hitTime = frameCount + 60;
-          tower.collideEN(dangerLevel);
+        attacking = true;
+        ak = true;
+        moveFrame = 0;
+        if (attackFrame == numAttackFrames-1){ //enemy only attacks when punch
+          tower.collideEN(twDamage);
         }  
       }
+    }
+    if (!ak && attackFrame == startFrame){
+      attacking = false;
+      attackFrame = startFrame;
     }  
   }  
   
@@ -202,6 +247,12 @@ class Enemy {
     noStroke();
     rect(position.x-size.x, position.y+size.y/2 + 12, (2*size.x)*(((float) enHp)/((float) maxHp)), 6);
   }  
+  
+  void loadSprites(){
+    sIdle = spritesH.get("nullEN");
+    attackFrames = spritesAnimH.get(name+"AttackEN");
+    moveFrames = spritesAnimH.get(name+"MoveEN");
+  }
 }
 class TurnPoint{ //pathfinding
   PVector position;

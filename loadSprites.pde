@@ -1,6 +1,9 @@
 void loadSprites(){ //its time for river rafting!!
-  spritesH.put("devEn",loadImage("sprites/enemies/dev.png"));
-  spritesH.put("nullEn",loadImage("sprites/enemies/null.png"));
+  spritesH.put("nullEN",loadImage("sprites/enemies/null/idle.png"));
+  spritesH.put("treeSpiritEN",loadImage("sprites/enemies/treeSpirit/idle.png"));
+  spritesH.put("treeSpriteEN",loadImage("sprites/enemies/treeSprite/idle.png"));
+  spritesH.put("midBugEN",loadImage("sprites/enemies/midBug/idle.png"));
+  spritesH.put("bigBugEN",loadImage("sprites/enemies/bigBug/idle.png"));
   spritesH.put("livesIc",loadImage("sprites/icons/lives.png"));
   spritesH.put("moneyIc",loadImage("sprites/icons/money.png"));
   spritesH.put("nullIc",loadImage("sprites/icons/null.png"));
